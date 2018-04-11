@@ -1,5 +1,5 @@
 package br.com.cpsoftware.budget.model;
 
-public class ItemDAO {
+public class Item {
 
 }
