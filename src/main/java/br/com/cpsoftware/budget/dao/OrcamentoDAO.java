@@ -7,7 +7,7 @@ import br.com.cpsoftware.budget.model.Tipo;
 public class OrcamentoDAO implements TipoDao{
 	
 	private DatastoreService datastore;
-	 private static final String ORCAMENTO_KIND = "Book2";
+	private static final String ORCAMENTO_KIND = "Orcamento";
 	
 	@Override
 	public Long create(Tipo tipo) {
