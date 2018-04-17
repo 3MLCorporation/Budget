@@ -2,27 +2,27 @@ package br.com.cpsoftware.budget.dao;
 
 import com.google.appengine.api.datastore.DatastoreService;
 
-import br.com.cpsoftware.budget.model.Tipo;
+import br.com.cpsoftware.budget.model.Entidade;
 
-public class RubricaDAO implements TipoDao{
+public class RubricaDAO implements EntidadeDao{
 
 	private DatastoreService datastore;
 	private static final String RUBRICA_KIND = "Rubrica";
 	
 	@Override
-	public Long create(Tipo tipo) {
+	public Long create(Entidade tipo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Tipo read(Long tipoId) {
+	public Entidade read(Long tipoId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void update(Tipo tipo) {
+	public void update(Entidade tipo) {
 		// TODO Auto-generated method stub
 		
 	}
