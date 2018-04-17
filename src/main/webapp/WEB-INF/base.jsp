@@ -14,47 +14,6 @@
 </head>
 
 <body>
-    <!-- Barra de menu lateral
-    <div class="sidenav">
-        <h1 class="nav-link dropdown-toggle"  href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">Category</h1>
-        <div class="dropdown-menu" aria-labelledby="dropdown01">
-            <a class="dropdown-item" href="#">New</a>
-        </div>
-
-        <button class="dropdown-btn">Apartamento<i class="fa fa-caret-down"></i></button>
-        <div class="dropdown-container">
-            <a href="#">Banheiro</a>
-            <a href="#">Quarto</a>
-            <a href="#">Cozinha</a>
-        </div>
-
-        <button class="dropdown-btn">Casa<i class="fa fa-caret-down"></i></button>
-        <div class="dropdown-container">
-            <a href="#">Banheiro</a>
-            <a href="#">Quarto</a>
-            <a href="#">Cozinha</a>
-        </div>
-    </div>
-
-    <script>
-        /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-        var dropdown = document.getElementsByClassName("dropdown-btn");
-        var i;
-
-        for (i = 0; i < dropdown.length; i++) {
-          dropdown[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var dropdownContent = this.nextElementSibling;
-            if (dropdownContent.style.display === "block") {
-              dropdownContent.style.display = "none";
-          } else {
-              dropdownContent.style.display = "block";
-          }
-      });
-      }
-  </script>-->
-
 
   <div class="header">
         <div class="bg-color">
@@ -114,41 +73,6 @@
         </div>
     </div> 
     <c:import url="/WEB-INF/${page}.jsp" />
-<!-- Barra de menu lateral
-<div class="container">
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod.
-            Donec sed odio dui. </p>
-            <p>
-                <a class="btn btn-secondary" href="#" role="button">View details &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris
-                condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod.
-            Donec sed odio dui. </p>
-
-            <p>
-                <a class="btn btn-secondary" href="#" role="button">View details &raquo;</a>
-            </p>
-
-        </div>
-        <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta
-                felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum
-            massa justo sit amet risus.</p>
-            <p>
-                <a class="btn btn-secondary" href="#" role="button">View details &raquo;</a>
-            </p>
-        </div>
-    </div>
-</div>
--->
 </body>
 
 </html>

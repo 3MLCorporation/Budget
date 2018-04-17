@@ -5,21 +5,21 @@
        <h2>Cadastro de itens</h2>
    <br/>
    <form action="cadastroCategoria" method="post">
-       <div class="form-group">
-           <label for="descricao">Rubrica:</label> <input type="text"
-           class="form-control" placeholder="Fornecer o nome de uma rubrica já existente"
-           name="rubrica" value="${requestScope.orcamento}" required="required">
-       </div>
-       <div class="form-group">
-           <label for="text">Item:</label> <input type="text"
-           class="form-control" placeholder="Fornecer o nome do novo item"
-           name="itens" value="${requestScope.itens}" required="required">
-       </div>
-       <div class="form-group">
+   <div class="form-group">
+         <label for="text">Item:</label> <input type="text"
+         class="form-control" placeholder="Fornecer o nome do novo item"
+         name="itens" value="${requestScope.itens}" required="required">
+     </div>
+     <div class="form-group">
+          <label for="descricao">Rubrica:</label> <input type="text"
+          class="form-control" placeholder="Fornecer o nome de uma rubrica já existente"
+          name="rubrica" value="${requestScope.orcamento}" required="required">
+     </div>
+     <div class="form-group">
            <label for="text">Valor:</label> <input type="text"
-           class="form-control" placeholder="Fornecer o nome do novo item"
-           name="itens" value="${requestScope.itensValor}" required="required">
-       </div>
+           class="form-control" placeholder="Fornecer o valor do item"
+           name="itens" value="${requestScope.itemOrcamento}" required="required">
+       </div>  
        <button type="submit" class="btn btn-default">Cadastrar</button>
    </form>
    </div>

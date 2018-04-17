@@ -1,20 +1,32 @@
-<%@ taglib uri="http://java.sun.com/jstl/core" prefix="c" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
   <div class="container" style="width: 60%;">
       <h2>Cadastro da categoria</h2>
   <br/>
-  <form action="cadastroCategoria" method="post">
-      <div class="form-group">
-          <label for="descricao">Orçamento:</label> <input type="text"
-          class="form-control" placeholder="Fornecer o nome de um orçamento já existente"
-          name="codigo" value="${requestScope.orcamento}" required="required">
+  	<form action="cadastroCategoria" method="post">
+  		<div class="form-group">
+       	   <label for="text">Categoria:</label> <input type="text"
+        	class="form-control" placeholder="Fornecer o nome da nova categoria"
+       	   name="disciplina" value="${requestScope.categoria}" required="required">
       </div>
       <div class="form-group">
-          <label for="text">Categoria:</label> <input type="text"
-          class="form-control" placeholder="Fornecer o nome da nova categoria"
-          name="disciplina" value="${requestScope.categoria}" required="required">
-      </div>
+           <label for="text">Valor:</label> <input type="text"
+           class="form-control" placeholder="Fornecer o valor da categoria"
+           name="itens" value="${requestScope.categoriaValor}" required="required">
+       </div>
+       <div class="form-group">
+     	 <label>Orçamento</label>
+     	 <select>
+     	 	<select class="form-control" name="orcamento">
+					<c:forEach items="${requestScope.orcamento}" var="orcamentoDB">
+					<option ${requestScope.orcamento == orcamentoDB.codigo ? 'selected' : ''}>${orcamentoDB.codigo}</option>
+			</c:forEach>
+			</select>
+     	 </select>
+		</div>
       <button type="submit" class="btn btn-default">Cadastrar</button>
-  </form>
+  	</form>
   </div>
