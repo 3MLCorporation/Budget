@@ -39,9 +39,9 @@ public class OrcamentoDAO implements EntidadeDao{
 		try {
 		    Entity orcamentoEntity = datastore.get(KeyFactory.createKey(ORCAMENTO_KIND, orcamentoId));
 		    return entityToOrcamento(orcamentoEntity);
-		  } catch (EntityNotFoundException e) {
+		} catch (EntityNotFoundException e) {
 		    return null;
-		  }
+		}
 	}
 
 	@Override
