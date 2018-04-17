@@ -1,10 +1,11 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <title>Budget</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="../css/estilo.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -71,7 +72,7 @@
                                 data-toggle="dropdown" role="button" aria-haspopup="true"
                                 aria-expanded="false">Orçamento <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="criarOrcamento.jsp">Criar</a></li>
+                                    <li><a class="dropdown-item" href="/cadastrarOrcamento">Criar</a></li>
                                     <li><a class="dropdown-item" href="#">Atualizar</a></li>
                                 </ul>
                             </li>
@@ -93,12 +94,13 @@
                             </li>
                             <li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
                                 data-toggle="dropdown" role="button" aria-haspopup="true"
-                                aria-expanded="false">UsuÃ¡rio <span class="caret"></span></a>
+                                aria-expanded="false">Usuário <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="#">Logar</a></li>
                                     <li><a class="dropdown-item" href="#">Cadastrar</a></li>
                                 </ul>
                             </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="#">Sobre nós</a>
                             </li>
 
@@ -112,6 +114,7 @@
             </header>
         </div>
     </div> 
+    <c:import url="/WEB-INF/${page}.jsp" />
 <!-- Barra de menu lateral
 <div class="container">
     <div class="row">
