@@ -15,6 +15,7 @@ public class CategoriaDAO implements EntidadeDao{
 
 	/*
 	 * TODO Validação dos dados(entrada/banco)
+	 * TODO Criação de construtor sem id
 	 */
 	
 	private DatastoreService datastore;

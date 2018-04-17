@@ -13,6 +13,11 @@ public class Entidade {
 	public static final String VALOR_TOTAL = "valor_total";
 	public static final String VALOR_PARCIAL = "valor_parcial";
 	
+	public Entidade(String nome, Float valor_total) {
+		this.nome = nome;
+		this.valor_total = valor_total;
+	}
+	
 	public Entidade(Long id, String nome, Float valor_total) {
 		this.id = id;
 		this.nome = nome;
