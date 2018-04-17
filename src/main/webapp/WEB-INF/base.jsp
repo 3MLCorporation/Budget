@@ -59,7 +59,7 @@
         <div class="bg-color">
             <header id="main-header">
                 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-                    <a class="navbar-brand" href="index.html">Inicio</a>
+                    <a class="navbar-brand" href="base.jsp">Inicio</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -69,9 +69,9 @@
                         <ul class="navbar-nav mr-auto">
                             <li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
                                 data-toggle="dropdown" role="button" aria-haspopup="true"
-                                aria-expanded="false">OrÃ§amento <span class="caret"></span></a>
+                                aria-expanded="false">Orçamento <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="criarOrcamento.html">Criar</a></li>
+                                    <li><a class="dropdown-item" href="criarOrcamento.jsp">Criar</a></li>
                                     <li><a class="dropdown-item" href="#">Atualizar</a></li>
                                 </ul>
                             </li>
@@ -79,7 +79,7 @@
                                 data-toggle="dropdown" role="button" aria-haspopup="true"
                                 aria-expanded="false">Categoria <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="criarCategoria.html">Criar</a></li>
+                                    <li><a class="dropdown-item" href="criarCategoria.jsp">Criar</a></li>
                                     <li><a class="dropdown-item" href="#">Atualizar</a></li>
                                 </ul>
                             </li>
@@ -87,7 +87,7 @@
                                 data-toggle="dropdown" role="button" aria-haspopup="true"
                                 aria-expanded="false">Rubrica <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="criarRubrica.html">Criar</a></li>
+                                    <li><a class="dropdown-item" href="criarRubrica.jsp">Criar</a></li>
                                     <li><a class="dropdown-item" href="#">Atualizar</a></li>
                                 </ul>
                             </li>
@@ -99,8 +99,7 @@
                                     <li><a class="dropdown-item" href="#">Cadastrar</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Sobre nÃ³s</a>
+                                <a class="nav-link" href="#">Sobre nós</a>
                             </li>
 
                         </ul>
