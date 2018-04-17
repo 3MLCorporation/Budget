@@ -3,8 +3,56 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
+         
+          
+   <servlet>
+   		<servlet-name>principal</servlet-name>
+   		<servlet-class>br.com.cpsoftware.control.MostrarResumo</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>principal</servlet-name>
+   		<url-pattern>/principal</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+   		<servlet-name>cadastrarOrcamento</servlet-name>
+   		<servlet-class>br.com.cpsoftware.control.CadastrarOrcamento</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>cadastrarOrcamento</servlet-name>
+   		<url-pattern>/cadastrarOrcamento</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+   		<servlet-name>cadastrarCategoria</servlet-name>
+   		<servlet-class>br.com.cpsoftware.control.CadastrarCategoria</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>cadastrarCategoria</servlet-name>
+   		<url-pattern>/cadastrarCategoria</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+   		<servlet-name>cadastrarRubrica</servlet-name>
+   		<servlet-class>br.com.cpsoftware.control.CadastrarRubrica</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>cadastrarRubrica</servlet-name>
+   		<url-pattern>/cadastrarRubrica</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+   		<servlet-name>cadastrarItem</servlet-name>
+   		<servlet-class>br.com.cpsoftware.control.CadastrarItem</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>cadastrarItem</servlet-name>
+   		<url-pattern>/cadastrarItem</url-pattern>
+   </servlet-mapping>
+  
+   
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>principal</welcome-file>
   </welcome-file-list>
+  
 </web-app>
