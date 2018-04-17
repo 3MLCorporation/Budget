@@ -80,7 +80,7 @@
                                 data-toggle="dropdown" role="button" aria-haspopup="true"
                                 aria-expanded="false">Categoria <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="criarCategoria.jsp">Criar</a></li>
+                                    <li><a class="dropdown-item" href="/cadastrarCategoria">Criar</a></li>
                                     <li><a class="dropdown-item" href="#">Atualizar</a></li>
                                 </ul>
                             </li>
@@ -88,16 +88,15 @@
                                 data-toggle="dropdown" role="button" aria-haspopup="true"
                                 aria-expanded="false">Rubrica <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="criarRubrica.jsp">Criar</a></li>
+                                    <li><a class="dropdown-item" href="/cadastrarRubrica">Criar</a></li>
                                     <li><a class="dropdown-item" href="#">Atualizar</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
                                 data-toggle="dropdown" role="button" aria-haspopup="true"
-                                aria-expanded="false">Usuário <span class="caret"></span></a>
+                                aria-expanded="false">Item<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Logar</a></li>
-                                    <li><a class="dropdown-item" href="#">Cadastrar</a></li>
+                                    <li><a class="dropdown-item" href="/cadastrarItem">Cadastrar</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item">
