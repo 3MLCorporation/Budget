@@ -14,7 +14,15 @@ public class Item {
 	public static final String DESCRICAO = "descricao";
 	public static final String VALOR_UNIFORME = "valor_uniforme";
 	public static final String QUANTIDADE = "quantidade";
-
+	
+	public Item(String nome, String descricao, Float valor_uniforme, int quantidade) {
+		super();
+		this.nome = nome;
+		this.descricao = descricao;
+		this.valor_uniforme = valor_uniforme;
+		this.quantidade = quantidade;
+	}
+	
 	public Item(Long id,String nome, String descricao, Float valor_uniforme, int quantidade) {
 		super();
 		this.id = id;

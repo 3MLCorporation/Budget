@@ -1,4 +1,4 @@
-package br.com.cpsoftware.control;
+package br.com.cpsoftware.budget.control;
 
 import java.io.IOException;
 
