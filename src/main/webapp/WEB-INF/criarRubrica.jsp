@@ -5,7 +5,7 @@
 
 
   <div class="container" style="width: 60%;">
-      <h2>Cadastro da rubrica</h2>
+      <h2>Cadastrar rubrica</h2>
   <br/>
   <form action="cadastroCategoria" method="post">
  	 <div class="form-group">
@@ -18,6 +18,16 @@
            class="form-control" placeholder="Fornecer o valor da rubrica"
            name="valor" required="required">
        </div>
+       <div class="form-group">
+     	 <label>Orçamento:</label>
+     	 <select>
+     	 	<select class="form-control" name="orcamento">
+					<c:forEach items="${requestScope.orcamento}" var="orcamentoDB">
+						<option ${requestScope.orcamento == orcamentoDB.codigo ? 'selected' : ''}>${orcamentoDB.codigo}</option>
+					</c:forEach>
+			</select>
+     	 </select>
+		</div>
        <div class="form-group">
      	 <label>Categoria:</label>
      	 <select>

@@ -5,7 +5,7 @@
 
 
 <div class="container" style="width: 60%;">
-   <h2>Cadastro do orçamento</h2>
+   <h2>Cadastrar orçamento</h2>
 <br/>
 <form action="cadastrarOrcamento" method="post">
     <div class="form-group">

@@ -4,7 +4,7 @@
 	pageEncoding="UTF-8"%>
 
   <div class="container" style="width: 60%;">
-      <h2>Cadastro da categoria</h2>
+      <h2>Cadastrar ategoria</h2>
   <br/>
   	<form action="cadastroCategoria" method="post">
   		<div class="form-group">
@@ -22,8 +22,8 @@
      	 <select>
      	 	<select class="form-control" name="orcamento">
 					<c:forEach items="${requestScope.orcamento}" var="orcamentoDB">
-					<option ${requestScope.orcamento == orcamentoDB.codigo ? 'selected' : ''}>${orcamentoDB.codigo}</option>
-			</c:forEach>
+						<option ${requestScope.orcamento == orcamentoDB.codigo ? 'selected' : ''}>${orcamentoDB.codigo}</option>
+					</c:forEach>
 			</select>
      	 </select>
 		</div>
