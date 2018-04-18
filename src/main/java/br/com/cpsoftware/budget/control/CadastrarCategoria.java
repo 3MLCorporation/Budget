@@ -19,7 +19,7 @@ public class CadastrarCategoria extends HttpServlet {
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Categoria categoria = new Categoria(req.getParameter("nome"), Float.parseFloat(req.getParameter("valor")));
+		Categoria categoria = new Categoria(req.getParameter("nome"), Double.parseDouble(req.getParameter("valor")));
 		
 		CategoriaDAO dao = (CategoriaDAO) this.getServletContext().getAttribute("dao");
 		dao.create(categoria);

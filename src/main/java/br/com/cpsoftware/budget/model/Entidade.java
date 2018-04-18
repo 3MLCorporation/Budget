@@ -4,8 +4,8 @@ public class Entidade {
 	
 	private Long id;
 	private String nome;
-	private Float valor_total;
-	private Float valor_parcial;
+	private Double valor_total;
+	private Double valor_parcial;
 	
 	//Definição das keys do banco
 	public static final String ID = "id";
@@ -13,18 +13,18 @@ public class Entidade {
 	public static final String VALOR_TOTAL = "valor_total";
 	public static final String VALOR_PARCIAL = "valor_parcial";
 	
-	public Entidade(String nome, Float valor_total) {
+	public Entidade(String nome, Double valor_total) {
 		this.nome = nome;
 		this.valor_total = valor_total;
 	}
 	
-	public Entidade(Long id, String nome, Float valor_total) {
+	public Entidade(Long id, String nome, Double valor_total) {
 		this.id = id;
 		this.nome = nome;
 		this.valor_total = valor_total;
 	}
 	
-	public Entidade(Long id, String nome, Float valor_total, Float valor_parcial) {
+	public Entidade(Long id, String nome, Double valor_total, Double valor_parcial) {
 		this.id = id;
 		this.nome = nome;
 		this.valor_total = valor_total;
@@ -78,19 +78,19 @@ public class Entidade {
 		this.nome = nome;
 	}
 
-	public float getValorTotal() {
+	public Double getValorTotal() {
 		return valor_total;
 	}
 
-	public void setValorTotal(Float valor_total) {
+	public void setValorTotal(Double valor_total) {
 		this.valor_total = valor_total;
 	}
 
-	public float getValorParcial() {
+	public Double getValorParcial() {
 		return valor_parcial;
 	}
 
-	public void setValorParcial(Float valor_parcial) {
+	public void setValorParcial(Double valor_parcial) {
 		this.valor_parcial = valor_parcial;
 	}
 

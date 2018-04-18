@@ -20,7 +20,7 @@ public class CadastrarRubrica extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Rubrica rubrica = new Rubrica(req.getParameter("nome"), Float.parseFloat(req.getParameter("valor")));
+		Rubrica rubrica = new Rubrica(req.getParameter("nome"), Double.parseDouble(req.getParameter("valor")));
 		
 		RubricaDAO dao = (RubricaDAO) this.getServletContext().getAttribute("dao");
 		dao.create(rubrica);

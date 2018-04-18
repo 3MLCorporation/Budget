@@ -66,8 +66,8 @@ public class CategoriaDAO implements EntidadeDao{
 	private Entidade categoriaToOrcamento(Entity categoriaEntity) {
 		return new Categoria((Long)categoriaEntity.getProperty(Categoria.ID),
 				 (String)categoriaEntity.getProperty(Categoria.NOME),
-				 (Float)categoriaEntity.getProperty(Categoria.VALOR_TOTAL),
-				 (Float)categoriaEntity.getProperty(Categoria.VALOR_PARCIAL));
+				 (Double)categoriaEntity.getProperty(Categoria.VALOR_TOTAL),
+				 (Double)categoriaEntity.getProperty(Categoria.VALOR_PARCIAL));
 	}
 
 }

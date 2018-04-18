@@ -21,7 +21,7 @@ public class CadastrarItem extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Item item = new Item(req.getParameter("nome"), req.getParameter("descricao"),
-							Float.parseFloat(req.getParameter("valor")), Integer.parseInt("quantidade"));
+							Double.parseDouble(req.getParameter("valor")), Long.parseLong("quantidade"));
 		
 		ItemDAO dao = (ItemDAO) this.getServletContext().getAttribute("dao");
 		dao.create(item);

@@ -64,8 +64,8 @@ public class ItemDAO{
 		return new Item((Long)itemEntity.getProperty(Item.ID),
 				 (String)itemEntity.getProperty(Item.NOME),
 				 (String)itemEntity.getProperty(Item.DESCRICAO),
-				 (Float)itemEntity.getProperty(Item.VALOR_UNIFORME),
-				 (int)itemEntity.getProperty(Item.QUANTIDADE));
+				 (Double)itemEntity.getProperty(Item.VALOR_UNIFORME),
+				 (Long)itemEntity.getProperty(Item.QUANTIDADE));
 	}
 
 }

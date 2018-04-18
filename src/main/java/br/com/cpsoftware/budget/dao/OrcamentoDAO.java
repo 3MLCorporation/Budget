@@ -70,8 +70,8 @@ public class OrcamentoDAO implements EntidadeDao{
 		
 		return new Orcamento((Long)orcamentoEntity.getProperty(Orcamento.ID),
 							 (String)orcamentoEntity.getProperty(Orcamento.NOME),
-							 ((Float)orcamentoEntity.getProperty(Orcamento.VALOR_TOTAL)).floatValue(),
-							 (Float)orcamentoEntity.getProperty(Orcamento.VALOR_PARCIAL));
+							 ((Double)orcamentoEntity.getProperty(Orcamento.VALOR_TOTAL)),
+							 (Double)orcamentoEntity.getProperty(Orcamento.VALOR_PARCIAL));
 	}
 
 }

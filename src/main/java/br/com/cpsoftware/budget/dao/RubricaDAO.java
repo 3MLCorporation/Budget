@@ -66,8 +66,8 @@ public class RubricaDAO implements EntidadeDao{
 	private Entidade rubricaToOrcamento(Entity rubricaEntity) {
 		return new Rubrica((Long)rubricaEntity.getProperty(Rubrica.ID),
 				 (String)rubricaEntity.getProperty(Rubrica.NOME),
-				 (Float)rubricaEntity.getProperty(Rubrica.VALOR_TOTAL),
-				 (Float)rubricaEntity.getProperty(Rubrica.VALOR_PARCIAL));
+				 (Double)rubricaEntity.getProperty(Rubrica.VALOR_TOTAL),
+				 (Double)rubricaEntity.getProperty(Rubrica.VALOR_PARCIAL));
 	}
 	
 

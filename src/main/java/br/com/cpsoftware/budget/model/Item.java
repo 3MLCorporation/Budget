@@ -5,8 +5,8 @@ public class Item {
 	private Long id;
 	private String nome;
 	private String descricao;
-	private Float valor_uniforme;
-	private int quantidade;
+	private Double valor_uniforme;
+	private Long quantidade;
 	
 	//Definição das keys do banco
 	public static final String ID = "id";
@@ -15,7 +15,7 @@ public class Item {
 	public static final String VALOR_UNIFORME = "valor_uniforme";
 	public static final String QUANTIDADE = "quantidade";
 	
-	public Item(String nome, String descricao, Float valor_uniforme, int quantidade) {
+	public Item(String nome, String descricao, Double valor_uniforme, Long quantidade) {
 		super();
 		this.nome = nome;
 		this.descricao = descricao;
@@ -23,7 +23,7 @@ public class Item {
 		this.quantidade = quantidade;
 	}
 	
-	public Item(Long id,String nome, String descricao, Float valor_uniforme, int quantidade) {
+	public Item(Long id,String nome, String descricao, Double valor_uniforme, Long quantidade) {
 		super();
 		this.id = id;
 		this.nome = nome;
@@ -50,16 +50,16 @@ public class Item {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public Float getValor_uniforme() {
+	public Double getValor_uniforme() {
 		return valor_uniforme;
 	}
-	public void setValor_uniforme(Float valor_uniforme) {
+	public void setValor_uniforme(Double valor_uniforme) {
 		this.valor_uniforme = valor_uniforme;
 	}
-	public int getQuantidade() {
+	public Long getQuantidade() {
 		return quantidade;
 	}
-	public void setQuantidade(int quantidade) {
+	public void setQuantidade(Long quantidade) {
 		this.quantidade = quantidade;
 	}
 	
