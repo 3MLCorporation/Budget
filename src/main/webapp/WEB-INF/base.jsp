@@ -19,7 +19,7 @@
         <div class="bg-color">
             <header id="main-header">
                 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-                    <a class="navbar-brand" href="base.jsp">Inicio</a>
+                    <a class="navbar-brand" href="/paginaInicial">Inicio</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
                     aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -32,7 +32,7 @@
                                 aria-expanded="false">Orçamento <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="/cadastrarOrcamento">Criar</a></li>
-                                    <li><a class="dropdown-item" href="#">Atualizar</a></li>
+                                    <li><a class="dropdown-item" href="/listarOrcamento">Listar</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
@@ -40,7 +40,7 @@
                                 aria-expanded="false">Categoria <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="/cadastrarCategoria">Criar</a></li>
-                                    <li><a class="dropdown-item" href="#">Atualizar</a></li>
+                                    <li><a class="dropdown-item" href="/listarCategoria">Listar</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
@@ -48,14 +48,15 @@
                                 aria-expanded="false">Rubrica <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="/cadastrarRubrica">Criar</a></li>
-                                    <li><a class="dropdown-item" href="#">Atualizar</a></li>
+                                    <li><a class="dropdown-item" href="/listarRubrica">Listar</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
                                 data-toggle="dropdown" role="button" aria-haspopup="true"
                                 aria-expanded="false">Item<span class="caret"></span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="/cadastrarItem">Cadastrar</a></li>
+                                    <li><a class="dropdown-item" href="/cadastrarItem">Criar</a></li>
+                                    <li><a class="dropdown-item" href="/listarItem">Listar</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item">
