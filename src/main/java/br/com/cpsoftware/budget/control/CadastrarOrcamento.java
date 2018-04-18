@@ -1,4 +1,4 @@
-package br.com.cpsoftware.control;
+package br.com.cpsoftware.budget.control;
 
 import java.io.IOException;
 
@@ -21,7 +21,15 @@ public class CadastrarOrcamento extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Orcamento orcamento = new Orcamento(req.getParameter("nome"), Float.parseFloat(req.getParameter("valor")));
+		String nome = req.getParameter("nome");
+		 String valor = req.getParameter("valor");
+				 //Float.parseFloat(
+		 /*System.out.println("Nome - " + nome);
+		 System.out.println("Valor - " + valor);
+		 System.out.println("Valor float - " + Float.parseFloat(valor));*/
+		 
+		
+		Orcamento orcamento = new Orcamento(nome, Float.parseFloat(valor));
 		
 		OrcamentoDAO dao = (OrcamentoDAO) this.getServletContext().getAttribute("dao");
 		dao.create(orcamento);
