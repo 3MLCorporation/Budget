@@ -9,12 +9,12 @@
     <div class="form-group">
         <label for="descricao">Orçamento:</label> <input type="text"
         class="form-control" placeholder="Fornecer o nome do novo orçamento"
-        name="codigo" value="${requestScope.orcamento}" required="required">
+        name="nome" value="${requestScope.orcamento}" required="required">
    </div>
    <div class="form-group">
        <label for="text">Valor:</label> <input type="text"
        class="form-control" placeholder="Fornecer o valor do orçamento"
-       name="disciplina" value="${requestScope.valor}" required="required">
+       name="valor" value="${requestScope.valor}" required="required">
     </div>
     <button type="submit" class="btn btn-default">Cadastrar</button>
 </form>
