@@ -10,15 +10,15 @@
   		<div class="form-group">
        	   <label for="text">Categoria:</label> <input type="text"
         	class="form-control" placeholder="Fornecer o nome da nova categoria"
-       	   name="disciplina" value="${requestScope.categoria}" required="required">
+       	   name="nome" required="required">
       </div>
       <div class="form-group">
            <label for="text">Valor:</label> <input type="text"
            class="form-control" placeholder="Fornecer o valor da categoria"
-           name="itens" value="${requestScope.categoriaValor}" required="required">
+           name="valor" required="required">
        </div>
        <div class="form-group">
-     	 <label>Orçamento</label>
+     	 <label>Orçamento:</label>
      	 <select>
      	 	<select class="form-control" name="orcamento">
 					<c:forEach items="${requestScope.orcamento}" var="orcamentoDB">
