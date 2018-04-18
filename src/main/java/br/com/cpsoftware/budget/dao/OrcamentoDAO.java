@@ -30,6 +30,7 @@ public class OrcamentoDAO implements EntidadeDao{
 		orcamentoEntity.setProperty(Orcamento.VALOR_TOTAL, orcamento.getValorTotal());
 		
 		Key orcamentoKey = datastore.put(orcamentoEntity);
+		System.out.println("Orcamento " + orcamento.getNome() + " criado com id = " + orcamentoKey.getId());
 		return orcamentoKey.getId();
 		
 	}
@@ -62,9 +63,14 @@ public class OrcamentoDAO implements EntidadeDao{
 	}
 
 	private Entidade entityToOrcamento(Entity orcamentoEntity) {
+		
+		/*System.out.println(orcamentoEntity.getProperty(Orcamento.ID));
+		System.out.println(orcamentoEntity.getProperty(Orcamento.NOME));
+		System.out.println(orcamentoEntity.getProperty(Orcamento.VALOR_TOTAL));*/
+		
 		return new Orcamento((Long)orcamentoEntity.getProperty(Orcamento.ID),
 							 (String)orcamentoEntity.getProperty(Orcamento.NOME),
-							 (Float)orcamentoEntity.getProperty(Orcamento.VALOR_TOTAL),
+							 ((Float)orcamentoEntity.getProperty(Orcamento.VALOR_TOTAL)).floatValue(),
 							 (Float)orcamentoEntity.getProperty(Orcamento.VALOR_PARCIAL));
 	}
 
