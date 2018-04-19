@@ -4,7 +4,7 @@
 	pageEncoding="UTF-8"%>
 
   <div class="container" style="width: 60%;">
-      <h2>Cadastrar ategoria</h2>
+      <h2>Cadastrar categoria</h2>
   <br/>
   	<form action="cadastrarCategoria" method="POST">
   		<div class="form-group">
