@@ -25,7 +25,6 @@ public class ItemDAO{
 	
 	public Long create(Item item) {
 		Entity itemEntity = new Entity(ITEM_KIND);
-		itemEntity.setProperty(Item.ID, item.getId());
 		itemEntity.setProperty(Item.NOME, item.getNome());
 		itemEntity.setProperty(Item.DESCRICAO, item.getDescricao());
 		itemEntity.setProperty(Item.VALOR_UNIFORME, item.getValor_uniforme());

@@ -12,6 +12,8 @@ import br.com.cpsoftware.budget.model.Rubrica;
 
 public class CadastrarRubrica extends HttpServlet {
 
+	private RubricaDAO dao = new RubricaDAO();
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	    req.setAttribute("page", "criarRubrica");
@@ -22,7 +24,9 @@ public class CadastrarRubrica extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Rubrica rubrica = new Rubrica(req.getParameter("nome"), Double.parseDouble(req.getParameter("valor")));
 		
-		RubricaDAO dao = (RubricaDAO) this.getServletContext().getAttribute("dao");
 		dao.create(rubrica);
+		
+		req.setAttribute("page", "visualizarResumo");           
+		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}
 }

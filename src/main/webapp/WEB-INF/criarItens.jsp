@@ -7,7 +7,7 @@
    <div class="container" style="width: 60%;">
        <h2>Cadastrar itens</h2>
    <br/>
-   <form action="cadastroCategoria" method="post">
+   <form action="cadastrarItem" method="POST">
    <div class="form-group">
          <label for="text">Item:</label> <input type="text"
          class="form-control" placeholder="Fornecer o nome do novo item"

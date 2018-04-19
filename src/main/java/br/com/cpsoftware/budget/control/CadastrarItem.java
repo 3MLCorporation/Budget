@@ -12,6 +12,8 @@ import br.com.cpsoftware.budget.model.Item;
 
 public class CadastrarItem extends HttpServlet {
 
+	private ItemDAO dao = new ItemDAO();
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	    req.setAttribute("page", "criarItens");
@@ -21,9 +23,12 @@ public class CadastrarItem extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Item item = new Item(req.getParameter("nome"), req.getParameter("descricao"),
-							Double.parseDouble(req.getParameter("valor")), Long.parseLong("quantidade"));
+							Double.parseDouble(req.getParameter("valor_uniforme")),
+							Long.parseLong(req.getParameter("quantidade")));
 		
-		ItemDAO dao = (ItemDAO) this.getServletContext().getAttribute("dao");
 		dao.create(item);
+		
+		req.setAttribute("page", "visualizarResumo");           
+		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}
 }

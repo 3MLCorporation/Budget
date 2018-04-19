@@ -7,7 +7,7 @@
   <div class="container" style="width: 60%;">
       <h2>Cadastrar rubrica</h2>
   <br/>
-  <form action="cadastroCategoria" method="post">
+  <form action="cadastrarRubrica" method="POST">
  	 <div class="form-group">
           <label for="text">Rubrica:</label> <input type="text"
           class="form-control" placeholder="Fornecer o nome da nova rubrica"

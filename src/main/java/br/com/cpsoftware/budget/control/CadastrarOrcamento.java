@@ -11,7 +11,9 @@ import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.model.Orcamento;
 
 public class CadastrarOrcamento extends HttpServlet {
-	private OrcamentoDAO orcamentoDAO = new OrcamentoDAO();
+	
+	private OrcamentoDAO dao = new OrcamentoDAO();
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	    req.setAttribute("page", "criarOrcamento");           // Tells base.jsp to include form.jsp
@@ -34,12 +36,14 @@ public class CadastrarOrcamento extends HttpServlet {
 		System.out.println("Valor - " + orcamento.getValorTotal());
 		
 		
-		Long orcamentoId = this.orcamentoDAO.create(orcamento);
+		Long orcamentoId = this.dao.create(orcamento);
 		
-		Orcamento aux = (Orcamento) this.orcamentoDAO.read(orcamentoId);
+		Orcamento aux = (Orcamento) this.dao.read(orcamentoId);
 		System.out.println("Nome do orcamento no banco - " + aux.getNome());
 		System.out.println("Valor do orcamento no banco - " + aux.getValorTotal());
 		
+		req.setAttribute("page", "visualizarResumo");           
+		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	    /*try {
 	        Long id = dao.create(orcamento);
 	        resp.sendRedirect("/read?id=" + id.toString());   // read what we just wrote
