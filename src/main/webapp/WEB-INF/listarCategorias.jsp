@@ -15,9 +15,11 @@
       			</tr>
     		</thead>
     		<tbody>
-        		<c:forEach items="${requestScope.categoria}" var="categoriaDB">
+        		<c:forEach items="${categorias}" var="categoria">
 					<tr>
-						<td ${requestScope.categoria == categoriaDB.codigo ? 'selected' : ''}>${categoriaDB.codigo}</td>
+						<td> --- </td>
+						<td> ${categoria.nome}</td>
+						<td> ${categoria.getValorTotal()}</td>
 					</tr>
 				</c:forEach>
 	   	 	</tbody>

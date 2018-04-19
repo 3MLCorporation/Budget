@@ -14,9 +14,10 @@
       			</tr>
     		</thead>
     		<tbody>
-        		<c:forEach items="${requestScope.orcamento}" var="orcamentoDB">
+        		<c:forEach items="${orcamentos}" var="orcamento">
 					<tr>
-						<td ${requestScope.orcamento == orcamentoDB.codigo ? 'selected' : ''}>${orcamentoDB.codigo}</td>
+						<td> ${orcamento.nome}</td>
+						<td> ${orcamento.getValorTotal()}</td>
 					</tr>
 				</c:forEach>
 	   	 	</tbody>

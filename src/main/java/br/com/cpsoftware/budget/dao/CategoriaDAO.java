@@ -1,11 +1,18 @@
 package br.com.cpsoftware.budget.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.EntityNotFoundException;
+import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
 
 import br.com.cpsoftware.budget.model.Categoria;
 import br.com.cpsoftware.budget.model.Entidade;
@@ -39,7 +46,7 @@ public class CategoriaDAO implements EntidadeDao{
 	public Entidade read(Long categoriaId) {
 		try {
 		    Entity categoriaEntity = datastore.get(KeyFactory.createKey(CATEGORIA_KIND, categoriaId));
-		    return categoriaToOrcamento(categoriaEntity);
+		    return entityToCategoria(categoriaEntity);
 		} catch (EntityNotFoundException e) {
 		    return null;
 		}
@@ -63,11 +70,35 @@ public class CategoriaDAO implements EntidadeDao{
 		datastore.delete(key);                      // Delete the Entity
 	}
 	
-	private Entidade categoriaToOrcamento(Entity categoriaEntity) {
+	private Entidade entityToCategoria(Entity categoriaEntity) {
 		return new Categoria((Long)categoriaEntity.getProperty(Categoria.ID),
 				 (String)categoriaEntity.getProperty(Categoria.NOME),
 				 (Double)categoriaEntity.getProperty(Categoria.VALOR_TOTAL),
 				 (Double)categoriaEntity.getProperty(Categoria.VALOR_PARCIAL));
+	}
+	
+	private List<Entidade> entitiesToCategoria(List<Entity> entities) {
+		List<Entidade> resultCategorias = new ArrayList<>();
+		
+		for (Entity entidade : entities) {
+			resultCategorias.add(entityToCategoria(entidade));
+		}
+		
+		return resultCategorias;
+	}
+	
+	
+	
+	public List<Entidade> getCategorias(){
+		
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Query query = new Query(CATEGORIA_KIND).addSort(Categoria.NOME, SortDirection.ASCENDING);
+		
+		PreparedQuery preparedQuery = datastore.prepare(query);
+		
+		 List<Entity> categoriaEntities = preparedQuery.asList(FetchOptions.Builder.withDefaults());
+		 return entitiesToCategoria(categoriaEntities);
+		
 	}
 
 }

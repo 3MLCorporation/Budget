@@ -1,11 +1,18 @@
 package br.com.cpsoftware.budget.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.EntityNotFoundException;
+import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
 
 import br.com.cpsoftware.budget.model.Entidade;
 import br.com.cpsoftware.budget.model.Orcamento;
@@ -38,7 +45,7 @@ public class RubricaDAO implements EntidadeDao{
 	public Entidade read(Long rubricaId) {
 		try {
 		    Entity rubricaEntity = datastore.get(KeyFactory.createKey(RUBRICA_KIND, rubricaId));
-		    return rubricaToOrcamento(rubricaEntity);
+		    return entityToRubrica(rubricaEntity);
 		} catch (EntityNotFoundException e) {
 		    return null;
 		}
@@ -63,11 +70,35 @@ public class RubricaDAO implements EntidadeDao{
 		
 	}
 	
-	private Entidade rubricaToOrcamento(Entity rubricaEntity) {
+	private Entidade entityToRubrica(Entity rubricaEntity) {
 		return new Rubrica((Long)rubricaEntity.getProperty(Rubrica.ID),
 				 (String)rubricaEntity.getProperty(Rubrica.NOME),
 				 (Double)rubricaEntity.getProperty(Rubrica.VALOR_TOTAL),
 				 (Double)rubricaEntity.getProperty(Rubrica.VALOR_PARCIAL));
+	}
+	
+	private List<Entidade> entitiesToRubrica(List<Entity> entities) {
+		List<Entidade> resultRubricas = new ArrayList<>();
+		
+		for (Entity entidade : entities) {
+			resultRubricas.add(entityToRubrica(entidade));
+		}
+		
+		return resultRubricas;
+	}
+	
+	
+	
+	public List<Entidade> getRubricas(){
+		
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Query query = new Query(RUBRICA_KIND).addSort(Rubrica.NOME, SortDirection.ASCENDING);
+		
+		PreparedQuery preparedQuery = datastore.prepare(query);
+		
+		 List<Entity> rubricaEntities = preparedQuery.asList(FetchOptions.Builder.withDefaults());
+		 return entitiesToRubrica(rubricaEntities);
+		
 	}
 	
 

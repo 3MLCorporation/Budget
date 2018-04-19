@@ -1,14 +1,23 @@
 package br.com.cpsoftware.budget.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.EntityNotFoundException;
+import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.SortDirection;
 
+import br.com.cpsoftware.budget.model.Entidade;
 import br.com.cpsoftware.budget.model.Item;
 import br.com.cpsoftware.budget.model.Orcamento;
+import br.com.cpsoftware.budget.model.Rubrica;
 
 public class ItemDAO{
 	
@@ -65,6 +74,30 @@ public class ItemDAO{
 				 (String)itemEntity.getProperty(Item.DESCRICAO),
 				 (Double)itemEntity.getProperty(Item.VALOR_UNIFORME),
 				 (Long)itemEntity.getProperty(Item.QUANTIDADE));
+	}
+	
+	private List<Item> entitiesToItem(List<Entity> entities) {
+		List<Item> resultItens = new ArrayList<>();
+		
+		for (Entity entidade : entities) {
+			resultItens.add(entityToItem(entidade));
+		}
+		
+		return resultItens;
+	}
+	
+	
+	
+	public List<Item> getItens(){
+		
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Query query = new Query(ITEM_KIND).addSort(Item.NOME, SortDirection.ASCENDING);
+		
+		PreparedQuery preparedQuery = datastore.prepare(query);
+		
+		 List<Entity> itemEntities = preparedQuery.asList(FetchOptions.Builder.withDefaults());
+		 return entitiesToItem(itemEntities);
+		
 	}
 
 }

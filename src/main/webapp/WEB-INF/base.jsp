@@ -32,7 +32,7 @@
                                 aria-expanded="false">Orçamento <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="/cadastrarOrcamento">Criar</a></li>
-                                    <li><a class="dropdown-item" href="/listarOrcamento">Listar</a></li>
+                                    <li><a class="dropdown-item" href="/listarOrcamentos">Listar</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
@@ -40,7 +40,7 @@
                                 aria-expanded="false">Categoria <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="/cadastrarCategoria">Criar</a></li>
-                                    <li><a class="dropdown-item" href="/listarCategoria">Listar</a></li>
+                                    <li><a class="dropdown-item" href="/listarCategorias">Listar</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
@@ -48,7 +48,7 @@
                                 aria-expanded="false">Rubrica <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="/cadastrarRubrica">Criar</a></li>
-                                    <li><a class="dropdown-item" href="/listarRubrica">Listar</a></li>
+                                    <li><a class="dropdown-item" href="/listarRubricas">Listar</a></li>
                                 </ul>
                             </li>
                             <li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"

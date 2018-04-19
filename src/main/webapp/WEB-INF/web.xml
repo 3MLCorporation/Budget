@@ -49,6 +49,42 @@
    		<servlet-name>cadastrarItem</servlet-name>
    		<url-pattern>/cadastrarItem</url-pattern>
    </servlet-mapping>
+   
+   <servlet>
+   		<servlet-name>listarOrcamentos</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.ListarOrcamentos</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>listarOrcamentos</servlet-name>
+   		<url-pattern>/listarOrcamentos</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+   		<servlet-name>listarCategorias</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.ListarCategorias</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>listarCategorias</servlet-name>
+   		<url-pattern>/listarCategorias</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+   		<servlet-name>listarRubricas</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.ListarRubricas</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>listarRubricas</servlet-name>
+   		<url-pattern>/listarRubricas</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+   		<servlet-name>listarItens</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.ListarItens</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>listarItens</servlet-name>
+   		<url-pattern>/listarItens</url-pattern>
+   </servlet-mapping>
   
    
   <welcome-file-list>
