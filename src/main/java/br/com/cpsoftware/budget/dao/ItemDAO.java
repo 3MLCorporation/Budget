@@ -14,10 +14,8 @@ import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.SortDirection;
 
-import br.com.cpsoftware.budget.model.Entidade;
 import br.com.cpsoftware.budget.model.Item;
 import br.com.cpsoftware.budget.model.Orcamento;
-import br.com.cpsoftware.budget.model.Rubrica;
 
 public class ItemDAO{
 	

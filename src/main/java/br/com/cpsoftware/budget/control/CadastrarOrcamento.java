@@ -42,7 +42,7 @@ public class CadastrarOrcamento extends HttpServlet {
 		System.err.println("Nome do orcamento no banco - " + aux.getNome());
 		System.err.println("Valor do orcamento no banco - " + aux.getValorTotal());
 		
-		req.setAttribute("page", "principal");           
+		req.setAttribute("page", "visualizarResumo");           
 		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	    /*try {
 	        Long id = dao.create(orcamento);
