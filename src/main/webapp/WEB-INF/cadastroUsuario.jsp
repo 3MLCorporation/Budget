@@ -20,24 +20,29 @@
 			<br/>
 			<form action="cadastrarUsuario" method="POST">
 				<div class="form-group">
+					<label for="text">Nome</label> <input type="text"
+					class="form-control" placeholder="Fornecer o nome do usuário"
+					name="nome" required="required">
+				</div>
+				<div class="form-group">
 					<label for="text">Email</label> <input type="text"
 					class="form-control" placeholder="Fornecer o email do usuário"
-					name="nome" required="required">
+					name="email" required="required">
 				</div>
 				<div class="form-group">
 					<label for="text">Usu�rio</label> <input type="text"
 					class="form-control" placeholder="Fornecer o login do usuário"
-					name="nome" required="required">
+					name="login" required="required">
 				</div>
 				<div class="form-group">
 					<label for="text">Senha</label> <input type="password"
 					class="form-control" placeholder="Fornecer a senha do usuário"
-					name="nome" required="required">
+					name="senha" required="required">
 				</div>
 				<div class="form-group">
 					<label for="text">Confirmar senha</label> <input type="password"
 					class="form-control" placeholder="Fornecer novamente a senha do usuário"
-					name="nome" required="required">
+					name="confirmacao" required="required">
 				</div>
 				<br/>
 				<button class="btn btn-green">Cadastrar</button> 

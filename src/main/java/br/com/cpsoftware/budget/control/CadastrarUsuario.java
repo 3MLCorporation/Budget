@@ -27,7 +27,7 @@ public class CadastrarUsuario extends HttpServlet {
 		String nome = req.getParameter("nome");
 		String email = req.getParameter("email");
 		String login = req.getParameter("login");
-		String senha = req.getParameter("turma");
+		String senha = req.getParameter("senha");
 		String confirmacao = req.getParameter("confirmacao");
 		
 		//TODO Validações
