@@ -39,10 +39,10 @@ public class CadastrarOrcamento extends HttpServlet {
 		Long orcamentoId = this.dao.create(orcamento);
 		
 		Orcamento aux = (Orcamento) this.dao.read(orcamentoId);
-		System.out.println("Nome do orcamento no banco - " + aux.getNome());
-		System.out.println("Valor do orcamento no banco - " + aux.getValorTotal());
+		System.err.println("Nome do orcamento no banco - " + aux.getNome());
+		System.err.println("Valor do orcamento no banco - " + aux.getValorTotal());
 		
-		req.setAttribute("page", "visualizarResumo");           
+		req.setAttribute("page", "principal");           
 		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	    /*try {
 	        Long id = dao.create(orcamento);
