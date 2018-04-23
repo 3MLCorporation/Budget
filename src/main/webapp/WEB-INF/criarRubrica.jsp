@@ -20,23 +20,19 @@
        </div>
        <div class="form-group">
      	 <label>Orçamento:</label>
-     	 <select>
      	 	<select class="form-control" name="orcamento">
-					<c:forEach items="${requestScope.orcamento}" var="orcamentoDB">
-						<option ${requestScope.orcamento == orcamentoDB.codigo ? 'selected' : ''}>${orcamentoDB.codigo}</option>
+					<c:forEach items="${orcamentos}" var="orcamento">
+						<option ${orcamentos == orcamento.nome ? 'selected' : ''}>${orcamento.nome}</option>
 					</c:forEach>
 			</select>
-     	 </select>
 		</div>
        <div class="form-group">
      	 <label>Categoria:</label>
-     	 <select>
      	 	<select class="form-control" name="categoria">
-					<c:forEach items="${requestScope.categoria}" var="categoriaDB">
-					<option ${requestScope.categoria == categoriaDB.codigo ? 'selected' : ''}>${categoriaDB.codigo}</option>
-			</c:forEach>
+					<c:forEach items="${categorias}" var="categoria">
+						<option ${categorias == categoria.nome ? 'selected' : ''}>${categoria.nome}</option>
+					</c:forEach>
 			</select>
-		</select>
 		</div>
       <button type="submit" class="btn btn-default">Cadastrar</button>
   </form>

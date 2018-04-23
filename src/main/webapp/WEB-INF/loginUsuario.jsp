@@ -22,12 +22,12 @@
 				<div class="form-group">
 					<label for="text">Usuário</label> <input type="text"
 					class="form-control" placeholder="Fornecer o login do usuário"
-					name="login" >
+					name="login" required="required">
 				</div>
 				<div class="form-group">
 					<label for="text">Senha</label> <input type="password"
 					class="form-control" placeholder="Fornecer a senha do usuário"
-					name="senha" >
+					name="senha" required="required">
 				</div>
 				<br/>
 				<button type="submit" class="btn btn-green">Logar</button>&emsp;

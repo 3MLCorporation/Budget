@@ -7,7 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.cpsoftware.budget.dao.CategoriaDAO;
 import br.com.cpsoftware.budget.dao.ItemDAO;
+import br.com.cpsoftware.budget.dao.OrcamentoDAO;
+import br.com.cpsoftware.budget.dao.RubricaDAO;
 import br.com.cpsoftware.budget.model.Item;
 
 @SuppressWarnings("serial")
@@ -17,7 +20,16 @@ public class CadastrarItem extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	    req.setAttribute("page", "criarItens");
+		OrcamentoDAO orcamentos = new OrcamentoDAO();
+		CategoriaDAO categorias = new CategoriaDAO();
+		RubricaDAO rubricas = new RubricaDAO();
+		
+		req.setAttribute("page", "criarItens");
+		
+		req.setAttribute("orcamentos", orcamentos.getOrcamentos());
+	    req.setAttribute("categorias", categorias.getCategorias());
+	    req.setAttribute("rubricas", rubricas.getRubricas());
+		
 	    req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}
 	

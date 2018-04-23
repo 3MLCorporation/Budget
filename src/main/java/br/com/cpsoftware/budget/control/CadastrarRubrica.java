@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.cpsoftware.budget.dao.CategoriaDAO;
+import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.dao.RubricaDAO;
 import br.com.cpsoftware.budget.model.Rubrica;
 
@@ -17,7 +19,14 @@ public class CadastrarRubrica extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		OrcamentoDAO orcamentos = new OrcamentoDAO();
+		CategoriaDAO categorias = new CategoriaDAO();
+		
 	    req.setAttribute("page", "criarRubrica");
+	    
+	    req.setAttribute("orcamentos", orcamentos.getOrcamentos());
+	    req.setAttribute("categorias", categorias.getCategorias());
+	    
 	    req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}
 	
