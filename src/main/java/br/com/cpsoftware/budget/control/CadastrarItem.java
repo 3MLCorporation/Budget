@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.cpsoftware.budget.dao.ItemDAO;
 import br.com.cpsoftware.budget.model.Item;
 
+@SuppressWarnings("serial")
 public class CadastrarItem extends HttpServlet {
 
 	private ItemDAO dao = new ItemDAO();

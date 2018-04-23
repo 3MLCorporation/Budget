@@ -10,14 +10,20 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.model.Usuario;
 
+@SuppressWarnings("serial")
 public class MostrarResumo extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		/*Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
-		System.out.println(usuario.getLogin());
-		System.out.println(usuario.getSenha());*/
+		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
+		if(usuario == null) {
+			System.out.println("usuario logado null");
+		}else {
+			System.out.println(usuario.getLogin());
+			System.out.println(usuario.getSenha());
+		}
+		
 		
 		
 		OrcamentoDAO dao = new OrcamentoDAO();

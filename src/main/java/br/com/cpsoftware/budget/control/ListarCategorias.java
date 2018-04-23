@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.cpsoftware.budget.dao.CategoriaDAO;
 
+@SuppressWarnings("serial")
 public class ListarCategorias extends HttpServlet {
 
 	@Override

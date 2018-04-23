@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.cpsoftware.budget.dao.UsuarioDAO;
 import br.com.cpsoftware.budget.model.Usuario;
 
+@SuppressWarnings("serial")
 public class CadastrarUsuario extends HttpServlet {
 
 	private UsuarioDAO dao = new UsuarioDAO();
@@ -37,8 +38,9 @@ public class CadastrarUsuario extends HttpServlet {
 		this.dao.create(usuario);
 		
 		req.getSession().setAttribute("usuario", usuario);
-		req.setAttribute("page", "visualizarResumo");           
-		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
+		/*req.setAttribute("page", "visualizarResumo");           
+		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);*/
+		resp.sendRedirect("/principal");
 		
 	}
 	

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.model.Orcamento;
 
+@SuppressWarnings("serial")
 public class CadastrarOrcamento extends HttpServlet {
 	
 	private OrcamentoDAO dao = new OrcamentoDAO();

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.cpsoftware.budget.dao.RubricaDAO;
 import br.com.cpsoftware.budget.model.Rubrica;
 
+@SuppressWarnings("serial")
 public class CadastrarRubrica extends HttpServlet {
 
 	private RubricaDAO dao = new RubricaDAO();

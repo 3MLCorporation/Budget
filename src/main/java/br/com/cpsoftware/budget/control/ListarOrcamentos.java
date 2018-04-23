@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 
+@SuppressWarnings("serial")
 public class ListarOrcamentos extends HttpServlet {
 	
 	@Override
