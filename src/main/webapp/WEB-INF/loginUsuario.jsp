@@ -33,7 +33,7 @@
 				<button type="submit" class="btn btn-green">Logar</button>&emsp;
 			</form>
 			<form action="cadastrarUsuario" method="GET">
-   				 <button type="submit" class="btn btn-green">Cadastrar</button>
+   				 <div class="botaoCadastroVoltar"><button class="btn btn-green">Cadastrar</button></div>
 			</form>
 		</div>
 	</body>

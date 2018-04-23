@@ -4,3 +4,9 @@
     position: relative;
     top: 100px;
 }
+
+.botaoCadastroVoltar{
+	position: relative;
+	top: -37px;
+	left: 100px;
+}
