@@ -59,8 +59,12 @@
                                     <li><a class="dropdown-item" href="/listarItens">Listar</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/logout">Logout</a>
+                             <li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
+                                data-toggle="dropdown" role="button" aria-haspopup="true"
+                                aria-expanded="false">Perfil<span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="/logout">Sair</a></li>
+                                </ul>
                             </li>
 
                         </ul>
