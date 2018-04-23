@@ -8,11 +8,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.cpsoftware.budget.dao.OrcamentoDAO;
+import br.com.cpsoftware.budget.model.Usuario;
 
 public class MostrarResumo extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		/*Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
+		System.out.println(usuario.getLogin());
+		System.out.println(usuario.getSenha());*/
+		
 		
 		OrcamentoDAO dao = new OrcamentoDAO();
 		

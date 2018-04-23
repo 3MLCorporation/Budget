@@ -1,8 +1,15 @@
 package br.com.cpsoftware.budget.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Usuario {
+public class Usuario implements Serializable{
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	
 	private Long id; //TODO colocar depois que criar?
 	private String nome;
@@ -32,6 +39,12 @@ public class Usuario {
 		this.email = email;
 		this.login = login;
 		this.senha = senha;
+	}
+	
+	public Usuario(String nome, String email, String login) {
+		this.nome = nome;
+		this.email = email;
+		this.login = login;
 	}
 
 	public Long getId() {

@@ -21,16 +21,19 @@
 			<form action="login" method="POST">
 				<div class="form-group">
 					<label for="text">Usuário</label> <input type="text"
-					class="form-control" placeholder="Fornecer o login de usuÃ¡rio"
-					name="nome" required="required">
+					class="form-control" placeholder="Fornecer o login do usuário"
+					name="login" >
 				</div>
 				<div class="form-group">
 					<label for="text">Senha</label> <input type="password"
-					class="form-control" placeholder="Fornecer a senha de usuÃ¡rio"
-					name="nome" required="required">
+					class="form-control" placeholder="Fornecer a senha do usuário"
+					name="senha" >
 				</div>
 				<br/>
-				<button type="submit" class="btn btn-green">Logar</button>&emsp;<button class="btn btn-green">Cadastrar</button> 
+				<button type="submit" class="btn btn-green">Logar</button>&emsp;
+			</form>
+			<form action="cadastrarUsuario" method="GET">
+   				 <button type="submit" class="btn btn-green">Cadastrar</button>
 			</form>
 		</div>
 	</body>

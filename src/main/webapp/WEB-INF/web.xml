@@ -115,7 +115,7 @@
   
    
   <welcome-file-list>
-    <welcome-file>principal</welcome-file>
+    <welcome-file>login</welcome-file>
   </welcome-file-list>
   
 </web-app>

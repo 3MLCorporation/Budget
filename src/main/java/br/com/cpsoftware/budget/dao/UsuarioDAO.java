@@ -1,7 +1,11 @@
 package br.com.cpsoftware.budget.dao;
 
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.crypto.Cipher;
+import javax.crypto.spec.SecretKeySpec;
 
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
@@ -9,6 +13,11 @@ import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.EntityNotFoundException;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.Filter;
+import com.google.appengine.api.datastore.Query.FilterOperator;
+import com.google.appengine.api.datastore.Query.FilterPredicate;
 
 import br.com.cpsoftware.budget.model.Usuario;
 
@@ -81,5 +90,49 @@ public class UsuarioDAO {
 	}
 	
 	//TODO getUsuarios() ??
+	
+	public Usuario entrar(String login, String senha) {
+		
+		Query query = new Query("Usuario");
+		Filter propertyFilter = new FilterPredicate("login", FilterOperator.EQUAL, login);
+		query.setFilter(propertyFilter);
+		PreparedQuery pq = datastore.prepare(query);
+		
+		Entity entityUsuario = pq.asSingleEntity();
+		if (entityUsuario != null) {
+			
+			Usuario usuario = new Usuario((String) entityUsuario.getProperty("nome"),
+											(String) entityUsuario.getProperty("email"),
+											(String) entityUsuario.getProperty("login")); 
+			
+			//TODO ATENÇÃO AQUI!!
+			
+			/*if (UsuarioDAO.encryptPassword(senha.getBytes()).equals((String) entityUsuario.getProperty("senha"))) {
+				return usuario;
+			}*/
+			
+			if(senha.equals(entityUsuario.getProperty("senha"))) {
+				System.out.println("Senhas iguais");
+				return usuario;
+			}else {
+				System.out.println("Senhas diferentes");
+			}
+		} 
+		return null;
+	}
+	
+	public static String encryptPassword(byte[] password){
+		String key = "thebestsecretkey";
+		byte[] keyBytes = key.getBytes();
+		
+		try {
+			Cipher cipher = Cipher.getInstance("AES");
+			cipher.init(Cipher.ENCRYPT_MODE, new SecretKeySpec(keyBytes, "AES")); 
+			return new String(cipher.doFinal(password), StandardCharsets.UTF_8);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 
+		return null;
+	}
 	
 }
