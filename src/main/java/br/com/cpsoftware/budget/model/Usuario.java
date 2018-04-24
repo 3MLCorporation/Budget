@@ -1,7 +1,6 @@
 package br.com.cpsoftware.budget.model;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class Usuario implements Serializable{
 	
@@ -16,7 +15,7 @@ public class Usuario implements Serializable{
 	private String email;
 	private String login;
 	private String senha;
-	private List<Long> listaOrcamentos; //TODO id's ou objetos?
+	//private List<Long> listaOrcamentos; //TODO id's ou objetos?
 	
 	//Definição das keys do banco
 	public static final String ID = "id";
@@ -41,7 +40,8 @@ public class Usuario implements Serializable{
 		this.senha = senha;
 	}
 	
-	public Usuario(String nome, String email, String login) {
+	public Usuario(Long id, String nome, String email, String login) {
+		this.id = id;
 		this.nome = nome;
 		this.email = email;
 		this.login = login;
@@ -87,12 +87,5 @@ public class Usuario implements Serializable{
 		this.senha = senha;
 	}
 
-	public List<Long> getListaOrcamentos() {
-		return listaOrcamentos;
-	}
-
-	public void setListaOrcamentos(List<Long> listaOrcamentos) {
-		this.listaOrcamentos = listaOrcamentos;
-	}
 	
 }

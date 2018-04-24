@@ -28,10 +28,14 @@ public class Login extends HttpServlet {
 		
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		Usuario  usuario = usuarioDAO.entrar(login, senha);
-		/*System.out.println(usuario.getLogin());
-		System.out.println(usuario.getSenha());*/
+		
 		
 		if(usuario != null) {
+			
+			//System.out.println(usuario.getLogin());
+			//System.out.println(usuario.getSenha());
+			//System.out.println(usuario.getId());
+			
 			req.getSession().setAttribute("usuario", usuario);
 			//req.setAttribute("page", "visualizarResumo");           
 			//req.getRequestDispatcher("principal").forward(req, resp);

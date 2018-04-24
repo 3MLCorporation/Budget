@@ -35,7 +35,9 @@ public class CadastrarUsuario extends HttpServlet {
 		
 		Usuario usuario = new Usuario(nome, email, login, senha);
 		
-		this.dao.create(usuario);
+		Long id = this.dao.create(usuario);
+		
+		usuario.setId(id);
 		
 		req.getSession().setAttribute("usuario", usuario);
 		/*req.setAttribute("page", "visualizarResumo");           

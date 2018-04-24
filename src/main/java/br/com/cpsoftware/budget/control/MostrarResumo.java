@@ -17,18 +17,18 @@ public class MostrarResumo extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
+		
 		if(usuario == null) {
 			System.out.println("usuario logado null");
 		}else {
+			System.out.println(usuario.getId());
 			System.out.println(usuario.getLogin());
 			System.out.println(usuario.getSenha());
 		}
 		
-		
-		
 		OrcamentoDAO dao = new OrcamentoDAO();
 		
-		req.setAttribute("orcamentos", dao.getOrcamentos());
+		req.setAttribute("orcamentos", dao.getOrcamentos(usuario.getId()));
 		
 		req.setAttribute("page", "visualizarResumo");           
 		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);

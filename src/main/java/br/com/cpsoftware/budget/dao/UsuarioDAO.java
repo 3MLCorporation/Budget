@@ -53,22 +53,21 @@ public class UsuarioDAO {
 	}
 
 	public void update(Usuario usuario) {
-		Key key = KeyFactory.createKey(USUARIO_KIND, usuario.getId());  // From a book, create a Key
-		Entity usuarioEntity = new Entity(key);         // Convert Book to an Entity
+		Key key = KeyFactory.createKey(USUARIO_KIND, usuario.getId());
+		Entity usuarioEntity = new Entity(key);
 		
 		usuarioEntity.setProperty(Usuario.NOME, usuario.getNome());
 		usuarioEntity.setProperty(Usuario.EMAIL, usuario.getEmail());
 		usuarioEntity.setProperty(Usuario.LOGIN, usuario.getLogin());
 		usuarioEntity.setProperty(Usuario.SENHA, usuario.getSenha());
-		usuarioEntity.setProperty(Usuario.ORCAMENTOS, usuario.getListaOrcamentos());
 		
 		datastore.put(usuarioEntity);
 		
 	}
 
 	public void delete(Long usuarioId) {
-		Key key = KeyFactory.createKey(USUARIO_KIND, usuarioId);        // Create the Key
-		datastore.delete(key);                      // Delete the Entity
+		Key key = KeyFactory.createKey(USUARIO_KIND, usuarioId);
+		datastore.delete(key);
 	}
 	
 	private Usuario entityToUsuario(Entity usuarioEntity) {
@@ -101,7 +100,10 @@ public class UsuarioDAO {
 		Entity entityUsuario = pq.asSingleEntity();
 		if (entityUsuario != null) {
 			
-			Usuario usuario = new Usuario((String) entityUsuario.getProperty("nome"),
+			//System.out.println("entity ID: " + entityUsuario.getKey().getId());
+			
+			Usuario usuario = new Usuario(	entityUsuario.getKey().getId(),
+											(String) entityUsuario.getProperty("nome"),
 											(String) entityUsuario.getProperty("email"),
 											(String) entityUsuario.getProperty("login")); 
 			

@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.model.Orcamento;
+import br.com.cpsoftware.budget.model.Usuario;
 
 @SuppressWarnings("serial")
 public class CadastrarOrcamento extends HttpServlet {
@@ -24,15 +25,17 @@ public class CadastrarOrcamento extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
 		String nome = req.getParameter("nome");
-		 String valor = req.getParameter("valor");
-				 //Float.parseFloat(
+		String valor = req.getParameter("valor");
+				 
 		 /*System.out.println("Nome - " + nome);
 		 System.out.println("Valor - " + valor);
 		 System.out.println("Valor float - " + Float.parseFloat(valor));*/
 		 
+		Orcamento orcamento = new Orcamento(usuario.getId(), nome, Double.parseDouble(valor));
 		
-		Orcamento orcamento = new Orcamento(nome, Double.parseDouble(valor));
+		System.out.println("Usuario_Id - " + usuario.getId());
 		System.out.println("Nome - " + orcamento.getNome());
 		System.out.println("Valor - " + orcamento.getValorTotal());
 		
@@ -43,8 +46,13 @@ public class CadastrarOrcamento extends HttpServlet {
 		System.err.println("Nome do orcamento no banco - " + aux.getNome());
 		System.err.println("Valor do orcamento no banco - " + aux.getValorTotal());
 		
-		req.setAttribute("page", "visualizarResumo");           
+		
+		resp.sendRedirect("/listarOrcamentos");
+		
+		/*req.setAttribute("page", "visualizarResumo");           
 		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
+		*/
+		
 	    /*try {
 	        Long id = dao.create(orcamento);
 	        resp.sendRedirect("/read?id=" + id.toString());   // read what we just wrote

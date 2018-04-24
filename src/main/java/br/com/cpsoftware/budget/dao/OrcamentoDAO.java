@@ -12,10 +12,14 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.Filter;
+import com.google.appengine.api.datastore.Query.FilterOperator;
+import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.datastore.Query.SortDirection;
 
 import br.com.cpsoftware.budget.model.Entidade;
 import br.com.cpsoftware.budget.model.Orcamento;
+import br.com.cpsoftware.budget.model.Usuario;
 
 public class OrcamentoDAO implements EntidadeDao{
 	
@@ -33,11 +37,16 @@ public class OrcamentoDAO implements EntidadeDao{
 	@Override
 	public Long create(Entidade orcamento) {
 		Entity orcamentoEntity = new Entity(ORCAMENTO_KIND);
+		orcamentoEntity.setProperty(Orcamento.USUARIO_ID, ((Orcamento) orcamento).getUsuarioId());
 		orcamentoEntity.setProperty(Orcamento.NOME, orcamento.getNome());
 		orcamentoEntity.setProperty(Orcamento.VALOR_TOTAL, orcamento.getValorTotal());
 		
 		Key orcamentoKey = datastore.put(orcamentoEntity);
-		System.out.println("Orcamento " + orcamento.getNome() + " criado com id = " + orcamentoKey.getId());
+		
+		UsuarioDAO userDao = new UsuarioDAO();
+		Usuario read = userDao.read(((Orcamento) orcamento).getUsuarioId());
+		System.out.println("Orcamento " + orcamento.getNome() + " do usuário " + read.getNome() + " criado com id = " + orcamentoKey.getId());
+		
 		return orcamentoKey.getId();
 		
 	}
@@ -54,13 +63,13 @@ public class OrcamentoDAO implements EntidadeDao{
 
 	@Override
 	public void update(Entidade orcamento) {
-		Key key = KeyFactory.createKey(ORCAMENTO_KIND, orcamento.getId());  // From a book, create a Key
-		Entity orcamentoEntity = new Entity(key);         // Convert Book to an Entity
+		Key key = KeyFactory.createKey(ORCAMENTO_KIND, orcamento.getId());
+		Entity orcamentoEntity = new Entity(key);
 		orcamentoEntity.setProperty(Orcamento.NOME, orcamento.getNome());
 		orcamentoEntity.setProperty(Orcamento.VALOR_TOTAL, orcamento.getValorTotal());
 		orcamentoEntity.setProperty(Orcamento.VALOR_PARCIAL, orcamento.getValorParcial());
 
-		datastore.put(orcamentoEntity);                   // Update the Entity
+		datastore.put(orcamentoEntity);
 	}
 
 	@Override
@@ -69,21 +78,22 @@ public class OrcamentoDAO implements EntidadeDao{
 		datastore.delete(key);                      // Delete the Entity
 	}
 
-	private Entidade entityToOrcamento(Entity orcamentoEntity) {
+	private Orcamento entityToOrcamento(Entity orcamentoEntity) {
 		
 		/*System.out.println(orcamentoEntity.getProperty(Orcamento.ID));
 		System.out.println(orcamentoEntity.getProperty(Orcamento.NOME));
 		System.out.println(orcamentoEntity.getProperty(Orcamento.VALOR_TOTAL));*/
 		
-		return new Orcamento((Long)orcamentoEntity.getProperty(Orcamento.ID),
-							 (String)orcamentoEntity.getProperty(Orcamento.NOME),
-							 ((Double)orcamentoEntity.getProperty(Orcamento.VALOR_TOTAL)),
-							 (Double)orcamentoEntity.getProperty(Orcamento.VALOR_PARCIAL));
+		return new Orcamento((Long) orcamentoEntity.getProperty(Orcamento.USUARIO_ID),
+							orcamentoEntity.getKey().getId(),
+							(String)orcamentoEntity.getProperty(Orcamento.NOME),
+							((Double)orcamentoEntity.getProperty(Orcamento.VALOR_TOTAL)),
+							(Double)orcamentoEntity.getProperty(Orcamento.VALOR_PARCIAL));
 	}
 	
 	
-	private List<Entidade> entitiesToOrcamento(List<Entity> entities) {
-		List<Entidade> resultOrcamentos = new ArrayList<>();
+	private List<Orcamento> entitiesToOrcamento(List<Entity> entities) {
+		List<Orcamento> resultOrcamentos = new ArrayList<>();
 		
 		for (Entity entidade : entities) {
 			resultOrcamentos.add(entityToOrcamento(entidade));
@@ -94,10 +104,13 @@ public class OrcamentoDAO implements EntidadeDao{
 	
 	
 	
-	public List<Entidade> getOrcamentos(){
+	public List<Orcamento> getOrcamentos(Long usuarioId){
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Query query = new Query(ORCAMENTO_KIND).addSort(Orcamento.NOME, SortDirection.ASCENDING);
+		
+		Filter usuarioFilter = new FilterPredicate(Orcamento.USUARIO_ID, FilterOperator.EQUAL, usuarioId);
+		query.setFilter(usuarioFilter);
 		
 		PreparedQuery preparedQuery = datastore.prepare(query);
 		

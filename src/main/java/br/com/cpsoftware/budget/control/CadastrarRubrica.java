@@ -11,6 +11,7 @@ import br.com.cpsoftware.budget.dao.CategoriaDAO;
 import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.dao.RubricaDAO;
 import br.com.cpsoftware.budget.model.Rubrica;
+import br.com.cpsoftware.budget.model.Usuario;
 
 @SuppressWarnings("serial")
 public class CadastrarRubrica extends HttpServlet {
@@ -19,12 +20,15 @@ public class CadastrarRubrica extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
+
 		OrcamentoDAO orcamentos = new OrcamentoDAO();
 		CategoriaDAO categorias = new CategoriaDAO();
 		
 	    req.setAttribute("page", "criarRubrica");
 	    
-	    req.setAttribute("orcamentos", orcamentos.getOrcamentos());
+	    req.setAttribute("orcamentos", orcamentos.getOrcamentos(usuario.getId()));
 	    req.setAttribute("categorias", categorias.getCategorias());
 	    
 	    req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
@@ -35,8 +39,10 @@ public class CadastrarRubrica extends HttpServlet {
 		Rubrica rubrica = new Rubrica(req.getParameter("nome"), Double.parseDouble(req.getParameter("valor")));
 		
 		dao.create(rubrica);
+	
+		resp.sendRedirect("/listarRubricas");
 		
-		req.setAttribute("page", "visualizarResumo");           
-		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
+		/*req.setAttribute("page", "visualizarResumo");           
+		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);*/
 	}
 }

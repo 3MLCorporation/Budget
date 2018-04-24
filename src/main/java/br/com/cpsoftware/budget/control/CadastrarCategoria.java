@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.cpsoftware.budget.dao.CategoriaDAO;
 import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.model.Categoria;
+import br.com.cpsoftware.budget.model.Usuario;
 
 @SuppressWarnings("serial")
 public class CadastrarCategoria extends HttpServlet {
@@ -18,11 +19,13 @@ public class CadastrarCategoria extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	    OrcamentoDAO orcamentos = new OrcamentoDAO();
+		
+		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
+		OrcamentoDAO orcamentos = new OrcamentoDAO();
 		
 		req.setAttribute("page", "criarCategoria");
 		
-	    req.setAttribute("orcamentos", orcamentos.getOrcamentos());
+	    req.setAttribute("orcamentos", orcamentos.getOrcamentos(usuario.getId()));
 	    
 	    req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}
@@ -32,7 +35,9 @@ public class CadastrarCategoria extends HttpServlet {
 		
 		dao.create(categoria);
 		
-		req.setAttribute("page", "visualizarResumo");           
-		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
+		resp.sendRedirect("/listarCategorias");
+		
+		/*req.setAttribute("page", "visualizarResumo");           
+		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);*/
 	}
 }
