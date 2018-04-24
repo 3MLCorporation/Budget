@@ -12,11 +12,15 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.Filter;
+import com.google.appengine.api.datastore.Query.FilterOperator;
+import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.datastore.Query.SortDirection;
 
 import br.com.cpsoftware.budget.model.Categoria;
 import br.com.cpsoftware.budget.model.Entidade;
 import br.com.cpsoftware.budget.model.Orcamento;
+import br.com.cpsoftware.budget.model.Usuario;
 
 public class CategoriaDAO implements EntidadeDao{
 
@@ -35,10 +39,18 @@ public class CategoriaDAO implements EntidadeDao{
 	@Override
 	public Long create(Entidade categoria) {
 		Entity categoriaEntity = new Entity(CATEGORIA_KIND);
-		categoriaEntity.setProperty(Orcamento.NOME, categoria.getNome());
-		categoriaEntity.setProperty(Orcamento.VALOR_TOTAL, categoria.getValorTotal());
+		categoriaEntity.setProperty(Categoria.ORCAMENTO_ID, ((Categoria) categoria).getOrcamentoId());
+		categoriaEntity.setProperty(Categoria.NOME, categoria.getNome());
+		categoriaEntity.setProperty(Categoria.VALOR_TOTAL, categoria.getValorTotal());
 		
 		Key categoriaKey = datastore.put(categoriaEntity);
+		
+		
+		Orcamento orcamento = (Orcamento) new OrcamentoDAO().read(((Categoria) categoria).getOrcamentoId());
+		Usuario usuario =  new UsuarioDAO().read(((Orcamento) orcamento).getUsuarioId());
+		System.out.println("Categoria " + categoria.getNome() + " do orcamento " + orcamento.getNome()
+							+ " do usuario " + usuario.getNome() + " criada com id = " + categoriaKey.getId());
+		
 		return categoriaKey.getId();
 	}
 
@@ -54,31 +66,32 @@ public class CategoriaDAO implements EntidadeDao{
 
 	@Override
 	public void update(Entidade categoria) {
-		Key key = KeyFactory.createKey(CATEGORIA_KIND, categoria.getId());  // From a book, create a Key
-		Entity categoriaEntity = new Entity(key);         // Convert Book to an Entity
+		Key key = KeyFactory.createKey(CATEGORIA_KIND, categoria.getId()); 
+		Entity categoriaEntity = new Entity(key);         
 		categoriaEntity.setProperty(Orcamento.NOME, categoria.getNome());
 		categoriaEntity.setProperty(Orcamento.VALOR_TOTAL, categoria.getValorTotal());
 		categoriaEntity.setProperty(Orcamento.VALOR_PARCIAL, categoria.getValorParcial());
 
-		datastore.put(categoriaEntity);                   // Update the Entity
+		datastore.put(categoriaEntity);                   
 		
 	}
 
 	@Override
 	public void delete(Long categoriaId) {
-		Key key = KeyFactory.createKey(CATEGORIA_KIND, categoriaId);        // Create the Key
-		datastore.delete(key);                      // Delete the Entity
+		Key key = KeyFactory.createKey(CATEGORIA_KIND, categoriaId); 
+		datastore.delete(key); 
 	}
 	
-	private Entidade entityToCategoria(Entity categoriaEntity) {
-		return new Categoria((Long)categoriaEntity.getProperty(Categoria.ID),
-				 (String)categoriaEntity.getProperty(Categoria.NOME),
-				 (Double)categoriaEntity.getProperty(Categoria.VALOR_TOTAL),
-				 (Double)categoriaEntity.getProperty(Categoria.VALOR_PARCIAL));
+	private Categoria entityToCategoria(Entity categoriaEntity) {
+		return new Categoria((Long) categoriaEntity.getProperty(Categoria.ORCAMENTO_ID),
+							categoriaEntity.getKey().getId(),
+							 (String)categoriaEntity.getProperty(Categoria.NOME),
+							 (Double)categoriaEntity.getProperty(Categoria.VALOR_TOTAL),
+							 (Double)categoriaEntity.getProperty(Categoria.VALOR_PARCIAL));
 	}
 	
-	private List<Entidade> entitiesToCategoria(List<Entity> entities) {
-		List<Entidade> resultCategorias = new ArrayList<>();
+	private List<Categoria> entitiesToCategoria(List<Entity> entities) {
+		List<Categoria> resultCategorias = new ArrayList<>();
 		
 		for (Entity entidade : entities) {
 			resultCategorias.add(entityToCategoria(entidade));
@@ -89,15 +102,29 @@ public class CategoriaDAO implements EntidadeDao{
 	
 	
 	
-	public List<Entidade> getCategorias(){
+	public List<Categoria> getCategorias(){
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Query query = new Query(CATEGORIA_KIND).addSort(Categoria.NOME, SortDirection.ASCENDING);
 		
 		PreparedQuery preparedQuery = datastore.prepare(query);
 		
-		 List<Entity> categoriaEntities = preparedQuery.asList(FetchOptions.Builder.withDefaults());
-		 return entitiesToCategoria(categoriaEntities);
+		List<Entity> categoriaEntities = preparedQuery.asList(FetchOptions.Builder.withDefaults());
+		return entitiesToCategoria(categoriaEntities);
+		
+	}
+	public List<Categoria> getCategorias(Long orcamentoId){
+		
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Query query = new Query(CATEGORIA_KIND).addSort(Categoria.NOME, SortDirection.ASCENDING);
+		
+		Filter orcamentoFilter = new FilterPredicate(Categoria.ORCAMENTO_ID, FilterOperator.EQUAL, orcamentoId);
+		query.setFilter(orcamentoFilter);
+		
+		PreparedQuery preparedQuery = datastore.prepare(query);
+		
+		List<Entity> categoriaEntities = preparedQuery.asList(FetchOptions.Builder.withDefaults());
+		return entitiesToCategoria(categoriaEntities);
 		
 	}
 

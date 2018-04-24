@@ -114,8 +114,8 @@ public class OrcamentoDAO implements EntidadeDao{
 		
 		PreparedQuery preparedQuery = datastore.prepare(query);
 		
-		 List<Entity> orcamentoEntities = preparedQuery.asList(FetchOptions.Builder.withDefaults());
-		 return entitiesToOrcamento(orcamentoEntities);
+		List<Entity> orcamentoEntities = preparedQuery.asList(FetchOptions.Builder.withDefaults());
+		return entitiesToOrcamento(orcamentoEntities);
 		
 	}
 

@@ -19,9 +19,9 @@
        </div>
        <div class="form-group">
      	 <label>Orçamento:</label>
-     	 	<select class="form-control" name="orcamento">
+     	 	<select class="form-control" name="orcamentoId">
 					<c:forEach items="${orcamentos}" var="orcamento">
-						<option ${orcamentos == orcamento.nome ? 'selected' : ''}>${orcamento.nome}</option>
+						<option value="${orcamento.id }">${orcamento.nome}</option>
 					</c:forEach>
 			</select>
 		</div>
