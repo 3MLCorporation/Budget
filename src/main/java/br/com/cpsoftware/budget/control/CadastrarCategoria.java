@@ -22,6 +22,7 @@ public class CadastrarCategoria extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
+		
 		OrcamentoDAO orcamentos = new OrcamentoDAO();
 		
 		req.setAttribute("page", "criarCategoria");

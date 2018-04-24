@@ -12,11 +12,16 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.Filter;
+import com.google.appengine.api.datastore.Query.FilterOperator;
+import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.datastore.Query.SortDirection;
 
+import br.com.cpsoftware.budget.model.Categoria;
 import br.com.cpsoftware.budget.model.Entidade;
 import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.Rubrica;
+import br.com.cpsoftware.budget.model.Usuario;
 
 public class RubricaDAO implements EntidadeDao{
 
@@ -34,10 +39,18 @@ public class RubricaDAO implements EntidadeDao{
 	@Override
 	public Long create(Entidade rubrica) {
 		Entity rubricaEntity = new Entity(RUBRICA_KIND);
+		rubricaEntity.setProperty(Rubrica.CATEGORIA_ID, ((Rubrica) rubrica).getCategoriaId());
 		rubricaEntity.setProperty(Orcamento.NOME, rubrica.getNome());
 		rubricaEntity.setProperty(Orcamento.VALOR_TOTAL, rubrica.getValorTotal());
 		
 		Key rubricaKey = datastore.put(rubricaEntity);
+
+		Categoria categoria = (Categoria) new CategoriaDAO().read(((Rubrica) rubrica).getCategoriaId());
+		Orcamento orcamento = (Orcamento) new OrcamentoDAO().read(((Categoria) categoria).getOrcamentoId());
+		Usuario usuario =  new UsuarioDAO().read(((Orcamento) orcamento).getUsuarioId());
+		System.out.println("Rubrica " + rubrica.getNome() + " da categoria " + categoria.getNome() + "do orcamento " + orcamento.getNome()
+							+ " do usuario " + usuario.getNome() + " criada com id = " + rubricaKey.getId());
+		
 		return rubricaKey.getId();
 	}
 
@@ -53,13 +66,13 @@ public class RubricaDAO implements EntidadeDao{
 
 	@Override
 	public void update(Entidade rubrica) {
-		Key key = KeyFactory.createKey(RUBRICA_KIND, rubrica.getId());  // From a book, create a Key
-		Entity rubricaEntity = new Entity(key);         // Convert Book to an Entity
+		Key key = KeyFactory.createKey(RUBRICA_KIND, rubrica.getId()); 
+		Entity rubricaEntity = new Entity(key);
 		rubricaEntity.setProperty(Rubrica.NOME, rubrica.getNome());
 		rubricaEntity.setProperty(Rubrica.VALOR_TOTAL, rubrica.getValorTotal());
 		rubricaEntity.setProperty(Rubrica.VALOR_PARCIAL, rubrica.getValorParcial());
 
-		datastore.put(rubricaEntity);                   // Update the Entity
+		datastore.put(rubricaEntity);
 		
 	}
 
@@ -70,15 +83,17 @@ public class RubricaDAO implements EntidadeDao{
 		
 	}
 	
-	private Entidade entityToRubrica(Entity rubricaEntity) {
-		return new Rubrica((Long)rubricaEntity.getProperty(Rubrica.ID),
-				 (String)rubricaEntity.getProperty(Rubrica.NOME),
-				 (Double)rubricaEntity.getProperty(Rubrica.VALOR_TOTAL),
-				 (Double)rubricaEntity.getProperty(Rubrica.VALOR_PARCIAL));
+	private Rubrica entityToRubrica(Entity rubricaEntity) {
+		return new Rubrica((Long) rubricaEntity.getProperty(Rubrica.CATEGORIA_ID) ,
+						 rubricaEntity.getKey().getId(),
+						 (String)rubricaEntity.getProperty(Rubrica.NOME),
+						 (Double)rubricaEntity.getProperty(Rubrica.VALOR_TOTAL),
+						 (Double)rubricaEntity.getProperty(Rubrica.VALOR_PARCIAL));
 	}
 	
-	private List<Entidade> entitiesToRubrica(List<Entity> entities) {
-		List<Entidade> resultRubricas = new ArrayList<>();
+	private List<Rubrica> entitiesToRubrica(List<Entity> entities) {
+		
+		List<Rubrica> resultRubricas = new ArrayList<>();
 		
 		for (Entity entidade : entities) {
 			resultRubricas.add(entityToRubrica(entidade));
@@ -89,15 +104,30 @@ public class RubricaDAO implements EntidadeDao{
 	
 	
 	
-	public List<Entidade> getRubricas(){
+	public List<Rubrica> getRubricas(){
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Query query = new Query(RUBRICA_KIND).addSort(Rubrica.NOME, SortDirection.ASCENDING);
 		
 		PreparedQuery preparedQuery = datastore.prepare(query);
 		
-		 List<Entity> rubricaEntities = preparedQuery.asList(FetchOptions.Builder.withDefaults());
-		 return entitiesToRubrica(rubricaEntities);
+		List<Entity> rubricaEntities = preparedQuery.asList(FetchOptions.Builder.withDefaults());
+		return entitiesToRubrica(rubricaEntities);
+		
+	}
+	
+	public List<Rubrica> getRubricas(Long categoriaId){
+		
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Query query = new Query(RUBRICA_KIND).addSort(Rubrica.NOME, SortDirection.ASCENDING);
+		
+		Filter categoriaFilter = new FilterPredicate(Rubrica.CATEGORIA_ID, FilterOperator.EQUAL, categoriaId);
+		query.setFilter(categoriaFilter);
+		
+		PreparedQuery preparedQuery = datastore.prepare(query);
+		
+		List<Entity> rubricaEntities = preparedQuery.asList(FetchOptions.Builder.withDefaults());
+		return entitiesToRubrica(rubricaEntities);
 		
 	}
 	

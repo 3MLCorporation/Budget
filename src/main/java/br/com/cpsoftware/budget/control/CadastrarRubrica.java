@@ -29,14 +29,17 @@ public class CadastrarRubrica extends HttpServlet {
 	    req.setAttribute("page", "criarRubrica");
 	    
 	    req.setAttribute("orcamentos", orcamentos.getOrcamentos(usuario.getId()));
-	    req.setAttribute("categorias", categorias.getCategorias());
+	    req.setAttribute("categorias", categorias.getCategorias(usuario.getId()));
 	    
 	    req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Rubrica rubrica = new Rubrica(req.getParameter("nome"), Double.parseDouble(req.getParameter("valor")));
+		
+		Long categoriaId = Long.parseLong(req.getParameter("categoriaId"));
+		
+		Rubrica rubrica = new Rubrica(categoriaId, req.getParameter("nome"), Double.parseDouble(req.getParameter("valor")));
 		
 		dao.create(rubrica);
 	
