@@ -57,6 +57,7 @@ public class CategoriaDAO implements EntidadeDao{
 	@Override
 	public Entidade read(Long categoriaId) {
 		try {
+			System.out.println("categoriaId = " + categoriaId);
 		    Entity categoriaEntity = datastore.get(KeyFactory.createKey(CATEGORIA_KIND, categoriaId));
 		    return entityToCategoria(categoriaEntity);
 		} catch (EntityNotFoundException e) {

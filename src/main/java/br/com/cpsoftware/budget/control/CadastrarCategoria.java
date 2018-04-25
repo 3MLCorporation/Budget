@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.cpsoftware.budget.dao.CategoriaDAO;
 import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.model.Categoria;
-import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.Usuario;
 
 @SuppressWarnings("serial")

@@ -8,14 +8,17 @@ public class Rubrica extends Entidade{
 	
 	public Rubrica(Long categoriaId, String nome, Double valor_total) {
 		super(nome, valor_total);
+		this.categoriaId = categoriaId;
 	}
 	
 	public Rubrica(Long categoriaId, Long id, String nome, Double valor_total) {
 		super(id, nome, valor_total);
+		this.categoriaId = categoriaId;
 	}
 	
 	public Rubrica(Long categoriaId, Long id, String nome, Double valor_total, Double valor_parcial) {
 		super(id, nome, valor_total, valor_parcial);
+		this.categoriaId = categoriaId;
 	}
 
 	public Long getCategoriaId() {

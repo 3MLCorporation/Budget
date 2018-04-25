@@ -45,6 +45,8 @@ public class RubricaDAO implements EntidadeDao{
 		
 		Key rubricaKey = datastore.put(rubricaEntity);
 
+		System.out.println("categoriaId = " + ((Rubrica) rubrica).getCategoriaId());
+		
 		Categoria categoria = (Categoria) new CategoriaDAO().read(((Rubrica) rubrica).getCategoriaId());
 		Orcamento orcamento = (Orcamento) new OrcamentoDAO().read(((Categoria) categoria).getOrcamentoId());
 		Usuario usuario =  new UsuarioDAO().read(((Orcamento) orcamento).getUsuarioId());

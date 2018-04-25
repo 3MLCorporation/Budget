@@ -1,6 +1,8 @@
 package br.com.cpsoftware.budget.control;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.cpsoftware.budget.dao.CategoriaDAO;
 import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.dao.RubricaDAO;
+import br.com.cpsoftware.budget.model.Categoria;
+import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.Rubrica;
 import br.com.cpsoftware.budget.model.Usuario;
 
@@ -23,13 +27,19 @@ public class CadastrarRubrica extends HttpServlet {
 		
 		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
 
-		OrcamentoDAO orcamentos = new OrcamentoDAO();
-		CategoriaDAO categorias = new CategoriaDAO();
+		List<Orcamento> orcamentos = new OrcamentoDAO().getOrcamentos(usuario.getId());
+		List<Categoria> categorias = new ArrayList<>();
+		
+		for(Orcamento orcamento : orcamentos) {
+			for(Categoria categoria : new CategoriaDAO().getCategorias(orcamento.getId())) {
+				categorias.add(categoria);
+			}
+		}
 		
 	    req.setAttribute("page", "criarRubrica");
 	    
-	    req.setAttribute("orcamentos", orcamentos.getOrcamentos(usuario.getId()));
-	    req.setAttribute("categorias", categorias.getCategorias(usuario.getId()));
+	    req.setAttribute("orcamentos", orcamentos);
+	    req.setAttribute("categorias", categorias);
 	    
 	    req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}
