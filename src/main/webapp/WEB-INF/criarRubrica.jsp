@@ -34,6 +34,6 @@
 					</c:forEach>
 			</select>
 		</div>
-      <button type="submit" class="btn btn-default">Cadastrar</button>
+      <button type="submit" class="btn btn-dark">Cadastrar</button>
   </form>
   </div> 

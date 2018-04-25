@@ -18,6 +18,6 @@
        class="form-control" placeholder="Fornecer o valor do orçamento"
        name="valor" required="required">
     </div>
-    <button type="submit" class="btn btn-default">Cadastrar</button>
+    <button type="submit" class="btn btn-dark">Cadastrar</button>
 </form>
 </div>

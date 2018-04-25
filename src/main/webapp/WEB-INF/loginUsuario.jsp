@@ -30,11 +30,16 @@
 					class="form-control" placeholder="Fornecer a senha do usuário"
 					name="senha" required="required">
 				</div>
+				<div class="form-check">
+    				<label class="form-check-label">
+     					<input class="form-check-input" type="checkbox">Lembrar senha
+     				</label>
+  				</div>
 				<br/>
-				<button type="submit" class="btn btn-green">Logar</button>&emsp;
+				<button type="submit" class="btn btn-dark">Logar</button>&emsp;
 			</form>
 			<form action="cadastrarUsuario" method="GET">
-   				 <div class="botaoCadastroVoltar"><button class="btn btn-green">Cadastrar</button></div>
+   				 <div class="botaoCadastroVoltar"><button class="btn btn-dark">Cadastrar</button></div>
 			</form>
 		</div>
 	</body>

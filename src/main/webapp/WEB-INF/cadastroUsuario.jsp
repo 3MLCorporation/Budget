@@ -46,10 +46,10 @@
 					name="confirmacao" required="required">
 				</div>
 				<br/>
-				<button type="submit" class="btn btn-green">Cadastrar</button> 
+				<button type="submit" class="btn btn-dark">Cadastrar</button> 
 			</form>
 			<form action="login" method="GET">
-   				 <div class="botaoCadastroVoltar"><button class="btn btn-green">Voltar</button></div>
+   				 <div class="botaoCadastroVoltar"><button class="btn btn-dark">Voltar</button></div>
 			</form>
 		</div>
 	</body>

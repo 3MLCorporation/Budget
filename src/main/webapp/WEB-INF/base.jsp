@@ -6,6 +6,7 @@
     <title>Budget</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../css/estilo.css">
+    <script src="../js/script.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="../img/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -36,38 +37,40 @@
                                     <li><a class="dropdown-item" href="/listarOrcamentos">Listar</a></li>
                                 </ul>
                             </li>
-                            <li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
-                                data-toggle="dropdown" role="button" aria-haspopup="true"
-                                aria-expanded="false">Categoria <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="/cadastrarCategoria">Criar</a></li>
-                                    <li><a class="dropdown-item" href="/listarCategorias">Listar</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
-                                data-toggle="dropdown" role="button" aria-haspopup="true"
-                                aria-expanded="false">Rubrica <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="/cadastrarRubrica">Criar</a></li>
-                                    <li><a class="dropdown-item" href="/listarRubricas">Listar</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
-                                data-toggle="dropdown" role="button" aria-haspopup="true"
-                                aria-expanded="false">Item<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="/cadastrarItem">Criar</a></li>
-                                    <li><a class="dropdown-item" href="/listarItens">Listar</a></li>
-                                </ul>
-                            </li>
-                             <li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
-                                data-toggle="dropdown" role="button" aria-haspopup="true"
-                                aria-expanded="false">Perfil<span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="/logout">Sair</a></li>
-                                </ul>
-                            </li>
-
+                            <c:if test="${not empty orcamentoEditavel}">
+	                            <li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
+	                                data-toggle="dropdown" role="button" aria-haspopup="true"
+	                                aria-expanded="false">Categoria <span class="caret"></span></a>
+	                                <ul class="dropdown-menu">
+	                                    <li><a class="dropdown-item" href="/cadastrarCategoria">Criar</a></li>
+	                                    <li><a class="dropdown-item" href="/listarCategorias">Listar</a></li>
+	                                </ul>
+	                            </li>
+	                            <li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
+	                                data-toggle="dropdown" role="button" aria-haspopup="true"
+	                                aria-expanded="false">Rubrica <span class="caret"></span></a>
+	                                <ul class="dropdown-menu">
+	                                    <li><a class="dropdown-item" href="/cadastrarRubrica">Criar</a></li>
+	                                    <li><a class="dropdown-item" href="/listarRubricas">Listar</a></li>
+	                                </ul>
+	                            </li>
+	                            <li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
+	                                data-toggle="dropdown" role="button" aria-haspopup="true"
+	                                aria-expanded="false">Item<span class="caret"></span></a>
+	                                <ul class="dropdown-menu">
+	                                    <li><a class="dropdown-item" href="/cadastrarItem">Criar</a></li>
+	                                    <li><a class="dropdown-item" href="/listarItens">Listar</a></li>
+	                                </ul>
+	                            </li>
+	                        </c:if>
+	                             <li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
+	                                data-toggle="dropdown" role="button" aria-haspopup="true"
+	                                aria-expanded="false">Perfil<span class="caret"></span></a>
+	                                <ul class="dropdown-menu">
+	                                <li><a class="dropdown-item" href="#">Sobre nós</a></li>
+	                                    <li><a class="dropdown-item" href="/logout">Sair</a></li>
+	                                </ul>
+	                            </li>
                         </ul>
                         <form class="form-inline my-2 my-lg-0">
                             <input class="form-control mr-sm-2" type="text" placeholder="Pesquisa">
@@ -76,6 +79,7 @@
                     </div>
                 </nav>
             </header>
+            
         </div>
     </div> 
     <c:import url="/WEB-INF/${page}.jsp" />
