@@ -112,6 +112,15 @@
    		<servlet-name>listarItens</servlet-name>
    		<url-pattern>/listarItens</url-pattern>
    </servlet-mapping>
+   
+   <servlet>
+   		<servlet-name>sobre</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.Sobre</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>sobre</servlet-name>
+   		<url-pattern>/sobre</url-pattern>
+   </servlet-mapping>
   
    
   <welcome-file-list>
