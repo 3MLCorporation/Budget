@@ -35,7 +35,7 @@
      	 <label>Orçamento:</label>
      	 	<select class="form-control" name="orcamento">
 					<c:forEach items="${orcamentos}" var="orcamento">
-						<option ${orcamentos == orcamento.nome ? 'selected' : ''}>${orcamento.nome}</option>
+						<option>${orcamento.nome}</option>
 					</c:forEach>
 			</select>
 		</div>
@@ -43,15 +43,15 @@
      	 <label>Categoria:</label>
      	 	<select class="form-control" name="categoria">
 					<c:forEach items="${categorias}" var="categoria">
-						<option ${categorias == categoria.nome ? 'selected' : ''}>${categoria.nome}</option>
+						<option>${categoria.nome}</option>
 					</c:forEach>
 			</select>
 		</div>       
      <div class="form-group">
        <label>Rubrica:</label>
-     	 	<select class="form-control" name="rubrica">
+     	 	<select class="form-control" name="rubricaId">
 					<c:forEach items="${rubricas}" var="rubrica">
-						<option ${rubricas == rubrica.nome ? 'selected' : ''}>${rubrica.nome}</option>
+						<option value="${rubrica.id }">${rubrica.nome}</option>
 					</c:forEach>
 			</select>
      </div>  

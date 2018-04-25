@@ -30,11 +30,13 @@ public class CadastrarRubrica extends HttpServlet {
 		List<Orcamento> orcamentos = new OrcamentoDAO().getOrcamentos(usuario.getId());
 		List<Categoria> categorias = new ArrayList<>();
 		
+		
 		for(Orcamento orcamento : orcamentos) {
 			for(Categoria categoria : new CategoriaDAO().getCategorias(orcamento.getId())) {
 				categorias.add(categoria);
 			}
 		}
+		
 		
 	    req.setAttribute("page", "criarRubrica");
 	    

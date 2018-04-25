@@ -2,6 +2,8 @@ package br.com.cpsoftware.budget.model;
 
 
 public class Item {
+	
+	private Long rubricaId;
 	private Long id;
 	private String nome;
 	private String descricao;
@@ -9,27 +11,38 @@ public class Item {
 	private Long quantidade;
 	
 	//Definição das keys do banco
+	public static final String RUBRICA_ID = "rubrica_id";
 	public static final String ID = "id";
 	public static final String NOME = "nome";
 	public static final String DESCRICAO = "descricao";
 	public static final String VALOR_UNIFORME = "valor_uniforme";
 	public static final String QUANTIDADE = "quantidade";
 	
-	public Item(String nome, String descricao, Double valor_uniforme, Long quantidade) {
-		super();
+	public Item(Long rubricaId, String nome, String descricao, Double valor_uniforme, Long quantidade) {
+		this.rubricaId = rubricaId;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.valor_uniforme = valor_uniforme;
 		this.quantidade = quantidade;
 	}
 	
-	public Item(Long id,String nome, String descricao, Double valor_uniforme, Long quantidade) {
-		super();
+	public Item(Long rubricaId, Long id,String nome, String descricao, Double valor_uniforme, Long quantidade) {
+		this.rubricaId = rubricaId;
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.valor_uniforme = valor_uniforme;
 		this.quantidade = quantidade;
+	}
+	
+	
+
+	public Long getRubricaId() {
+		return rubricaId;
+	}
+
+	public void setRubricaId(Long rubricaId) {
+		this.rubricaId = rubricaId;
 	}
 	
 	public Long getId() {
@@ -62,5 +75,6 @@ public class Item {
 	public void setQuantidade(Long quantidade) {
 		this.quantidade = quantidade;
 	}
+
 	
 }
