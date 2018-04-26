@@ -4,7 +4,7 @@
 	    <div class="card-body">
 		      <h4 class="card-title">Lucas Gabriel</h4>
 		      <p class="card-text">Roba auxilio</p>
-		      <a href="#" class="btn btn-primary">Ver perfil</a>
+		      <a href="https://www.instagram.com/gabriel.lusca/" target="_blank" class="btn btn-primary">Ver perfil</a>
 	    </div>
     </div>
     
@@ -22,7 +22,7 @@
 	    <div class="card-body">
 		      <h4 class="card-title">Michael Miller</h4>
 		      <p class="card-text">Troll de internet e ex youtuber</p>
-		      <a href="https://www.facebook.com/michael.rodriguescardoso" target="_blank" class="btn btn-dark">Ver perfil</a>
+		      <a href="https://www.instagram.com/michael.millerbr/" target="_blank" class="btn btn-dark">Ver perfil</a>
 	    </div>
     </div>
     
