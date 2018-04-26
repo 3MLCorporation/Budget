@@ -50,6 +50,15 @@
    		<url-pattern>/cadastrarOrcamento</url-pattern>
    </servlet-mapping>
    
+    <servlet>
+   		<servlet-name>selecionarOrcamento</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.SelecionarOrcamento</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>selecionarOrcamento</servlet-name>
+   		<url-pattern>/selecionarOrcamento</url-pattern>
+   </servlet-mapping>
+   
    <servlet>
    		<servlet-name>cadastrarCategoria</servlet-name>
    		<servlet-class>br.com.cpsoftware.budget.control.CadastrarCategoria</servlet-class>

@@ -17,14 +17,14 @@
            class="form-control" placeholder="Fornecer o valor da categoria"
            name="valor" required="required">
        </div>
-       <div class="form-group">
+<%--        <div class="form-group">
      	 <label>Orçamento:</label>
      	 	<select class="form-control" name="orcamentoId">
 					<c:forEach items="${orcamentos}" var="orcamento">
 						<option value="${orcamento.id }">${orcamento.nome}</option>
 					</c:forEach>
 			</select>
-		</div>
+		</div> --%>
       <button type="submit" class="btn btn-dark">Cadastrar</button>
   	</form>
   </div>

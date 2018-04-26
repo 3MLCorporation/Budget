@@ -17,7 +17,6 @@ import br.com.cpsoftware.budget.model.Categoria;
 import br.com.cpsoftware.budget.model.Item;
 import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.Rubrica;
-import br.com.cpsoftware.budget.model.Usuario;
 
 @SuppressWarnings("serial")
 public class ListarItens extends HttpServlet {
@@ -25,23 +24,19 @@ public class ListarItens extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
+		Long orcamentoEditavelId = Long.parseLong((String) req.getSession().getAttribute("orcamentoEditavel"));
+		Orcamento orcamento = (Orcamento) new OrcamentoDAO().read(orcamentoEditavelId);
 		
-		
-		ItemDAO itemDao = new ItemDAO();
-		
-		OrcamentoDAO orcamentoDao = new OrcamentoDAO();
 		CategoriaDAO categoriaDao = new CategoriaDAO();
 		RubricaDAO rubricaDao = new RubricaDAO();
+		ItemDAO itemDao = new ItemDAO();
 		
 		List<Item> itens = new ArrayList<>();
 		
-		for (Orcamento orcamento : orcamentoDao.getOrcamentos(usuario.getId())) {
-			for(Categoria categoria : categoriaDao.getCategorias(orcamento.getId())) {
-				for(Rubrica rubrica : rubricaDao.getRubricas(categoria.getId())) {
-					for(Item item: itemDao.getItens(rubrica.getId())) {
-						itens.add(item);
-					}
+		for(Categoria categoria : categoriaDao.getCategorias(orcamento.getId())) {
+			for(Rubrica rubrica : rubricaDao.getRubricas(categoria.getId())) {
+				for(Item item: itemDao.getItens(rubrica.getId())) {
+					itens.add(item);
 				}
 			}
 		}

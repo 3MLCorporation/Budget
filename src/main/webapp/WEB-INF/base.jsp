@@ -37,7 +37,7 @@
                                     <li><a class="dropdown-item" href="/listarOrcamentos">Listar</a></li>
                                 </ul>
                             </li>
-                            <c:if test="${not empty orcamentoEditavel}">
+                            <c:if test="${not empty sessionScope.orcamentoEditavel}">
 	                            <li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
 	                                data-toggle="dropdown" role="button" aria-haspopup="true"
 	                                aria-expanded="false">Categoria <span class="caret"></span></a>

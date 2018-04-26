@@ -8,9 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.cpsoftware.budget.dao.CategoriaDAO;
-import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.model.Categoria;
-import br.com.cpsoftware.budget.model.Usuario;
 
 @SuppressWarnings("serial")
 public class CadastrarCategoria extends HttpServlet {
@@ -20,21 +18,20 @@ public class CadastrarCategoria extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
+		/*Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
 		
 		OrcamentoDAO orcamentos = new OrcamentoDAO();
 		
-		req.setAttribute("page", "criarCategoria");
+		req.setAttribute("orcamentos", orcamentos.getOrcamentos(usuario.getId()));*/
 		
-	    req.setAttribute("orcamentos", orcamentos.getOrcamentos(usuario.getId()));
-	    
+		req.setAttribute("page", "criarCategoria");
 	    req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		
-		Long orcamentoId = Long.parseLong(req.getParameter("orcamentoId"));
+		Long orcamentoId = Long.parseLong((String) req.getSession().getAttribute("orcamentoEditavel"));
 		
 		Categoria categoria = new Categoria(orcamentoId, req.getParameter("nome"), Double.parseDouble(req.getParameter("valor")));
 		

@@ -18,6 +18,14 @@ public class MostrarResumo extends HttpServlet {
 		
 		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
 		
+		Long orcamentoEditavelId;
+		if((String) req.getSession().getAttribute("orcamentoEditavel") == null) {
+			orcamentoEditavelId = null;
+		}else {
+			orcamentoEditavelId = Long.parseLong((String) req.getSession().getAttribute("orcamentoEditavel"));
+		}
+		 
+		
 		if(usuario == null) {
 			System.out.println("usuario logado null");
 		}else {
@@ -26,9 +34,16 @@ public class MostrarResumo extends HttpServlet {
 			System.out.println(usuario.getSenha());
 		}
 		
+		if(orcamentoEditavelId == null) {
+			System.out.println("orcamentoEditavel null");
+		}else {
+			System.out.println("orcamentoEditavel : " + orcamentoEditavelId);
+		}
+		
 		OrcamentoDAO dao = new OrcamentoDAO();
 		
 		req.setAttribute("orcamentos", dao.getOrcamentos(usuario.getId()));
+		//req.setAttribute("orcamentoEditavel", orcamentoEditavelId);
 		
 		req.setAttribute("page", "visualizarResumo");           
 		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);

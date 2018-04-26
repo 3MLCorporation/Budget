@@ -13,17 +13,26 @@
 	        		<th>Valor</th>
 	        		<th>Valor utilizado</th>
 	        		<th>Valor Restante</th>
+	        		<th></th>
 	      		</tr>
 	    	</thead>
 	    	<tbody>
+	    	
 	        	<c:forEach items="${orcamentos}" var="orcamento">
-						<tr>
-							<td> ${orcamento.nome}</td>
-							<td> ${orcamento.getValorTotal()}</td>
-							<td> --- </td>
-							<td> --- </td>
-						</tr>
+						
+							<tr>
+								<td> ${orcamento.nome}</td>
+								<td> ${orcamento.getValorTotal()}</td>
+								<td> --- </td>
+								<td> --- </td>
+								<td> <form action="selecionarOrcamento" method="POST">
+									<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamentoEditavel">
+									<button type="submit" class="btn btn-dark"> > </button>
+						           	</form> 
+           						</td>
+							</tr>
 				</c:forEach>
+				
 		   	</tbody>
 	  	</table>
 	  </div>

@@ -18,14 +18,14 @@
            class="form-control" placeholder="Fornecer o valor da rubrica"
            name="valor" required="required">
        </div>
-       <div class="form-group">
+       <%-- <div class="form-group">
      	 <label>Orçamento:</label>
      	 	<select class="form-control" name="orcamento">
 					<c:forEach items="${orcamentos}" var="orcamento">
 						<option>${orcamento.nome}</option>
 					</c:forEach>
 			</select>
-		</div>
+		</div> --%>
        <div class="form-group">
      	 <label>Categoria:</label>
      	 	<select class="form-control" name="categoriaId">

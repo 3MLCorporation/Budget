@@ -31,14 +31,14 @@
      <div class="form-group">
            <label for="text">Valor total:</label> <input type="text" readonly="true" placeholder="Valor total da soma dos itens" class="form-control" id="resultado">
      </div>
-     <div class="form-group">
+     <%-- <div class="form-group">
      	 <label>Orçamento:</label>
      	 	<select class="form-control" name="orcamento">
 					<c:forEach items="${orcamentos}" var="orcamento">
 						<option>${orcamento.nome}</option>
 					</c:forEach>
 			</select>
-		</div>
+		</div> --%>
        <div class="form-group">
      	 <label>Categoria:</label>
      	 	<select class="form-control" name="categoria">
