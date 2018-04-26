@@ -41,5 +41,6 @@ public class CadastrarCategoria extends HttpServlet {
 		
 		/*req.setAttribute("page", "visualizarResumo");           
 		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);*/
+		
 	}
 }
