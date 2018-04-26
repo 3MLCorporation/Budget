@@ -44,6 +44,8 @@ public class ListarItens extends HttpServlet {
 		req.setAttribute("itens", itens);
 		
 		req.setAttribute("page", "listarItens");
+		req.setAttribute("orcamentoSelecionado", new OrcamentoDAO().read(Long.parseLong(
+				(String) req.getSession().getAttribute("orcamentoEditavel"))).getNome());
 	    req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}
 	

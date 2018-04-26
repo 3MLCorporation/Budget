@@ -37,7 +37,8 @@ public class ListarRubricas extends HttpServlet {
 			}
 		
 		req.setAttribute("rubricas", rubricas);
-		
+		req.setAttribute("orcamentoSelecionado", new OrcamentoDAO().read(Long.parseLong(
+				(String) req.getSession().getAttribute("orcamentoEditavel"))).getNome());
 		req.setAttribute("page", "listarRubricas");
 	    req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}

@@ -9,7 +9,6 @@
 	<table class="table">
     	<thead>
       		<tr>
-      			<th>Orcamento</th>
         		<th>Categoria</th>
         		<th>Rubrica</th>
         		<th>Item</th>
@@ -21,7 +20,6 @@
     		<tbody>
         		<c:forEach items="${itens}" var="item">
 					<tr>
-						<td> --- </td>
 						<td> --- </td>
 						<td> --- </td>
 						<td> ${item.nome}</td>

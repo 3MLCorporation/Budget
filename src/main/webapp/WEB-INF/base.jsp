@@ -78,10 +78,16 @@
                         </form>
                     </div>
                 </nav>
+                
+                <div class="orcamentoPosicao">
+		            <c:if test="${not empty orcamentoSelecionado}">
+		                <h2>${orcamentoSelecionado}</h2>
+		            </c:if>
+	            </div>
             </header>
-            
         </div>
     </div> 
+    <br/>
     <c:import url="/WEB-INF/${page}.jsp" />
 </body>
 

@@ -9,7 +9,6 @@
 		<table class="table">
 	    	<thead>
 	      		<tr>
-	      			<th>Orcamento</th>
 	        		<th>Categoria</th>
 	        		<th>Rubrica</th>
 	        		<th>Valor</th>
@@ -18,7 +17,6 @@
 	    	<tbody>
 	        	<c:forEach items="${rubricas}" var="rubrica">
 					<tr>
-						<td> --- </td>
 						<td> --- </td>
 						<td> ${rubrica.nome}</td>
 						<td> ${rubrica.getValorTotal()}</td>

@@ -36,6 +36,8 @@ public class ListarCategorias extends HttpServlet {
 		req.setAttribute("categorias", categorias);
 		
 		req.setAttribute("page", "listarCategorias");
+		req.setAttribute("orcamentoSelecionado", new OrcamentoDAO().read(Long.parseLong(
+				(String) req.getSession().getAttribute("orcamentoEditavel"))).getNome());
 	    req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}
 	
