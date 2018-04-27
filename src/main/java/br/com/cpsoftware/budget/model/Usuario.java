@@ -15,7 +15,6 @@ public class Usuario implements Serializable{
 	private String email;
 	private String login;
 	private String senha;
-	//private List<Long> listaOrcamentos; //TODO id's ou objetos?
 	
 	//Definição das keys do banco
 	public static final String ID = "id";
@@ -23,7 +22,6 @@ public class Usuario implements Serializable{
 	public static final String EMAIL = "email";
 	public static final String LOGIN = "login";
 	public static final String SENHA = "senha";
-	public static final String ORCAMENTOS = "orcamentos";
 	
 	public Usuario(Long id, String nome, String email, String login, String senha) {
 		this.id = id;

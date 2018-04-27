@@ -29,7 +29,7 @@
            name="valor_uniforme" required="required" id="valorUniformeItem" onblur="calcularValorTotalItem()">
      </div>
      <div class="form-group">
-           <label for="text">Valor total:</label> <input type="text" readonly="true" placeholder="Valor total da soma dos itens" class="form-control" id="resultado">
+           <label for="text">Valor total:</label> <input type="text" readonly="readonly" placeholder="Valor total da soma dos itens" class="form-control" id="resultado">
      </div>
      <%-- <div class="form-group">
      	 <label>Orçamento:</label>
