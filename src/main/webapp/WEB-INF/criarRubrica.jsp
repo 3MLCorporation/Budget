@@ -15,8 +15,8 @@
       </div>
       <div class="form-group">
            <label for="text">Valor:</label> <input type="text"
-           class="form-control" placeholder="Fornecer o valor da rubrica"
-           name="valor" required="required">
+           class="form-control" placeholder="Fornecer o valor estimado da rubrica"
+           name="valor">
        </div>
        <%-- <div class="form-group">
      	 <label>Orçamento:</label>

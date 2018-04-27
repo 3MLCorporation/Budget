@@ -20,34 +20,48 @@
 			<h2>Cadastro</h2>
 			<br/>
 			<form action="cadastrarUsuario" method="POST">
+			
 				<div class="form-group">
 					<label for="text">Nome</label> <input type="text"
 					class="form-control" placeholder="Fornecer o nome do usuário"
 					name="nome" required="required">
 				</div>
+				
 				<div class="form-group">
 					<label for="text">Email</label> <input type="text"
 					class="form-control" placeholder="Fornecer o email do usuário"
 					name="email" required="required">
 				</div>
+				
 				<div class="form-group">
 					<label for="text">Usuário</label> <input type="text"
 					class="form-control" placeholder="Fornecer o login do usuário"
 					name="login" required="required">
 				</div>
+				
 				<div class="form-group">
 					<label for="text">Senha</label> <input type="password"
 					class="form-control" placeholder="Fornecer a senha do usuário"
 					name="senha" required="required">
 				</div>
+				
 				<div class="form-group">
 					<label for="text">Confirmar senha</label> <input type="password"
 					class="form-control" placeholder="Fornecer novamente a senha do usuário"
 					name="confirmacao" required="required">
 				</div>
+				
+				<div class="form-group">
+		     	<label for="text">Tipo de usuário:</label>
+		     	 	<select class="form-control" name="categoria">
+		     	 		<option value="normal">Normal</option>
+						<option value="gerente">Gerente</option>
+					</select>
+				</div>
 				<br/>
 				<button type="submit" class="btn btn-dark">Cadastrar</button> 
 			</form>
+			
 			<form action="login" method="GET">
    				 <div class="botaoCadastroVoltar"><button class="btn btn-dark">Voltar</button></div>
 			</form>

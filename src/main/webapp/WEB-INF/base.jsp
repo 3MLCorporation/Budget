@@ -81,7 +81,7 @@
                 
                 <div class="orcamentoPosicao">
 		            <c:if test="${not empty orcamentoSelecionado}">
-		                <h2>${orcamentoSelecionado}</h2>
+		                <h2><strong>${orcamentoSelecionado}</strong></h2>
 		            </c:if>
 	            </div>
             </header>
