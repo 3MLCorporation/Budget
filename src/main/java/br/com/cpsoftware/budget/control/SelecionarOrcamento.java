@@ -15,6 +15,7 @@ public class SelecionarOrcamento extends HttpServlet {
 		req.getSession().setAttribute("orcamentoEditavel", req.getParameter("orcamentoEditavel"));
 		System.out.println("SelecionarOrcamento/doPost -- orcamentoEditavel : " + req.getParameter("orcamentoEditavel"));
 		resp.sendRedirect("/principal");
+		
 	}
 	
 }
