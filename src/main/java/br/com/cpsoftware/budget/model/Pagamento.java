@@ -16,16 +16,16 @@ public class Pagamento {
 	public static final String VALOR = "valor";
 	public static final String DATA = "data";
 	
-	public Pagamento(Long id, Long nota_fiscal_id, Long arquivo, Double valor, Date data) {
+	public Pagamento(Long id, Long notaFiscalId, Long arquivo, Double valor, Date data) {
 		this.id = id;
-		this.notaFiscalId = nota_fiscal_id;
+		this.notaFiscalId = notaFiscalId;
 		this.arquivo = arquivo;
 		this.valor = valor;
 		this.data = data;
 	}
 
-	public Pagamento(Long nota_fiscal_id, Long arquivo, Double valor, Date data) {
-		this.notaFiscalId = nota_fiscal_id;
+	public Pagamento(Long notaFiscalId, Long arquivo, Double valor, Date data) {
+		this.notaFiscalId = notaFiscalId;
 		this.arquivo = arquivo;
 		this.valor = valor;
 		this.data = data;
