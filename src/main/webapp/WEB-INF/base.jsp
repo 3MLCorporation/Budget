@@ -19,7 +19,7 @@
   <div class="header">
         <div class="bg-color">
             <header id="main-header">
-                <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+                <nav class="navbar navbar-expand-md navbar-dark navbar-center fixed-top bg-dark">
                 	<img src="../img/favicon.png" alt="Logo" style="width:50px;">
                     <a class="navbar-brand" href="/principal">Inicio</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
@@ -29,14 +29,13 @@
 
                     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                         <ul class="navbar-nav mr-auto">
-                        <li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
+                        	<li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
                                 data-toggle="dropdown" role="button" aria-haspopup="true"
                                 aria-expanded="false">Projeto <span class="caret"></span></a>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="/cadastrarProjeto">Criar</a></li>
-                                    <li><a class="dropdown-item" href="/listarProjetos">Listar</a></li>
+                                    <li><a class="dropdown-item" href="/listarProjeto">Listar</a></li>
                                 </ul>
-                            </li>
                             <li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
                                 data-toggle="dropdown" role="button" aria-haspopup="true"
                                 aria-expanded="false">Orçamento <span class="caret"></span></a>

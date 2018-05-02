@@ -31,7 +31,7 @@
 	    <div class="card-body">
 		      <h4 class="card-title">Michel Thomas</h4>
 		      <p class="card-text">Incognita e meme</p>
-		      <a href="#" class="btn btn-dark">Ver perfil</a>
+		      <a href="https://www.youtube.com/channel/UC6A5spfeQjaLocsfI8CiWjQ" target="_blank" class="btn btn-dark">Ver perfil</a>
 	    </div>
     </div>
     
