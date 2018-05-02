@@ -5,27 +5,19 @@
 
 
 <div class="container" style="width: 60%;">
-   <h2>Cadastrar orçamento</h2>
+   <h2>Cadastrar projeto</h2>
 <br/>
 <form action="cadastrarOrcamento" method="POST">
     <div class="form-group">
-        <label for="descricao">Orçamento:</label> <input type="text"
-        class="form-control" placeholder="Fornecer o nome do novo orçamento"
+        <label for="descricao">Projeto:</label> <input type="text"
+        class="form-control" placeholder="Fornecer o nome do novo projeto"
         name="nome" required="required">
    </div>
    <div class="form-group">
        <label for="text">Valor:</label> <input type="text"
-       class="form-control" placeholder="Fornecer o valor estimado do orçamento"
+       class="form-control" placeholder="Fornecer o valor estimado do projeto"
        name="valor">
     </div>
-    <div class="form-group">
-     	 <label>Projeto:</label>
-     	 	<select class="form-control" name="orcamentoId">
-					<c:forEach items="${orcamento}" var="orcamento">
-						<option value="${orcamento.id }">${orcamento.nome}</option>
-					</c:forEach>
-			</select>
-		</div>
     <button type="submit" class="btn btn-dark">Cadastrar</button>
 </form>
 </div>

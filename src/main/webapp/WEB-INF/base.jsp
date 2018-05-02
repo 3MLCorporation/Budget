@@ -29,6 +29,14 @@
 
                     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                         <ul class="navbar-nav mr-auto">
+                        <li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
+                                data-toggle="dropdown" role="button" aria-haspopup="true"
+                                aria-expanded="false">Projeto <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="/cadastrarProjeto">Criar</a></li>
+                                    <li><a class="dropdown-item" href="/listarProjetos">Listar</a></li>
+                                </ul>
+                            </li>
                             <li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
                                 data-toggle="dropdown" role="button" aria-haspopup="true"
                                 aria-expanded="false">Orçamento <span class="caret"></span></a>
