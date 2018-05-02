@@ -31,6 +31,15 @@
    		<servlet-name>cadastrarUsuario</servlet-name>
    		<url-pattern>/cadastrarUsuario</url-pattern>
    </servlet-mapping>
+   
+   <servlet>
+   		<servlet-name>listarUsuarios</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.ListarUsuarios</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>listarUsuarios</servlet-name>
+   		<url-pattern>/listarUsuarios</url-pattern>
+   </servlet-mapping>
            
    <servlet>
    		<servlet-name>principal</servlet-name>
@@ -39,6 +48,15 @@
    <servlet-mapping>
    		<servlet-name>principal</servlet-name>
    		<url-pattern>/principal</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+   		<servlet-name>cadastrarProjeto</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.CadastrarProjeto</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>cadastrarProjeto</servlet-name>
+   		<url-pattern>/cadastrarProjeto</url-pattern>
    </servlet-mapping>
    
    <servlet>

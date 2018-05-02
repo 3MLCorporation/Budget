@@ -47,11 +47,11 @@ public class RubricaDAO implements EntidadeDao{
 
 		System.out.println("categoriaId = " + ((Rubrica) rubrica).getCategoriaId());
 		
-		Categoria categoria = (Categoria) new CategoriaDAO().read(((Rubrica) rubrica).getCategoriaId());
+		/*Categoria categoria = (Categoria) new CategoriaDAO().read(((Rubrica) rubrica).getCategoriaId());
 		Orcamento orcamento = (Orcamento) new OrcamentoDAO().read(((Categoria) categoria).getOrcamentoId());
 		Usuario usuario =  new UsuarioDAO().read(((Orcamento) orcamento).getUsuarioId());
 		System.out.println("Rubrica " + rubrica.getNome() + " da categoria " + categoria.getNome() + " do orcamento " + orcamento.getNome()
-							+ " do usuario " + usuario.getNome() + " criada com id = " + rubricaKey.getId());
+							+ " do usuario " + usuario.getNome() + " criada com id = " + rubricaKey.getId());*/
 		
 		return rubricaKey.getId();
 	}

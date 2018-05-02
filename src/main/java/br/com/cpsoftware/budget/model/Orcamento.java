@@ -2,30 +2,30 @@ package br.com.cpsoftware.budget.model;
 
 public class Orcamento extends Entidade{
 
-	private Long usuarioId;
+	private Long projetoId;
 	
-	public static final String USUARIO_ID = "usuario_id";
+	public static final String PROJETO_ID = "projeto_id";
 	
-	public Orcamento(Long usuarioId, String nome, Double valor_total) {
+	public Orcamento(Long projetoId, String nome, Double valor_total) {
 		super(nome, valor_total);
-		this.usuarioId = usuarioId;
+		this.projetoId = projetoId;
 	}
 	
-	public Orcamento(Long usuarioId, Long id, String nome, Double valor_total) {
+	public Orcamento(Long projetoId, Long id, String nome, Double valor_total) {
 		super(id, nome, valor_total);
-		this.usuarioId = usuarioId;
+		this.projetoId = projetoId;
 	}
 	
-	public Orcamento(Long usuarioId, Long id, String nome, Double valor_total, Double valor_parcial) {
+	public Orcamento(Long projetoId, Long id, String nome, Double valor_total, Double valor_parcial) {
 		super(id, nome, valor_total, valor_parcial);
-		this.usuarioId = usuarioId;
+		this.projetoId = projetoId;
 	}
 	
-	public Long getUsuarioId() {
-		return usuarioId;
+	public Long getProjetoId() {
+		return projetoId;
 	}
 
-	public void setUsuarioId(Long usuarioId) {
-		this.usuarioId = usuarioId;
+	public void setProjetoId(Long projetoId) {
+		this.projetoId = projetoId;
 	}
 }

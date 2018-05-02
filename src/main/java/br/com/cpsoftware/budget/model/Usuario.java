@@ -10,7 +10,8 @@ public class Usuario implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	
-	private Long id; //TODO colocar depois que criar?
+	private Long id;
+	private int perfil;
 	private String nome;
 	private String email;
 	private String login;
@@ -18,28 +19,37 @@ public class Usuario implements Serializable{
 	
 	//Definição das keys do banco
 	public static final String ID = "id";
+	public static final String PERFIL = "perfil";
 	public static final String NOME = "nome";
 	public static final String EMAIL = "email";
 	public static final String LOGIN = "login";
 	public static final String SENHA = "senha";
 	
-	public Usuario(Long id, String nome, String email, String login, String senha) {
+	//Definição dos tipos de perfil
+	public static final int PERFIL_ADMIN = 0;
+	public static final int PERFIL_GERENTE = 1;
+	public static final int PERFIL_PADRAO = 2;
+	
+	public Usuario(Long id, int perfil, String nome, String email, String login, String senha) {
 		this.id = id;
+		this.perfil = perfil;
 		this.nome = nome;
 		this.email = email;
 		this.login = login;
 		this.senha = senha;
 	}
 	
-	public Usuario(String nome, String email, String login, String senha) {
+	public Usuario(int perfil, String nome, String email, String login, String senha) {
 		this.nome = nome;
+		this.perfil = perfil;
 		this.email = email;
 		this.login = login;
 		this.senha = senha;
 	}
 	
-	public Usuario(Long id, String nome, String email, String login) {
+	public Usuario(Long id, int perfil, String nome, String email, String login) {
 		this.id = id;
+		this.perfil = perfil;
 		this.nome = nome;
 		this.email = email;
 		this.login = login;
@@ -51,6 +61,14 @@ public class Usuario implements Serializable{
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public int getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(int perfil) {
+		this.perfil = perfil;
 	}
 
 	public String getNome() {

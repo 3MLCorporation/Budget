@@ -37,14 +37,14 @@ public class OrcamentoDAO implements EntidadeDao{
 	@Override
 	public Long create(Entidade orcamento) {
 		Entity orcamentoEntity = new Entity(ORCAMENTO_KIND);
-		orcamentoEntity.setProperty(Orcamento.USUARIO_ID, ((Orcamento) orcamento).getUsuarioId());
+		orcamentoEntity.setProperty(Orcamento.PROJETO_ID, ((Orcamento) orcamento).getProjetoId());
 		orcamentoEntity.setProperty(Orcamento.NOME, orcamento.getNome());
 		orcamentoEntity.setProperty(Orcamento.VALOR_TOTAL, orcamento.getValorTotal());
 		
 		Key orcamentoKey = datastore.put(orcamentoEntity);
 		
 		UsuarioDAO userDao = new UsuarioDAO();
-		Usuario read = userDao.read(((Orcamento) orcamento).getUsuarioId());
+		Usuario read = userDao.read(((Orcamento) orcamento).getProjetoId());
 		System.out.println("Orcamento " + orcamento.getNome() + " do usuário " + read.getNome() + " criado com id = " + orcamentoKey.getId());
 		
 		return orcamentoKey.getId();
@@ -84,7 +84,7 @@ public class OrcamentoDAO implements EntidadeDao{
 		System.out.println(orcamentoEntity.getProperty(Orcamento.NOME));
 		System.out.println(orcamentoEntity.getProperty(Orcamento.VALOR_TOTAL));*/
 		
-		return new Orcamento((Long) orcamentoEntity.getProperty(Orcamento.USUARIO_ID),
+		return new Orcamento((Long) orcamentoEntity.getProperty(Orcamento.PROJETO_ID),
 							orcamentoEntity.getKey().getId(),
 							(String)orcamentoEntity.getProperty(Orcamento.NOME),
 							((Double)orcamentoEntity.getProperty(Orcamento.VALOR_TOTAL)),
@@ -109,7 +109,7 @@ public class OrcamentoDAO implements EntidadeDao{
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Query query = new Query(ORCAMENTO_KIND).addSort(Orcamento.NOME, SortDirection.ASCENDING);
 		
-		Filter usuarioFilter = new FilterPredicate(Orcamento.USUARIO_ID, FilterOperator.EQUAL, usuarioId);
+		Filter usuarioFilter = new FilterPredicate(Orcamento.PROJETO_ID, FilterOperator.EQUAL, usuarioId);
 		query.setFilter(usuarioFilter);
 		
 		PreparedQuery preparedQuery = datastore.prepare(query);

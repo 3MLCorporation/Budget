@@ -11,6 +11,7 @@ import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.EntityNotFoundException;
+import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.PreparedQuery;
@@ -18,7 +19,10 @@ import com.google.appengine.api.datastore.Query;
 import com.google.appengine.api.datastore.Query.Filter;
 import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
+import com.google.appengine.api.datastore.Query.SortDirection;
 
+import br.com.cpsoftware.budget.model.Item;
+import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.Usuario;
 
 public class UsuarioDAO {
@@ -72,10 +76,11 @@ public class UsuarioDAO {
 	
 	private Usuario entityToUsuario(Entity usuarioEntity) {
 		return new Usuario((Long)usuarioEntity.getProperty(Usuario.ID),
-				 (String)usuarioEntity.getProperty(Usuario.NOME),
-				 (String)usuarioEntity.getProperty(Usuario.EMAIL),
-				 (String)usuarioEntity.getProperty(Usuario.LOGIN),
-				 (String)usuarioEntity.getProperty(Usuario.SENHA));
+							(int) usuarioEntity.getProperty(Usuario.PERFIL),
+						 (String)usuarioEntity.getProperty(Usuario.NOME),
+						 (String)usuarioEntity.getProperty(Usuario.EMAIL),
+						 (String)usuarioEntity.getProperty(Usuario.LOGIN),
+						 (String)usuarioEntity.getProperty(Usuario.SENHA));
 	}
 	
 	private List<Usuario> entitiesToUsuario(List<Entity> entities) {
@@ -88,7 +93,17 @@ public class UsuarioDAO {
 		return resultUsuarios;
 	}
 	
-	//TODO getUsuarios() ??
+	public List<Usuario> getUsuarios(){
+		
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Query query = new Query(USUARIO_KIND).addSort(Usuario.NOME, SortDirection.ASCENDING);
+		
+		PreparedQuery preparedQuery = datastore.prepare(query);
+		
+		 List<Entity> usuarioEntities = preparedQuery.asList(FetchOptions.Builder.withDefaults());
+		 return entitiesToUsuario(usuarioEntities);
+		
+	}
 	
 	public Usuario entrar(String login, String senha) {
 		
@@ -103,6 +118,7 @@ public class UsuarioDAO {
 			//System.out.println("entity ID: " + entityUsuario.getKey().getId());
 			
 			Usuario usuario = new Usuario(	entityUsuario.getKey().getId(),
+											(int) entityUsuario.getProperty("perfil"),
 											(String) entityUsuario.getProperty("nome"),
 											(String) entityUsuario.getProperty("email"),
 											(String) entityUsuario.getProperty("login")); 

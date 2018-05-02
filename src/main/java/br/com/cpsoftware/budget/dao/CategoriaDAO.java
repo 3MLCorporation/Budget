@@ -46,10 +46,10 @@ public class CategoriaDAO implements EntidadeDao{
 		Key categoriaKey = datastore.put(categoriaEntity);
 		
 		
-		Orcamento orcamento = (Orcamento) new OrcamentoDAO().read(((Categoria) categoria).getOrcamentoId());
+		/*Orcamento orcamento = (Orcamento) new OrcamentoDAO().read(((Categoria) categoria).getOrcamentoId());
 		Usuario usuario =  new UsuarioDAO().read(((Orcamento) orcamento).getUsuarioId());
 		System.out.println("Categoria " + categoria.getNome() + " do orcamento " + orcamento.getNome()
-							+ " do usuario " + usuario.getNome() + " criada com id = " + categoriaKey.getId());
+							+ " do usuario " + usuario.getNome() + " criada com id = " + categoriaKey.getId());*/
 		
 		return categoriaKey.getId();
 	}

@@ -46,12 +46,12 @@ public class ItemDAO{
 		
 		Key itemKey = datastore.put(itemEntity);
 		
-		Rubrica rubrica = (Rubrica) new RubricaDAO().read(item.getRubricaId());
+		/*Rubrica rubrica = (Rubrica) new RubricaDAO().read(item.getRubricaId());
 		Categoria categoria = (Categoria) new CategoriaDAO().read(((Rubrica) rubrica).getCategoriaId());
 		Orcamento orcamento = (Orcamento) new OrcamentoDAO().read(((Categoria) categoria).getOrcamentoId());
 		Usuario usuario =  new UsuarioDAO().read(((Orcamento) orcamento).getUsuarioId());
 		System.out.println("Item " + item.getNome()+ " da rubrica " + rubrica.getNome() + " da categoria " + categoria.getNome() + " do orcamento " + orcamento.getNome()
-							+ " do usuario " + usuario.getNome() + " criado com id = " + itemKey.getId());
+							+ " do usuario " + usuario.getNome() + " criado com id = " + itemKey.getId());*/
 		
 		return itemKey.getId();
 	}

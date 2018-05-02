@@ -37,8 +37,10 @@ public class Login extends HttpServlet {
 			//System.out.println(usuario.getId());
 			
 			req.getSession().setAttribute("usuario", usuario);
-			//req.setAttribute("page", "visualizarResumo");           
-			//req.getRequestDispatcher("principal").forward(req, resp);
+			
+			if(usuario.getPerfil() == Usuario.PERFIL_ADMIN) {
+				resp.sendRedirect("/listarUsuarios");
+			}
 			resp.sendRedirect("/principal");
 		}else {
 			//TODO Tratamento de erros
