@@ -63,6 +63,9 @@ public class OrcamentoDAO implements EntidadeDao{
 
 	@Override
 	public void update(Entidade orcamento) {
+		/*
+		 * TODO Corrigir
+		 */
 		Key key = KeyFactory.createKey(ORCAMENTO_KIND, orcamento.getId());
 		Entity orcamentoEntity = new Entity(key);
 		orcamentoEntity.setProperty(Orcamento.NOME, orcamento.getNome());
@@ -104,12 +107,12 @@ public class OrcamentoDAO implements EntidadeDao{
 	
 	
 	
-	public List<Orcamento> getOrcamentos(Long usuarioId){
+	public List<Orcamento> getOrcamentos(Long projetoId){
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Query query = new Query(ORCAMENTO_KIND).addSort(Orcamento.NOME, SortDirection.ASCENDING);
 		
-		Filter usuarioFilter = new FilterPredicate(Orcamento.PROJETO_ID, FilterOperator.EQUAL, usuarioId);
+		Filter usuarioFilter = new FilterPredicate(Orcamento.PROJETO_ID, FilterOperator.EQUAL, projetoId);
 		query.setFilter(usuarioFilter);
 		
 		PreparedQuery preparedQuery = datastore.prepare(query);

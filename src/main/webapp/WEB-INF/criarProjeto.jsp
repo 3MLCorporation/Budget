@@ -7,7 +7,7 @@
 <div class="container" style="width: 60%;">
    <h2>Cadastrar projeto</h2>
 <br/>
-<form action="cadastrarOrcamento" method="POST">
+<form action="cadastrarProjeto" method="POST">
     <div class="form-group">
         <label for="descricao">Projeto:</label> <input type="text"
         class="form-control" placeholder="Fornecer o nome do novo projeto"

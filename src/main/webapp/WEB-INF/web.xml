@@ -60,12 +60,30 @@
    </servlet-mapping>
    
    <servlet>
+   		<servlet-name>listarProjetos</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.ListarProjetos</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>listarProjetos</servlet-name>
+   		<url-pattern>/listarProjetos</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
    		<servlet-name>cadastrarOrcamento</servlet-name>
    		<servlet-class>br.com.cpsoftware.budget.control.CadastrarOrcamento</servlet-class>
    </servlet>
    <servlet-mapping>
    		<servlet-name>cadastrarOrcamento</servlet-name>
    		<url-pattern>/cadastrarOrcamento</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+   		<servlet-name>listarOrcamentos</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.ListarOrcamentos</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>listarOrcamentos</servlet-name>
+   		<url-pattern>/listarOrcamentos</url-pattern>
    </servlet-mapping>
    
     <servlet>
@@ -87,39 +105,21 @@
    </servlet-mapping>
    
    <servlet>
-   		<servlet-name>cadastrarRubrica</servlet-name>
-   		<servlet-class>br.com.cpsoftware.budget.control.CadastrarRubrica</servlet-class>
-   </servlet>
-   <servlet-mapping>
-   		<servlet-name>cadastrarRubrica</servlet-name>
-   		<url-pattern>/cadastrarRubrica</url-pattern>
-   </servlet-mapping>
-   
-   <servlet>
-   		<servlet-name>cadastrarItem</servlet-name>
-   		<servlet-class>br.com.cpsoftware.budget.control.CadastrarItem</servlet-class>
-   </servlet>
-   <servlet-mapping>
-   		<servlet-name>cadastrarItem</servlet-name>
-   		<url-pattern>/cadastrarItem</url-pattern>
-   </servlet-mapping>
-   
-   <servlet>
-   		<servlet-name>listarOrcamentos</servlet-name>
-   		<servlet-class>br.com.cpsoftware.budget.control.ListarOrcamentos</servlet-class>
-   </servlet>
-   <servlet-mapping>
-   		<servlet-name>listarOrcamentos</servlet-name>
-   		<url-pattern>/listarOrcamentos</url-pattern>
-   </servlet-mapping>
-   
-   <servlet>
    		<servlet-name>listarCategorias</servlet-name>
    		<servlet-class>br.com.cpsoftware.budget.control.ListarCategorias</servlet-class>
    </servlet>
    <servlet-mapping>
    		<servlet-name>listarCategorias</servlet-name>
    		<url-pattern>/listarCategorias</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+   		<servlet-name>cadastrarRubrica</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.CadastrarRubrica</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>cadastrarRubrica</servlet-name>
+   		<url-pattern>/cadastrarRubrica</url-pattern>
    </servlet-mapping>
    
    <servlet>
@@ -131,6 +131,15 @@
    		<url-pattern>/listarRubricas</url-pattern>
    </servlet-mapping>
    
+   <servlet>
+   		<servlet-name>cadastrarItem</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.CadastrarItem</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>cadastrarItem</servlet-name>
+   		<url-pattern>/cadastrarItem</url-pattern>
+   </servlet-mapping>
+
    <servlet>
    		<servlet-name>listarItens</servlet-name>
    		<servlet-class>br.com.cpsoftware.budget.control.ListarItens</servlet-class>

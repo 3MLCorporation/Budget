@@ -21,8 +21,8 @@
     <div class="form-group">
      	 <label>Projeto:</label>
      	 	<select class="form-control" name="orcamentoId">
-					<c:forEach items="${orcamento}" var="orcamento">
-						<option value="${orcamento.id }">${orcamento.nome}</option>
+					<c:forEach items="${projetos}" var="projeto">
+						<option value="${projeto.id }">${projeto.nome}</option>
 					</c:forEach>
 			</select>
 		</div>
