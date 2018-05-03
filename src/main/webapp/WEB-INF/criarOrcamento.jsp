@@ -5,11 +5,11 @@
 
 
 <div class="container" style="width: 60%;">
-   <h2>Cadastrar orçamento</h2>
+   <h2>Cadastrar orcamento</h2>
 <br/>
 <form action="cadastrarOrcamento" method="POST">
     <div class="form-group">
-        <label for="descricao">Orçamento:</label> <input type="text"
+        <label for="descricao">Orcamento:</label> <input type="text"
         class="form-control" placeholder="Fornecer o nome do novo orçamento"
         name="nome" required="required">
    </div>
