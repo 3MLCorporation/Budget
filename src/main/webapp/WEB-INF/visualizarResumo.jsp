@@ -20,7 +20,7 @@
 	    	<tbody>
 	    	
 			<c:if test="${empty orcamento}"> <!-- Alerta caso o orçamento esteja vazio -->
-				<script>mostraraAlerta();</script>
+				<script>mostraraAlerta()</script>
 			</c:if>
 			
         	<c:forEach items="${orcamentos}" var="orcamento"> <!-- Listagem do orçamento -->
