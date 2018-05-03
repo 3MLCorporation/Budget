@@ -20,12 +20,22 @@
         <div class="bg-color">
             <header id="main-header">
                 <nav class="navbar navbar-expand-md navbar-dark navbar-center fixed-top bg-dark">
-                	<img src="../img/favicon.png" alt="Logo" style="width:50px;">
-                    <a class="navbar-brand" href="/principal">Inicio</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                    </button>
+                	<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"> <!--Inicio vai para a pagina de listar usuários caso seja adm ou gerente  -->
+	                	<img src="../img/favicon.png" alt="Logo" style="width:50px;">
+	                    <a class="navbar-brand" href="/listarUsuarios">Inicio</a>
+	                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+	                    aria-expanded="false" aria-label="Toggle navigation">
+	                    <span class="navbar-toggler-icon"></span>
+	                    </button>
+                    </c:if>
+                    <c:if test="${sessionScope.usuario.perfil == 2}"> <!--Inicio vai para a pagina de listar orçamento caso seja usuário padrão-->
+	                	<img src="../img/favicon.png" alt="Logo" style="width:50px;">
+	                    <a class="navbar-brand" href="/principal">Inicio</a>
+	                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
+	                    aria-expanded="false" aria-label="Toggle navigation">
+	                    <span class="navbar-toggler-icon"></span>
+	                    </button>
+                    </c:if>
 
                     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                         <ul class="navbar-nav mr-auto">
