@@ -37,6 +37,7 @@ public class UsuarioDAO {
 
 	public Long create(Usuario usuario) {
 		Entity usuarioEntity = new Entity(USUARIO_KIND);
+		usuarioEntity.setProperty(Usuario.PERFIL, usuario.getPerfil());
 		usuarioEntity.setProperty(Usuario.NOME, usuario.getNome());
 		usuarioEntity.setProperty(Usuario.EMAIL, usuario.getEmail());
 		usuarioEntity.setProperty(Usuario.LOGIN, usuario.getLogin());
@@ -60,6 +61,7 @@ public class UsuarioDAO {
 		Key key = KeyFactory.createKey(USUARIO_KIND, usuario.getId());
 		Entity usuarioEntity = new Entity(key);
 		
+		usuarioEntity.setProperty(Usuario.PERFIL, usuario.getPerfil());
 		usuarioEntity.setProperty(Usuario.NOME, usuario.getNome());
 		usuarioEntity.setProperty(Usuario.EMAIL, usuario.getEmail());
 		usuarioEntity.setProperty(Usuario.LOGIN, usuario.getLogin());
@@ -76,7 +78,7 @@ public class UsuarioDAO {
 	
 	private Usuario entityToUsuario(Entity usuarioEntity) {
 		return new Usuario((Long)usuarioEntity.getProperty(Usuario.ID),
-							(int) usuarioEntity.getProperty(Usuario.PERFIL),
+						 ((Long) usuarioEntity.getProperty(Usuario.PERFIL)).intValue(),
 						 (String)usuarioEntity.getProperty(Usuario.NOME),
 						 (String)usuarioEntity.getProperty(Usuario.EMAIL),
 						 (String)usuarioEntity.getProperty(Usuario.LOGIN),
@@ -118,10 +120,10 @@ public class UsuarioDAO {
 			//System.out.println("entity ID: " + entityUsuario.getKey().getId());
 			
 			Usuario usuario = new Usuario(	entityUsuario.getKey().getId(),
-											(int) entityUsuario.getProperty("perfil"),
-											(String) entityUsuario.getProperty("nome"),
-											(String) entityUsuario.getProperty("email"),
-											(String) entityUsuario.getProperty("login")); 
+											((Long) entityUsuario.getProperty(Usuario.PERFIL)).intValue(),
+											(String) entityUsuario.getProperty(Usuario.NOME),
+											(String) entityUsuario.getProperty(Usuario.EMAIL),
+											(String) entityUsuario.getProperty(Usuario.LOGIN)); 
 			
 			//TODO ATENÇÃO AQUI!!
 			

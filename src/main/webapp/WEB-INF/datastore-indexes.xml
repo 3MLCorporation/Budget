@@ -3,7 +3,7 @@
 <datastore-indexes autoGenerate="true">
 	
 	<datastore-index kind="Orcamento" ancestor="false" source="manual">
-        <property name="usuario_id" direction="asc"/>
+        <property name="projeto_id" direction="asc"/>
         <property name="nome" direction="asc"/>
     </datastore-index>
 	

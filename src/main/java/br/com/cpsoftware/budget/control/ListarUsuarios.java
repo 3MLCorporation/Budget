@@ -16,7 +16,8 @@ public class ListarUsuarios extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		req.setAttribute("usuarios", new UsuarioDAO().getUsuarios());
-		req.getRequestDispatcher("/WEB-INF/listarUsuario.jsp").forward(req, resp);
+		req.setAttribute("page", "listarUsuario");
+		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}
 	
 }
