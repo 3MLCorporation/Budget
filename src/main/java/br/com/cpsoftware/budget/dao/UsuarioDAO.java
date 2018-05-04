@@ -123,7 +123,8 @@ public class UsuarioDAO {
 											((Long) entityUsuario.getProperty(Usuario.PERFIL)).intValue(),
 											(String) entityUsuario.getProperty(Usuario.NOME),
 											(String) entityUsuario.getProperty(Usuario.EMAIL),
-											(String) entityUsuario.getProperty(Usuario.LOGIN)); 
+											(String) entityUsuario.getProperty(Usuario.LOGIN),
+											(String) entityUsuario.getProperty(Usuario.SENHA)); 
 			
 			//TODO ATENÇÃO AQUI!!
 			
