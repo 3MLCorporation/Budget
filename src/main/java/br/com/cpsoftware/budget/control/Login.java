@@ -29,7 +29,6 @@ public class Login extends HttpServlet {
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		Usuario  usuario = usuarioDAO.entrar(login, senha);
 		
-		
 		if(usuario != null) {
 			
 			//System.out.println(usuario.getLogin());
@@ -38,16 +37,10 @@ public class Login extends HttpServlet {
 			
 			req.getSession().setAttribute("usuario", usuario);
 			
-			if(usuario.getPerfil() == Usuario.PERFIL_ADMIN) {
-				resp.sendRedirect("/listarUsuarios");
-			}
 			resp.sendRedirect("/principal");
 		}else {
 			//TODO Tratamento de erros
 		}
-		
-		
-		
 	}
 	
 }

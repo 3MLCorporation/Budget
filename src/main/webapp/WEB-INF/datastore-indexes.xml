@@ -2,6 +2,11 @@
 
 <datastore-indexes autoGenerate="true">
 	
+	<datastore-index kind="Projeto" ancestor="false" source="manual">
+        <property name="gerente_id" direction="asc"/>
+        <property name="nome" direction="asc"/>
+    </datastore-index>
+	
 	<datastore-index kind="Orcamento" ancestor="false" source="manual">
         <property name="projeto_id" direction="asc"/>
         <property name="nome" direction="asc"/>

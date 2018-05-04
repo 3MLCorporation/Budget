@@ -17,9 +17,15 @@ public class ListarProjetos extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
 		
-		ProjetoDAO dao = new ProjetoDAO();
-		
-		req.setAttribute("projetos", dao.getProjetos(usuario.getId()));
+		ProjetoDAO projetoDao = new  ProjetoDAO();
+		switch(usuario.getPerfil()) {
+			case 0:
+				req.setAttribute("projetos", projetoDao.getProjetos());
+				break;
+			case 1:
+				req.setAttribute("projetos", projetoDao.getProjetos(usuario.getId()));
+				break;
+		}
 		
 		req.setAttribute("page", "listarProjetos");
 	    req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
