@@ -18,14 +18,6 @@
        class="form-control" placeholder="Fornecer o valor estimado do orçamento"
        name="valor">
     </div>
-    <div class="form-group">
-     	 <label>Projeto:</label>
-     	 	<select class="form-control" name="orcamentoId">
-					<c:forEach items="${projetos}" var="projeto">
-						<option value="${projeto.id }">${projeto.nome}</option>
-					</c:forEach>
-			</select>
-		</div>
     <button type="submit" class="btn btn-dark">Cadastrar</button>
 </form>
 </div>

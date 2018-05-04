@@ -69,6 +69,15 @@
    </servlet-mapping>
    
    <servlet>
+   		<servlet-name>selecionarProjeto</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.SelecionarProjeto</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>selecionarProjeto</servlet-name>
+   		<url-pattern>/selecionarProjeto</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
    		<servlet-name>cadastrarOrcamento</servlet-name>
    		<servlet-class>br.com.cpsoftware.budget.control.CadastrarOrcamento</servlet-class>
    </servlet>

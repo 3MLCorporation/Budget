@@ -20,41 +20,35 @@
         <div class="bg-color">
             <header id="main-header">
                 <nav class="navbar navbar-expand-md navbar-dark navbar-center fixed-top bg-dark">
-                	<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"> <!--Inicio vai para a pagina de listar usuários caso seja adm ou gerente  -->
-	                	<img src="../img/favicon.png" alt="Logo" style="width:50px;">
-	                    <a class="navbar-brand" href="/listarUsuarios">Inicio</a>
-	                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
-	                    aria-expanded="false" aria-label="Toggle navigation">
-	                    <span class="navbar-toggler-icon"></span>
-	                    </button>
-                    </c:if>
-                    <c:if test="${sessionScope.usuario.perfil == 2}"> <!--Inicio vai para a pagina de listar orçamento caso seja usuário padrão-->
 	                	<img src="../img/favicon.png" alt="Logo" style="width:50px;">
 	                    <a class="navbar-brand" href="/principal">Inicio</a>
 	                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault"
 	                    aria-expanded="false" aria-label="Toggle navigation">
 	                    <span class="navbar-toggler-icon"></span>
 	                    </button>
-                    </c:if>
-
+	                    
                     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                         <ul class="navbar-nav mr-auto">
-                        	<li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
-                                data-toggle="dropdown" role="button" aria-haspopup="true"
-                                aria-expanded="false">Projeto <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="/cadastrarProjeto">Criar</a></li>
-                                    <li><a class="dropdown-item" href="/listarProjetos">Listar</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
-                                data-toggle="dropdown" role="button" aria-haspopup="true"
-                                aria-expanded="false">Orçamento <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="/cadastrarOrcamento">Criar</a></li>
-                                    <li><a class="dropdown-item" href="/listarOrcamentos">Listar</a></li>
-                                </ul>
-                            </li>
+                        	<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
+	                        	<li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
+	                                data-toggle="dropdown" role="button" aria-haspopup="true"
+	                                aria-expanded="false">Projeto <span class="caret"></span></a>
+	                                <ul class="dropdown-menu">
+	                                    <li><a class="dropdown-item" href="/cadastrarProjeto">Criar</a></li>
+	                                    <li><a class="dropdown-item" href="/listarProjetos">Listar</a></li>
+	                                </ul>
+	                            </li>
+	                            <c:if test="${not empty sessionScope.projetoEditavel}">
+		                            <li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
+		                                data-toggle="dropdown" role="button" aria-haspopup="true"
+		                                aria-expanded="false">Orçamento <span class="caret"></span></a>
+		                                <ul class="dropdown-menu">
+		                                    <li><a class="dropdown-item" href="/cadastrarOrcamento">Criar</a></li>
+		                                    <li><a class="dropdown-item" href="/listarOrcamentos">Listar</a></li>
+		                                </ul>
+		                            </li>
+	                            </c:if>
+                            </c:if>
                             <c:if test="${not empty sessionScope.orcamentoEditavel}">
 	                            <li class="dropdown"><a class="nav-link" href="#" class="dropdown-toggle"
 	                                data-toggle="dropdown" role="button" aria-haspopup="true"

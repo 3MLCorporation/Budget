@@ -19,6 +19,7 @@ import com.google.appengine.api.datastore.Query.SortDirection;
 
 import br.com.cpsoftware.budget.model.Entidade;
 import br.com.cpsoftware.budget.model.Orcamento;
+import br.com.cpsoftware.budget.model.Projeto;
 import br.com.cpsoftware.budget.model.Usuario;
 
 public class OrcamentoDAO implements EntidadeDao{
@@ -43,9 +44,10 @@ public class OrcamentoDAO implements EntidadeDao{
 		
 		Key orcamentoKey = datastore.put(orcamentoEntity);
 		
-		UsuarioDAO userDao = new UsuarioDAO();
-		Usuario read = userDao.read(((Orcamento) orcamento).getProjetoId());
-		System.out.println("Orcamento " + orcamento.getNome() + " do usuário " + read.getNome() + " criado com id = " + orcamentoKey.getId());
+		ProjetoDAO projetoDao = new ProjetoDAO();
+		Projeto projeto = (Projeto) projetoDao.read(((Orcamento) orcamento).getProjetoId());
+		System.out.println("Orcamento " + orcamento.getNome() + " do projeto " + projeto.getNome() +
+							" criado com id = " + orcamentoKey.getId());
 		
 		return orcamentoKey.getId();
 		

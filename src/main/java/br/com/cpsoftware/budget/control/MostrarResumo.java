@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.cpsoftware.budget.dao.ProjetoDAO;
-import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.model.Usuario;
 
 @SuppressWarnings("serial")
@@ -36,6 +35,7 @@ public class MostrarResumo extends HttpServlet {
 		if(usuario == null) {
 			System.out.println("usuario logado null");
 		}else {
+			System.out.println(usuario.getPerfil());
 			System.out.println(usuario.getId());
 			System.out.println(usuario.getLogin());
 			System.out.println(usuario.getSenha());
@@ -47,13 +47,7 @@ public class MostrarResumo extends HttpServlet {
 			System.out.println("orcamentoEditavel : " + orcamentoEditavelId);
 		}*/
 		
-		if(usuario.getPerfil() == 0) {
-			ProjetoDAO projetoDao = new  ProjetoDAO();
-			req.setAttribute("projetos", projetoDao.getProjetos());
-		}else if(usuario.getPerfil() == 1) {
-			ProjetoDAO projetoDao = new  ProjetoDAO();
-			req.setAttribute("projetos", projetoDao.getProjetos(usuario.getId()));
-		}else if(usuario.getPerfil() == 2 ){
+		if(usuario.getPerfil() == 2 ){
 			/*List<OrcamentoUsuario> relacoes = new OrcamentoUsuario.getRelacoes(usuario.getId);
 			List<Orcamento> orcamentos = new ArrayList();
 			for(OrcamentoUsuario relacao: relacoes){
@@ -67,22 +61,23 @@ public class MostrarResumo extends HttpServlet {
 				req.setAttribute("orcamentoSelecionado", new OrcamentoDAO().read(Long.parseLong(
 														(String) req.getSession().getAttribute("orcamentoEditavel"))).getNome());
 			}
-			*/
-		}
-		
-		OrcamentoDAO dao = new OrcamentoDAO();
-		
-		req.setAttribute("orcamentos", dao.getOrcamentos(usuario.getId()));
-		if(req.getSession().getAttribute("orcamentoEditavel") == null) {
 			
+			req.setAttribute("page", "listarOrcamentos");           
+			req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
+			*/
 		}else {
-			req.setAttribute("orcamentoSelecionado", new OrcamentoDAO().read(Long.parseLong(
-													(String) req.getSession().getAttribute("orcamentoEditavel"))).getNome());
+			ProjetoDAO projetoDao = new  ProjetoDAO();
+			switch(usuario.getPerfil()) {
+				case 0:
+					req.setAttribute("projetos", projetoDao.getProjetos());
+					break;
+				case 1:
+					req.setAttribute("projetos", projetoDao.getProjetos(usuario.getId()));
+					break;
+			}
+			req.setAttribute("page", "listarProjetos");           
+			req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 		}
-		
-		
-		req.setAttribute("page", "visualizarResumo");           
-		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}
 	
 }

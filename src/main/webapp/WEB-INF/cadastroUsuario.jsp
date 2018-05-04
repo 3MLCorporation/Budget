@@ -51,13 +51,14 @@
 					name="confirmacao" required="required">
 				</div>
 				
-				<div class="form-group">
+<!-- 				<div class="form-group">
 		     	<label for="text">Tipo de usuário:</label>
 		     	 	<select class="form-control" name="categoria">
 		     	 		<option value="normal">Normal</option>
 						<option value="gerente">Gerente</option>
 					</select>
-				</div>
+				</div> -->
+				
 				<br/>
 				<button type="submit" class="btn btn-dark">Cadastrar</button> 
 			</form>

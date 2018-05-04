@@ -11,6 +11,7 @@
       			<tr>
         			<th>Projeto</th>
         			<th>Valor</th>
+        			<th></th>
       			</tr>
     		</thead>
     		<tbody>
@@ -18,6 +19,11 @@
 					<tr>
 						<td> ${projeto.nome}</td>
 						<td> ${projeto.getValorTotal()}</td>
+						<td> <form action="selecionarProjeto" method="POST">
+							<input type="hidden" class="form-control" value="${projeto.id}" name="projetoEditavel">
+							<button type="submit" class="btn btn-dark"> > </button>
+				           	</form> 
+   						</td>
 					</tr>
 				</c:forEach>
 	   	 	</tbody>
