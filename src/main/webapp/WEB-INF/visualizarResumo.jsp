@@ -19,7 +19,7 @@
 		      		</tr>
 	    		</thead>
 		    	<tbody>
-					<c:if test="${empty projetos}"> <!-- Alerta caso o orçamento esteja vazio -->
+					<c:if test="${!empty projetos}"> <!-- Alerta caso o orçamento esteja vazio -->
 						<script>mostraraAlerta()</script>
 					</c:if>
 				
@@ -48,26 +48,4 @@
 	      		</tr>
 	    	</thead>
 	    	<tbody>
-	    	
-			<c:if test="${empty orcamentos}"> <!-- Alerta caso o orçamento esteja vazio -->
-				<script>mostraraAlerta()</script>
-			</c:if>
-			
-        	<c:forEach items="${orcamentos}" var="orcamento"> <!-- Listagem do orçamento -->
-						<tr>
-							<td> ${orcamento.nome}</td>
-							<td> ${orcamento.getValorTotal()}</td>
-							<td> --- </td>
-							<td> --- </td>
-							<td> <form action="selecionarOrcamento" method="POST">
-								<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamentoEditavel">
-								<button type="submit" class="btn btn-dark"> > </button>
-					           	</form> 
-       						</td>
-						</tr>
-			</c:forEach>
-				
-		   	</tbody>
-	  	</table>
-	  </div>
 </div>

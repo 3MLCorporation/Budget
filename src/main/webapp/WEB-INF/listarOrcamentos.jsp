@@ -12,8 +12,9 @@
       			<tr>
         			<th>Orçamento</th>
         			<th>Valor</th>
-        			<th></th>
-      			</tr>
+        			<th>Visualizar</th>
+        			<th>Usuários</th>
+       			</tr>
     		</thead>
     		<tbody>
    				<c:if test="${empty orcamentos}"> <!-- Alerta caso o orçamento esteja vazio -->
@@ -23,10 +24,17 @@
 					<tr>
 						<td> ${orcamento.nome}</td>
 						<td> ${orcamento.getValorTotal()}</td>
-						<td> <form action="selecionarOrcamento" method="POST">
-							<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamentoEditavel">
-							<button type="submit" class="btn btn-dark"> > </button>
+						<td> 
+							<form action="selecionarOrcamento" method="POST">
+								<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamentoEditavel">
+								<button type="submit" class="btn btn-dark"> <img src="../img/visualizar.png" alt="Logo" style="width:100%;"> </button>
 				           	</form> 
+   						</td>
+   						<td>
+   							<form action="adicionarEditor" method="POST">
+								<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamento">
+								<button class="btn btn-dark"> <img src="../img/adicionar.png" alt="Logo" style="width:100%;"> </button>
+				           	</form>
    						</td>
 					</tr>
 				</c:forEach>
