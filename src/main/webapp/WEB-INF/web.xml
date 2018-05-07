@@ -104,6 +104,15 @@
    		<url-pattern>/listarOrcamentos</url-pattern>
    </servlet-mapping>
    
+   <servlet>
+   		<servlet-name>adicionarEditor</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.AdicionarEditor</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>adicionarEditor</servlet-name>
+   		<url-pattern>/adicionarEditor</url-pattern>	
+	</servlet-mapping>
+   
     <servlet>
    		<servlet-name>selecionarOrcamento</servlet-name>
    		<servlet-class>br.com.cpsoftware.budget.control.SelecionarOrcamento</servlet-class>

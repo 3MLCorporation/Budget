@@ -8,8 +8,8 @@ public class OrcamentoUsuario {
 	
 	//Definição das keys do banco
 	public static final String ID = "id";
-	public final String EDITOR_ID = "editor_id";
-	public final String ORCAMENTO_ID = "orcamento_id";
+	public static final String EDITOR_ID = "editor_id";
+	public static final String ORCAMENTO_ID = "orcamento_id";
 	
 	
 	public OrcamentoUsuario(Long id, Long editorId, Long orcamentoId) {
