@@ -31,8 +31,8 @@
 				           	</form> 
    						</td>
    						<td>
-   							<form action="adicionarEditor" method="POST">
-								<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamento">
+   							<form action="adicionarEditor" method="GET">
+								<%-- <input type="hidden" class="form-control" value="${orcamento.id}" name="orcamento"> --%>
 								<button class="btn btn-dark"> <img src="../img/adicionar.png" alt="Logo" style="width:100%;"> </button>
 				           	</form>
    						</td>

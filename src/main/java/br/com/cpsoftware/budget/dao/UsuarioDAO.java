@@ -23,6 +23,7 @@ import com.google.appengine.api.datastore.Query.SortDirection;
 
 import br.com.cpsoftware.budget.model.Item;
 import br.com.cpsoftware.budget.model.Orcamento;
+import br.com.cpsoftware.budget.model.Rubrica;
 import br.com.cpsoftware.budget.model.Usuario;
 
 public class UsuarioDAO {
@@ -104,6 +105,21 @@ public class UsuarioDAO {
 		
 		 List<Entity> usuarioEntities = preparedQuery.asList(FetchOptions.Builder.withDefaults());
 		 return entitiesToUsuario(usuarioEntities);
+		
+	}
+	
+	public Usuario getUsuarioByEmail(String email){
+		
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Query query = new Query(USUARIO_KIND).addSort(Usuario.NOME, SortDirection.ASCENDING);
+		
+		Filter emailFilter = new FilterPredicate(Usuario.EMAIL, FilterOperator.EQUAL, email);
+		query.setFilter(emailFilter);
+		
+		PreparedQuery preparedQuery = datastore.prepare(query);
+		
+		 Entity usuarioEntities = preparedQuery.asSingleEntity();
+		 return entityToUsuario(usuarioEntities);
 		
 	}
 	

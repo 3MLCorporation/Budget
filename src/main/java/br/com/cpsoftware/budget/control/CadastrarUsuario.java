@@ -33,7 +33,7 @@ public class CadastrarUsuario extends HttpServlet {
 		
 		//TODO Validações
 		
-		Usuario usuario = new Usuario(Usuario.PERFIL_GERENTE, nome, email, login, senha);
+		Usuario usuario = new Usuario(Usuario.PERFIL_PADRAO, nome, email, login, senha);
 		
 		Long id = this.dao.create(usuario);
 		
