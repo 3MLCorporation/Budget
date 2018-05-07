@@ -19,21 +19,22 @@
 		      		</tr>
 		    	</thead>
 		    	<tbody>
-		        	<c:forEach items="${usuarios}" var="usuario">
+		        	<c:forEach items="${usuarios}" var="usuario" varStatus="id">
 								<tr>
 									<td> ${usuario.nome}</td>
 									<td> ${usuario.login}</td>
 									<td> ${usuario.email}</td>
 									<td>
-										<select onchange="getValorPerfil()" id="perfilSelect">
-		           							<option ${1 == usuario.perfil ? 'selected' : ''} value = '0'>Gerente</option> <!-- 1 = model.Usuario.PERFIL_GERENTE -->
-											<option ${2 == usuario.perfil ? 'selected' : ''} value = '1'>Padrão</option> <!-- 2 = model.Usuario.PERFIL_PADRAO -->
+										<select id="perfilSelect${id.count }"><!-- TODO Mudar o evento ou desabilitar o botao de atualizarPerfil, enquanto não houver mudado no select, ou mudar a posição da chamada do método(colocar form de atualizarPerfil -->
+		           							<option ${1 == usuario.perfil ? 'selected' : ''} value = '1'>Gerente</option> <!-- 1 = model.Usuario.PERFIL_GERENTE -->
+											<option ${2 == usuario.perfil ? 'selected' : ''} value = '2'>Padrão</option> <!-- 2 = model.Usuario.PERFIL_PADRAO -->
 		           						</select>
 									</td>
 									<td>
 										<form action="atualizarPerfil" method="POST">
-											<input type="hidden" class="form-control" id="valorPerfil" name="perfilAtualizado">
-											<button type="submit" class="btn btn-default"><img src="../img/salvarPerfil.png" alt="Logo" style="width:70%;"></button>
+											<input type="hidden" class="form-control" value="${usuario.id}" name="usuarioParaAtulizar">
+											<input type="hidden" class="form-control" id="valorPerfil${id.count }" name="perfilAtualizado">
+											<button type="submit"  onclick="getValorPerfil('${id.count}')" class="btn btn-default"><img src="../img/salvarPerfil.png" alt="Logo" style="width:70%;"></button>
 							           	</form> 
 							        </td>
 									<td>

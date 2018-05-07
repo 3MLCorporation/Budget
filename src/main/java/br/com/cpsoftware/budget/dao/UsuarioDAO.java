@@ -77,7 +77,7 @@ public class UsuarioDAO {
 	}
 	
 	private Usuario entityToUsuario(Entity usuarioEntity) {
-		return new Usuario((Long)usuarioEntity.getProperty(Usuario.ID),
+		return new Usuario(usuarioEntity.getKey().getId(),
 						 ((Long) usuarioEntity.getProperty(Usuario.PERFIL)).intValue(),
 						 (String)usuarioEntity.getProperty(Usuario.NOME),
 						 (String)usuarioEntity.getProperty(Usuario.EMAIL),

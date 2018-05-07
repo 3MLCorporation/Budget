@@ -8,8 +8,8 @@ function mostrarAlerta(){
 	alert('Você não possui nenhum orçamento.');
 }
 
-function getValorPerfil(){
-	var perfilSelect = document.getElementById("perfilSelect");
-	var perfilSelecionado = perfilSelect.options[perfilSelect.selectedIndex].value;
-	document.getElementById('valorPerfil').value = ""+ perfilSelecionado;
+function getValorPerfil(perfilSelectCount){
+	var select = document.getElementById('perfilSelect' + perfilSelectCount);
+	var perfilSelecionado = select.options[select.selectedIndex].value;
+	document.getElementById('valorPerfil' + perfilSelectCount).value = perfilSelecionado;
 }
