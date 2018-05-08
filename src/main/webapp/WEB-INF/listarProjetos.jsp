@@ -11,7 +11,7 @@
       			<tr>
         			<th>Projeto</th>
         			<th>Valor</th>
-        			<th>Visualizar</th>
+        			<th>Editar</th>
       			</tr>
     		</thead>
     		<tbody>
@@ -21,7 +21,7 @@
 						<td> ${projeto.getValorTotal()}</td>
 						<td> <form action="selecionarProjeto" method="POST">
 							<input type="hidden" class="form-control" value="${projeto.id}" name="projetoEditavel">
-							<button type="submit" class="btn btn-dark"> <img src="../img/visualizar.png" alt="Logo" style="width:100%;"> </button>
+							<button type="submit" class="btn btn-dark"> <img src="../img/editar.png" alt="Logo" style="width:100%;"> </button>
 				           	</form> 
    						</td>
 					</tr>

@@ -21,6 +21,7 @@
 							<td>${editor.nome}</td>
 							<td>${editor.email}</td>
 						</tr>
+						<tr></tr>
 					</c:forEach>
 				</tbody>
 		  	</table>
@@ -31,21 +32,22 @@
 		  		<strong>Este orçamento não possui editores, adicione-os abaixo!</strong>
 		  	</h2>
 	  	</c:if>
-
+	  	
+	  	<br/>
 	  	<form action="adicionarEditor" method="POST">
-	  		<label for="text">Email</label><input type="text"
+	  		<label for="text"><strong>Email</strong></label><input type="text"
 					class="form-control" placeholder="Fornecer o email do usuário a ser adicionado"
 					name="email" required="required">
 			<button type="submit" class="btn btn-dark">Adicionar</button>
 	  	</form>
+	  	
+		<c:if test="${not empty confirmacao }">
+			<c:if test="${not empty usuarioAdicionado}">
+				<h2><strong>Usuário ${usuarioAdicionado.nome} adicionado com sucesso!</strong></h2>
+			</c:if>
+			<c:if test="${empty usuarioAdicionado}">
+				<h3><strong>Email do usuário não encontrado, experimente tentar outro!</strong></h3>
+			</c:if>
+		</c:if>
 	</div>
-
-	<c:if test="${not empty confirmacao }">
-		<c:if test="${not empty usuarioAdicionado}">
-			<h2><strong>Usuário ${usuarioAdicionado.nome} adicionado com sucesso!</strong></h2>
-		</c:if>
-		<c:if test="${empty usuarioAdicionado}">
-			<h2><strong>Email do usuário não encontrado, experimente tentar outro!</strong></h2>
-		</c:if>
-	</c:if>
 </div>

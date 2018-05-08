@@ -34,7 +34,7 @@
 										<form action="atualizarPerfil" method="POST">
 											<input type="hidden" class="form-control" value="${usuario.id}" name="usuarioParaAtulizar">
 											<input type="hidden" class="form-control" id="valorPerfil${id.count }" name="perfilAtualizado">
-											<button type="submit"  onclick="getValorPerfil('${id.count}')" class="btn btn-default"><img src="../img/salvarPerfil.png" alt="Logo" style="width:100%;"></button>
+											<button type="submit"  onclick="getValorPerfil('${id.count}')" class="btn btn-dark"><img src="../img/salvarPerfil.png" alt="Logo" style="width:100%;"></button>
 							           	</form> 
 							        </td>
 									<td>

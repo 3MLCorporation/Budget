@@ -12,7 +12,7 @@
       			<tr>
         			<th>Orçamento</th>
         			<th>Valor</th>
-        			<th>Visualizar</th>
+        			<th>Editar</th>
         			<th>Usuários</th>
        			</tr>
     		</thead>
@@ -27,7 +27,7 @@
 						<td> 
 							<form action="selecionarOrcamento" method="POST">
 								<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamentoEditavel">
-								<button type="submit" class="btn btn-dark"> <img src="../img/visualizar.png" alt="Logo" style="width:100%;"> </button>
+								<button type="submit" class="btn btn-dark"> <img src="../img/editar.png" alt="Logo" style="width:100%;"> </button>
 				           	</form> 
    						</td>
    						<td>
