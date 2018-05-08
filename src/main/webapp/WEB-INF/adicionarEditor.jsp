@@ -41,10 +41,10 @@
 	</div>
 
 	<c:if test="${not empty confirmacao }">
-		<c:if test="${not empty usuario}">
-			<h2><strong>Usuário ${usuario.nome} adicionado com sucesso!</strong></h2>
+		<c:if test="${not empty usuarioAdicionado}">
+			<h2><strong>Usuário ${usuarioAdicionado.nome} adicionado com sucesso!</strong></h2>
 		</c:if>
-		<c:if test="${empty usuario}">
+		<c:if test="${empty usuarioAdicionado}">
 			<h2><strong>Email do usuário não encontrado, experimente tentar outro!</strong></h2>
 		</c:if>
 	</c:if>

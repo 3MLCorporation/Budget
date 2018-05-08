@@ -33,6 +33,13 @@ public class AdicionarEditor extends HttpServlet {
 		
 		req.setAttribute("editoresCadastrados", usuarios);
 		req.setAttribute("orcamento", new OrcamentoDAO().read(orcamentoId).getNome());
+		
+		req.setAttribute("confirmacao", req.getSession().getAttribute("confirmacao"));
+		req.getSession().setAttribute("confirmacao", null);
+
+		req.setAttribute("usuarioAdicionado", req.getSession().getAttribute("usuarioAdicionado"));
+		req.getSession().setAttribute("usuarioAdicionado", null);
+
 		req.setAttribute("page", "adicionarEditor");
 		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}
@@ -45,18 +52,19 @@ public class AdicionarEditor extends HttpServlet {
 		String email = req.getParameter("email");
 		
 		Usuario usuario = new UsuarioDAO().getUsuarioByEmail(email);
-		req.setAttribute("confirmacao", "confirmacao");
+		//req.setAttribute("confirmacao", "confirmacao");
+		req.getSession().setAttribute("confirmacao", "confirmacao");
 		if(usuario == null) {
-			
+			System.out.println("Usuario adicionado null");
+			req.getSession().setAttribute("usuarioAdicionado", usuario);
 		}else {
 			OrcamentoUsuario orcamentoUsuario = new OrcamentoUsuario(usuario.getId(), orcamentoId);
 			new OrcamentoUsuarioDAO().create(orcamentoUsuario);
-			req.setAttribute("usuario", usuario);
+			//req.setAttribute("usuario", usuario);
+			req.getSession().setAttribute("usuarioAdicionado", usuario);
 		}
 		
-		/*
-		 * TODO redirect ou dispatcher??
-		 */
+		resp.sendRedirect("/adicionarEditor");
 	}
 	
 }

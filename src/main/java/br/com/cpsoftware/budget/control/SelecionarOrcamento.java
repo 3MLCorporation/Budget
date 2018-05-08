@@ -14,7 +14,7 @@ public class SelecionarOrcamento extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.getSession().setAttribute("orcamentoEditavel", req.getParameter("orcamentoEditavel"));
 		System.out.println("SelecionarOrcamento/doPost -- orcamentoEditavel : " + req.getParameter("orcamentoEditavel"));
-		resp.sendRedirect("/principal");
+		resp.sendRedirect("/listarOrcamentos");
 		
 	}
 	

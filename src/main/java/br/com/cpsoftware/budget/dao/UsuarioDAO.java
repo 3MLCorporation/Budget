@@ -118,8 +118,13 @@ public class UsuarioDAO {
 		
 		PreparedQuery preparedQuery = datastore.prepare(query);
 		
-		 Entity usuarioEntities = preparedQuery.asSingleEntity();
-		 return entityToUsuario(usuarioEntities);
+		 Entity usuarioEntity = preparedQuery.asSingleEntity();
+		 if(usuarioEntity != null) {
+			 return entityToUsuario(usuarioEntity);
+		 }else {
+			 return null;
+		 }
+		 
 		
 	}
 	
