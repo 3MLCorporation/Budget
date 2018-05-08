@@ -48,20 +48,39 @@ public class AdicionarEditor extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Long orcamentoId = Long.parseLong((String) req.getSession().getAttribute("orcamentoEditavel"));
 		
-		
 		String email = req.getParameter("email");
 		
 		Usuario usuario = new UsuarioDAO().getUsuarioByEmail(email);
+
+		List<OrcamentoUsuario> orcamentoUsuarioLista = new OrcamentoUsuarioDAO().getOrcamentoUsuarioByOrcamentoId(orcamentoId);
+		List<Usuario> usuarios = new ArrayList<Usuario>();
+
+		boolean emailExistente = false;
+
+		for(OrcamentoUsuario orcamentoUsuario : orcamentoUsuarioLista) {
+			usuarios.add(new UsuarioDAO().read(orcamentoUsuario.getEditorId()));
+		}
+		
 		//req.setAttribute("confirmacao", "confirmacao");
 		req.getSession().setAttribute("confirmacao", "confirmacao");
 		if(usuario == null) {
 			System.out.println("Usuario adicionado null");
 			req.getSession().setAttribute("usuarioAdicionado", usuario);
 		}else {
-			OrcamentoUsuario orcamentoUsuario = new OrcamentoUsuario(usuario.getId(), orcamentoId);
-			new OrcamentoUsuarioDAO().create(orcamentoUsuario);
-			//req.setAttribute("usuario", usuario);
-			req.getSession().setAttribute("usuarioAdicionado", usuario);
+			for(Usuario usuarioAux: usuarios) {
+				if(usuario.getEmail().equals(usuarioAux.getEmail())) {
+					emailExistente = true;
+				}
+			}
+			
+			if(!emailExistente) {
+				OrcamentoUsuario orcamentoUsuario = new OrcamentoUsuario(usuario.getId(), orcamentoId);
+				new OrcamentoUsuarioDAO().create(orcamentoUsuario);
+				//req.setAttribute("usuario", usuario);
+				req.getSession().setAttribute("usuarioAdicionado", usuario);
+			}else {
+				//TODO mensagem de email duplicado, "usuario ja esta no projeto"
+			}
 		}
 		
 		resp.sendRedirect("/adicionarEditor");

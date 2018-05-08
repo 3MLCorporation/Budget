@@ -1,14 +1,20 @@
  package br.com.cpsoftware.budget.control;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.cpsoftware.budget.dao.OrcamentoDAO;
+import br.com.cpsoftware.budget.dao.OrcamentoUsuarioDAO;
 import br.com.cpsoftware.budget.dao.ProjetoDAO;
 import br.com.cpsoftware.budget.dao.UsuarioDAO;
+import br.com.cpsoftware.budget.model.Orcamento;
+import br.com.cpsoftware.budget.model.OrcamentoUsuario;
 import br.com.cpsoftware.budget.model.Usuario;
 
 @SuppressWarnings("serial")
@@ -62,23 +68,23 @@ public class MostrarResumo extends HttpServlet {
 				req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 				break;
 			case Usuario.PERFIL_PADRAO:
-				/*List<OrcamentoUsuario> relacoes = new OrcamentoUsuario.getRelacoes(usuario.getId);
-				List<Orcamento> orcamentos = new ArrayList();
-				for(OrcamentoUsuario relacao: relacoes){
-					orcamentos.add(new OrcamentoDAO.read(relacao.getOrcamentoId()));
+				List<OrcamentoUsuario> orcamentoUsuarioLista = new OrcamentoUsuarioDAO().getOrcamentoUsuarioByUsuarioId(usuario.getId());
+				List<Orcamento> orcamentos = new ArrayList<Orcamento>();
+				for(OrcamentoUsuario relacao: orcamentoUsuarioLista){
+					orcamentos.add((Orcamento) new OrcamentoDAO().read(relacao.getOrcamentoId()));
 				}
 				req.setAttribute("orcamentos", orcamentos);
 				
-				if(req.getSession().getAttribute("orcamentoEditavel") == null) {
+				/*if(req.getSession().getAttribute("orcamentoEditavel") == null) {
 				
 				}else {
 					req.setAttribute("orcamentoSelecionado", new OrcamentoDAO().read(Long.parseLong(
 															(String) req.getSession().getAttribute("orcamentoEditavel"))).getNome());
-				}
+				}*/
 				
 				req.setAttribute("page", "listarOrcamentos");           
 				req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
-				*/
+				
 				break;
 		}
 	}
