@@ -2,10 +2,12 @@ package br.com.cpsoftware.budget.model;
 
 import java.util.Date;
 
+import com.google.appengine.api.datastore.Blob;
+
 public class NotaFiscal {
 	private Long id;
 	private Long itemId;
-	private Long arquivo;
+	private Blob arquivo;
 	private String fornecedor;
 	private Double valor;
 	private Date data;
@@ -20,7 +22,11 @@ public class NotaFiscal {
 	public static final String DATA = "data";
 	public static final String STATUS = "status";
 	
-	public NotaFiscal(Long itemId, Long id, Long arquivo, String fornecedor, Double valor, Date data, int status) {
+	//Status da nota fiscal
+	public static final int STATUS_PARCIAL = 1;
+	public static final int STATUS_QUITADO = 2;
+	
+	public NotaFiscal(Long itemId, Long id, Blob arquivo, String fornecedor, Double valor, Date data, int status) {
 		this.itemId = itemId;
 		this.id = id;
 		this.arquivo = arquivo;
@@ -30,7 +36,7 @@ public class NotaFiscal {
 		this.status = status;
 	}
 
-	public NotaFiscal(Long itemId, Long arquivo, String fornecedor, Double valor, Date data, int status) {
+	public NotaFiscal(Long itemId, Blob arquivo, String fornecedor, Double valor, Date data, int status) {
 		this.itemId = itemId;
 		this.arquivo = arquivo;
 		this.fornecedor = fornecedor;
@@ -55,11 +61,11 @@ public class NotaFiscal {
 		this.itemId = itemId;
 	}
 
-	public Long getArquivo() {
+	public Blob getArquivo() {
 		return arquivo;
 	}
 
-	public void setArquivo(Long arquivo) {
+	public void setArquivo(Blob arquivo) {
 		this.arquivo = arquivo;
 	}
 

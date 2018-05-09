@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.google.appengine.api.datastore.Blob;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -74,7 +75,7 @@ public class NotaFiscalDAO {
 	private NotaFiscal entityToNotaFiscal(Entity notaFiscalEntity) {
 		return new NotaFiscal((Long)notaFiscalEntity.getProperty(NotaFiscal.ITEM_ID),
 				 notaFiscalEntity.getKey().getId(),
-				 (Long)notaFiscalEntity.getProperty(NotaFiscal.ARQUIVO),
+				 (Blob)notaFiscalEntity.getProperty(NotaFiscal.ARQUIVO),
 				 (String)notaFiscalEntity.getProperty(NotaFiscal.FORNECEDOR),
 				 (Double)notaFiscalEntity.getProperty(NotaFiscal.VALOR),
 				 (Date)notaFiscalEntity.getProperty(NotaFiscal.DATA),
