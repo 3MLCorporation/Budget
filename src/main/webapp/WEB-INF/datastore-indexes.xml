@@ -36,5 +36,15 @@
         <property name="rubrica_id" direction="asc"/>
         <property name="nome" direction="asc"/>
     </datastore-index>
+    
+    <datastore-index kind="NotaFiscal" ancestor="false" source="manual">
+        <property name="item_id" direction="asc"/>
+        <property name="fornecedor" direction="asc"/>
+    </datastore-index>
+    
+    <datastore-index kind="Pagamento" ancestor="false" source="manual">
+        <property name="nota_fiscal_id" direction="asc"/>
+        <property name="data" direction="asc"/>
+    </datastore-index>
 
 </datastore-indexes>

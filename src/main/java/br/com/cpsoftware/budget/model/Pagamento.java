@@ -16,9 +16,9 @@ public class Pagamento {
 	public static final String VALOR = "valor";
 	public static final String DATA = "data";
 	
-	public Pagamento(Long id, Long notaFiscalId, Long arquivo, Double valor, Date data) {
-		this.id = id;
+	public Pagamento(Long notaFiscalId, Long id, Long arquivo, Double valor, Date data) {
 		this.notaFiscalId = notaFiscalId;
+		this.id = id;
 		this.arquivo = arquivo;
 		this.valor = valor;
 		this.data = data;
