@@ -5,7 +5,7 @@ pageEncoding="UTF-8"%>
 
 <div>
 	<div class="container" style="width: 60%;">
-		<h2>Adicionar nota fiscal</h2>
+		<h2>Visualizar nota fiscal</h2> <!--TEM QUE MUDAR O CÓDIGO-->
 		<br/>
 		<form action="cadastrarNotaFiscal" method="POST">
 				<div class="form-group">

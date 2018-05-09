@@ -4,11 +4,10 @@
 pageEncoding="UTF-8"%>
 
 <div>
-	<div class="container" style="width: 60%;">
-		<h2>Adicionar nota fiscal</h2>
-		<br/>
+  <div class="container" style="width: 60%;">
+    <h2>Cadastro de pagamento</h2>
+    <br/>
     <form action="cadastrarNotaFiscal" method="POST" enctype="multipart/form-data">
-
       <div class="form-group">
         <label for="text">Fornecedor</label> <input type="text"
         class="form-control" placeholder="Fornecer o fornecedor"
@@ -21,20 +20,23 @@ pageEncoding="UTF-8"%>
         name="valor" required="required">
       </div>
 
-      <div class="form-group">
-        <label for="text">Data</label> <input type="data"
-        class="form-control" placeholder="Fornecer a data de emissão da nota"
-        name="data" required="required">
-      </div>
+      <div class="row">
+        <div class="form-group col-lg-6">
+          <label for="text">Data</label> <input type="date"
+          class="form-control" placeholder="Fornecer a data de emissão da nota"
+          name="data" required="required">
 
-      <div class="form-group">
-        <label for="text">Arquivo</label> <input type="file"
-        class="form-control" placeholder="Fornecer o arquivo da nota"
-        name="arquivo" required="required">
+        </div>
+
+        <div class="form-group col-lg-6">
+          <label for="text">Arquivo</label> <input type="file"
+          class="form-control" placeholder="Fornecer o arquivo da nota"
+          name="arquivo" required="required">
+        </div>
       </div>
 
       <br/>
       <button type="submit" class="btn btn-dark">Cadastrar</button> 
     </form>
   </div>
-</div>
+</div>s
