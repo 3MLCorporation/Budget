@@ -21,9 +21,6 @@ import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.datastore.Query.SortDirection;
 
-import br.com.cpsoftware.budget.model.Item;
-import br.com.cpsoftware.budget.model.Orcamento;
-import br.com.cpsoftware.budget.model.Rubrica;
 import br.com.cpsoftware.budget.model.Usuario;
 
 public class UsuarioDAO {

@@ -17,11 +17,7 @@ import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.datastore.Query.SortDirection;
 
-import br.com.cpsoftware.budget.model.Categoria;
 import br.com.cpsoftware.budget.model.Item;
-import br.com.cpsoftware.budget.model.Orcamento;
-import br.com.cpsoftware.budget.model.Rubrica;
-import br.com.cpsoftware.budget.model.Usuario;
 
 public class ItemDAO{
 	
@@ -68,7 +64,7 @@ public class ItemDAO{
 	public void update(Item item) {
 		Key key = KeyFactory.createKey(ITEM_KIND, item.getId());  // From a book, create a Key
 		Entity itemEntity = new Entity(key);         // Convert Book to an Entity
-		itemEntity.setProperty(Orcamento.NOME, item.getNome());
+		itemEntity.setProperty(Item.NOME, item.getNome());
 		itemEntity.setProperty(Item.DESCRICAO, item.getDescricao());
 		itemEntity.setProperty(Item.VALOR_UNIFORME, item.getValor_uniforme());
 		itemEntity.setProperty(Item.QUANTIDADE, item.getQuantidade());

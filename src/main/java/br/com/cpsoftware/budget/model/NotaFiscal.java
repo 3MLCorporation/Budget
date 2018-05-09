@@ -9,7 +9,7 @@ public class NotaFiscal {
 	private String fornecedor;
 	private Double valor;
 	private Date data;
-	private Long status;
+	private int status;
 	
 	//Definição das keys do banco
 	public static final String ID = "id";
@@ -20,9 +20,9 @@ public class NotaFiscal {
 	public static final String DATA = "data";
 	public static final String STATUS = "status";
 	
-	public NotaFiscal(Long id, Long itemId, Long arquivo, String fornecedor, Double valor, Date data, Long status) {
-		this.id = id;
+	public NotaFiscal(Long itemId, Long id, Long arquivo, String fornecedor, Double valor, Date data, int status) {
 		this.itemId = itemId;
+		this.id = id;
 		this.arquivo = arquivo;
 		this.fornecedor = fornecedor;
 		this.valor = valor;
@@ -30,7 +30,7 @@ public class NotaFiscal {
 		this.status = status;
 	}
 
-	public NotaFiscal(Long itemId, Long arquivo, String fornecedor, Double valor, Date data, Long status) {
+	public NotaFiscal(Long itemId, Long arquivo, String fornecedor, Double valor, Date data, int status) {
 		this.itemId = itemId;
 		this.arquivo = arquivo;
 		this.fornecedor = fornecedor;
@@ -87,11 +87,11 @@ public class NotaFiscal {
 		this.data = data;
 	}
 
-	public Long getStatus() {
+	public int getStatus() {
 		return status;
 	}
 
-	public void setStatus(Long status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 	

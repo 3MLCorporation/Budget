@@ -19,7 +19,6 @@ import com.google.appengine.api.datastore.Query.SortDirection;
 
 import br.com.cpsoftware.budget.model.Entidade;
 import br.com.cpsoftware.budget.model.Projeto;
-import br.com.cpsoftware.budget.model.Rubrica;
 import br.com.cpsoftware.budget.model.Usuario;
 
 public class ProjetoDAO implements EntidadeDao{
