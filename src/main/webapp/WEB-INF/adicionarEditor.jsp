@@ -38,15 +38,16 @@
 	  		<label for="text"><strong>Email</strong></label><input type="text"
 					class="form-control" placeholder="Fornecer o email do usuário a ser adicionado"
 					name="email" required="required">
+			<br>
 			<button type="submit" class="btn btn-dark">Adicionar</button>
 	  	</form>
 	  	
 		<c:if test="${not empty confirmacao }">
 			<c:if test="${not empty usuarioAdicionado}">
-				<h2><strong>Usuário ${usuarioAdicionado.nome} adicionado com sucesso!</strong></h2>
+				<h3><strong>Usuário ${usuarioAdicionado.nome} adicionado com sucesso!</strong></h3>
 			</c:if>
 			<c:if test="${empty usuarioAdicionado}">
-				<h3><strong>Email do usuário não encontrado, experimente tentar outro!</strong></h3>
+				<h4><strong>Email do usuário não encontrado, experimente tentar outro!</strong></h4>
 			</c:if>
 		</c:if>
 	</div>
