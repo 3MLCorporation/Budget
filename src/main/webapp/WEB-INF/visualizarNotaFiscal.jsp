@@ -7,36 +7,19 @@ pageEncoding="UTF-8"%>
 	<div class="container" style="width: 60%;">
 		<h2>Visualizar nota fiscal</h2> <!--TEM QUE MUDAR O CÓDIGO-->
 		<br/>
-		<form action="cadastrarNotaFiscal" method="POST">
-				<div class="form-group">
-					<label for="text">Fornecedor</label> <input type="text"
-					class="form-control" placeholder="Fornecer o fornecedor"
-					name="fornecedor" required="required">
-				</div>
+		<h4>Fornecedor: <strong>${nota.fornecedor}</strong></h4>
+		<h4>Valor: <strong>${nota.valor}</strong></h4>
+		<h4>Data: <strong>${nota.data}</strong></h4>
+		<h4>Arquivo: </h4> 
 
-				<div class="form-group">
-					<label for="text">Valor</label> <input type="text"
-					class="form-control" placeholder="Fornecer o valor da nota"
-					name="valor" required="required">
-				</div>
-
-				<div class="row">
-					<div class="form-group col-lg-6">
-						<label for="text">Data</label> <input type="date"
-						class="form-control" placeholder="Fornecer a data de emissão da nota"
-						name="data" required="required">
-
-					</div>
-
-					<div class="form-group col-lg-6">
-						<label for="text">Arquivo</label> <input type="file"
-						class="form-control" placeholder="Fornecer o arquivo da nota"
-						name="arquivo" required="required">
-					</div>
-				</div>
-
-				<br/>
-				<button type="submit" class="btn btn-dark">Cadastrar</button> 
+		<form action="abrirNotaFiscal" method="GET">
+			<input type="hidden" name="notaId" value="${nota.id}">
+			<button type="submit" class="btn btn-dark">Ver arquivo</button>
 		</form>
+		<div class="botaoCadastroPagamento">
+			<form action="adicionarPagamento" method="GET">
+				<button type="submit" class="btn btn-dark">Cadastrar pagamento</button>
+			</form>
+		</div>
 	</div>
 </div>

@@ -7,7 +7,7 @@ pageEncoding="UTF-8"%>
   <div class="container" style="width: 60%;">
     <h2>Cadastro de pagamento</h2>
     <br/>
-    <form action="cadastrarNotaFiscal" method="POST">
+    <form action="cadastrarPagamento" method="POST">
       <div class="form-group">
         <label for="text">Arquivo</label> <input type="file"
         class="form-control" placeholder="Fornecer o arquivo da nota"
