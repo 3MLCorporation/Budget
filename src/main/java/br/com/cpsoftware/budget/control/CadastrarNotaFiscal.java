@@ -28,7 +28,8 @@ public class CadastrarNotaFiscal extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setAttribute("page", "cadastrarNotaFiscal");
+		req.setAttribute("itemId", req.getParameter("itemId"));
+		req.setAttribute("page", "adicionarNotaFiscal");
 	    req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}
 	
@@ -61,7 +62,7 @@ public class CadastrarNotaFiscal extends HttpServlet {
 						if (item.getFieldName().equals(NotaFiscal.VALOR))
 							valor = new Double(Streams.asString(stream));
 						if (item.getFieldName().equals(NotaFiscal.DATA))
-							data = new SimpleDateFormat("dd-MM-yyyy").parse(Streams.asString(stream));
+							data = new SimpleDateFormat("yyyy-MM-dd").parse(Streams.asString(stream));
 					} else {
 						if (item.getFieldName().startsWith(NotaFiscal.ARQUIVO)){
 							arquivo = new Blob(IOUtils.toByteArray(stream));

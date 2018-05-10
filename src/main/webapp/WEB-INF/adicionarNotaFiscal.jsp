@@ -5,9 +5,10 @@ pageEncoding="UTF-8"%>
 
 <div>
   <div class="container" style="width: 60%;">
-    <h2>Cadastro de pagamento</h2>
+    <h2>Cadastro de nota fiscal</h2>
     <br/>
     <form action="cadastrarNotaFiscal" method="POST" enctype="multipart/form-data">
+   	  <input type="hidden" name="itemId" value="${itemId }">
       <div class="form-group">
         <label for="text">Fornecedor</label> <input type="text"
         class="form-control" placeholder="Fornecer o fornecedor"
@@ -31,7 +32,7 @@ pageEncoding="UTF-8"%>
         <div class="form-group col-lg-6">
           <label for="text">Arquivo</label> <input type="file"
           class="form-control" placeholder="Fornecer o arquivo da nota"
-          name="arquivo" required="required">
+          name="arquivo" required="required" accept=".pdf">
         </div>
       </div>
 

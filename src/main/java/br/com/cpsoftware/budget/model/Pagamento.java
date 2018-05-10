@@ -2,10 +2,12 @@ package br.com.cpsoftware.budget.model;
 
 import java.util.Date;
 
+import com.google.appengine.api.datastore.Blob;
+
 public class Pagamento {
 	private Long id;
 	private Long notaFiscalId;
-	private Long arquivo;
+	private Blob arquivo;
 	private Double valor;
 	private Date data;
 	
@@ -16,7 +18,7 @@ public class Pagamento {
 	public static final String VALOR = "valor";
 	public static final String DATA = "data";
 	
-	public Pagamento(Long notaFiscalId, Long id, Long arquivo, Double valor, Date data) {
+	public Pagamento(Long notaFiscalId, Long id, Blob arquivo, Double valor, Date data) {
 		this.notaFiscalId = notaFiscalId;
 		this.id = id;
 		this.arquivo = arquivo;
@@ -24,7 +26,7 @@ public class Pagamento {
 		this.data = data;
 	}
 
-	public Pagamento(Long notaFiscalId, Long arquivo, Double valor, Date data) {
+	public Pagamento(Long notaFiscalId, Blob arquivo, Double valor, Date data) {
 		this.notaFiscalId = notaFiscalId;
 		this.arquivo = arquivo;
 		this.valor = valor;
@@ -47,11 +49,11 @@ public class Pagamento {
 		this.notaFiscalId = notaFiscalId;
 	}
 
-	public Long getArquivo() {
+	public Blob getArquivo() {
 		return arquivo;
 	}
 
-	public void setArquivo(Long arquivo) {
+	public void setArquivo(Blob arquivo) {
 		this.arquivo = arquivo;
 	}
 
