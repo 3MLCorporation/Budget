@@ -194,6 +194,15 @@
    		<url-pattern>/visualizarNotaFiscal</url-pattern>
    </servlet-mapping>
    
+      <servlet>
+   		<servlet-name>abrirNotaFiscal</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.AbrirNotaFiscal</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>abrirNotaFiscal</servlet-name>
+   		<url-pattern>/abrirNotaFiscal</url-pattern>
+   </servlet-mapping>
+   
    <servlet>
    		<servlet-name>sobre</servlet-name>
    		<servlet-class>br.com.cpsoftware.budget.control.Sobre</servlet-class>
