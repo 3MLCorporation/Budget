@@ -14,7 +14,7 @@ pageEncoding="UTF-8"%>
 			<button type="submit" class="btn btn-dark">Ver arquivo</button>
 		</form>
 		<br/>
-		<h3><strong>Orçamentos cadastrados</strong></h3>
+		<h3><strong>Pagamentos cadastrados</strong></h3>
 		<table class="table">
 	    	<thead>
 	      		<tr>
@@ -38,7 +38,7 @@ pageEncoding="UTF-8"%>
 	   	 	</tbody>
 		</table>
 
-		<form action="adicionarPagamento" method="GET">
+		<form action="cadastrarPagamento" method="GET">
 			<button type="submit" class="btn btn-dark">Cadastrar pagamento</button>
 		</form>
 	</div>

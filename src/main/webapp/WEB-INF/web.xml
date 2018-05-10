@@ -204,6 +204,15 @@
    </servlet-mapping>
    
    <servlet>
+   		<servlet-name>cadastrarPagamento</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.CadastrarPagamento</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>cadastrarPagamento</servlet-name>
+   		<url-pattern>/cadastrarPagamento</url-pattern>	
+	</servlet-mapping>
+   
+   <servlet>
    		<servlet-name>sobre</servlet-name>
    		<servlet-class>br.com.cpsoftware.budget.control.Sobre</servlet-class>
    </servlet>

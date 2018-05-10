@@ -26,6 +26,13 @@ import br.com.cpsoftware.budget.model.Pagamento;
 @SuppressWarnings("serial")
 public class CadastrarPagamento extends HttpServlet {
 
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setAttribute("page", "cadastrarPagamento");
+	    req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
+	}
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		boolean isMultipart = ServletFileUpload.isMultipartContent(req);
