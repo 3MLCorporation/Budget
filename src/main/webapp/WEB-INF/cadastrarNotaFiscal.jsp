@@ -8,7 +8,7 @@ pageEncoding="UTF-8"%>
     <h2>Cadastro de nota fiscal</h2>
     <br/>
     <form action="cadastrarNotaFiscal" method="POST" enctype="multipart/form-data">
-   	  <input type="text" name="item_id" value="${item_id }">
+   	  <input type="hidden" name="item_id" value="${item_id }">
       <div class="form-group">
         <label for="text">Fornecedor</label> <input type="text"
         class="form-control" placeholder="Fornecer o fornecedor"

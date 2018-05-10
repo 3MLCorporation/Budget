@@ -30,12 +30,13 @@
 						<td> ${item.quantidade}</td>
 						<td>
 							<form action="cadastrarNotaFiscal" method="GET">
-								<input type="text" name="item_id" value="${item.id }">
+								<input type="hidden" name="item_id" value="${item.id }">
 								<button class="btn btn-dark"> <img src="../img/adicionar.png" alt="Logo" style="width:100%;"> </button>
 				           	</form> 
 						</td>
 						<td>
 							<form action="visualizarNotaFiscal" method="GET">
+								<input type="hidden" name="item_id" value="${item.id }">
 								<button class="btn btn-dark"> <img src="../img/visualizar.png" alt="Logo" style="width:100%;"> </button>
 				           	</form> 
 						</td>

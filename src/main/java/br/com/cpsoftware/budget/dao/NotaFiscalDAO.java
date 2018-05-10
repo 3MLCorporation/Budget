@@ -92,7 +92,7 @@ public class NotaFiscalDAO {
 		return resultNotasFiscais;
 	}
 	
-	public List<NotaFiscal> getNotaFiscal(Long itemId){
+	public NotaFiscal getNotaFiscal(Long itemId){
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Query query = new Query(NOTA_FISCAL_KIND).addSort(NotaFiscal.FORNECEDOR, SortDirection.ASCENDING);
@@ -102,8 +102,8 @@ public class NotaFiscalDAO {
 		
 		PreparedQuery preparedQuery = datastore.prepare(query);
 		
-		List<Entity> orcamentoEntities = preparedQuery.asList(FetchOptions.Builder.withDefaults());
-		return entitiesToNotaFiscal(orcamentoEntities);
+		Entity notaFiscalEntities = preparedQuery.asSingleEntity();
+		return entityToNotaFiscal(notaFiscalEntities);
 		
 	}
 }
