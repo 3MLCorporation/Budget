@@ -28,7 +28,7 @@ public class CadastrarNotaFiscal extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setAttribute("itemId", req.getParameter("itemId"));
+		req.setAttribute("item_id", req.getParameter("item_id"));
 		req.setAttribute("page", "adicionarNotaFiscal");
 	    req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}
