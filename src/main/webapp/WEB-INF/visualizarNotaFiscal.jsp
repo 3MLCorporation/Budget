@@ -13,7 +13,7 @@ pageEncoding="UTF-8"%>
 				<button type="submit" class="btn btn-dark">Ver arquivo</button>
 			</form>
 			<br/>
-			<h3><strong>Pagamento cadastrados</strong></h3>
+			<h3><strong>Pagamentos cadastrados</strong></h3>
 			<br/>
 			<input class="form-control" id="myInput" type="text" placeholder="Pesqusiar...">
 			<table class="table table-sm">
@@ -25,12 +25,13 @@ pageEncoding="UTF-8"%>
 					</tr>
 				</thead>
 				<tbody id="myTable">
-					<c:forEach items="${usuarios}" var="usuario" varStatus="id">
+					<c:forEach items="${pagamentos}" var="pagamento" varStatus="id">
 					<tr>
 						<td> ${pagamento.valor}</td>
 						<td> ${pagamento.data}</td>
 						<td style="width: 8%"> 
 							<form action="visualizarPagamento" method="GET">
+								<input type="hidden" name="pagamentoId" value="${pagamento.id }">
 								<button type="submit" class="btn btn-link"><img src="../img/visualizar.png" style="width: 80%;"></button>
 							</form>
 						</td>
@@ -38,7 +39,8 @@ pageEncoding="UTF-8"%>
 				</c:forEach>
 			</tbody>
 		</table>
-		<form action="adicionarPagamento" method="GET">
+		<form action="cadastrarPagamento" method="GET">
+			<input type="hidden" name="nota_fiscal_id" value="${nota.id }">
 			<button type="submit" class="btn btn-dark">Cadastrar pagamento</button>
 		</form>
 	</div>
