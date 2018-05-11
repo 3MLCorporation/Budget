@@ -4,7 +4,7 @@ function calcularValorTotalItem() {
 	document.getElementById('resultado').value = "R$ "+ quantidadeItens * valorItens;
 }
 
-function mostrarAlerta(){
+mostrarAlerta = function(){
 	alert('Você não possui nenhum orçamento.');
 }
 
