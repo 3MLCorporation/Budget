@@ -30,7 +30,7 @@ pageEncoding="UTF-8"%>
 						<td> ${pagamento.valor}</td>
 						<td> ${pagamento.data}</td>
 						<td style="width: 8%"> 
-							<form action="visualizarPagamento" method="GET">
+							<form action="abrirPagamento" method="GET">
 								<input type="hidden" name="pagamentoId" value="${pagamento.id }">
 								<button type="submit" class="btn btn-link"><img src="../img/visualizar.png" style="width: 80%;"></button>
 							</form>
