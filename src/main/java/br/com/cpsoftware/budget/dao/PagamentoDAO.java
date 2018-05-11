@@ -89,7 +89,7 @@ public class PagamentoDAO {
 	
 	public List<Pagamento> getPagamentos(Long notaId){
 		
-		Query query = new Query(PAGAMENTO_KIND).addSort(Pagamento.DATA, SortDirection.ASCENDING);//TODO procurar a respeito de Object Date no datastore
+		Query query = new Query(PAGAMENTO_KIND).addSort(Pagamento.DATA, SortDirection.DESCENDING);//TODO procurar a respeito de Object Date no datastore
 		
 		Filter notafiscalFilter = new FilterPredicate(Pagamento.NOTA_FISCAL_ID, FilterOperator.EQUAL, notaId);
 		query.setFilter(notafiscalFilter);

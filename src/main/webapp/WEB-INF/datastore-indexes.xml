@@ -44,7 +44,7 @@
     
     <datastore-index kind="Pagamento" ancestor="false" source="manual">
         <property name="nota_fiscal_id" direction="asc"/>
-        <property name="data" direction="asc"/>
+        <property name="data" direction="desc"/>
     </datastore-index>
 
 </datastore-indexes>

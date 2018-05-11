@@ -7,11 +7,12 @@ pageEncoding="UTF-8"%>
   <div class="container" style="width: 60%;">
     <h2>Cadastro de pagamento</h2>
     <br/>
-    <form action="cadastrarPagamento" method="POST">
+    <form action="cadastrarPagamento" method="POST" enctype="multipart/form-data">
       <div class="form-group">
+      	<input type="hidden" name="nota_fiscal_id" value="${nota_fiscal_id }">
         <label for="text">Arquivo</label> <input type="file"
         class="form-control" placeholder="Fornecer o arquivo da nota"
-        name="arquivo" required="required">
+        name="arquivo" required="required" accept=".pdf">
       </div>
       <div class="row">
         <div class="form-group col-lg-6">

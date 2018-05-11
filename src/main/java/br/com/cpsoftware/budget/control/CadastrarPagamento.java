@@ -29,6 +29,7 @@ public class CadastrarPagamento extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setAttribute("nota_fiscal_id", req.getParameter("nota_fiscal_id"));
 		req.setAttribute("page", "cadastrarPagamento");
 	    req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}
@@ -36,7 +37,7 @@ public class CadastrarPagamento extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		boolean isMultipart = ServletFileUpload.isMultipartContent(req);
-		Long notaFiscalId = Long.parseLong(req.getParameter("notaFiscalId"));;
+		Long notaFiscalId = null;
 		Double valor = null;
 		Date data = null;
 		Blob arquivo = null;
@@ -72,11 +73,12 @@ public class CadastrarPagamento extends HttpServlet {
 			}
 			
 			if (arquivo != null && arquivo.getBytes().length > 0){
-				Pagamento notaFiscal = new Pagamento(notaFiscalId, arquivo, valor, data);
+				Pagamento pagamento = new Pagamento(notaFiscalId, arquivo, valor, data);
 				PagamentoDAO  dao = new PagamentoDAO();
-				dao.create(notaFiscal);
+				dao.create(pagamento);
 			}
 			 
+			req.getSession().setAttribute("notaId", notaFiscalId);
 			resp.sendRedirect("/visualizarNotaFiscal");
 		}
 	}
