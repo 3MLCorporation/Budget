@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<title>Budget</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="../css/estilo.css">
+	<script src="../js/script.js"></script>
+	<link rel="shortcut icon" type="image/x-icon" href="../img/favicon.png" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+	<div>
+		<div class="container" style="width: 60%;">
+			<h2>Orçamentos cadastrados</h2>
+			<table class="table table-sm">
+				<thead class="thead-dark">
+					<tr>
+						<th>Orçamento</th>
+						<th>Valor</th>
+						<th>Editar</th>
+						<th>Usuários</th>
+					</tr>
+				</thead>
+				<tbody>
+					<c:if test="${empty orcamentos}"> <!-- Alerta caso o orçamento esteja vazio -->
+					<script>mostraraAlerta()</script>
+				</c:if>
+				<c:forEach items="${orcamentos}" var="orcamento">
+				<tr>
+					<td> ${orcamento.nome}</td>
+					<td> ${orcamento.getValorTotal()}</td>
+					<td style="width: 12%"> 
+						<form action="selecionarOrcamento" method="POST">
+							<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamentoEditavel">
+							<button type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo" style="width:100%;"> </button>
+						</form> 
+					</td>
+					<td style="width: 12%">
+						<form action="adicionarEditor" method="GET">
+							<!-- <input type="hidden" class="form-control" value="${orcamento.id}" name="orcamento"> -->
+							<button class="btn btn-link"> <img src="../img/adicionar.png" alt="Logo" style="width:100%;"> </button>
+						</form>
+					</td>
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
+</div>
+</div>
+</body>	

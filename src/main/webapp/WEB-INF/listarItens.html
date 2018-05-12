@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+	<title>Budget</title>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="../css/estilo.css">
+	<script src="../js/script.js"></script>
+	<link rel="shortcut icon" type="image/x-icon" href="../img/favicon.png" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div>
+	<div class="container">
+	<h2>Itens cadastrados</h2>
+	<table class="table table-sm">
+    	<thead class="thead-dark">
+      		<tr>
+        		<th>Categoria</th>
+        		<th>Rubrica</th>
+        		<th>Item</th>
+        		<th>Descrição</th>
+        		<th>Valor</th>
+        		<th>Quantidade</th>
+        		<th>Nota fiscal</th>
+      		</tr>
+    	</thead>
+    		<tbody>
+        		<c:forEach items="${itens}" var="item">
+					<tr>
+						<td> --- </td>
+						<td> --- </td>
+						<td> ${item.nome}</td>
+						<td> ${item.descricao}</td>
+						<td> ${item.getValor_uniforme()}</td>
+						<td> ${item.quantidade}</td>
+						<td>
+							<div>
+							<form action="cadastrarNotaFiscal" method="GET">
+								<input type="hidden" name="item_id" value="${item.id }">
+								<button class="btn btn-link"> <img src="../img/adicionar.png" alt="Logo" style="width:100%;"> </button>
+				           	</form> 
+							<form action="visualizarNotaFiscal" method="GET">
+								<input type="hidden" name="item_id" value="${item.id }">
+								<button class="btn btn-link"> <img src="../img/visualizar.png" alt="Logo" style="width:100%;"> </button>
+				           	</form>
+				           	</div> 
+						</td>
+					</tr>
+				</c:forEach>
+	   	 	</tbody>
+	  	</table>
+	  </div>
+</div>
+</body>	

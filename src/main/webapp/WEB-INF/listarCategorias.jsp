@@ -6,8 +6,8 @@
 <div>
 	<div class="container" style="width: 60%;">
    		<h2>Categorias cadastradas</h2>
-		<table class="table">
-    		<thead>
+		<table class="table table-sm">
+    		<thead class="thead-dark">
       			<tr>
         			<th>Categoria</th>
         			<th>Valor</th>

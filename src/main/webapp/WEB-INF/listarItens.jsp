@@ -4,10 +4,10 @@
 	pageEncoding="UTF-8"%>
 	
 <div>
-	<div class="container" style="width: 60%;">
+	<div class="container">
 	<h2>Itens cadastrados</h2>
-	<table class="table">
-    	<thead>
+	<table class="table table-sm">
+    	<thead class="thead-dark">
       		<tr>
         		<th>Categoria</th>
         		<th>Rubrica</th>
@@ -15,8 +15,7 @@
         		<th>Descrição</th>
         		<th>Valor</th>
         		<th>Quantidade</th>
-        		<th>Adicionar nota</th>
-        		<th>Ver nota</th>
+        		<th>Nota fiscal</th>
       		</tr>
     	</thead>
     		<tbody>
@@ -29,16 +28,16 @@
 						<td> ${item.getValor_uniforme()}</td>
 						<td> ${item.quantidade}</td>
 						<td>
-							<form action="cadastrarNotaFiscal" method="GET">
-								<input type="hidden" name="item_id" value="${item.id }">
-								<button class="btn btn-dark"> <img src="../img/adicionar.png" alt="Logo" style="width:100%;"> </button>
-				           	</form> 
-						</td>
-						<td>
-							<form action="visualizarNotaFiscal" method="GET">
-								<input type="hidden" name="item_id" value="${item.id }">
-								<button class="btn btn-dark"> <img src="../img/visualizar.png" alt="Logo" style="width:100%;"> </button>
-				           	</form> 
+							<div>
+								<form action="cadastrarNotaFiscal" method="GET">
+									<input type="hidden" name="item_id" value="${item.id }">
+									<button class="btn btn-link"> <img src="../img/adicionar.png" alt="Logo" style="width:100%;"> </button>
+					           	</form> 
+								<form action="visualizarNotaFiscal" method="GET">
+									<input type="hidden" name="item_id" value="${item.id }">
+									<button class="btn btn-link"> <img src="../img/visualizar.png" alt="Logo" style="width:100%;"> </button>
+					           	</form>
+				           	</div> 
 						</td>
 					</tr>
 				</c:forEach>

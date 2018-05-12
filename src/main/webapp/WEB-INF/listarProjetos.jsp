@@ -6,8 +6,8 @@
 <div>
 	<div class="container" style="width: 60%;">
    		<h2>Projetos cadastrados</h2>
-		<table class="table">
-    		<thead>
+		<table class="table table-sm">
+    		<thead class="thead-dark">
       			<tr>
         			<th>Projeto</th>
         			<th>Valor</th>
@@ -19,9 +19,10 @@
 					<tr>
 						<td> ${projeto.nome}</td>
 						<td> ${projeto.getValorTotal()}</td>
-						<td> <form action="selecionarProjeto" method="POST">
-							<input type="hidden" class="form-control" value="${projeto.id}" name="projetoEditavel">
-							<button type="submit" class="btn btn-dark"> <img src="../img/editar.png" alt="Logo" style="width:100%;"> </button>
+						<td style="width: 12%""> 
+							<form action="selecionarProjeto" method="POST">
+								<input type="hidden" class="form-control" value="${projeto.id}" name="projetoEditavel">
+								<button type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo" style="width:100%;"> </button>
 				           	</form> 
    						</td>
 					</tr>
