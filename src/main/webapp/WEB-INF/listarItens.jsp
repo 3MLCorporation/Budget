@@ -15,7 +15,7 @@
         		<th>Descrição</th>
         		<th>Valor</th>
         		<th>Quantidade</th>
-        		<th>Nota fiscal</th>
+        		<th>&emsp;Nota fiscal</th>
       		</tr>
     	</thead>
     		<tbody>
@@ -27,8 +27,8 @@
 						<td> ${item.descricao}</td>
 						<td> ${item.getValor_uniforme()}</td>
 						<td> ${item.quantidade}</td>
-						<td>
-							<div>
+						<td style="width: 15%;">
+							<div class="btn-group">
 								<form action="cadastrarNotaFiscal" method="GET">
 									<input type="hidden" name="item_id" value="${item.id }">
 									<button class="btn btn-link"> <img src="../img/adicionar.png" alt="Logo" style="width:100%;"> </button>
