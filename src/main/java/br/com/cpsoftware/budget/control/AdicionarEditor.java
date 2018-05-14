@@ -21,18 +21,23 @@ public class AdicionarEditor extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Long orcamentoId = Long.parseLong((String) req.getSession().getAttribute("orcamentoEditavel"));
 		
+		//Long orcamentoId = Long.parseLong((String) req.getSession().getAttribute("orcamentoEditavel"));
+		if(req.getParameter("orcamento") != null) { //Quando o gerente clica no botao de AdicionarEditor na tela de listarOrcamento;
+			Long orcamentoId = Long.parseLong(req.getParameter("orcamento"));
+			req.getSession().setAttribute("orcamentoEditavel", orcamentoId.toString());
+		}// O parameter é null quando a página é recarregada depois de adicionarEditor, e já tem um orcamentoEditavel na sessão;
 		
+		Long orcamentoEditavelId = Long.parseLong((String) req.getSession().getAttribute("orcamentoEditavel"));
 		
-		List<OrcamentoUsuario> orcamentoUsuarioLista = new OrcamentoUsuarioDAO().getOrcamentoUsuarioByOrcamentoId(orcamentoId);
+		List<OrcamentoUsuario> orcamentoUsuarioLista = new OrcamentoUsuarioDAO().getOrcamentoUsuarioByOrcamentoId(orcamentoEditavelId);
 		List<Usuario> usuarios = new ArrayList<Usuario>();
 		for(OrcamentoUsuario orcamentoUsuario : orcamentoUsuarioLista) {
 			usuarios.add(new UsuarioDAO().read(orcamentoUsuario.getEditorId()));
 		}
 		
 		req.setAttribute("editoresCadastrados", usuarios);
-		req.setAttribute("orcamento", new OrcamentoDAO().read(orcamentoId).getNome());
+		req.setAttribute("orcamento", new OrcamentoDAO().read(orcamentoEditavelId).getNome());
 		
 		req.setAttribute("confirmacao", req.getSession().getAttribute("confirmacao"));
 		req.getSession().setAttribute("confirmacao", null);
@@ -46,13 +51,13 @@ public class AdicionarEditor extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Long orcamentoId = Long.parseLong((String) req.getSession().getAttribute("orcamentoEditavel"));
+		Long orcamentoEditavelId = Long.parseLong((String) req.getSession().getAttribute("orcamentoEditavel"));
 		
 		String email = req.getParameter("email");
 		
 		Usuario usuario = new UsuarioDAO().getUsuarioByEmail(email);
 
-		List<OrcamentoUsuario> orcamentoUsuarioLista = new OrcamentoUsuarioDAO().getOrcamentoUsuarioByOrcamentoId(orcamentoId);
+		List<OrcamentoUsuario> orcamentoUsuarioLista = new OrcamentoUsuarioDAO().getOrcamentoUsuarioByOrcamentoId(orcamentoEditavelId);
 		List<Usuario> usuarios = new ArrayList<Usuario>();
 
 		boolean emailExistente = false;
@@ -74,7 +79,7 @@ public class AdicionarEditor extends HttpServlet {
 			}
 			
 			if(!emailExistente) {
-				OrcamentoUsuario orcamentoUsuario = new OrcamentoUsuario(usuario.getId(), orcamentoId);
+				OrcamentoUsuario orcamentoUsuario = new OrcamentoUsuario(usuario.getId(), orcamentoEditavelId);
 				new OrcamentoUsuarioDAO().create(orcamentoUsuario);
 				//req.setAttribute("usuario", usuario);
 				req.getSession().setAttribute("usuarioAdicionado", usuario);

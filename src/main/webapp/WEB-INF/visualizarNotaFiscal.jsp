@@ -25,16 +25,16 @@ pageEncoding="UTF-8"%>
 					</tr>
 				</thead>
 				<tbody id="myTable">
-					<c:forEach items="${usuarios}" var="usuario" varStatus="id">
+					<c:forEach items="${pagamentos}" var="pagamento" varStatus="id">
 					<tr>
 						<td> ${pagamento.valor}</td>
 						<td> ${pagamento.data}</td>
 						<td style="width: 16%">
-							<div  class="btn-group"> 
-								<form action="visualizarPagamento" method="GET">
-									<button type="submit" class="btn btn-link"><img src="../img/visualizar.png" style="width: 80%;"></button>
-								</form>
-
+							<div class="btn-group"> 
+	                            <form action="abrirPagamento" method="GET">
+	                                <input type="hidden" name="pagamentoId" value="${pagamento.id }">
+	                                <button type="submit" class="btn btn-link"><img src="../img/visualizar.png" style="width: 80%;"></button>
+	                            </form>
 								<form action="excluirPagamento" method="POST">
 									<input type="hidden" class="form-control" value="${pagamento.id}" name="pagamento_id">
 									<button type="submit" class="btn btn-link"> <img src="../img/excluir.png" alt="Logo" style="width:100%;"> </button>
@@ -45,7 +45,8 @@ pageEncoding="UTF-8"%>
 				</c:forEach>
 			</tbody>
 		</table>
-		<form action="adicionarPagamento" method="GET">
+		<form action="cadastrarPagamento" method="GET">
+            <input type="hidden" name="nota_fiscal_id" value="${nota.id }">
 			<button type="submit" class="btn btn-dark">Cadastrar pagamento</button>
 		</form>
 	</div>
