@@ -16,7 +16,7 @@ pageEncoding="UTF-8"%>
         			<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
         				<th>Usuários</th>
         			</c:if>
-        			<th>Editar</th>
+        			<th>Editar orçamento</th>
        			</tr>
     		</thead>
     		<tbody id="myTable">
