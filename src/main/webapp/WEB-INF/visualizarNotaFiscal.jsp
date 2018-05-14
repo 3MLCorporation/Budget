@@ -8,7 +8,7 @@ pageEncoding="UTF-8"%>
 		<h3><strong>Nota fiscal</strong></h3>
 		<br/>
 		<h4>Fornecedor: <strong>${nota.fornecedor}</strong>&emsp; Valor: <strong>${nota.valor}</strong>&emsp; Data: <strong>${nota.data}</h4>
-			<form action="abrirNotaFiscal" method="GET">
+			<form action="abrirNotaFiscal" target="_blank" method="GET">
 				<input type="hidden" name="notaId" value="${nota.id}">
 				<button type="submit" class="btn btn-dark">Ver arquivo</button>
 			</form>
@@ -31,7 +31,7 @@ pageEncoding="UTF-8"%>
 						<td> ${pagamento.data}</td>
 						<td style="width: 16%">
 							<div class="btn-group"> 
-	                            <form action="abrirPagamento" method="GET">
+	                            <form action="abrirPagamento" target="_blank" method="GET">
 	                                <input type="hidden" name="pagamentoId" value="${pagamento.id }">
 	                                <button type="submit" class="btn btn-link"><img src="../img/visualizar.png" style="width: 80%;"></button>
 	                            </form>

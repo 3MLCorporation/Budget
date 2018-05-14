@@ -13,28 +13,25 @@ pageEncoding="UTF-8"%>
       			<tr>
         			<th>Orçamento</th>
         			<th>Valor</th>
+        			<th>Status</th>
+        			<th>Editar orçamento</th>
         			<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
         				<th>Usuários</th>
         			</c:if>
-        			<th>Editar orçamento</th>
        			</tr>
     		</thead>
     		<tbody id="myTable">
-   				<c:if test="${empty orcamentos}"> <!-- Alerta caso o orçamento esteja vazio -->
-					<script>mostraraAlerta()</script>
-				</c:if>
         		<c:forEach items="${orcamentos}" var="orcamento">
 					<tr>
 						<td> ${orcamento.nome}</td>
 						<td> ${orcamento.getValorTotal()}</td>
-						<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
-	   						<td style="width: 12%">
-	   							<form action="adicionarEditor" method="GET">
-									<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamento">
-									<button class="btn btn-link"> <img src="../img/adicionar.png" alt="Logo" style="width:100%;"> </button>
-					           	</form>
-	   						</td>
-   						</c:if>
+						<td>
+							<select id="orcamentoSelect${id.count}">
+         						<option>Elaboração</option>
+								<option>Controle</option>
+								<option>Finalizado</option>
+							</select>
+						</td>
 						<td style="width: 16%">
 							<div class="btn-group"> 
 								<form action="selecionarOrcamento" method="POST">
@@ -48,6 +45,14 @@ pageEncoding="UTF-8"%>
 					           	</form>
 				           	</div>
    						</td>
+   						<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
+	   						<td style="width: 12%">
+	   							<form action="adicionarEditor" method="GET">
+									<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamento">
+									<button class="btn btn-link"> <img src="../img/adicionarUsuario.png" alt="Logo" style="width:100%;"> </button>
+					           	</form>
+	   						</td>
+   						</c:if>
 					</tr>
 				</c:forEach>
 	   	 	</tbody>
