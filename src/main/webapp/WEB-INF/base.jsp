@@ -43,7 +43,9 @@
 		                                data-toggle="dropdown" role="button" aria-haspopup="true"
 		                                aria-expanded="false">Orçamento <span class="caret"></span></a>
 		                                <ul class="dropdown-menu">
+		                                <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
 		                                    <li><a class="dropdown-item" href="/cadastrarOrcamento">Criar</a></li>
+		                                </c:if>
 		                                    <li><a class="dropdown-item" href="/listarOrcamentos">Listar</a></li>
 		                                </ul>
 		                            </li>
@@ -54,7 +56,9 @@
 	                                data-toggle="dropdown" role="button" aria-haspopup="true"
 	                                aria-expanded="false">Categoria <span class="caret"></span></a>
 	                                <ul class="dropdown-menu">
+	                                <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
 	                                    <li><a class="dropdown-item" href="/cadastrarCategoria">Criar</a></li>
+                                    </c:if>
 	                                    <li><a class="dropdown-item" href="/listarCategorias">Listar</a></li>
 	                                </ul>
 	                            </li>
@@ -62,7 +66,9 @@
 	                                data-toggle="dropdown" role="button" aria-haspopup="true"
 	                                aria-expanded="false">Rubrica <span class="caret"></span></a>
 	                                <ul class="dropdown-menu">
+	                                <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
 	                                    <li><a class="dropdown-item" href="/cadastrarRubrica">Criar</a></li>
+                                    </c:if>
 	                                    <li><a class="dropdown-item" href="/listarRubricas">Listar</a></li>
 	                                </ul>
 	                            </li>

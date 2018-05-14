@@ -39,7 +39,7 @@ public class CadastrarOrcamento extends HttpServlet {
 		 System.out.println("Valor - " + valor);
 		 System.out.println("Valor float - " + Float.parseFloat(valor));*/
 		 
-		Orcamento orcamento = new Orcamento(projetoId, nome, Double.parseDouble(valor));
+		Orcamento orcamento = new Orcamento(projetoId, nome, Double.parseDouble(valor), Orcamento.STATUS_ELABORACAO);
 		
 		System.out.println("Projeto_Id - " + projetoId);
 		System.out.println("Nome - " + orcamento.getNome());

@@ -1,6 +1,8 @@
 package br.com.cpsoftware.budget.model;
 
-
+/*
+ * TODO UNIDADE DE MEDIDA
+ */
 public class Item {
 	
 	private Long rubricaId;

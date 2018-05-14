@@ -13,7 +13,9 @@ pageEncoding="UTF-8"%>
         			<th>Orçamento</th>
         			<th>Valor</th>
         			<th>Editar</th>
+        			<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
         			<th>Usuários</th>
+        			</c:if>
        			</tr>
     		</thead>
     		<tbody>
@@ -30,12 +32,14 @@ pageEncoding="UTF-8"%>
 								<button type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo" style="width:100%;"> </button>
 				           	</form> 
    						</td>
+   						<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
    						<td style="width: 12%">
    							<form action="adicionarEditor" method="GET">
 								<%-- <input type="hidden" class="form-control" value="${orcamento.id}" name="orcamento"> --%>
 								<button class="btn btn-link"> <img src="../img/adicionar.png" alt="Logo" style="width:100%;"> </button>
 				           	</form>
    						</td>
+   						</c:if>
 					</tr>
 				</c:forEach>
 	   	 	</tbody>
