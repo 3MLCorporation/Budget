@@ -21,19 +21,25 @@ pageEncoding="UTF-8"%>
        			</tr>
     		</thead>
     		<tbody id="myTable">
-        		<c:forEach items="${orcamentos}" var="orcamento">
+        		<c:forEach items="${orcamentos}" var="orcamento" varStatus="id">
 					<tr>
 						<td> ${orcamento.nome}</td>
 						<td> ${orcamento.getValorTotal()}</td>
 						<td>
 							<select id="orcamentoSelect${id.count}">
-         						<option>Elaboração</option>
-								<option>Controle</option>
-								<option>Finalizado</option>
+         						<option ${0 == orcamento.status ? 'selected' : ''} value = '0'>Elaboração</option>
+								<option ${1 == orcamento.status ? 'selected' : ''} value = '1'>Controle</option>
+								<option ${2 == orcamento.status ? 'selected' : ''} value = '2'>Finalizado</option>
 							</select>
 						</td>
 						<td style="width: 16%">
-							<div class="btn-group"> 
+							<div class="btn-group">
+								<form action="atualizarStatusOrcamento" method="POST">
+									<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamentoId">
+									<input type="hidden" class="form-control" id="statusOrcamento${id.count }" name="statusSelecionado">
+									<button type="submit"  onclick="getStatusOrcamento('${id.count}')" class="btn btn-link"><img src="../img/salvar.png" alt="Logo"></button>
+						    	</form>  
+						    	 
 								<form action="selecionarOrcamento" method="POST">
 									<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamentoEditavel">
 									<button type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo" style="width:100%;"> </button>

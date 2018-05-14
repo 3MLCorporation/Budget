@@ -13,3 +13,9 @@ function getValorPerfil(perfilSelectCount){
 	var perfilSelecionado = select.options[select.selectedIndex].value;
 	document.getElementById('valorPerfil' + perfilSelectCount).value = perfilSelecionado;
 }
+
+function getStatusOrcamento(orcamentoSelectCount){
+	var select = document.getElementById('orcamentoSelect' + orcamentoSelectCount);
+	var statusSelecionado = select.options[select.selectedIndex].value;
+	document.getElementById('statusOrcamento' + orcamentoSelectCount).value = statusSelecionado;
+}
