@@ -13,17 +13,17 @@ public class Orcamento extends Entidade{
 	public static final int STATUS_CONTROLE = 1;
 	public static final int STATUS_FINALIZADO = 2;
 	
-	public Orcamento(Long projetoId, String nome, Double valor_total, int status) {
-		super(nome, valor_total);
+	public Orcamento(Long projetoId, String nome, Double valor_total, Double valorParcial, int status) {
+		super(nome, valor_total, valorParcial);
 		this.projetoId = projetoId;
 		this.status = status;
 	}
 	
-	public Orcamento(Long projetoId, Long id, String nome, Double valor_total, int status) {
+	/*public Orcamento(Long projetoId, Long id, String nome, Double valor_total, int status) {
 		super(id, nome, valor_total);
 		this.projetoId = projetoId;
 		this.status = status;
-	}
+	}*/
 	
 	public Orcamento(Long projetoId, Long id, String nome, Double valor_total, Double valor_parcial, int status) {
 		super(id, nome, valor_total, valor_parcial);

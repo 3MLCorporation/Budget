@@ -40,6 +40,7 @@ public class OrcamentoDAO implements EntidadeDao{
 		orcamentoEntity.setProperty(Orcamento.PROJETO_ID, ((Orcamento) orcamento).getProjetoId());
 		orcamentoEntity.setProperty(Orcamento.NOME, orcamento.getNome());
 		orcamentoEntity.setProperty(Orcamento.VALOR_TOTAL, orcamento.getValorTotal());
+		orcamentoEntity.setProperty(Orcamento.VALOR_PARCIAL, orcamento.getValorParcial());
 		orcamentoEntity.setProperty(Orcamento.STATUS, ((Orcamento) orcamento).getStatus());
 		
 		Key orcamentoKey = datastore.put(orcamentoEntity);
@@ -70,6 +71,7 @@ public class OrcamentoDAO implements EntidadeDao{
 		 */
 		Key key = KeyFactory.createKey(ORCAMENTO_KIND, orcamento.getId());
 		Entity orcamentoEntity = new Entity(key);
+		orcamentoEntity.setProperty(Orcamento.PROJETO_ID, ((Orcamento) orcamento).getProjetoId());
 		orcamentoEntity.setProperty(Orcamento.NOME, orcamento.getNome());
 		orcamentoEntity.setProperty(Orcamento.VALOR_TOTAL, orcamento.getValorTotal());
 		orcamentoEntity.setProperty(Orcamento.VALOR_PARCIAL, orcamento.getValorParcial());

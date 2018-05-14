@@ -4,8 +4,8 @@ public class Entidade {
 	
 	private Long id;
 	private String nome;
-	private Double valor_total;
-	private Double valor_parcial;
+	private Double valorTotal;
+	private Double valorParcial;
 	
 	//Definição das keys do banco
 	public static final String ID = "id";
@@ -13,22 +13,28 @@ public class Entidade {
 	public static final String VALOR_TOTAL = "valor_total";
 	public static final String VALOR_PARCIAL = "valor_parcial";
 	
+	public Entidade(String nome, Double valor_total, Double valorParcial) {
+		this.nome = nome;
+		this.valorTotal = valor_total;
+		this.valorParcial = valorParcial;
+	}
+	
 	public Entidade(String nome, Double valor_total) {
 		this.nome = nome;
-		this.valor_total = valor_total;
+		this.valorTotal = valor_total;
 	}
 	
 	public Entidade(Long id, String nome, Double valor_total) {
 		this.id = id;
 		this.nome = nome;
-		this.valor_total = valor_total;
+		this.valorTotal = valor_total;
 	}
 	
 	public Entidade(Long id, String nome, Double valor_total, Double valor_parcial) {
 		this.id = id;
 		this.nome = nome;
-		this.valor_total = valor_total;
-		this.valor_parcial = valor_parcial;
+		this.valorTotal = valor_total;
+		this.valorParcial = valor_parcial;
 	}
 	/*public static class Builder {
 		private Long id;
@@ -79,19 +85,19 @@ public class Entidade {
 	}
 
 	public Double getValorTotal() {
-		return valor_total;
+		return valorTotal;
 	}
 
 	public void setValorTotal(Double valor_total) {
-		this.valor_total = valor_total;
+		this.valorTotal = valor_total;
 	}
 
 	public Double getValorParcial() {
-		return valor_parcial;
+		return valorParcial;
 	}
 
 	public void setValorParcial(Double valor_parcial) {
-		this.valor_parcial = valor_parcial;
+		this.valorParcial = valor_parcial;
 	}
 
 }
