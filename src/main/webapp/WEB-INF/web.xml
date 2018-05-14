@@ -122,6 +122,15 @@
    		<url-pattern>/selecionarOrcamento</url-pattern>
    </servlet-mapping>
    
+    <servlet>
+   		<servlet-name>atualizarStatusOrcamento</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.AtualizarStatusOrcamento</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>atualizarStatusOrcamento</servlet-name>
+   		<url-pattern>/atualizarStatusOrcamento</url-pattern>
+   </servlet-mapping>
+   
    <servlet>
    		<servlet-name>cadastrarCategoria</servlet-name>
    		<servlet-class>br.com.cpsoftware.budget.control.CadastrarCategoria</servlet-class>
