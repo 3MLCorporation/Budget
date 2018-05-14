@@ -4,7 +4,7 @@
 pageEncoding="UTF-8"%>
 
 <div>
-	<div class="container">
+	<div class="container" style="width: 60%;">
 		<h3><strong>Nota fiscal</strong></h3>
 		<br/>
 		<h4>Fornecedor: <strong>${nota.fornecedor}</strong>&emsp; Valor: <strong>${nota.valor}</strong>&emsp; Data: <strong>${nota.data}</h4>
@@ -13,7 +13,7 @@ pageEncoding="UTF-8"%>
 				<button type="submit" class="btn btn-dark">Ver arquivo</button>
 			</form>
 			<br/>
-			<h3><strong>Pagamentos cadastrados</strong></h3>
+			<h3><strong>Pagamento cadastrados</strong></h3>
 			<br/>
 			<input class="form-control" id="myInput" type="text" placeholder="Pesqusiar...">
 			<table class="table table-sm">
@@ -25,22 +25,27 @@ pageEncoding="UTF-8"%>
 					</tr>
 				</thead>
 				<tbody id="myTable">
-					<c:forEach items="${pagamentos}" var="pagamento" varStatus="id">
+					<c:forEach items="${usuarios}" var="usuario" varStatus="id">
 					<tr>
 						<td> ${pagamento.valor}</td>
 						<td> ${pagamento.data}</td>
-						<td style="width: 8%"> 
-							<form action="abrirPagamento" method="GET">
-								<input type="hidden" name="pagamentoId" value="${pagamento.id }">
-								<button type="submit" class="btn btn-link"><img src="../img/visualizar.png" style="width: 80%;"></button>
-							</form>
+						<td style="width: 16%">
+							<div  class="btn-group"> 
+								<form action="visualizarPagamento" method="GET">
+									<button type="submit" class="btn btn-link"><img src="../img/visualizar.png" style="width: 80%;"></button>
+								</form>
+
+								<form action="excluirPagamento" method="POST">
+									<input type="hidden" class="form-control" value="${pagamento.id}" name="pagamento_id">
+									<button type="submit" class="btn btn-link"> <img src="../img/excluir.png" alt="Logo" style="width:100%;"> </button>
+								</form>
+							</div>	
 						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
 		</table>
-		<form action="cadastrarPagamento" method="GET">
-			<input type="hidden" name="nota_fiscal_id" value="${nota.id }">
+		<form action="adicionarPagamento" method="GET">
 			<button type="submit" class="btn btn-dark">Cadastrar pagamento</button>
 		</form>
 	</div>
