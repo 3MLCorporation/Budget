@@ -4,25 +4,51 @@
 	pageEncoding="UTF-8"%>
 	
 <div>
-	<div class="container" style="width: 60%;">
+	<div class="container">
 		<h2>Rubricas cadastradas</h2>
+		<input class="form-control" id="myInput" type="text" placeholder="Pesqusiar...">
 		<table class="table table-sm">
 	    	<thead class="thead-dark">
 	      		<tr>
 	        		<th>Categoria</th>
 	        		<th>Rubrica</th>
 	        		<th>Valor</th>
+	        		<th>Editar Rubrica</th>
 	      		</tr>
 	    	</thead>
-	    	<tbody>
+	    	<tbody id="myTable">
 	        	<c:forEach items="${rubricas}" var="rubrica">
 					<tr>
 						<td> --- </td>
 						<td> ${rubrica.nome}</td>
 						<td> ${rubrica.getValorTotal()}</td>
+						<td style="width: 16%">
+							<div class="btn-group">
+								<form action="excluirProjeto" method="POST">
+									<input type="hidden" class="form-control" value="${projeto.id}" name="projeto_id">
+									<button type="submit" class="btn btn-link"> <img src="../img/excluir.png" alt="Logo" style="width:100%;"> </button>
+					           	</form>
+
+					           	<form action="excluirRubrica" method="POST">
+									<input type="hidden" class="form-control" value="${rubrica.id}" name="rubrica_id">
+									<button type="submit" class="btn btn-link"> <img src="../img/excluir.png" alt="Logo" style="width:100%;"> </button>
+					           	</form>
+				           	</div>
+   						</td>
 					</tr>
 				</c:forEach>
 		   	</tbody>
 	  	</table>
 	  </div>
 </div>
+
+<script>
+	$(document).ready(function(){
+		$("#myInput").on("keyup", function() {
+			var value = $(this).val().toLowerCase();
+			$("#myTable tr").filter(function() {
+				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+			});
+		});
+	});
+</script>

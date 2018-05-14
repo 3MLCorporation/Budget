@@ -4,7 +4,7 @@
 pageEncoding="UTF-8"%>
 
 <div>
-  <div class="container" style="width: 60%;">
+  <div class="container">
     <h2>Cadastro de pagamento</h2>
     <br/>
     <form action="cadastrarPagamento" method="POST" enctype="multipart/form-data">

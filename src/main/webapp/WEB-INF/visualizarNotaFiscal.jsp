@@ -4,7 +4,7 @@
 pageEncoding="UTF-8"%>
 
 <div>
-	<div class="container" style="width: 60%;">
+	<div class="container">
 		<h3><strong>Nota fiscal</strong></h3>
 		<br/>
 		<h4>Fornecedor: <strong>${nota.fornecedor}</strong>&emsp; Valor: <strong>${nota.valor}</strong>&emsp; Data: <strong>${nota.data}</h4>

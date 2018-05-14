@@ -4,7 +4,7 @@
 	pageEncoding="UTF-8"%>
 
 
-  <div class="container" style="width: 60%;">
+  <div class="container">
       <h2>Cadastrar rubrica</h2>
   <br/>
   <form action="cadastrarRubrica" method="POST">

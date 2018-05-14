@@ -4,8 +4,9 @@
 	pageEncoding="UTF-8"%>
 	
 <div>
-	<div class="container" style="width: 60%;">
+	<div class="container">
    		<h2>Categorias cadastradas</h2>
+   		<input class="form-control" id="myInput" type="text" placeholder="Pesqusiar...">
 		<table class="table table-sm">
     		<thead class="thead-dark">
       			<tr>
@@ -13,7 +14,7 @@
         			<th>Valor</th>
       			</tr>
     		</thead>
-    		<tbody>
+    		<tbody id="myTable">
         		<c:forEach items="${categorias}" var="categoria">
 					<tr>
 						<td> ${categoria.nome}</td>
@@ -24,3 +25,14 @@
 	  	</table>
 	</div>
 </div>
+
+<script>
+	$(document).ready(function(){
+		$("#myInput").on("keyup", function() {
+			var value = $(this).val().toLowerCase();
+			$("#myTable tr").filter(function() {
+				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+			});
+		});
+	});
+</script>

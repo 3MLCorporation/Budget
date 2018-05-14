@@ -4,7 +4,7 @@
 	pageEncoding="UTF-8"%>
 
 
-<div class="container" style="width: 60%;">
+<div class="container">
    <h2>Cadastrar orcamento</h2>
 <br/>
 <form action="cadastrarOrcamento" method="POST">

@@ -5,7 +5,7 @@
 	<script src="../js/script.js"></script>
 	
 <div>
-	<div class="container" style="width: 60%;">
+	<div class="container">
 	<h2>Resumo</h2>
 		<table class="table">
 	    	<c:if test="${not empty projetos }">

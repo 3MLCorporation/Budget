@@ -4,26 +4,34 @@
 	pageEncoding="UTF-8"%>
 	
 <div>
-	<div class="container" style="width: 60%;">
+	<div class="container">
    		<h2>Projetos cadastrados</h2>
+   		<input class="form-control" id="myInput" type="text" placeholder="Pesqusiar...">
 		<table class="table table-sm">
     		<thead class="thead-dark">
       			<tr>
         			<th>Projeto</th>
         			<th>Valor</th>
-        			<th>Editar</th>
+        			<th>Editar projeto</th>
       			</tr>
     		</thead>
-    		<tbody>
+    		<tbody id="myTable">
         		<c:forEach items="${projetos}" var="projeto">
 					<tr>
 						<td> ${projeto.nome}</td>
 						<td> ${projeto.getValorTotal()}</td>
-						<td style="width: 12%""> 
-							<form action="selecionarProjeto" method="POST">
-								<input type="hidden" class="form-control" value="${projeto.id}" name="projetoEditavel">
-								<button type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo" style="width:100%;"> </button>
-				           	</form> 
+						<td style="width: 12%">
+							<div class="btn-group"> 
+								<form action="selecionarProjeto" method="POST">
+									<input type="hidden" class="form-control" value="${projeto.id}" name="projetoEditavel">
+									<button type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo" style="width:100%;"> </button>
+					           	</form> 
+
+								<form action="excluirProjeto" method="POST">
+									<input type="hidden" class="form-control" value="${projeto.id}" name="projeto_id">
+									<button type="submit" class="btn btn-link"> <img src="../img/excluir.png" alt="Logo" style="width:100%;"> </button>
+					           	</form>
+				           	</div> 
    						</td>
 					</tr>
 				</c:forEach>
@@ -31,3 +39,14 @@
 	  	</table>
 	</div>
 </div>
+
+<script>
+	$(document).ready(function(){
+		$("#myInput").on("keyup", function() {
+			var value = $(this).val().toLowerCase();
+			$("#myTable tr").filter(function() {
+				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+			});
+		});
+	});
+</script>

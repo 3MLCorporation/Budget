@@ -4,7 +4,7 @@
 pageEncoding="UTF-8"%>
 
 <div>
-  <div class="container" style="width: 60%;">
+  <div class="container">
     <h2>Cadastro de nota fiscal</h2>
     <br/>
     <form action="cadastrarNotaFiscal" method="POST" enctype="multipart/form-data">

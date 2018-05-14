@@ -4,7 +4,7 @@
 	pageEncoding="UTF-8"%>
 <script src="../js/script.js"></script>
    
-   <div class="container" style="width: 60%;">
+   <div class="container">
        <h2>Cadastrar itens</h2>
    <br/>
    <form action="cadastrarItem" method="POST">
