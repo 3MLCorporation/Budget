@@ -6,7 +6,7 @@
 <div>
 	<div class="container">
 		<h2>Rubricas cadastradas</h2>
-		<input class="form-control" id="myInput" type="text" placeholder="Pesqusiar...">
+		<input class="form-control" id="myInput" type="text" placeholder="Pesquisar...">
 		<table class="table table-sm">
 	    	<thead class="thead-dark">
 	      		<tr>

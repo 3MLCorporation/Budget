@@ -7,7 +7,7 @@ pageEncoding="UTF-8"%>
 <div>
 	<div class="container">
    		<h2>Orçamentos cadastrados</h2>
-   		<input class="form-control" id="myInput" type="text" placeholder="Pesqusiar...">
+   		<input class="form-control" id="myInput" type="text" placeholder="Pesquisar...">
 		<table class="table table-sm">
     		<thead class="thead-dark">
       			<tr>

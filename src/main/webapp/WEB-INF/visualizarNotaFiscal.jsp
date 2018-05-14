@@ -15,7 +15,7 @@ pageEncoding="UTF-8"%>
 			<br/>
 			<h3><strong>Pagamento cadastrados</strong></h3>
 			<br/>
-			<input class="form-control" id="myInput" type="text" placeholder="Pesqusiar...">
+			<input class="form-control" id="myInput" type="text" placeholder="Pesquisar...">
 			<table class="table table-sm">
 				<thead class="thead-dark">
 					<tr>
