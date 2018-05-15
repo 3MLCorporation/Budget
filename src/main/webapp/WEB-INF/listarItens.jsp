@@ -43,7 +43,7 @@
 					           	</form> 
 								<form action="visualizarNotaFiscal" method="GET">
 									<input type="hidden" name="item_id" value="${item.id }">
-									<button class="btn btn-link"> <img src="../img/visualizar.png" alt="Logo" style="width:100%;"> </button>
+									<button class="btn btn-link"><img src="../img/visualizar.png" alt="Logo" style="width:100%;"> </button>
 					           	</form>
 				           	</div> 
 						</td>

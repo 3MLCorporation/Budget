@@ -14,7 +14,7 @@ pageEncoding="UTF-8"%>
         			<th>Orçamento</th>
         			<th>Valor</th>
         			<th>Status</th>
-        			<th>Editar orçamento</th>
+        			<th>&emsp;Editar orçamento</th>
         			<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
         				<th>Usuários</th>
         			</c:if>
@@ -39,7 +39,7 @@ pageEncoding="UTF-8"%>
 							<c:if test="${orcamento.status == 2}">Finalizado</c:if>
 						</c:if>
 						</td>
-						<td style="width: 16%">
+						<td style="width: 18%">
 							<div class="btn-group">
 							<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
 								<form action="atualizarStatusOrcamento" method="POST">
@@ -52,37 +52,37 @@ pageEncoding="UTF-8"%>
 					    	 <c:if test="${orcamento.status == 0 && (sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1) }">
 				    	 		<form action="selecionarOrcamento" method="POST">
 									<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamentoEditavel">
-									<button type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo" style="width:100%;"> </button>
+									<button type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo"> </button>
 					           	</form> 
 					    	 </c:if>
 					    	 <!--Orcamento em elaboracao e usuario padrao  -->
 					    	 <c:if test="${orcamento.status == 0 && sessionScope.usuario.perfil == 2}">
 					    	  	<!--TODO Mostrar alerta na tela!!!  -->
-								<button  disabled="disabled" type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo" style="width:100%;"> </button>
+								<button  disabled="disabled" type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo"> </button>
 					    	 </c:if>
 					    	 <!--Orcamento em controle e usuarios admin/gerente  -->
 					    	 <c:if test="${orcamento.status == 1 }">
 					    	 	<form action="selecionarOrcamento" method="POST">
 									<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamentoEditavel">
-									<button type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo" style="width:100%;"> </button>
+									<button type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo"> </button>
 					           	</form> 
 					    	 </c:if>
 							<!--Orcamento finalizado e usuarios admin/gerente  -->	
 							<c:if test="${orcamento.status == 2 && (sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1) }">
 					    	 	<form action="selecionarOrcamento" method="POST">
 									<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamentoEditavel">
-									<button type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo" style="width:100%;"> </button>
+									<button type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo"> </button>
 					           	</form> 
 					    	 </c:if>
 					    	 <!--Orcamento finalizado e usuario padrao -->	
 							<c:if test="${orcamento.status == 2 && sessionScope.usuario.perfil == 2 }">
 								<!--TODO Mostrar alerta na tela!!!  -->
-					    	 	<button  disabled="disabled" type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo" style="width:100%;"> </button>
+					    	 	<button  disabled="disabled" type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo"> </button>
 					    	 </c:if>
 					        <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
 								<form action="excluirOrcamento" method="POST">
 									<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamento_id">
-									<button type="submit" class="btn btn-link"> <img src="../img/excluir.png" alt="Logo" style="width:100%;"> </button>
+									<button type="submit" class="btn btn-link"> <img src="../img/excluir.png" alt="Logo"> </button>
 					           	</form>
 				           	</c:if>
 				           	</div>
@@ -91,7 +91,7 @@ pageEncoding="UTF-8"%>
 	   						<td style="width: 12%">
 	   							<form action="adicionarEditor" method="GET">
 									<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamento">
-									<button class="btn btn-link"> <img src="../img/adicionarUsuario.png" alt="Logo" style="width:100%;"> </button>
+									<button class="btn btn-link"> <img src="../img/adicionarUsuario.png" alt="Logo"> </button>
 					           	</form>
 	   						</td>
    						</c:if>
