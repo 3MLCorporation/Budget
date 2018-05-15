@@ -39,9 +39,7 @@ public class CadastrarUsuario extends HttpServlet {
 		
 		usuario.setId(id);
 		
-		req.getSession().setAttribute("usuario", usuario);
-		/*req.setAttribute("page", "visualizarResumo");           
-		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);*/
+		req.getSession().setAttribute("usuario", usuario); 
 		resp.sendRedirect("/principal");
 		
 	}

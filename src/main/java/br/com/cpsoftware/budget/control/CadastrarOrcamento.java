@@ -55,10 +55,6 @@ public class CadastrarOrcamento extends HttpServlet {
 		
 		resp.sendRedirect("/listarOrcamentos");
 		
-		/*req.setAttribute("page", "visualizarResumo");           
-		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
-		*/
-		
 	    /*try {
 	        Long id = dao.create(orcamento);
 	        resp.sendRedirect("/read?id=" + id.toString());   // read what we just wrote

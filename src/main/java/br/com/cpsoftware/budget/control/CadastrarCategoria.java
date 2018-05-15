@@ -38,9 +38,5 @@ public class CadastrarCategoria extends HttpServlet {
 		dao.create(categoria);
 		
 		resp.sendRedirect("/listarCategorias");
-		
-		/*req.setAttribute("page", "visualizarResumo");           
-		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);*/
-		
 	}
 }

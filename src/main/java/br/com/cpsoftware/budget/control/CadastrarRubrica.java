@@ -48,8 +48,5 @@ public class CadastrarRubrica extends HttpServlet {
 		dao.create(rubrica);
 	
 		resp.sendRedirect("/listarRubricas");
-		
-		/*req.setAttribute("page", "visualizarResumo");           
-		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);*/
 	}
 }

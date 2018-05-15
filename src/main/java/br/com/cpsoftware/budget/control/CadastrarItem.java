@@ -58,9 +58,6 @@ public class CadastrarItem extends HttpServlet {
 		
 		dao.create(item);
 		
-		resp.sendRedirect("/listarItens");
-		
-		/*req.setAttribute("page", "visualizarResumo");           
-		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);*/
+		resp.sendRedirect("/listarItens"); 
 	}
 }
