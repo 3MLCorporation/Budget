@@ -4,7 +4,7 @@
 	pageEncoding="UTF-8"%>
 <script src="../js/script.js"></script>
    
-   <div class="container">
+<div class="container">
        <h2>Cadastrar itens</h2>
    <br/>
    <form action="cadastrarItem" method="POST">
@@ -13,6 +13,17 @@
          class="form-control" placeholder="Fornecer o nome do novo item"
          name="nome" required="required">
      </div>
+     <div class="form-group">
+       <label for="text">Unidade de medida:</label>
+       <select class="form-control" name="unidade_medida">
+          <option value="0">Verba</option>
+          <option value="1">Unidade</option>
+          <option value="2">Mês</option>
+          <option value="3">Quilograma</option>
+          <option value="4">Metro</option>
+          <option value="5">Litro</option>
+       </select>
+      </div>
      <div class="form-group">
          <label for="text">Descrição:</label> <input type="text"
          class="form-control" placeholder="Fornecer a descrição do item"
@@ -57,4 +68,4 @@
      </div>  
      <button type="submit" class="btn btn-dark">Cadastrar</button>
    </form>
-   </div>
+</div>

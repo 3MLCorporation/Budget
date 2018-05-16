@@ -16,6 +16,7 @@
 	        		<th>Descrição</th>
 	        		<th>Valor</th>
 	        		<th>Quantidade</th>
+	        		<th>UM</th>
 	        		<th>&emsp;Item</th>
 	        		<th>&emsp;Nota fiscal</th>
 	      		</tr>
@@ -29,6 +30,20 @@
 						<td> ${item.descricao}</td>
 						<td> ${item.getValor_uniforme()}</td>
 						<td> ${item.quantidade}</td>
+						<td>
+							<c:choose>
+
+								<c:when test = "${item.unidadeMedida == 0}">Verba</c:when>
+								<c:when test = "${item.unidadeMedida == 1}">Unidade</c:when>
+								<c:when test = "${item.unidadeMedida == 2}">Mês</c:when>
+								<c:when test = "${item.unidadeMedida == 3}">Quilograma</c:when>
+								<c:when test = "${item.unidadeMedida == 4}">Metro</c:when>
+								<c:when test = "${item.unidadeMedida == 5}">Litro</c:when>
+								<c:otherwise>---</c:otherwise>
+
+							</c:choose>
+
+				        </td>
 						<td>
 							<form action="excluirItem" method="POST">
 								<input type="hidden" class="form-control" value="${item.id}" name="item_id">
