@@ -14,7 +14,7 @@ pageEncoding="UTF-8"%>
         			<th>Orçamento</th>
         			<th>Valor</th>
         			<th>Status</th>
-        			<th>&emsp;Editar orçamento</th>
+        			<th>&emsp;Editar<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"> orçamento</c:if></th>
         			<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
         				<th>Usuários</th>
         			</c:if>
