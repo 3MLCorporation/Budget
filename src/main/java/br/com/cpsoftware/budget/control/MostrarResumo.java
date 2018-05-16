@@ -73,6 +73,8 @@ public class MostrarResumo extends HttpServlet {
 				for(OrcamentoUsuario relacao: orcamentoUsuarioLista){
 					orcamentos.add((Orcamento) new OrcamentoDAO().read(relacao.getOrcamentoId()));
 				}
+				
+				req.getSession().setAttribute("orcamentoEditavel", null);
 				req.setAttribute("orcamentos", orcamentos);
 				
 				/*if(req.getSession().getAttribute("orcamentoEditavel") == null) {
