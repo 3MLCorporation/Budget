@@ -51,10 +51,11 @@ public class CadastrarItem extends HttpServlet {
 		Long rubricaId = Long.parseLong(req.getParameter("rubricaId"));
 		
 		Item item = new Item(rubricaId,
-							 req.getParameter("nome"),
-							 req.getParameter("descricao"),
-							 Double.parseDouble(req.getParameter("valor_uniforme")),
-							 Long.parseLong(req.getParameter("quantidade")));
+							 req.getParameter(Item.NOME),
+							 req.getParameter(Item.DESCRICAO),
+							 Double.parseDouble(req.getParameter(Item.VALOR_UNIFORME)),
+							 Long.parseLong(req.getParameter(Item.QUANTIDADE)),
+							 Integer.parseInt(req.getParameter(Item.UNIDADE_MEDIDA)));
 		
 		dao.create(item);
 		

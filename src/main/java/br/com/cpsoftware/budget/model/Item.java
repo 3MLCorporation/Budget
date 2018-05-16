@@ -11,6 +11,7 @@ public class Item {
 	private String descricao;
 	private Double valor_uniforme;
 	private Long quantidade;
+	private int unidadeMedida;
 	
 	//Definição das keys do banco
 	public static final String RUBRICA_ID = "rubrica_id";
@@ -19,22 +20,33 @@ public class Item {
 	public static final String DESCRICAO = "descricao";
 	public static final String VALOR_UNIFORME = "valor_uniforme";
 	public static final String QUANTIDADE = "quantidade";
+	public static final String UNIDADE_MEDIDA = "unidade_medida";
+
+	//Tipos de unidade de medida
+	public static final int UNIDADE_MEDIDA_VERBA = 0;
+	public static final int UNIDADE_MEDIDA_UNIDADE = 1;
+	public static final int UNIDADE_MEDIDA_MES = 2;
+	public static final int UNIDADE_MEDIDA_KG = 3;
+	public static final int UNIDADE_MEDIDA_METRO = 4;
+	public static final int UNIDADE_MEDIDA_LITRO = 5;
 	
-	public Item(Long rubricaId, String nome, String descricao, Double valor_uniforme, Long quantidade) {
+	public Item(Long rubricaId, String nome, String descricao, Double valor_uniforme, Long quantidade, int unidadeMedida) {
 		this.rubricaId = rubricaId;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.valor_uniforme = valor_uniforme;
 		this.quantidade = quantidade;
+		this.unidadeMedida = unidadeMedida;
 	}
 	
-	public Item(Long rubricaId, Long id,String nome, String descricao, Double valor_uniforme, Long quantidade) {
+	public Item(Long rubricaId, Long id,String nome, String descricao, Double valor_uniforme, Long quantidade, int unidadeMedida) {
 		this.rubricaId = rubricaId;
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.valor_uniforme = valor_uniforme;
 		this.quantidade = quantidade;
+		this.unidadeMedida = unidadeMedida;
 	}
 	
 	
@@ -76,6 +88,20 @@ public class Item {
 	}
 	public void setQuantidade(Long quantidade) {
 		this.quantidade = quantidade;
+	}
+
+	/**
+	 * @return the unidadeMedida
+	 */
+	public int getUnidadeMedida() {
+		return unidadeMedida;
+	}
+
+	/**
+	 * @param unidadeMedida the unidadeMedida to set
+	 */
+	public void setUnidadeMedida(int unidadeMedida) {
+		this.unidadeMedida = unidadeMedida;
 	}
 
 	
