@@ -39,6 +39,7 @@ public class ItemDAO{
 		itemEntity.setProperty(Item.DESCRICAO, item.getDescricao());
 		itemEntity.setProperty(Item.VALOR_UNIFORME, item.getValor_uniforme());
 		itemEntity.setProperty(Item.QUANTIDADE, item.getQuantidade());
+		itemEntity.setProperty(Item.UNIDADE_MEDIDA, item.getUnidadeMedida());
 		
 		Key itemKey = datastore.put(itemEntity);
 		
@@ -68,6 +69,7 @@ public class ItemDAO{
 		itemEntity.setProperty(Item.DESCRICAO, item.getDescricao());
 		itemEntity.setProperty(Item.VALOR_UNIFORME, item.getValor_uniforme());
 		itemEntity.setProperty(Item.QUANTIDADE, item.getQuantidade());
+		itemEntity.setProperty(Item.UNIDADE_MEDIDA, item.getUnidadeMedida());
 
 		datastore.put(itemEntity);                   // Update the Entity
 	}
@@ -83,7 +85,8 @@ public class ItemDAO{
 				 (String)itemEntity.getProperty(Item.NOME),
 				 (String)itemEntity.getProperty(Item.DESCRICAO),
 				 (Double)itemEntity.getProperty(Item.VALOR_UNIFORME),
-				 (Long)itemEntity.getProperty(Item.QUANTIDADE));
+				 (Long)itemEntity.getProperty(Item.QUANTIDADE),
+				 ((Long)itemEntity.getProperty(Item.UNIDADE_MEDIDA)).intValue());
 	}
 	
 	private List<Item> entitiesToItem(List<Entity> entities) {
