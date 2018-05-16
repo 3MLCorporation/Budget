@@ -29,6 +29,7 @@ public class CadastrarPagamento extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		req.setAttribute("nota_fiscal_id", req.getParameter("nota_fiscal_id"));
 		req.setAttribute("page", "cadastrarPagamento");
 	    req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);

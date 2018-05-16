@@ -18,6 +18,7 @@ public class AtualizarStatusOrcamento extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		OrcamentoDAO orcamentoDao = new OrcamentoDAO();
 		
 		Orcamento orcamento = (Orcamento) orcamentoDao.read(Long.parseLong(req.getParameter("orcamentoId")));

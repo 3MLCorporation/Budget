@@ -12,6 +12,7 @@ public class Logout extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		req.getSession().setAttribute("usuario", null);
 		req.getSession().setAttribute("orcamentoEditavel", null);
 		req.getSession().setAttribute("projetoEditavel", null);

@@ -15,6 +15,7 @@ public class ListarProjetos extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
 		
 		ProjetoDAO projetoDao = new  ProjetoDAO();
