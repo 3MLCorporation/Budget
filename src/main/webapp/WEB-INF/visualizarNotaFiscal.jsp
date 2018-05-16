@@ -10,7 +10,9 @@ pageEncoding="UTF-8"%>
 		<h4>Fornecedor: <strong>${nota.fornecedor}</strong>&emsp; Valor: <strong>${nota.valor}</strong>&emsp; Data: <strong>${nota.data}</h4>
 			<form action="abrirNotaFiscal" target="_blank" method="GET">
 				<input type="hidden" name="notaId" value="${nota.id}">
-				<button type="submit" class="btn btn-dark">Ver arquivo</button>
+				<div class="botaoVisualizarNotaFiscal">
+					<button type="submit" class="btn btn-dark">Ver arquivo</button>
+				</div>
 			</form>
 			<br/>
 			<h3><strong>Pagamento cadastrados</strong></h3>
@@ -29,7 +31,7 @@ pageEncoding="UTF-8"%>
 					<tr>
 						<td> ${pagamento.valor}</td>
 						<td> ${pagamento.data}</td>
-						<td style="width: 16%">
+						<td style="width: 11%">
 							<div class="btn-group"> 
 	                            <form action="abrirPagamento" target="_blank" method="GET">
 	                                <input type="hidden" name="pagamentoId" value="${pagamento.id }">

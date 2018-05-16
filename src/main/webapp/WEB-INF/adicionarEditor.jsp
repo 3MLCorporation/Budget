@@ -13,14 +13,19 @@
 	   			<input class="form-control" id="myInput" type="text" placeholder="Pesquisar...">
 	   		</div>
 	   		
-	   		<div class="form-group col-lg-6">
-	   			<form action="adicionarEditor" method="POST">
-			  		<label for="text"><strong>Adicionar usuário</strong></label>
-		  			<input type="text" class="form-control" placeholder="Fornecer o email do usuário a ser adicionado" name="email" required="required">
-					<button type="submit" class="btn btn-dark">Adicionar</button>
+	   		<div class="form-group col-lg-9">
+	   			<form class="" action="adicionarEditor" method="POST">
+	   				<label for="text"><strong>Adicionar usuário</strong></label>
+	   				<div class="inputAdicionarUsuario">	   					
+			  			<input type="text" class="form-control" placeholder="Fornecer o email do usuário a ser adicionado" name="email" required="required">
+			  		</div>
+			  		<div class="botaoAdicionarUsuario">
+						<button type="submit" class="btn btn-dark botao">Adicionar</button>
+					</div>
 		  		</form>
 		  	</div>	
 	  	</div>
+
    		<c:if test="${not empty editoresCadastrados}">
 			<table class="table table-sm">
 	    		<thead class="thead-dark">

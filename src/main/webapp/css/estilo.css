@@ -5,6 +5,25 @@
     top: 100px;
 }
 
+.botaoAdicionarUsuario{
+  position: absolute;
+  right: 0;
+  top: 32;
+  width: 108px;
+}
+
+.inputAdicionarUsuario{
+  position: relative;
+  margin: 0 100px 0 0;
+}
+
+.botaoVisualizarNotaFiscal{
+  position: absolute;
+  right: 0;
+  top: 62px;
+  width: 120px;
+}
+
 .botaoVoltar{
 	position: relative;
 	top: -33px;
@@ -23,84 +42,8 @@
 	left: 100px;
 }
 
-/* Head */
-
-.acc-col{
-
-
-  min-height: 300px;
-  margin-top: 5%;
-  background-color: #ffffff;
-  padding: 20px;
-/*      border:#333 solid 1px;*/
-
-}
-.acc-col > h3{
-  padding-bottom: 20px;
-}
-hr{
-  border:solid 1px #d6d6d6;
-}
-section > form > div{
-
-  padding: 5px;
-}
-.btn-div{
-
-  margin-top:10px;
-  padding-bottom: 10px;
-}
-
-  
-.ui-67 .ui-head{
-text-align:center;
-padding:30px 0px;
-position:relative;
-border-bottom:2px solid #fff;
-box-shadow:0px 0px 5px rgba(0,0,0,0.1);
-background-color: #31373e;
-}
-/* Details */
-.ui-67 .ui-head .ui-details{
-margin:0px 0px 74px;
-}
-.ui-67 .ui-head .ui-details h3{
-color:#fff;
-font-size:40px;
-line-height:60px;
-font-weight:300;
-}
-@media (max-width:400px){
-.ui-67 .ui-head .ui-details h3{
-  font-size:25px;
-  line-height:40px;
-  font-weight:400;
-}
-}
-.ui-67 .ui-head .ui-details h4{
-color:#fff;
-font-size:18px;
-line-height:38px; 
-font-weight:400;
-}
-/* Image */
-.ui-67 .ui-head .ui-image{
-width:100%;
-position:absolute;
-bottom:-55px;
-z-index: 10;
-}
-.ui-67 .ui-head img{
-width:120px;
-border-radius:100%;
-margin:0px auto;
-border:4px solid #fff;
-box-shadow:0px 0px 15px rgba(0,0,0,0.1);
-}
-
-
 .btn-dark {
-color: #fff;
-background-color: #343a40;
-border-color: #343a40;
+  color: #fff;
+  background-color: #343a40;
+  border-color: #343a40;
 }
