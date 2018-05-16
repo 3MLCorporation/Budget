@@ -26,7 +26,7 @@ public class AtualizarStatusOrcamento extends HttpServlet {
 		
 		orcamentoDao.update(orcamento);
 		
-		resp.sendRedirect("/principal");
+		resp.sendRedirect("/listarOrcamentos");
 	}
 	
 }
