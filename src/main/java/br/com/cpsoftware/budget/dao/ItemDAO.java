@@ -3,6 +3,7 @@ package br.com.cpsoftware.budget.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.appengine.api.datastore.Blob;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
@@ -40,6 +41,9 @@ public class ItemDAO{
 		itemEntity.setProperty(Item.VALOR_UNIFORME, item.getValor_uniforme());
 		itemEntity.setProperty(Item.QUANTIDADE, item.getQuantidade());
 		itemEntity.setProperty(Item.UNIDADE_MEDIDA, item.getUnidadeMedida());
+		itemEntity.setProperty(Item.ARQUIVO_DETALHES, item.getArquivoDetalhes());
+		itemEntity.setProperty(Item.ARQUIVO_AUXILIAR, item.getArquivoAuxiliar());
+		
 		
 		Key itemKey = datastore.put(itemEntity);
 		
@@ -63,20 +67,22 @@ public class ItemDAO{
 	}
 
 	public void update(Item item) {
-		Key key = KeyFactory.createKey(ITEM_KIND, item.getId());  // From a book, create a Key
-		Entity itemEntity = new Entity(key);         // Convert Book to an Entity
+		Key key = KeyFactory.createKey(ITEM_KIND, item.getId());
+		Entity itemEntity = new Entity(key);
 		itemEntity.setProperty(Item.NOME, item.getNome());
 		itemEntity.setProperty(Item.DESCRICAO, item.getDescricao());
 		itemEntity.setProperty(Item.VALOR_UNIFORME, item.getValor_uniforme());
 		itemEntity.setProperty(Item.QUANTIDADE, item.getQuantidade());
 		itemEntity.setProperty(Item.UNIDADE_MEDIDA, item.getUnidadeMedida());
+		itemEntity.setProperty(Item.ARQUIVO_DETALHES, item.getArquivoDetalhes());
+		itemEntity.setProperty(Item.ARQUIVO_AUXILIAR, item.getArquivoAuxiliar());
 
-		datastore.put(itemEntity);                   // Update the Entity
+		datastore.put(itemEntity);
 	}
 
 	public void delete(Long itemId) {
-		Key key = KeyFactory.createKey(ITEM_KIND, itemId);        // Create the Key
-		datastore.delete(key);                      // Delete the Entity
+		Key key = KeyFactory.createKey(ITEM_KIND, itemId);
+		datastore.delete(key);
 	}
 	
 	private Item entityToItem(Entity itemEntity) {
@@ -85,8 +91,10 @@ public class ItemDAO{
 				 (String)itemEntity.getProperty(Item.NOME),
 				 (String)itemEntity.getProperty(Item.DESCRICAO),
 				 (Double)itemEntity.getProperty(Item.VALOR_UNIFORME),
-				 (Long)itemEntity.getProperty(Item.QUANTIDADE),
-				 ((Long)itemEntity.getProperty(Item.UNIDADE_MEDIDA)).intValue());
+				 ((Long)itemEntity.getProperty(Item.QUANTIDADE)).intValue(),
+				 ((Long)itemEntity.getProperty(Item.UNIDADE_MEDIDA)).intValue(),
+				 (Blob)itemEntity.getProperty(Item.ARQUIVO_DETALHES),
+				 (Blob)itemEntity.getProperty(Item.ARQUIVO_AUXILIAR));
 	}
 	
 	private List<Item> entitiesToItem(List<Entity> entities) {

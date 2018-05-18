@@ -1,5 +1,7 @@
 package br.com.cpsoftware.budget.model;
 
+import com.google.appengine.api.datastore.Blob;
+
 /*
  * TODO UNIDADE DE MEDIDA
  */
@@ -10,8 +12,10 @@ public class Item {
 	private String nome;
 	private String descricao;
 	private Double valor_uniforme;
-	private Long quantidade;
+	private int quantidade;
 	private int unidadeMedida;
+	private Blob arquivoDetalhes;
+	private Blob arquivoAuxiliar; // TODO PENSAR NOME MELHOR
 	
 	//Definição das keys do banco
 	public static final String RUBRICA_ID = "rubrica_id";
@@ -21,6 +25,8 @@ public class Item {
 	public static final String VALOR_UNIFORME = "valor_uniforme";
 	public static final String QUANTIDADE = "quantidade";
 	public static final String UNIDADE_MEDIDA = "unidade_medida";
+	public static final String ARQUIVO_DETALHES = "arquivo_detalhes";
+	public static final String ARQUIVO_AUXILIAR = "arquivo_auxiliar";
 
 	//Tipos de unidade de medida
 	public static final int UNIDADE_MEDIDA_VERBA = 0;
@@ -30,7 +36,7 @@ public class Item {
 	public static final int UNIDADE_MEDIDA_METRO = 4;
 	public static final int UNIDADE_MEDIDA_LITRO = 5;
 	
-	public Item(Long rubricaId, String nome, String descricao, Double valor_uniforme, Long quantidade, int unidadeMedida) {
+	public Item(Long rubricaId, String nome, String descricao, Double valor_uniforme, int quantidade, int unidadeMedida) {
 		this.rubricaId = rubricaId;
 		this.nome = nome;
 		this.descricao = descricao;
@@ -39,7 +45,7 @@ public class Item {
 		this.unidadeMedida = unidadeMedida;
 	}
 	
-	public Item(Long rubricaId, Long id,String nome, String descricao, Double valor_uniforme, Long quantidade, int unidadeMedida) {
+	public Item(Long rubricaId, Long id,String nome, String descricao, Double valor_uniforme, int quantidade, int unidadeMedida) {
 		this.rubricaId = rubricaId;
 		this.id = id;
 		this.nome = nome;
@@ -49,8 +55,45 @@ public class Item {
 		this.unidadeMedida = unidadeMedida;
 	}
 	
-	
+	public Item(Long rubricaId, String nome, String descricao, Double valor_uniforme, int quantidade, int unidadeMedida, Blob arquivoDetalhes) {
+		this.rubricaId = rubricaId;
+		this.nome = nome;
+		this.descricao = descricao;
+		this.valor_uniforme = valor_uniforme;
+		this.quantidade = quantidade;
+		this.unidadeMedida = unidadeMedida;
+		this.arquivoDetalhes = arquivoDetalhes;
+	}
+	public Item(Long rubricaId, Long id, String nome, String descricao, Double valor_uniforme, int quantidade, int unidadeMedida, Blob arquivoDetalhes) {
+		this.rubricaId = rubricaId;
+		this.nome = nome;
+		this.descricao = descricao;
+		this.valor_uniforme = valor_uniforme;
+		this.quantidade = quantidade;
+		this.unidadeMedida = unidadeMedida;
+		this.arquivoDetalhes = arquivoDetalhes;
+	}
 
+	public Item(Long rubricaId, String nome, String descricao, Double valor_uniforme, int quantidade, int unidadeMedida, Blob arquivoDetalhes, Blob arquivoAuxiliar) {
+		this.rubricaId = rubricaId;
+		this.nome = nome;
+		this.descricao = descricao;
+		this.valor_uniforme = valor_uniforme;
+		this.quantidade = quantidade;
+		this.unidadeMedida = unidadeMedida;
+		this.arquivoDetalhes = arquivoDetalhes;
+		this.arquivoAuxiliar = arquivoAuxiliar;
+	}
+	public Item(Long rubricaId, Long id,String nome, String descricao, Double valor_uniforme, int quantidade, int unidadeMedida, Blob arquivoDetalhes, Blob arquivoAuxiliar) {
+		this.rubricaId = rubricaId;
+		this.nome = nome;
+		this.descricao = descricao;
+		this.valor_uniforme = valor_uniforme;
+		this.quantidade = quantidade;
+		this.unidadeMedida = unidadeMedida;
+		this.arquivoDetalhes = arquivoDetalhes;
+		this.arquivoAuxiliar = arquivoAuxiliar;
+	}
 	public Long getRubricaId() {
 		return rubricaId;
 	}
@@ -83,10 +126,10 @@ public class Item {
 	public void setValor_uniforme(Double valor_uniforme) {
 		this.valor_uniforme = valor_uniforme;
 	}
-	public Long getQuantidade() {
+	public int getQuantidade() {
 		return quantidade;
 	}
-	public void setQuantidade(Long quantidade) {
+	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
 	}
 
@@ -102,6 +145,22 @@ public class Item {
 	 */
 	public void setUnidadeMedida(int unidadeMedida) {
 		this.unidadeMedida = unidadeMedida;
+	}
+
+	public Blob getArquivoDetalhes() {
+		return arquivoDetalhes;
+	}
+
+	public void setArquivoDetalhes(Blob arquivoDetalhes) {
+		this.arquivoDetalhes = arquivoDetalhes;
+	}
+
+	public Blob getArquivoAuxiliar() {
+		return arquivoAuxiliar;
+	}
+
+	public void setArquivoAuxiliar(Blob arquivoAuxiliar) {
+		this.arquivoAuxiliar = arquivoAuxiliar;
 	}
 
 	

@@ -7,7 +7,7 @@
 <div class="container">
        <h2>Cadastrar itens</h2>
    <br/>
-   <form action="cadastrarItem" method="POST">
+   <form action="cadastrarItem" method="POST" enctype="multipart/form-data" >
    <div class="form-group">
          <label for="text">Item:</label> <input type="text"
          class="form-control" placeholder="Fornecer o nome do novo item"
@@ -42,6 +42,19 @@
      <div class="form-group">
            <label for="text">Valor total:</label> <input type="text" readonly="readonly" placeholder="Valor total da soma dos itens" class="form-control" id="resultado">
      </div>
+     
+     <div class="row">
+     	<div class="form-group col-lg-6">
+          <label for="text">Detalhes</label> <input type="file"
+          class="form-control" placeholder="Fornecer detalhes do item"
+          name="arquivo_detalhes" required="required" accept=".pdf">
+        </div>
+        <div class="form-group col-lg-6">
+          <label for="text">Auxiliar</label> <input type="file"
+          class="form-control" placeholder="Fornecer arquivo auxiliar"
+          name="arquivo_auxiliar" required="required" accept=".pdf">
+        </div>
+     </div>
      <%-- <div class="form-group">
      	 <label>Orçamento:</label>
      	 	<select class="form-control" name="orcamento">
@@ -60,7 +73,7 @@
 		</div>       
      <div class="form-group">
        <label>Rubrica:</label>
-     	 	<select class="form-control" name="rubricaId">
+     	 	<select class="form-control" name="rubrica_id">
 					<c:forEach items="${rubricas}" var="rubrica">
 						<option value="${rubrica.id }">${rubrica.nome}</option>
 					</c:forEach>
