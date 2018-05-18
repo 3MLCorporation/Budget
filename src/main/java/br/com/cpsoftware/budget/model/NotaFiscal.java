@@ -1,6 +1,7 @@
 package br.com.cpsoftware.budget.model;
 
 import java.util.Date;
+import java.util.List;
 
 import com.google.appengine.api.datastore.Blob;
 
@@ -10,6 +11,7 @@ public class NotaFiscal {
 	private Blob arquivo;
 	private String fornecedor;
 	private Double valor;
+	private Double valorParcial;
 	private Date data;
 	private int status;
 	
@@ -83,6 +85,29 @@ public class NotaFiscal {
 
 	public void setValor(Double valor) {
 		this.valor = valor;
+	}
+
+	/**
+	 * @return the valorParcial
+	 */
+	public Double getValorParcial(List<Pagamento> pagamentos) {
+		valorParcial = calcularValorParcial(pagamentos);
+		return valorParcial;
+	}
+
+	/**
+	 * @param valorParcial the valorParcial to set
+	 */
+	public void setValorParcial(Double valorParcial) {
+		this.valorParcial = valorParcial;
+	}
+	
+	private Double calcularValorParcial(List<Pagamento> pagamentos) {
+		Double valorP = 0d;
+		for(Pagamento pagamento : pagamentos) {
+			valorP += pagamento.getValor();
+		}
+		return valorP;
 	}
 
 	public Date getData() {

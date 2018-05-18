@@ -66,6 +66,7 @@ public class Item {
 	}
 	public Item(Long rubricaId, Long id, String nome, String descricao, Double valor_uniforme, int quantidade, int unidadeMedida, Blob arquivoDetalhes) {
 		this.rubricaId = rubricaId;
+		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.valor_uniforme = valor_uniforme;
@@ -86,6 +87,7 @@ public class Item {
 	}
 	public Item(Long rubricaId, Long id,String nome, String descricao, Double valor_uniforme, int quantidade, int unidadeMedida, Blob arquivoDetalhes, Blob arquivoAuxiliar) {
 		this.rubricaId = rubricaId;
+		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.valor_uniforme = valor_uniforme;
@@ -131,6 +133,9 @@ public class Item {
 	}
 	public void setQuantidade(int quantidade) {
 		this.quantidade = quantidade;
+	}
+	public Double getValor() {
+		return valor_uniforme * quantidade;
 	}
 
 	/**
