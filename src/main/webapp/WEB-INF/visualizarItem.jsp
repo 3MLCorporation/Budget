@@ -5,16 +5,16 @@
 	
  <div>
 	<div class="container">
-		<h3><strong>Detalhes do item: ${orcamentoSelecionado}</strong></h3>
-		<h4>Nome: <strong>${item.nome}</strong>&emsp; Descrição: <strong>${item.descricao}</strong>&emsp; Valor: <strong>${item.valor_uniforme}</h4>
-		<h4>Quantidade: <strong>${item.quantidade}</strong>&emsp; Unidade de medida: <strong>${item.unidade_medida}</strong></h4>
+		<h3><strong>Detalhes do item: ${item.nome}</strong></h3>
+		<h4>Nome: <strong>${item.nome}</strong>&emsp; Descrição: <strong>${item.descricao}</strong>&emsp; Valor: <strong>${item.valor}</strong></h4>
+		<h4>Quantidade: <strong>${item.quantidade}</strong>&emsp; Valor uniforme: <strong>${item.valor_uniforme}</strong>&emsp; Unidade de medida: <strong>${item.unidade_medida}</strong></h4>
 
 		<form action="visualizarNotaFiscal" method="GET">
 			<div class="inputPosicao">	   					
 	  			<input type="hidden" name="item_id" value="${item.id }">
 	  		</div>
 	  		<div class="botaoPosicao">
-				<button class="btn btn-link"><img src="../img/visualizar.png" alt="Logo"></button>
+				<button class="btn btn-link">Ver arquivo</button>
 			</div>
        	</form>
 	</div>

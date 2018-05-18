@@ -7,11 +7,23 @@ pageEncoding="UTF-8"%>
 	<div class="container" style="width: 60%;">
 		<h3><strong>Nota fiscal</strong></h3>
 		<br/>
-		<h4>Fornecedor: <strong>${nota.fornecedor}</strong>&emsp; Valor: <strong>${nota.valor}</strong>&emsp; Data: <strong>${nota.data}</h4>
+		<h4>Fornecedor: <strong>${nota.fornecedor}</strong>&emsp;
+			Valor: <strong>${nota.valor}</strong>&emsp;
+			Data: <strong>${nota.data}</strong>&emsp;
+			Valor parcial: <strong>${nota.valorParcial}</strong>&emsp;
+			Status: 
+			<strong>
+	            <c:choose>
+	               <c:when test = "${nota.status == 1}">Parcial</c:when>
+	               <c:when test = "${nota.status == 2}">Quitado</c:when>
+	            </c:choose>
+            </strong>
+
+		</h4>
 			<form action="abrirNotaFiscal" target="_blank" method="GET">
 				<input type="hidden" name="notaId" value="${nota.id}">
 				<div class="botaoVisualizarNotaFiscal">
-					<button type="submit" class="btn btn-dark"><img src="../img/visualizar.png" alt="Logo"></button>
+					<button type="submit" class="btn btn-dark">Ver arquivo</button>
 				</div>
 			</form>
 			<br/>
