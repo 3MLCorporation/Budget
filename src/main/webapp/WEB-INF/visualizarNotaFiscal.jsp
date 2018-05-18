@@ -11,7 +11,7 @@ pageEncoding="UTF-8"%>
 			<form action="abrirNotaFiscal" target="_blank" method="GET">
 				<input type="hidden" name="notaId" value="${nota.id}">
 				<div class="botaoVisualizarNotaFiscal">
-					<button type="submit" class="btn btn-dark">Ver arquivo</button>
+					<button type="submit" class="btn btn-dark"><img src="../img/visualizar.png" alt="Logo"></button>
 				</div>
 			</form>
 			<br/>

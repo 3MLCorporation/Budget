@@ -13,10 +13,8 @@
 	        		<th>Categoria</th>
 	        		<th>Rubrica</th>
 	        		<th>Item</th>
-	        		<th>Descrição</th>
 	        		<th>Valor</th>
-	        		<th>Quantidade</th>
-	        		<th>UM</th>
+	        		<th>Detalhe</th>
 	        		<th>&emsp;Item</th>
 	        		<th>&emsp;Nota fiscal</th>
 	      		</tr>
@@ -27,38 +25,28 @@
 						<td> --- </td>
 						<td> --- </td>
 						<td> ${item.nome}</td>
-						<td> ${item.descricao}</td>
-						<td> ${item.getValor_uniforme()}</td>
-						<td> ${item.quantidade}</td>
+						<td> ${item.getValor_parcial()}</td>
 						<td>
-							<c:choose>
-
-								<c:when test = "${item.unidadeMedida == 0}">Verba</c:when>
-								<c:when test = "${item.unidadeMedida == 1}">Unidade</c:when>
-								<c:when test = "${item.unidadeMedida == 2}">Mês</c:when>
-								<c:when test = "${item.unidadeMedida == 3}">Quilograma</c:when>
-								<c:when test = "${item.unidadeMedida == 4}">Metro</c:when>
-								<c:when test = "${item.unidadeMedida == 5}">Litro</c:when>
-								<c:otherwise>---</c:otherwise>
-
-							</c:choose>
-
-				        </td>
+							<form action="visualizarItem" method="POST">
+								<input type="hidden" class="form-control" value="${item.id}" name="item_id">
+								<button type="submit" class="btn btn-link"> <img src="../img/detalhes.png" alt="Logo"> </button>
+					         </form>
+						</td>
 						<td>
 							<form action="excluirItem" method="POST">
 								<input type="hidden" class="form-control" value="${item.id}" name="item_id">
-								<button type="submit" class="btn btn-link"> <img src="../img/excluir.png" alt="Logo" style="width:100%;"> </button>
+								<button type="submit" class="btn btn-link"> <img src="../img/excluir.png" alt="Logo"> </button>
 					         </form>
 						</td>
 						<td style="width: 15%;">
 							<div class="btn-group">
 								<form action="cadastrarNotaFiscal" method="GET">
 									<input type="hidden" name="item_id" value="${item.id }">
-									<button class="btn btn-link"> <img src="../img/adicionar.png" alt="Logo" style="width:100%;"> </button>
+									<button class="btn btn-link"> <img src="../img/adicionar.png" alt="Logo"> </button>
 					           	</form> 
 								<form action="visualizarNotaFiscal" method="GET">
 									<input type="hidden" name="item_id" value="${item.id }">
-									<button class="btn btn-link"><img src="../img/visualizar.png" alt="Logo" style="width:100%;"> </button>
+									<button class="btn btn-link"><img src="../img/visualizar.png" alt="Logo"> </button>
 					           	</form>
 				           	</div> 
 						</td>

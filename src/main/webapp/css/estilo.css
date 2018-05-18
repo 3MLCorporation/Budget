@@ -5,14 +5,14 @@
     top: 100px;
 }
 
-.botaoAdicionarUsuario{
+.botaoPosicao{
   position: absolute;
   right: 0;
   top: 32px;
   width: 108px;
 }
 
-.inputAdicionarUsuario{
+.inputPosicao{
   position: relative;
   margin: 0 100px 0 0;
 }

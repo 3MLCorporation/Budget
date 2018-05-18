@@ -16,10 +16,10 @@
 	   		<div class="form-group col-lg-9">
 	   			<form class="" action="adicionarEditor" method="POST">
 	   				<label for="text"><strong>Adicionar usuário</strong></label>
-	   				<div class="inputAdicionarUsuario">	   					
+	   				<div class="inputPosicao">	   					
 			  			<input type="text" class="form-control" placeholder="Fornecer o email do usuário a ser adicionado" name="email" required="required">
 			  		</div>
-			  		<div class="botaoAdicionarUsuario">
+			  		<div class="botaoPosicao">
 						<button type="submit" class="btn btn-dark botao">Adicionar</button>
 					</div>
 		  		</form>
