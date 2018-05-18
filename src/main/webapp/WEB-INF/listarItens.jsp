@@ -1,8 +1,3 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-	
 <div>
 	<div class="container">
 		<h2>Itens cadastrados</h2>
@@ -14,7 +9,8 @@
 	        		<th>Rubrica</th>
 	        		<th>Item</th>
 	        		<th>Valor</th>
-	        		<th>Detalhe</th>
+	        		<th>Valor Parcial</th>
+	        		<th>Detalhes</th>
 	        		<th>&emsp;Item</th>
 	        		<th>&emsp;Nota fiscal</th>
 	      		</tr>
@@ -25,7 +21,8 @@
 						<td> --- </td>
 						<td> --- </td>
 						<td> ${item.nome}</td>
-						<td> ${item.getValor_parcial()}</td>
+						<td> ${item.valor}</td>
+						<td> ${item.getValorParcial()}</td>
 						<td>
 							<form action="visualizarItem" method="POST">
 								<input type="hidden" class="form-control" value="${item.id}" name="item_id">
