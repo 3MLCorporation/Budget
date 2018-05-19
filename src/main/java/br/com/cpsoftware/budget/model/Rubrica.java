@@ -6,13 +6,8 @@ public class Rubrica extends Entidade{
 	
 	public static final String CATEGORIA_ID = "categoria_id";
 	
-	public Rubrica(Long categoriaId, String nome, Double valor_total) {
-		super(nome, valor_total);
-		this.categoriaId = categoriaId;
-	}
-	
-	public Rubrica(Long categoriaId, Long id, String nome, Double valor_total) {
-		super(id, nome, valor_total);
+	public Rubrica(Long categoriaId, String nome, Double valor_total, Double valorParcial) {
+		super(nome, valor_total, valorParcial);
 		this.categoriaId = categoriaId;
 	}
 	

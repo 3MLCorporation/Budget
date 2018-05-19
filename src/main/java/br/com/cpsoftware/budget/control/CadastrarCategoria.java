@@ -33,7 +33,8 @@ public class CadastrarCategoria extends HttpServlet {
 		
 		Long orcamentoId = Long.parseLong((String) req.getSession().getAttribute("orcamentoEditavel"));
 		
-		Categoria categoria = new Categoria(orcamentoId, req.getParameter("nome"), Double.parseDouble(req.getParameter("valor")));
+		Categoria categoria = new Categoria(orcamentoId, req.getParameter("nome"),
+											Double.parseDouble(req.getParameter("valor")), 0d);
 		
 		dao.create(categoria);
 		

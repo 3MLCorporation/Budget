@@ -18,7 +18,6 @@ import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.datastore.Query.SortDirection;
 
 import br.com.cpsoftware.budget.model.Entidade;
-import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.Rubrica;
 
 public class RubricaDAO implements EntidadeDao{
@@ -38,8 +37,9 @@ public class RubricaDAO implements EntidadeDao{
 	public Long create(Entidade rubrica) {
 		Entity rubricaEntity = new Entity(RUBRICA_KIND);
 		rubricaEntity.setProperty(Rubrica.CATEGORIA_ID, ((Rubrica) rubrica).getCategoriaId());
-		rubricaEntity.setProperty(Orcamento.NOME, rubrica.getNome());
-		rubricaEntity.setProperty(Orcamento.VALOR_TOTAL, rubrica.getValorTotal());
+		rubricaEntity.setProperty(Rubrica.NOME, rubrica.getNome());
+		rubricaEntity.setProperty(Rubrica.VALOR_TOTAL, rubrica.getValorTotal());
+		rubricaEntity.setProperty(Rubrica.VALOR_PARCIAL, rubrica.getValorParcial());
 		
 		Key rubricaKey = datastore.put(rubricaEntity);
 
@@ -68,6 +68,7 @@ public class RubricaDAO implements EntidadeDao{
 	public void update(Entidade rubrica) {
 		Key key = KeyFactory.createKey(RUBRICA_KIND, rubrica.getId()); 
 		Entity rubricaEntity = new Entity(key);
+		rubricaEntity.setProperty(Rubrica.CATEGORIA_ID, ((Rubrica) rubrica).getCategoriaId());
 		rubricaEntity.setProperty(Rubrica.NOME, rubrica.getNome());
 		rubricaEntity.setProperty(Rubrica.VALOR_TOTAL, rubrica.getValorTotal());
 		rubricaEntity.setProperty(Rubrica.VALOR_PARCIAL, rubrica.getValorParcial());

@@ -7,13 +7,8 @@ public class Categoria extends Entidade{
 	
 	public static final String ORCAMENTO_ID = "orcamento_id";
 	
-	public Categoria(Long orcamentoId, String nome, Double valor_total) {
-		super(nome, valor_total);
-		this.orcamentoId = orcamentoId;
-	}
-	
-	public Categoria(Long orcamentoId, Long id, String nome, Double valor_total) {
-		super(id, nome, valor_total);
+	public Categoria(Long orcamentoId, String nome, Double valor_total, Double valorParcial) {
+		super(nome, valor_total, valorParcial);
 		this.orcamentoId = orcamentoId;
 	}
 	

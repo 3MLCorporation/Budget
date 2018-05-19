@@ -34,7 +34,7 @@ public class CadastrarProjeto extends HttpServlet {
 		 System.out.println("Valor - " + valor);
 		 System.out.println("Valor float - " + Float.parseFloat(valor));*/
 		 
-		Projeto projeto = new Projeto(usuario.getId(), nome, Double.parseDouble(valor));
+		Projeto projeto = new Projeto(usuario.getId(), nome, Double.parseDouble(valor), 0d);
 		
 		System.out.println("Gerente_Id - " + usuario.getId());
 		System.out.println("Nome - " + projeto.getNome());

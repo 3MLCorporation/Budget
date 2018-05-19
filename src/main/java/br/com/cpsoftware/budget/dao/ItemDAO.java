@@ -69,6 +69,7 @@ public class ItemDAO{
 	public void update(Item item) {
 		Key key = KeyFactory.createKey(ITEM_KIND, item.getId());
 		Entity itemEntity = new Entity(key);
+		itemEntity.setProperty(Item.RUBRICA_ID, item.getRubricaId());
 		itemEntity.setProperty(Item.NOME, item.getNome());
 		itemEntity.setProperty(Item.DESCRICAO, item.getDescricao());
 		itemEntity.setProperty(Item.VALOR_UNIFORME, item.getValor_uniforme());

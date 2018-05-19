@@ -43,7 +43,8 @@ public class CadastrarRubrica extends HttpServlet {
 		
 		Long categoriaId = Long.parseLong(req.getParameter("categoriaId"));
 		
-		Rubrica rubrica = new Rubrica(categoriaId, req.getParameter("nome"), Double.parseDouble(req.getParameter("valor")));
+		Rubrica rubrica = new Rubrica(categoriaId, req.getParameter("nome"), 
+						  			Double.parseDouble(req.getParameter("valor")), 0d);
 		
 		dao.create(rubrica);
 	

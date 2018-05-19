@@ -13,12 +13,7 @@ public class Projeto extends Entidade{
 	}
 
 	public Projeto(Long gerenteId, String nome, Double valor, Double valorParcial) {
-		super(gerenteId, nome, valor, valorParcial);
-		this.gerenteId = gerenteId;
-	}
-
-	public Projeto(Long gerenteId, String nome, Double valor) {
-		super(nome, valor);
+		super(nome, valor, valorParcial);
 		this.gerenteId = gerenteId;
 	}
 

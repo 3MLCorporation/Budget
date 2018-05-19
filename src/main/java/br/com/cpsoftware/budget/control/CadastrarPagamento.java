@@ -20,10 +20,20 @@ import org.apache.commons.io.IOUtils;
 
 import com.google.appengine.api.datastore.Blob;
 
+import br.com.cpsoftware.budget.dao.CategoriaDAO;
+import br.com.cpsoftware.budget.dao.ItemDAO;
 import br.com.cpsoftware.budget.dao.NotaFiscalDAO;
+import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.dao.PagamentoDAO;
+import br.com.cpsoftware.budget.dao.ProjetoDAO;
+import br.com.cpsoftware.budget.dao.RubricaDAO;
+import br.com.cpsoftware.budget.model.Categoria;
+import br.com.cpsoftware.budget.model.Item;
 import br.com.cpsoftware.budget.model.NotaFiscal;
+import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.Pagamento;
+import br.com.cpsoftware.budget.model.Projeto;
+import br.com.cpsoftware.budget.model.Rubrica;
 
 @SuppressWarnings("serial")
 public class CadastrarPagamento extends HttpServlet {
@@ -77,12 +87,37 @@ public class CadastrarPagamento extends HttpServlet {
 			
 			if (arquivo != null && arquivo.getBytes().length > 0){
 				Pagamento pagamento = new Pagamento(notaFiscalId, arquivo, valor, data);
-				PagamentoDAO  pagamentodao = new PagamentoDAO();
-				pagamentodao.create(pagamento);
+				PagamentoDAO  pagamentoDao = new PagamentoDAO();
+				pagamentoDao.create(pagamento);
 				NotaFiscal nota = new NotaFiscalDAO().read(notaFiscalId);
-				nota.calcularValorParcial(pagamentodao.getPagamentos(notaFiscalId));
+				Double valorParcial = nota.calcularValorParcial(pagamentoDao.getPagamentos(notaFiscalId));
 				nota.verificarStatus();
 				new NotaFiscalDAO().update(nota);
+				
+				//TODO DIVIDIR EM FUNÇÔES ISSO AQUI
+				Item item = new ItemDAO().read(nota.getItemId());
+				
+				item.setValorParcial(valorParcial);
+				RubricaDAO rubricaDAO = new RubricaDAO();
+				Rubrica rubrica = (Rubrica) rubricaDAO.read(item.getRubricaId());
+				rubrica.setValorParcial(rubrica.getValorParcial() + pagamento.getValor());
+				rubricaDAO.update(rubrica);
+				
+				
+				CategoriaDAO categoriaDAO = new CategoriaDAO();
+				Categoria categoria = (Categoria) categoriaDAO.read(( (Rubrica)rubrica ).getCategoriaId());
+				categoria.setValorParcial(categoria.getValorParcial() + pagamento.getValor());
+				categoriaDAO.update(categoria);
+				
+				OrcamentoDAO orcamentoDAO = new OrcamentoDAO();
+				Orcamento orcamento = (Orcamento) orcamentoDAO.read(( (Categoria) categoria ).getOrcamentoId());
+				orcamento.setValorParcial(orcamento.getValorParcial() + pagamento.getValor());
+				orcamentoDAO.update(orcamento);
+				
+				ProjetoDAO projetoDAO = new ProjetoDAO();
+				Projeto projeto = (Projeto) projetoDAO.read(( (Orcamento) orcamento).getProjetoId());
+				projeto.setValorParcial(projeto.getValorParcial() + pagamento.getValor());
+				projetoDAO.update(projeto);
 			}
 			
 			req.getSession().setAttribute("notaId", notaFiscalId);

@@ -32,10 +32,12 @@ public class ProjetoDAO implements EntidadeDao{
 	
 	@Override
 	public Long create(Entidade projeto) {
+		
 		Entity projetoEntity = new Entity(PROJETO_KIND);
 		projetoEntity.setProperty(Projeto.GERENTE_ID, (( Projeto) projeto).getGerenteId());
 		projetoEntity.setProperty(Projeto.NOME, projeto.getNome());
 		projetoEntity.setProperty(Projeto.VALOR_TOTAL, projeto.getValorTotal());
+		projetoEntity.setProperty(Projeto.VALOR_PARCIAL, projeto.getValorParcial());
 		
 		Key projetoKey = datastore.put(projetoEntity);
 		
@@ -64,6 +66,8 @@ public class ProjetoDAO implements EntidadeDao{
 		 */
 		Key key = KeyFactory.createKey(PROJETO_KIND, projeto.getId());
 		Entity projetoEntity = new Entity(key);
+		
+		projetoEntity.setProperty(Projeto.GERENTE_ID, (( Projeto) projeto).getGerenteId());
 		projetoEntity.setProperty(Projeto.NOME, projeto.getNome());
 		projetoEntity.setProperty(Projeto.VALOR_TOTAL, projeto.getValorTotal());
 		projetoEntity.setProperty(Projeto.VALOR_PARCIAL, projeto.getValorParcial());
