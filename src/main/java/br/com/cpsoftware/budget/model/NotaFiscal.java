@@ -102,11 +102,11 @@ public class NotaFiscal {
 	}
 	
 	public Double calcularValorParcial(List<Pagamento> pagamentos) {
-		Double valorP = 0d;
+		this.valorParcial = 0d;
 		for(Pagamento pagamento : pagamentos) {
-			valorP += pagamento.getValor();
+			this.valorParcial += pagamento.getValor();
 		}
-		return valorP;
+		return this.valorParcial;
 	}
 
 	public Date getData() {
@@ -118,15 +118,14 @@ public class NotaFiscal {
 	}
 
 	public int getStatus() {
-		status = verificarStatus();
 		return status;
 	}
 
-	private int verificarStatus() {
-		if(this.valor == this.valorParcial) {
-			return NotaFiscal.STATUS_QUITADO;
+	public void verificarStatus() {
+		if(this.valor.equals(this.valorParcial)) {
+			this.status = NotaFiscal.STATUS_QUITADO;
 		}else {
-			return NotaFiscal.STATUS_PARCIAL;
+			this.status = NotaFiscal.STATUS_PARCIAL;
 		}
 	}
 

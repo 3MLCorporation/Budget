@@ -74,15 +74,15 @@ public class NotaFiscalDAO {
 	
 	private NotaFiscal entityToNotaFiscal(Entity notaFiscalEntity) {
 		return new NotaFiscal((Long)notaFiscalEntity.getProperty(NotaFiscal.ITEM_ID),
-				 notaFiscalEntity.getKey().getId(),
-				 (Blob)notaFiscalEntity.getProperty(NotaFiscal.ARQUIVO),
-				 (String)notaFiscalEntity.getProperty(NotaFiscal.FORNECEDOR),
-				 (Double)notaFiscalEntity.getProperty(NotaFiscal.VALOR),
-				 (Date)notaFiscalEntity.getProperty(NotaFiscal.DATA),
-				 ((Long) notaFiscalEntity.getProperty(NotaFiscal.STATUS)).intValue());
+							 notaFiscalEntity.getKey().getId(),
+							 (Blob)notaFiscalEntity.getProperty(NotaFiscal.ARQUIVO),
+							 (String)notaFiscalEntity.getProperty(NotaFiscal.FORNECEDOR),
+							 (Double)notaFiscalEntity.getProperty(NotaFiscal.VALOR),
+							 (Date)notaFiscalEntity.getProperty(NotaFiscal.DATA),
+							 ((Long) notaFiscalEntity.getProperty(NotaFiscal.STATUS)).intValue());
 	}
 	
-	private List<NotaFiscal> entitiesToNotaFiscal(List<Entity> entities) {
+/*	private List<NotaFiscal> entitiesToNotaFiscal(List<Entity> entities) {
 		List<NotaFiscal> resultNotasFiscais = new ArrayList<>();
 		
 		for (Entity entidade : entities) {
@@ -90,7 +90,7 @@ public class NotaFiscalDAO {
 		}
 		
 		return resultNotasFiscais;
-	}
+	}*/
 	
 	public NotaFiscal getNotaFiscal(Long itemId){
 		
@@ -102,8 +102,12 @@ public class NotaFiscalDAO {
 		
 		PreparedQuery preparedQuery = datastore.prepare(query);
 		
-		Entity notaFiscalEntities = preparedQuery.asSingleEntity();
-		return entityToNotaFiscal(notaFiscalEntities);
+		Entity notaFiscalEntity = preparedQuery.asSingleEntity();
 		
+		if(notaFiscalEntity != null) {
+			return entityToNotaFiscal(notaFiscalEntity);
+		}else {
+			return null;
+		}
 	}
 }

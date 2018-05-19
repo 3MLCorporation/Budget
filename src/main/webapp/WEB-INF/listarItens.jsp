@@ -1,3 +1,8 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+	
 <div>
 	<div class="container">
 		<h2>Itens cadastrados</h2>
@@ -22,27 +27,27 @@
 						<td> --- </td>
 						<td> ${item.nome}</td>
 						<td> ${item.valor}</td>
-						<td> ${item.getValorParcial()}</td>
+						<td> ${item.valorParcial}</td>
 						<td>
-							<form action="visualizarItem" method="POST">
-								<input type="hidden" class="form-control" value="${item.id}" name="item_id">
+							<form action="visualizarItem" method="GET">
+								<input type="hidden" class="form-control" value="${item.id}" name="itemId">
 								<button type="submit" class="btn btn-link"> <img src="../img/detalhes.png" alt="Logo"> </button>
 					         </form>
 						</td>
 						<td>
 							<form action="excluirItem" method="POST">
-								<input type="hidden" class="form-control" value="${item.id}" name="item_id">
+								<input type="hidden" class="form-control" value="${item.id}" name="itemId">
 								<button type="submit" class="btn btn-link"> <img src="../img/excluir.png" alt="Logo"> </button>
 					         </form>
 						</td>
 						<td style="width: 15%;">
 							<div class="btn-group">
 								<form action="cadastrarNotaFiscal" method="GET">
-									<input type="hidden" name="item_id" value="${item.id }">
+									<input type="hidden" name="itemId" value="${item.id }">
 									<button class="btn btn-link"> <img src="../img/adicionar.png" alt="Logo"> </button>
 					           	</form> 
 								<form action="visualizarNotaFiscal" method="GET">
-									<input type="hidden" name="item_id" value="${item.id }">
+									<input type="hidden" name="itemId" value="${item.id }">
 									<button class="btn btn-link"><img src="../img/visualizar.png" alt="Logo"> </button>
 					           	</form>
 				           	</div> 

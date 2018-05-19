@@ -195,6 +195,24 @@
    </servlet-mapping>
    
    <servlet>
+   		<servlet-name>abrirArquivoDetalhesItem</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.AbrirArquivoDetalhesItem</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>abrirArquivoDetalhesItem</servlet-name>
+   		<url-pattern>/abrirArquivoDetalhesItem</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+   		<servlet-name>abrirArquivoAuxiliarItem</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.AbrirArquivoAuxiliarItem</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>abrirArquivoAuxiliarItem</servlet-name>
+   		<url-pattern>/abrirArquivoAuxiliarItem</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
    		<servlet-name>cadastrarNotaFiscal</servlet-name>
    		<servlet-class>br.com.cpsoftware.budget.control.CadastrarNotaFiscal</servlet-class>
    </servlet>

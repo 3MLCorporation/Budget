@@ -11,10 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.cpsoftware.budget.dao.CategoriaDAO;
 import br.com.cpsoftware.budget.dao.ItemDAO;
+import br.com.cpsoftware.budget.dao.NotaFiscalDAO;
 import br.com.cpsoftware.budget.dao.OrcamentoDAO;
+import br.com.cpsoftware.budget.dao.PagamentoDAO;
 import br.com.cpsoftware.budget.dao.RubricaDAO;
 import br.com.cpsoftware.budget.model.Categoria;
 import br.com.cpsoftware.budget.model.Item;
+import br.com.cpsoftware.budget.model.NotaFiscal;
 import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.Rubrica;
 
@@ -36,6 +39,12 @@ public class ListarItens extends HttpServlet {
 		for(Categoria categoria : categoriaDao.getCategorias(orcamento.getId())) {
 			for(Rubrica rubrica : rubricaDao.getRubricas(categoria.getId())) {
 				for(Item item: itemDao.getItens(rubrica.getId())) {
+					NotaFiscal nota = new NotaFiscalDAO().getNotaFiscal(item.getId());
+					if(nota == null) {
+						item.setValorParcial(0d);
+					}else {
+						item.setValorParcial(nota.calcularValorParcial(new PagamentoDAO().getPagamentos(nota.getId())));
+					}
 					itens.add(item);
 				}
 			}

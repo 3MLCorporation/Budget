@@ -20,7 +20,9 @@ import org.apache.commons.io.IOUtils;
 
 import com.google.appengine.api.datastore.Blob;
 
+import br.com.cpsoftware.budget.dao.NotaFiscalDAO;
 import br.com.cpsoftware.budget.dao.PagamentoDAO;
+import br.com.cpsoftware.budget.model.NotaFiscal;
 import br.com.cpsoftware.budget.model.Pagamento;
 
 @SuppressWarnings("serial")
@@ -75,10 +77,14 @@ public class CadastrarPagamento extends HttpServlet {
 			
 			if (arquivo != null && arquivo.getBytes().length > 0){
 				Pagamento pagamento = new Pagamento(notaFiscalId, arquivo, valor, data);
-				PagamentoDAO  dao = new PagamentoDAO();
-				dao.create(pagamento);
+				PagamentoDAO  pagamentodao = new PagamentoDAO();
+				pagamentodao.create(pagamento);
+				NotaFiscal nota = new NotaFiscalDAO().read(notaFiscalId);
+				nota.calcularValorParcial(pagamentodao.getPagamentos(notaFiscalId));
+				nota.verificarStatus();
+				new NotaFiscalDAO().update(nota);
 			}
-			 
+			
 			req.getSession().setAttribute("notaId", notaFiscalId);
 			resp.sendRedirect("/visualizarNotaFiscal");
 		}

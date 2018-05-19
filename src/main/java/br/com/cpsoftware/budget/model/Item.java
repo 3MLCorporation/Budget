@@ -12,6 +12,7 @@ public class Item {
 	private String nome;
 	private String descricao;
 	private Double valor_uniforme;
+	private Double valorParcial;
 	private int quantidade;
 	private int unidadeMedida;
 	private Blob arquivoDetalhes;
@@ -85,7 +86,7 @@ public class Item {
 		this.arquivoDetalhes = arquivoDetalhes;
 		this.arquivoAuxiliar = arquivoAuxiliar;
 	}
-	public Item(Long rubricaId, Long id,String nome, String descricao, Double valor_uniforme, int quantidade, int unidadeMedida, Blob arquivoDetalhes, Blob arquivoAuxiliar) {
+	public Item(Long rubricaId, Long id, String nome, String descricao, Double valor_uniforme, int quantidade, int unidadeMedida, Blob arquivoDetalhes, Blob arquivoAuxiliar) {
 		this.rubricaId = rubricaId;
 		this.id = id;
 		this.nome = nome;
@@ -128,6 +129,14 @@ public class Item {
 	public void setValor_uniforme(Double valor_uniforme) {
 		this.valor_uniforme = valor_uniforme;
 	}
+	public Double getValorParcial() {
+		return valorParcial;
+	}
+
+	public void setValorParcial(Double valorParcial) {
+		this.valorParcial = valorParcial;
+	}
+
 	public int getQuantidade() {
 		return quantidade;
 	}

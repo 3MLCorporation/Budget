@@ -7,15 +7,36 @@
 	<div class="container">
 		<h3><strong>Detalhes do item: ${item.nome}</strong></h3>
 		<h4>Nome: <strong>${item.nome}</strong>&emsp; Descrição: <strong>${item.descricao}</strong>&emsp; Valor: <strong>${item.valor}</strong></h4>
-		<h4>Quantidade: <strong>${item.quantidade}</strong>&emsp; Valor uniforme: <strong>${item.valor_uniforme}</strong>&emsp; Unidade de medida: <strong>${item.unidade_medida}</strong></h4>
+		<h4>Quantidade: <strong>${item.quantidade}</strong>&emsp; Valor uniforme: <strong>${item.valor_uniforme}
+		</strong>&emsp; Unidade de medida: 
+		<strong>
+           <c:choose>
 
+               <c:when test = "${item.unidadeMedida == 0}">Verba</c:when>
+               <c:when test = "${item.unidadeMedida == 1}">Unidade</c:when>
+               <c:when test = "${item.unidadeMedida == 2}">Mês</c:when>
+               <c:when test = "${item.unidadeMedida == 3}">Quilograma</c:when>
+               <c:when test = "${item.unidadeMedida == 4}">Metro</c:when>
+               <c:when test = "${item.unidadeMedida == 5}">Litro</c:when>
+               <c:otherwise>---</c:otherwise>
+
+           </c:choose>
+
+		</strong></h4>
+		<br>
+		<form action="abrirArquivoDetalhesItem" target="_blank" method="GET">
+			<input type="hidden" name="itemId" value="${item.id}">
+			<button type="submit" class="btn btn-dark">Ver detalhes</button>
+		</form>
+		<br>
+		<form action="abrirArquivoAuxiliarItem" target="_blank" method="GET">
+			<input type="hidden" name="itemId" value="${item.id}">
+			<button type="submit" class="btn btn-dark">Ver arquivo auxiliar</button>
+		</form>
+		<br>
 		<form action="visualizarNotaFiscal" method="GET">
-			<div class="inputPosicao">	   					
-	  			<input type="hidden" name="item_id" value="${item.id }">
-	  		</div>
-	  		<div class="botaoPosicao">
-				<button class="btn btn-link">Ver arquivo</button>
-			</div>
+  			<input type="hidden" name="itemId" value="${item.id }">
+			<button type="submit" class="btn btn-dark">Ver nota fiscal</button>
        	</form>
 	</div>
 </div>
