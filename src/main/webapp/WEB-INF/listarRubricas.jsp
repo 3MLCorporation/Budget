@@ -13,6 +13,7 @@
 	        		<th>Categoria</th>
 	        		<th>Rubrica</th>
 	        		<th>Valor</th>
+	        		<th>Valor Parcial</th>
 	        		<th>Excluir</th>
 	      		</tr>
 	    	</thead>
@@ -21,7 +22,8 @@
 					<tr>
 						<td> --- </td>
 						<td> ${rubrica.nome}</td>
-						<td> ${rubrica.getValorTotal()}</td>
+						<td> ${rubrica.valorTotal}</td>
+						<td> ${rubrica.valorParcial}</td>
 						<td style="width: 16%">
 							<form action="excluirProjeto" method="POST">
 								<input type="hidden" class="form-control" value="${projeto.id}" name="projeto_id">

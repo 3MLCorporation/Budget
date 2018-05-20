@@ -19,7 +19,6 @@ import com.google.appengine.api.datastore.Query.SortDirection;
 
 import br.com.cpsoftware.budget.model.Categoria;
 import br.com.cpsoftware.budget.model.Entidade;
-import br.com.cpsoftware.budget.model.Orcamento;
 
 public class CategoriaDAO implements EntidadeDao{
 

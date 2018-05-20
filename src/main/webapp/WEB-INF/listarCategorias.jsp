@@ -12,6 +12,7 @@
       			<tr>
         			<th>Categoria</th>
         			<th>Valor</th>
+        			<th>Valor Parcial</th>
         			<th>Excluir</th>
       			</tr>
     		</thead>
@@ -19,7 +20,8 @@
         		<c:forEach items="${categorias}" var="categoria">
 					<tr>
 						<td> ${categoria.nome}</td>
-						<td> ${categoria.getValorTotal()}</td>
+						<td> ${categoria.valorTotal}</td>
+						<td> ${categoria.valorParcial}</td>
 						<td style="width: 16%">
 							<form action="excluirProjeto" method="POST">
 								<input type="hidden" class="form-control" value="${projeto.id}" name="projeto_id">

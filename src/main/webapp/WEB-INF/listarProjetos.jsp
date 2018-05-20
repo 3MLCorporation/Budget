@@ -12,6 +12,7 @@
       			<tr>
         			<th>Projeto</th>
         			<th>Valor</th>
+        			<th>Valor Parcial</th>
         			<th>Editar projeto</th>
       			</tr>
     		</thead>
@@ -19,7 +20,8 @@
         		<c:forEach items="${projetos}" var="projeto">
 					<tr>
 						<td> ${projeto.nome}</td>
-						<td> ${projeto.getValorTotal()}</td>
+						<td> ${projeto.valorTotal}</td>
+						<td> ${projeto.valorParcial}</td>
 						<td style="width: 12%">
 							<div class="btn-group"> 
 								<form action="selecionarProjeto" method="POST">

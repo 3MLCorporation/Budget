@@ -13,6 +13,7 @@ pageEncoding="UTF-8"%>
       			<tr>
         			<th>Orçamento</th>
         			<th>Valor</th>
+        			<th>Valor Parcial</th>
         			<th>Status</th>
         			<th>&emsp;Editar<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"> orçamento</c:if></th>
         			<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
@@ -24,7 +25,8 @@ pageEncoding="UTF-8"%>
         		<c:forEach items="${orcamentos}" var="orcamento" varStatus="id">
 					<tr>
 						<td> ${orcamento.nome}</td>
-						<td> ${orcamento.getValorTotal()}</td>
+						<td> ${orcamento.valorTotal}</td>
+						<td> ${orcamento.valorParcial}</td>
 						<td>
 						<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
 							<select id="orcamentoSelect${id.count}">

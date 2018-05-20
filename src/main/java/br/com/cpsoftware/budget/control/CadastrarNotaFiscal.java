@@ -62,7 +62,7 @@ public class CadastrarNotaFiscal extends HttpServlet {
 						if (item.getFieldName().equals(NotaFiscal.VALOR))
 							valor = new Double(Streams.asString(stream));
 						if (item.getFieldName().equals(NotaFiscal.DATA))
-							data = new SimpleDateFormat("dd-MM-yyyy").parse(Streams.asString(stream));
+							data = new SimpleDateFormat("yyyy-MM-dd").parse(Streams.asString(stream));
 					} else {
 						if (item.getFieldName().startsWith(NotaFiscal.ARQUIVO)){
 							arquivo = new Blob(IOUtils.toByteArray(stream));
