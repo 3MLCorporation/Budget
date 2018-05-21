@@ -54,7 +54,7 @@ pageEncoding="UTF-8"%>
 						<tr>
 							<td> ${pagamento.valor}</td>
 							<td> ${pagamento.data}</td>
-							<td style="width: 11%">
+							<td style="width: 15%">
 								<div class="btn-group"> 
 		                            <form action="abrirPagamento" target="_blank" method="GET">
 		                                <input type="hidden" name="pagamentoId" value="${pagamento.id }">
