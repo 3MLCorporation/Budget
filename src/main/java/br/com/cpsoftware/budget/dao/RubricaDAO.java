@@ -134,7 +134,7 @@ public class RubricaDAO implements EntidadeDao{
 		
 	}
 	
-	public List<Map<Object, Object>> getMapRubricas(Long categoriaId){
+	public List<Map<Object, Object>> getRubricasMaps(Long categoriaId){
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Query query = new Query(RUBRICA_KIND).addSort(Rubrica.NOME, SortDirection.ASCENDING);
@@ -146,8 +146,8 @@ public class RubricaDAO implements EntidadeDao{
 		
 		List<Entity> rubricaEntities = preparedQuery.asList(FetchOptions.Builder.withDefaults());
 		
-		List <Map<Object, Object>> rubricasMapsList = new ArrayList<>();
 		List<Rubrica> entitiesToRubrica = entitiesToRubrica(rubricaEntities);
+		List <Map<Object, Object>> rubricasMapsList = new ArrayList<>();
 		
 		for(Rubrica rubrica : entitiesToRubrica) {
 			Map<Object, Object> rubricaMap = new HashMap<>();

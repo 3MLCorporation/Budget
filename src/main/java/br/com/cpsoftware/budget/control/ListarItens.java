@@ -3,6 +3,7 @@ package br.com.cpsoftware.budget.control;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -35,10 +36,11 @@ public class ListarItens extends HttpServlet {
 		ItemDAO itemDao = new ItemDAO();
 		
 		List<Item> itens = new ArrayList<>();
-		
+		//TODO CONTINUAR 
 		for(Categoria categoria : categoriaDao.getCategorias(orcamento.getId())) {
 			for(Rubrica rubrica : rubricaDao.getRubricas(categoria.getId())) {
-				for(Item item: itemDao.getItens(rubrica.getId())) {
+				for(Map<Object, Object> itemMap : itemDao.getItensMaps((rubrica.getId()))) {
+					Item item = (Item) itemMap.get("item");
 					NotaFiscal nota = new NotaFiscalDAO().getNotaFiscal(item.getId());
 					if(nota == null) {
 						item.setValorParcial(0d);

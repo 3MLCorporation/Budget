@@ -31,7 +31,7 @@ public class ListarRubricas extends HttpServlet {
 		List<Map<Object, Object>> rubricasMaps = new ArrayList<>();
 		
 		for(Categoria categoria : categoriaDao.getCategorias(orcamento.getId())) {
-			for(Map<Object, Object> rubricaMap : rubricaDao.getMapRubricas(categoria.getId())) {
+			for(Map<Object, Object> rubricaMap : rubricaDao.getRubricasMaps(categoria.getId())) {
 				rubricasMaps.add(rubricaMap);
 			}
 		}

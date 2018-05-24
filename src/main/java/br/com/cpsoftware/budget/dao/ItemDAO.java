@@ -1,7 +1,9 @@
 package br.com.cpsoftware.budget.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.google.appengine.api.datastore.Blob;
 import com.google.appengine.api.datastore.DatastoreService;
@@ -19,6 +21,7 @@ import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.datastore.Query.SortDirection;
 
 import br.com.cpsoftware.budget.model.Item;
+import br.com.cpsoftware.budget.model.Rubrica;
 
 public class ItemDAO{
 	
@@ -134,6 +137,33 @@ public class ItemDAO{
 		
 		 List<Entity> itemEntities = preparedQuery.asList(FetchOptions.Builder.withDefaults());
 		 return entitiesToItem(itemEntities);
+		
+	}
+	
+	public List<Map<Object, Object>> getItensMaps(Long rubricaId){
+		
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Query query = new Query(ITEM_KIND).addSort(Item.NOME, SortDirection.ASCENDING);
+		
+		Filter rubricaFilter = new FilterPredicate(Item.RUBRICA_ID, FilterOperator.EQUAL, rubricaId);
+		query.setFilter(rubricaFilter);
+		
+		PreparedQuery preparedQuery = datastore.prepare(query);
+		
+		List<Entity> itemEntities = preparedQuery.asList(FetchOptions.Builder.withDefaults());
+		
+		List<Item> entitiesToItem = entitiesToItem(itemEntities);
+		List <Map<Object, Object>> itensMapsList = new ArrayList<>();
+		 
+		for (Item item : entitiesToItem) {
+			Map<Object, Object> itemMap = new HashMap<>();
+			Rubrica rubrica = (Rubrica) new RubricaDAO().read(rubricaId);
+			itemMap.put("nomeRubrica", rubrica.getNome());
+			itemMap.put("nomeCategoria", new CategoriaDAO().read(rubrica.getCategoriaId()).getNome());
+			itemMap.put("item", item);
+			itensMapsList.add(itemMap);
+		}
+		return null;
 		
 	}
 
