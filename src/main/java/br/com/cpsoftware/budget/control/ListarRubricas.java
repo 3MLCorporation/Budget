@@ -3,6 +3,7 @@ package br.com.cpsoftware.budget.control;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -14,7 +15,6 @@ import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.dao.RubricaDAO;
 import br.com.cpsoftware.budget.model.Categoria;
 import br.com.cpsoftware.budget.model.Orcamento;
-import br.com.cpsoftware.budget.model.Rubrica;
 
 @SuppressWarnings("serial")
 public class ListarRubricas extends HttpServlet {
@@ -28,15 +28,15 @@ public class ListarRubricas extends HttpServlet {
 		CategoriaDAO categoriaDao = new CategoriaDAO();
 		RubricaDAO rubricaDao = new RubricaDAO();
 		
-		List<Rubrica> rubricas = new ArrayList<>();
+		List<Map<Object, Object>> rubricasMaps = new ArrayList<>();
 		
-			for(Categoria categoria : categoriaDao.getCategorias(orcamento.getId())) {
-				for(Rubrica rubrica : rubricaDao.getRubricas(categoria.getId())) {
-					rubricas.add(rubrica);
-				}
+		for(Categoria categoria : categoriaDao.getCategorias(orcamento.getId())) {
+			for(Map<Object, Object> rubricaMap : rubricaDao.getMapRubricas(categoria.getId())) {
+				rubricasMaps.add(rubricaMap);
 			}
+		}
 		
-		req.setAttribute("rubricas", rubricas);
+		req.setAttribute("rubricasMaps", rubricasMaps);
 		req.setAttribute("orcamentoSelecionado", new OrcamentoDAO().read(Long.parseLong(
 				(String) req.getSession().getAttribute("orcamentoEditavel"))).getNome());
 		req.setAttribute("page", "listarRubricas");

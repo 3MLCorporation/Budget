@@ -18,12 +18,12 @@
 	      		</tr>
 	    	</thead>
 	    	<tbody id="myTable">
-	        	<c:forEach items="${rubricas}" var="rubrica">
+	        	<c:forEach items="${rubricasMaps}" var="rubricaMap">
 					<tr>
-						<td> --- </td>
-						<td> ${rubrica.nome}</td>
-						<td> ${rubrica.valorTotal}</td>
-						<td> ${rubrica.valorParcial}</td>
+						<td> ${rubricaMap.nomeCategoria}</td>
+						<td> ${rubricaMap.rubrica.nome}</td>
+						<td> ${rubricaMap.rubrica.valorTotal}</td>
+						<td> ${rubricaMap.rubrica.valorParcial}</td>
 						<td style="width: 16%">
 							<form action="excluirProjeto" method="POST">
 								<input type="hidden" class="form-control" value="${projeto.id}" name="projeto_id">

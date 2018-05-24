@@ -1,7 +1,9 @@
 package br.com.cpsoftware.budget.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
@@ -129,6 +131,32 @@ public class RubricaDAO implements EntidadeDao{
 		
 		List<Entity> rubricaEntities = preparedQuery.asList(FetchOptions.Builder.withDefaults());
 		return entitiesToRubrica(rubricaEntities);
+		
+	}
+	
+	public List<Map<Object, Object>> getMapRubricas(Long categoriaId){
+		
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Query query = new Query(RUBRICA_KIND).addSort(Rubrica.NOME, SortDirection.ASCENDING);
+		
+		Filter categoriaFilter = new FilterPredicate(Rubrica.CATEGORIA_ID, FilterOperator.EQUAL, categoriaId);
+		query.setFilter(categoriaFilter);
+		
+		PreparedQuery preparedQuery = datastore.prepare(query);
+		
+		List<Entity> rubricaEntities = preparedQuery.asList(FetchOptions.Builder.withDefaults());
+		
+		List <Map<Object, Object>> rubricasMapsList = new ArrayList<>();
+		List<Rubrica> entitiesToRubrica = entitiesToRubrica(rubricaEntities);
+		
+		for(Rubrica rubrica : entitiesToRubrica) {
+			Map<Object, Object> rubricaMap = new HashMap<>();
+			rubricaMap.put("nomeCategoria", new CategoriaDAO().read(categoriaId).getNome());
+			rubricaMap.put("rubrica", rubrica);
+			rubricasMapsList.add(rubricaMap);
+		}
+		
+		return rubricasMapsList;
 		
 	}
 	
