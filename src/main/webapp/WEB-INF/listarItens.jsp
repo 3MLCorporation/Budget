@@ -36,7 +36,7 @@
 						</td>
 						<td>
 							<form action="excluirItem" method="POST">
-								<input type="hidden" class="form-control" value="${itemMap.item.id}" name="itemId">
+								<input type="hidden" class="form-control" value="${itemMap.item.id}" name="item_id">
 								<button type="submit" class="btn btn-link"> <img src="../img/excluir.png" alt="Logo"> </button>
 					         </form>
 						</td>

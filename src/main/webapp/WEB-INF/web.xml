@@ -87,6 +87,15 @@
    </servlet-mapping>
    
    <servlet>
+   		<servlet-name>excluirProjeto</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.ExcluirProjeto</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>excluirProjeto</servlet-name>
+   		<url-pattern>/excluirProjeto</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
    		<servlet-name>cadastrarOrcamento</servlet-name>
    		<servlet-class>br.com.cpsoftware.budget.control.CadastrarOrcamento</servlet-class>
    </servlet>
@@ -113,7 +122,7 @@
    		<url-pattern>/adicionarEditor</url-pattern>	
 	</servlet-mapping>
    
-    <servlet>
+   <servlet>
    		<servlet-name>selecionarOrcamento</servlet-name>
    		<servlet-class>br.com.cpsoftware.budget.control.SelecionarOrcamento</servlet-class>
    </servlet>
@@ -122,13 +131,22 @@
    		<url-pattern>/selecionarOrcamento</url-pattern>
    </servlet-mapping>
    
-    <servlet>
+   <servlet>
    		<servlet-name>atualizarStatusOrcamento</servlet-name>
    		<servlet-class>br.com.cpsoftware.budget.control.AtualizarStatusOrcamento</servlet-class>
    </servlet>
    <servlet-mapping>
    		<servlet-name>atualizarStatusOrcamento</servlet-name>
    		<url-pattern>/atualizarStatusOrcamento</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+   		<servlet-name>excluirOrcamento</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.ExcluirOrcamento</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>excluirOrcamento</servlet-name>
+   		<url-pattern>/excluirOrcamento</url-pattern>
    </servlet-mapping>
    
    <servlet>
@@ -150,6 +168,15 @@
    </servlet-mapping>
    
    <servlet>
+   		<servlet-name>excluirCategoria</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.ExcluirCategoria</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>excluirCategoria</servlet-name>
+   		<url-pattern>/excluirCategoria</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
    		<servlet-name>cadastrarRubrica</servlet-name>
    		<servlet-class>br.com.cpsoftware.budget.control.CadastrarRubrica</servlet-class>
    </servlet>
@@ -165,6 +192,15 @@
    <servlet-mapping>
    		<servlet-name>listarRubricas</servlet-name>
    		<url-pattern>/listarRubricas</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+   		<servlet-name>excluirRubrica</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.ExcluirRubrica</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>excluirRubrica</servlet-name>
+   		<url-pattern>/excluirRubrica</url-pattern>
    </servlet-mapping>
    
    <servlet>
@@ -213,6 +249,15 @@
    </servlet-mapping>
    
    <servlet>
+   		<servlet-name>excluirItem</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.ExcluirItem</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>excluirItem</servlet-name>
+   		<url-pattern>/excluirItem</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
    		<servlet-name>cadastrarNotaFiscal</servlet-name>
    		<servlet-class>br.com.cpsoftware.budget.control.CadastrarNotaFiscal</servlet-class>
    </servlet>
@@ -240,6 +285,15 @@
    </servlet-mapping>
    
    <servlet>
+   		<servlet-name>excluirNotaFiscal</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.ExcluirNotaFiscal</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>excluirNotaFiscal</servlet-name>
+   		<url-pattern>/excluirNotaFiscal</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
    		<servlet-name>cadastrarPagamento</servlet-name>
    		<servlet-class>br.com.cpsoftware.budget.control.CadastrarPagamento</servlet-class>
    </servlet>
@@ -255,6 +309,15 @@
    <servlet-mapping>
    		<servlet-name>abrirPagamento</servlet-name>
    		<url-pattern>/abrirPagamento</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+   		<servlet-name>excluirPagamento</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.ExcluirPagamento</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>excluirPagamento</servlet-name>
+   		<url-pattern>/excluirPagamento</url-pattern>
    </servlet-mapping>
    
    <servlet>

@@ -23,8 +23,8 @@
 						<td> ${categoria.valorTotal}</td>
 						<td> ${categoria.valorParcial}</td>
 						<td style="width: 16%">
-							<form action="excluirProjeto" method="POST">
-								<input type="hidden" class="form-control" value="${projeto.id}" name="projeto_id">
+							<form action="excluirCategoria" method="POST">
+								<input type="hidden" class="form-control" value="${categoria.id}" name="categoria_id">
 								<button type="submit" class="btn btn-link"><img src="../img/excluir.png" alt="Logo" style="width:100%;"> </button>
 				           	</form>	
    						</td>
