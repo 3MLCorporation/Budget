@@ -35,8 +35,8 @@ public class ListarItens extends HttpServlet {
 		RubricaDAO rubricaDao = new RubricaDAO();
 		ItemDAO itemDao = new ItemDAO();
 		
-		List<Item> itens = new ArrayList<>();
-		//TODO CONTINUAR 
+		List<Map<Object, Object>> itensMaps = new ArrayList<>();
+		
 		for(Categoria categoria : categoriaDao.getCategorias(orcamento.getId())) {
 			for(Rubrica rubrica : rubricaDao.getRubricas(categoria.getId())) {
 				for(Map<Object, Object> itemMap : itemDao.getItensMaps((rubrica.getId()))) {
@@ -47,12 +47,13 @@ public class ListarItens extends HttpServlet {
 					}else {
 						item.setValorParcial(nota.calcularValorParcial(new PagamentoDAO().getPagamentos(nota.getId())));
 					}
-					itens.add(item);
+					itemMap.put("item", item);
+					itensMaps.add(itemMap);
 				}
 			}
 		}
 		
-		req.setAttribute("itens", itens);
+		req.setAttribute("itensMaps", itensMaps);
 		
 		req.setAttribute("page", "listarItens");
 		req.setAttribute("orcamentoSelecionado", new OrcamentoDAO().read(Long.parseLong(

@@ -21,33 +21,33 @@
 	      		</tr>
 	    	</thead>
     		<tbody id="myTable">
-        		<c:forEach items="${itens}" var="item">
+        		<c:forEach items="${itensMaps}" var="itemMap">
 					<tr>
-						<td> --- </td>
-						<td> --- </td>
-						<td> ${item.nome}</td>
-						<td> ${item.valor}</td>
-						<td> ${item.valorParcial}</td>
+						<td> ${itemMap.nomeCategoria}</td>
+						<td> ${itemMap.nomeRubrica}</td>
+						<td> ${itemMap.item.nome}</td>
+						<td> ${itemMap.item.valor}</td>
+						<td> ${itemMap.item.valorParcial}</td>
 						<td>
 							<form action="visualizarItem" method="GET">
-								<input type="hidden" class="form-control" value="${item.id}" name="itemId">
+								<input type="hidden" class="form-control" value="${itemMap.item.id}" name="itemId">
 								<button type="submit" class="btn btn-link"> <img src="../img/detalhes.png" alt="Logo"> </button>
 					         </form>
 						</td>
 						<td>
 							<form action="excluirItem" method="POST">
-								<input type="hidden" class="form-control" value="${item.id}" name="itemId">
+								<input type="hidden" class="form-control" value="${itemMap.item.id}" name="itemId">
 								<button type="submit" class="btn btn-link"> <img src="../img/excluir.png" alt="Logo"> </button>
 					         </form>
 						</td>
 						<td style="width: 15%;">
 							<div class="btn-group">
 								<form action="cadastrarNotaFiscal" method="GET">
-									<input type="hidden" name="itemId" value="${item.id }">
+									<input type="hidden" name="itemId" value="${itemMap.item.id }">
 									<button class="btn btn-link"> <img src="../img/adicionar.png" alt="Logo"> </button>
 					           	</form> 
 								<form action="visualizarNotaFiscal" method="GET">
-									<input type="hidden" name="itemId" value="${item.id }">
+									<input type="hidden" name="itemId" value="${itemMap.item.id }">
 									<button class="btn btn-link"><img src="../img/visualizar.png" alt="Logo"> </button>
 					           	</form>
 				           	</div> 

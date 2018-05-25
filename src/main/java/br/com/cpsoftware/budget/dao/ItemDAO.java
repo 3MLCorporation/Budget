@@ -163,7 +163,7 @@ public class ItemDAO{
 			itemMap.put("item", item);
 			itensMapsList.add(itemMap);
 		}
-		return null;
+		return itensMapsList;
 		
 	}
 
