@@ -12,6 +12,10 @@
   width: 108px;
 }
 
+.botaoCadastro{
+	float: right;
+}
+
 .inputPosicao{
   position: relative;
   margin: 0 100px 0 0;
@@ -29,7 +33,7 @@
   left: 100px;
 }
 
-.botaoCadastro{
+.botaoCadastroUsuario{
   position: relative;
   top: -34px;
   left: 100px;

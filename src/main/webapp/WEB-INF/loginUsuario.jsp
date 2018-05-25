@@ -57,7 +57,7 @@
 					<button type="submit" class="btn btn-dark">Logar</button>&emsp;
 				</form>
 				<form action="cadastrarUsuario" method="GET">
-					<div class="botaoCadastro"><button class="btn btn-dark">Cadastrar</button></div>
+					<div class="botaoCadastroUsuario"><button class="btn btn-dark">Cadastrar</button></div>
 				</form>
 			</div>
 		</div>

@@ -109,7 +109,7 @@
 			   </select>
 			 </div>
 			</div>  
-			<button type="submit" class="btn btn-primary">Cadastrar</button>
+			<button type="submit" class="btn btn-primary botaoCadastro">Cadastrar</button>
 			</form>
 	  	</div>
   	</div>
