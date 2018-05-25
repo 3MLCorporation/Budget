@@ -29,15 +29,6 @@ public class MostrarResumo extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
-		//req.getSession().setAttribute("orcamentoEditavel", null);
-		
-		/*Long orcamentoEditavelId;
-		if((String) req.getSession().getAttribute("orcamentoEditavel") == null) {
-			orcamentoEditavelId = null;
-		}else {
-			orcamentoEditavelId = Long.parseLong((String) req.getSession().getAttribute("orcamentoEditavel"));
-		}*/
-		 
 		
 		if(usuario == null) {
 			System.out.println("usuario logado null");
@@ -47,12 +38,6 @@ public class MostrarResumo extends HttpServlet {
 			System.out.println(usuario.getLogin());
 			System.out.println(usuario.getSenha());
 		}
-		
-		/*if(orcamentoEditavelId == null) {
-			System.out.println("orcamentoEditavel null");
-		}else {
-			System.out.println("orcamentoEditavel : " + orcamentoEditavelId);
-		}*/
 		
 		switch(usuario.getPerfil()){
 			
@@ -76,13 +61,6 @@ public class MostrarResumo extends HttpServlet {
 				
 				req.getSession().setAttribute("orcamentoEditavel", null);
 				req.setAttribute("orcamentos", orcamentos);
-				
-				/*if(req.getSession().getAttribute("orcamentoEditavel") == null) {
-				
-				}else {
-					req.setAttribute("orcamentoSelecionado", new OrcamentoDAO().read(Long.parseLong(
-															(String) req.getSession().getAttribute("orcamentoEditavel"))).getNome());
-				}*/
 				
 				req.setAttribute("page", "listarOrcamentos");           
 				req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);

@@ -18,12 +18,6 @@ public class CadastrarCategoria extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		/*Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
-		
-		OrcamentoDAO orcamentos = new OrcamentoDAO();
-		
-		req.setAttribute("orcamentos", orcamentos.getOrcamentos(usuario.getId()));*/
-		
 		req.setAttribute("page", "criarCategoria");
 	    req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}

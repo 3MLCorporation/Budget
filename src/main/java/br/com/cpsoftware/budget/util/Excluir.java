@@ -138,12 +138,6 @@ public class Excluir {
 	}
 
 	private static void excluirNotaFiscal(Long itemId) {
-
-		/*for(NotaFiscal nota : notaFiscalDAO.getNotaFiscal(itemId)) {
-			notaFiscalDAO.delete(nota.getId());
-			excluirPagamento(nota.getId());
-		}*/
-		
 		
 		NotaFiscal nota = notaFiscalDAO.getNotaFiscal(itemId);
 		if(nota != null) {
