@@ -16,7 +16,8 @@ public class ExcluirPagamento extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		Excluir.excluirPagamento(req, resp);
-		
+		Long notaFiscalId = Long.parseLong(req.getParameter("nota_fiscal_id"));
+		req.getSession().setAttribute("notaId", notaFiscalId);
 		resp.sendRedirect("/visualizarNotaFiscal");
 		
 	}

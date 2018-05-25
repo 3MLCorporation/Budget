@@ -61,6 +61,7 @@ pageEncoding="UTF-8"%>
 		                                <button type="submit" class="btn btn-link"><img src="../img/visualizar.png" style="width: 80%;"></button>
 		                            </form>
 									<form action="excluirPagamento" method="POST">
+										<input type="hidden" name="nota_fiscal_id" value="${nota.id }">
 										<input type="hidden" class="form-control" value="${pagamento.id}" name="pagamento_id">
 										<button type="submit" class="btn btn-link"> <img src="../img/excluir.png" alt="Logo" style="width:100%;"> </button>
 									</form>

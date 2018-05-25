@@ -176,7 +176,13 @@ public class Excluir {
 		
 		Long pagamentoId = Long.parseLong(req.getParameter("pagamento_id"));
 		
+		Pagamento pagamento = pagamentoDAO.read(pagamentoId);
 		pagamentoDAO.delete(pagamentoId);
+		
+		NotaFiscal nota = notaFiscalDAO.read(pagamento.getNotaFiscalId());
+		nota.calcularValorParcial(pagamentoDAO.getPagamentos(nota.getId()));
+		nota.verificarStatus();
+		notaFiscalDAO.update(nota);
 		
 		return true;
 	}
