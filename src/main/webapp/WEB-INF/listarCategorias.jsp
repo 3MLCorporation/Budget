@@ -4,44 +4,62 @@
 	pageEncoding="UTF-8"%>
 	
 <div>
-	<div class="container">
-   		<h2>Categorias cadastradas</h2>
-   		<input class="form-control" id="myInput" type="text" placeholder="Pesquisar...">
-		<table class="table table-sm">
-    		<thead class="thead-dark">
-      			<tr>
-        			<th>Categoria</th>
-        			<th>Valor</th>
-        			<th>Valor Parcial</th>
-        			<th>Excluir</th>
-      			</tr>
-    		</thead>
-    		<tbody id="myTable">
-        		<c:forEach items="${categorias}" var="categoria">
-					<tr>
-						<td> ${categoria.nome}</td>
-						<td> ${categoria.valorTotal}</td>
-						<td> ${categoria.valorParcial}</td>
-						<td style="width: 16%">
-							<form action="excluirCategoria" method="POST">
-								<input type="hidden" class="form-control" value="${categoria.id}" name="categoria_id">
-								<button type="submit" class="btn btn-link"><img src="../img/excluir.png" alt="Logo" style="width:100%;"> </button>
-				           	</form>	
-   						</td>
-					</tr>
-				</c:forEach>
-	   	 	</tbody>
-	  	</table>
-	</div>
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <c:if test="${not empty orcamentoSelecionado}">
+	          <a href="">
+				${orcamentoSelecionado}
+	          </a>
+          </c:if>
+        </li>
+        <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
+	        <li class="breadcrumb-item active">
+	        	<a href="/listarProjetos">Projetos</a>
+	        </li>
+        </c:if>
+        <li class="breadcrumb-item active">
+        	<a href="/listarOrcamentos">Orçamentos</a>
+        </li>
+        <li class="breadcrumb-item active">
+        	<a href="/listarCategorias">Categorias</a>
+        </li>
+      </ol>
+    </div>
+      
+   	<div class="card mb-3">
+   	    <div class="card-header">
+        	<i class="fa fa-area-chart"></i> Categorias cadastradas
+        </div>
+	   	<div class="card-body">
+		   	<div class="table-responsive">
+	            <table class="table table-bordered" id="dataTable">
+			   		<thead>
+			   			<tr>
+		        			<th>Categoria</th>
+		        			<th>Valor</th>
+		        			<th>Valor Parcial</th>
+		        			<th>Excluir</th>
+      					</tr>
+			   		</thead>
+			   		<tbody id="myTable">
+		        		<c:forEach items="${categorias}" var="categoria">
+							<tr>
+								<td> ${categoria.nome}</td>
+								<td> ${categoria.valorTotal}</td>
+								<td> ${categoria.valorParcial}</td>
+								<td style="width: 16%">
+									<form action="excluirProjeto" method="POST">
+										<input type="hidden" class="form-control" value="${projeto.id}" name="projeto_id">
+										<button type="submit" class="btn btn-link"><img src="../img/excluir.png" alt="Logo" style="width:100%;"> </button>
+						           	</form>	
+		   						</td>
+							</tr>
+						</c:forEach>
+			   	 	</tbody>
+			  	</table>
+		  	</div>
+	  	</div>
+  	</div>
 </div>
-
-<script>
-	$(document).ready(function(){
-		$("#myInput").on("keyup", function() {
-			var value = $(this).val().toLowerCase();
-			$("#myTable tr").filter(function() {
-				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-			});
-		});
-	});
-</script>

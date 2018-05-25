@@ -4,51 +4,62 @@
 	pageEncoding="UTF-8"%>
 	
 <div>
-	<div class="container">
-   		<h2>Projetos cadastrados</h2>
-   		<input class="form-control" id="myInput" type="text" placeholder="Pesquisar...">
-		<table class="table table-sm">
-    		<thead class="thead-dark">
-      			<tr>
-        			<th>Projeto</th>
-        			<th>Valor</th>
-        			<th>Valor Parcial</th>
-        			<th>Editar projeto</th>
-      			</tr>
-    		</thead>
-    		<tbody id="myTable">
-        		<c:forEach items="${projetos}" var="projeto">
-					<tr>
-						<td> ${projeto.nome}</td>
-						<td> ${projeto.valorTotal}</td>
-						<td> ${projeto.valorParcial}</td>
-						<td style="width: 12%">
-							<div class="btn-group"> 
-								<form action="selecionarProjeto" method="POST">
-									<input type="hidden" class="form-control" value="${projeto.id}" name="projetoEditavel">
-									<button type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo" style="width:100%;"> </button>
-					           	</form> 
-
-								<form action="excluirProjeto" method="POST">
-									<input type="hidden" class="form-control" value="${projeto.id}" name="projeto_id">
-									<button type="submit" class="btn btn-link"> <img src="../img/excluir.png" alt="Logo" style="width:100%;"> </button>
-					           	</form>
-				           	</div> 
-   						</td>
-					</tr>
-				</c:forEach>
-	   	 	</tbody>
-	  	</table>
-	</div>
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <c:if test="${not empty orcamentoSelecionado}">
+	          <a href="">
+	       		${orcamentoSelecionado}
+	          </a>
+          </c:if>
+        </li>
+        <li class="breadcrumb-item active">
+        	<a href="/listarProjetos">Projetos</a>
+        </li>
+      </ol>
+    </div>
+      
+   	<div class="card mb-3">
+   	    <div class="card-header">
+        	<i class="fa fa-area-chart"></i> Projetos cadastrados
+        	
+        </div>
+	   	<div class="card-body">
+		   	<div class="table-responsive">
+	            <table class="table table-bordered" id="dataTable">
+			   		<thead>
+			     			<tr>
+				       			<th>Projeto</th>
+				       			<th>Valor</th>
+				       			<th>Valor Parcial</th>
+				       			<th>Editar projeto</th>
+			     			</tr>
+			   		</thead>
+			   		<tbody id="myTable">
+			       		<c:forEach items="${projetos}" var="projeto">
+							<tr>
+								<td> ${projeto.nome}</td>
+								<td> ${projeto.valorTotal}</td>
+								<td> ${projeto.valorParcial}</td>
+								<td style="width: 12%">
+									<div class="btn-group"> 
+										<form action="selecionarProjeto" method="POST">
+											<input type="hidden" class="form-control" value="${projeto.id}" name="projetoEditavel">
+											<button type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo" style="width:100%;"> </button>
+							           	</form> 
+			
+										<form action="excluirProjeto" method="POST">
+											<input type="hidden" class="form-control" value="${projeto.id}" name="projeto_id">
+											<button type="submit" class="btn btn-link"> <img src="../img/excluir.png" alt="Logo" style="width:100%;"> </button>
+							           	</form>
+						           	</div> 
+			  					</td>
+							</tr>
+						</c:forEach>
+			   	 	</tbody>
+			  	</table>
+		  	</div>
+	  	</div>
+  	</div>
 </div>
-
-<script>
-	$(document).ready(function(){
-		$("#myInput").on("keyup", function() {
-			var value = $(this).val().toLowerCase();
-			$("#myTable tr").filter(function() {
-				$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-			});
-		});
-	});
-</script>
