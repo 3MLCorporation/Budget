@@ -66,7 +66,6 @@ public class AdicionarEditor extends HttpServlet {
 			usuarios.add(new UsuarioDAO().read(orcamentoUsuario.getEditorId()));
 		}
 		
-		//req.setAttribute("confirmacao", "confirmacao");
 		req.getSession().setAttribute("confirmacao", "confirmacao");
 		if(usuario == null) {
 			System.out.println("Usuario adicionado null");
@@ -81,7 +80,6 @@ public class AdicionarEditor extends HttpServlet {
 			if(!emailExistente) {
 				OrcamentoUsuario orcamentoUsuario = new OrcamentoUsuario(usuario.getId(), orcamentoEditavelId);
 				new OrcamentoUsuarioDAO().create(orcamentoUsuario);
-				//req.setAttribute("usuario", usuario);
 				req.getSession().setAttribute("usuarioAdicionado", usuario);
 			}else {
 				//TODO mensagem de email duplicado, "usuario ja esta no projeto"

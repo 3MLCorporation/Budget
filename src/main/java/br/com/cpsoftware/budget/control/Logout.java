@@ -17,7 +17,6 @@ public class Logout extends HttpServlet {
 		req.getSession().setAttribute("orcamentoEditavel", null);
 		req.getSession().setAttribute("projetoEditavel", null);
 		
-		//req.getRequestDispatcher("/WEB-INF/loginUsuario.jsp").forward(req, resp);
 		resp.sendRedirect("/login");
 	}
 	

@@ -27,7 +27,7 @@ public class VisualizarNotaFiscal extends HttpServlet {
 		if(notaId == null) {
 			Long itemId = Long.parseLong(req.getParameter("itemId"));
 			nota = new NotaFiscalDAO().getNotaFiscal(itemId);
-		}else {//Depois que cadastra
+		}else {	//Depois que cadastra
 			nota = new NotaFiscalDAO().read(notaId);
 			req.getSession().setAttribute("notaId", null);
 		}

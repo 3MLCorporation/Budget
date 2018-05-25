@@ -31,10 +31,6 @@ public class Login extends HttpServlet {
 		
 		if(usuario != null) {
 			
-			//System.out.println(usuario.getLogin());
-			//System.out.println(usuario.getSenha());
-			//System.out.println(usuario.getId());
-			
 			req.getSession().setAttribute("usuario", usuario);
 			
 			resp.sendRedirect("/principal");

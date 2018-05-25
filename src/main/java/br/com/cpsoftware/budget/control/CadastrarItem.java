@@ -58,17 +58,6 @@ public class CadastrarItem extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		/*Long rubricaId = Long.parseLong(req.getParameter("rubricaId"));
-		
-		Item item = new Item(rubricaId,
-							 req.getParameter(Item.NOME),
-							 req.getParameter(Item.DESCRICAO),
-							 Double.parseDouble(req.getParameter(Item.VALOR_UNIFORME)),
-							 Long.parseLong(req.getParameter(Item.QUANTIDADE)),
-							 Integer.parseInt(req.getParameter(Item.UNIDADE_MEDIDA)));
-		
-		dao.create(item);*/
-		
 		boolean isMultipart = ServletFileUpload.isMultipartContent(req);
 		Long rubricaId = null;
 		String nome = null;
