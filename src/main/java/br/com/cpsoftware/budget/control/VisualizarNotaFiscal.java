@@ -8,10 +8,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.cpsoftware.budget.dao.ItemDAO;
 import br.com.cpsoftware.budget.dao.NotaFiscalDAO;
 import br.com.cpsoftware.budget.dao.PagamentoDAO;
-import br.com.cpsoftware.budget.model.Item;
 import br.com.cpsoftware.budget.model.NotaFiscal;
 import br.com.cpsoftware.budget.model.Pagamento;
 
@@ -38,7 +36,7 @@ public class VisualizarNotaFiscal extends HttpServlet {
 		}else {
 			List<Pagamento> pagamentos = new PagamentoDAO().getPagamentos(nota.getId());
 			
-			nota.calcularValorParcial(pagamentos);
+			//nota.calcularValorParcial(pagamentos);
 			
 			req.setAttribute("nota", nota);
 			req.setAttribute("pagamentos", pagamentos);

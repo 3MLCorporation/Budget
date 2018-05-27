@@ -1,15 +1,12 @@
 package br.com.cpsoftware.budget.dao;
 
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import com.google.appengine.api.datastore.Blob;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.EntityNotFoundException;
-import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.PreparedQuery;
@@ -36,6 +33,7 @@ public class NotaFiscalDAO {
 		notaFiscalEntity.setProperty(NotaFiscal.ARQUIVO, nota.getArquivo());//???
 		notaFiscalEntity.setProperty(NotaFiscal.FORNECEDOR, nota.getFornecedor());
 		notaFiscalEntity.setProperty(NotaFiscal.VALOR, nota.getValor());
+		notaFiscalEntity.setProperty(NotaFiscal.VALOR_PARCIAL, nota.getValorParcial());
 		notaFiscalEntity.setProperty(NotaFiscal.DATA, nota.getData());
 		notaFiscalEntity.setProperty(NotaFiscal.STATUS, nota.getStatus());
 		
@@ -61,6 +59,7 @@ public class NotaFiscalDAO {
 		notaFiscalEntity.setProperty(NotaFiscal.ARQUIVO, nota.getArquivo());//???
 		notaFiscalEntity.setProperty(NotaFiscal.FORNECEDOR, nota.getFornecedor());
 		notaFiscalEntity.setProperty(NotaFiscal.VALOR, nota.getValor());
+		notaFiscalEntity.setProperty(NotaFiscal.VALOR_PARCIAL, nota.getValorParcial());
 		notaFiscalEntity.setProperty(NotaFiscal.DATA, nota.getData());
 		notaFiscalEntity.setProperty(NotaFiscal.STATUS, nota.getStatus());
 
@@ -78,6 +77,7 @@ public class NotaFiscalDAO {
 							 (Blob)notaFiscalEntity.getProperty(NotaFiscal.ARQUIVO),
 							 (String)notaFiscalEntity.getProperty(NotaFiscal.FORNECEDOR),
 							 (Double)notaFiscalEntity.getProperty(NotaFiscal.VALOR),
+							 (Double)notaFiscalEntity.getProperty(NotaFiscal.VALOR_PARCIAL),
 							 (Date)notaFiscalEntity.getProperty(NotaFiscal.DATA),
 							 ((Long) notaFiscalEntity.getProperty(NotaFiscal.STATUS)).intValue());
 	}

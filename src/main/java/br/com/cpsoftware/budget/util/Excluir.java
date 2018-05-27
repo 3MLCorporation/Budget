@@ -18,6 +18,7 @@ import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.OrcamentoUsuario;
 import br.com.cpsoftware.budget.model.Pagamento;
 import br.com.cpsoftware.budget.model.Rubrica;
+import br.com.cpsoftware.budget.util.AtualizarPrecos;
 
 public class Excluir {
 	
@@ -34,7 +35,8 @@ public class Excluir {
 	 * Esta classe possui 2 tipos de métodos: os de paramentro req, resp e os de parametro Long id
 	 * 
 	 * Os metodos de parametro req, resp são acionados pelas classes control e chamam os metodos de
-	 * 		 parametro Long id dos seus filhos, com exceção do Pagamento;
+	 * 		 parametro Long id dos seus filhos, com exceção do Pagamento. Eles também chamam os metodos util.Atualizar
+	 * 		 de seus pais;
 	 * 
 	 * Os metodos de parametro Long id sempre são acionados  pelos metodos de exclusao do seus pais
 	 * 		 e sempre acionam os metodos de parametro Long id dos seus filhos, gerando uma exclusão em cascata;
@@ -62,7 +64,8 @@ public class Excluir {
 	public static boolean excluirOrcamento(HttpServletRequest req, HttpServletResponse resp) {
 		
 		Long orcamentoId = Long.parseLong(req.getParameter("orcamento_id"));
-		
+		Orcamento orcamento = (Orcamento) orcamentoDAO.read(orcamentoId);
+		AtualizarPrecos.atualizarPrecoProjeto(AtualizarPrecos.EXCLUIR, orcamentoId, orcamento.getValorParcial());
 		orcamentoDAO.delete(orcamentoId);
 		
 		excluirCategoria(orcamentoId);
@@ -90,6 +93,9 @@ public class Excluir {
 		
 		Long categoriaId = Long.parseLong(req.getParameter("categoria_id"));
 		
+		Categoria categoria = (Categoria) categoriaDAO.read(categoriaId);
+		AtualizarPrecos.atualizarPrecoOrcamento(AtualizarPrecos.EXCLUIR, categoriaId, categoria.getValorParcial());
+		
 		categoriaDAO.delete(categoriaId);
 		
 		excluirRubrica(categoriaId);
@@ -109,6 +115,9 @@ public class Excluir {
 	public static boolean excluirRubrica(HttpServletRequest req, HttpServletResponse resp) {
 		
 		Long rubricaId = Long.parseLong(req.getParameter("rubrica_id"));
+		
+		Rubrica rubrica = (Rubrica) rubricaDAO.read(rubricaId);
+		AtualizarPrecos.atualizarPrecoCategoria(AtualizarPrecos.EXCLUIR, rubricaId, rubrica.getValorParcial());
 		
 		rubricaDAO.delete(rubricaId);
 		
@@ -130,6 +139,14 @@ public class Excluir {
 		
 		Long itemId = Long.parseLong(req.getParameter("item_id"));
 		
+		//Se o Item tivesse valor parcial, ficaria assim:
+		//Item item = itemDAO.read(itemId);
+		//Atualizar.atualizarPrecoRubrica(Atualizar.EXCLUIR, itemId, item.getValorParcial());
+		
+		//Mas, como ele não tem, tenho que chamar a nota fiscal e passar o valor parcial dela, assim:
+		NotaFiscal nota = notaFiscalDAO.getNotaFiscal(itemId);
+		AtualizarPrecos.atualizarPrecoRubrica(AtualizarPrecos.EXCLUIR, itemId, nota.getValorParcial());
+		
 		itemDAO.delete(itemId);
 		
 		excluirNotaFiscal(itemId);
@@ -149,6 +166,9 @@ public class Excluir {
 	public static boolean excluirNotaFiscal(HttpServletRequest req, HttpServletResponse resp) {
 		
 		Long notaId = Long.parseLong(req.getParameter("nota_id"));
+		
+		NotaFiscal nota = notaFiscalDAO.read(notaId);
+		AtualizarPrecos.atualizarPrecoItem(AtualizarPrecos.EXCLUIR, notaId, nota.getValorParcial());
 		
 		notaFiscalDAO.delete(notaId);
 		
@@ -171,12 +191,11 @@ public class Excluir {
 		Long pagamentoId = Long.parseLong(req.getParameter("pagamento_id"));
 		
 		Pagamento pagamento = pagamentoDAO.read(pagamentoId);
+
+		//TODO DISCUTIR: atualizarPrecoPagamento ou atualizarPrecoNotaFiscal??
+		AtualizarPrecos.atualizarPrecoPagamento(AtualizarPrecos.EXCLUIR, pagamentoId, pagamento.getValor());
+		System.out.println("SAIU DO ATUALIZAR PREÇOS!!");
 		pagamentoDAO.delete(pagamentoId);
-		
-		NotaFiscal nota = notaFiscalDAO.read(pagamento.getNotaFiscalId());
-		nota.calcularValorParcial(pagamentoDAO.getPagamentos(nota.getId()));
-		nota.verificarStatus();
-		notaFiscalDAO.update(nota);
 		
 		return true;
 	}

@@ -76,7 +76,7 @@ public class CadastrarNotaFiscal extends HttpServlet {
 			}
 			
 			if (arquivo != null && arquivo.getBytes().length > 0){
-				NotaFiscal notaFiscal = new NotaFiscal(itemId, arquivo, fornecedor, valor, data, NotaFiscal.STATUS_PARCIAL);
+				NotaFiscal notaFiscal = new NotaFiscal(itemId, arquivo, fornecedor, valor, 0d, data, NotaFiscal.STATUS_PARCIAL);
 				NotaFiscalDAO  dao = new NotaFiscalDAO();
 				
 				req.getSession().setAttribute("notaId", dao.create(notaFiscal));

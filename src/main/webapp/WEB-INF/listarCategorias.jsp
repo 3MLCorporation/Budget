@@ -40,7 +40,9 @@
 		        			<th>Categoria</th>
 		        			<th>Valor</th>
 		        			<th>Valor Parcial</th>
-		        			<th>Excluir</th>
+		        			<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
+		        				<th>Excluir</th>
+		        			</c:if>
       					</tr>
 			   		</thead>
 			   		<tbody id="myTable">
@@ -49,12 +51,14 @@
 								<td> ${categoria.nome}</td>
 								<td> ${categoria.valorTotal}</td>
 								<td> ${categoria.valorParcial}</td>
-								<td style="width: 16%">
-									<form action="excluirProjeto" method="POST">
-										<input type="hidden" class="form-control" value="${projeto.id}" name="projeto_id">
-										<button type="submit" class="btn btn-link"><img src="../img/excluir.png" alt="Logo" style="width:100%;"> </button>
-						           	</form>	
-		   						</td>
+								<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
+									<td style="width: 16%">
+										<form action="excluirCategoria" method="POST">
+											<input type="hidden" class="form-control" value="${categoria.id}" name="categoria_id">
+											<button type="submit" class="btn btn-link"><img src="../img/excluir.png" alt="Logo" style="width:100%;"> </button>
+							           	</form>	
+			   						</td>
+		   						</c:if>
 							</tr>
 						</c:forEach>
 			   	 	</tbody>

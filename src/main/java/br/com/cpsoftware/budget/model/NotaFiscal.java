@@ -21,6 +21,7 @@ public class NotaFiscal {
 	public static final String ARQUIVO = "arquivo";
 	public static final String FORNECEDOR = "fornecedor";
 	public static final String VALOR = "valor";
+	public static final String VALOR_PARCIAL = "valor_parcial";
 	public static final String DATA = "data";
 	public static final String STATUS = "status";
 	
@@ -28,21 +29,23 @@ public class NotaFiscal {
 	public static final int STATUS_PARCIAL = 1;
 	public static final int STATUS_QUITADO = 2;
 	
-	public NotaFiscal(Long itemId, Long id, Blob arquivo, String fornecedor, Double valor, Date data, int status) {
+	public NotaFiscal(Long itemId, Long id, Blob arquivo, String fornecedor, Double valor, Double valorParcial, Date data, int status) {
 		this.itemId = itemId;
 		this.id = id;
 		this.arquivo = arquivo;
 		this.fornecedor = fornecedor;
 		this.valor = valor;
+		this.valorParcial = valorParcial;
 		this.data = data;
 		this.status = status;
 	}
 
-	public NotaFiscal(Long itemId, Blob arquivo, String fornecedor, Double valor, Date data, int status) {
+	public NotaFiscal(Long itemId, Blob arquivo, String fornecedor, Double valor, Double valorParcial, Date data, int status) {
 		this.itemId = itemId;
 		this.arquivo = arquivo;
 		this.fornecedor = fornecedor;
 		this.valor = valor;
+		this.valorParcial = valorParcial;
 		this.data = data;
 		this.status = status;
 	}
@@ -99,6 +102,7 @@ public class NotaFiscal {
 	 */
 	public void setValorParcial(Double valorParcial) {
 		this.valorParcial = valorParcial;
+		verificarStatus();
 	}
 	
 	public Double calcularValorParcial(List<Pagamento> pagamentos) {
@@ -121,7 +125,7 @@ public class NotaFiscal {
 		return status;
 	}
 
-	public void verificarStatus() {
+	private void verificarStatus() {
 		if(this.valor.equals(this.valorParcial)) {
 			this.status = NotaFiscal.STATUS_QUITADO;
 		}else {

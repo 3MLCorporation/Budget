@@ -45,7 +45,9 @@
 			        		<th>Rubrica</th>
 			        		<th>Valor</th>
 			        		<th>Valor Parcial</th>
-			        		<th>Excluir</th>
+			        		<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
+			        			<th>Excluir</th>
+			        		</c:if>
       					</tr>
 			   		</thead>
 			   		<tbody id="myTable">
@@ -55,12 +57,14 @@
 								<td> ${rubricaMap.rubrica.nome}</td>
 								<td> ${rubricaMap.rubrica.valorTotal}</td>
 								<td> ${rubricaMap.rubrica.valorParcial}</td>
-								<td style="width: 16%">
-									<form action="excluirRubrica" method="POST">
-										<input type="hidden" class="form-control" value="${rubricaMap.rubrica.id}" name="rubrica_id">
-										<button type="submit" class="btn btn-link"><img src="../img/excluir.png" alt="Logo" style="width:100%;"> </button>
-						           	</form>	
-		   						</td>
+								<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
+									<td style="width: 16%">
+										<form action="excluirRubrica" method="POST">
+											<input type="hidden" class="form-control" value="${rubricaMap.rubrica.id}" name="rubrica_id">
+											<button type="submit" class="btn btn-link"><img src="../img/excluir.png" alt="Logo" style="width:100%;"> </button>
+							           	</form>	
+			   						</td>
+		   						</c:if>
 							</tr>
 						</c:forEach>
 			   	 	</tbody>
