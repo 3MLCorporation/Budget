@@ -29,10 +29,6 @@ public class CadastrarProjeto extends HttpServlet {
 		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
 		String nome = req.getParameter("nome");
 		String valor = req.getParameter("valor");
-				 
-		 /*System.out.println("Nome - " + nome);
-		 System.out.println("Valor - " + valor);
-		 System.out.println("Valor float - " + Float.parseFloat(valor));*/
 		 
 		Projeto projeto = new Projeto(usuario.getId(), nome, Double.parseDouble(valor), 0d);
 		

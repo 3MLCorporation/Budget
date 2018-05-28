@@ -37,8 +37,6 @@ public class AtualizarPrecos {
 			case CADASTRAR:
 			case EDITAR:
 				projeto.setValorParcial(projeto.getValorParcial() + valor);
-				/*Double valorParcial = nota.calcularValorParcial(pagamentoDAO.getPagamentos(notaFiscalId));
-				nota.verificarStatus();*/
 				break;
 			case EXCLUIR:
 				projeto.setValorParcial(projeto.getValorParcial() - valor);
@@ -53,8 +51,6 @@ public class AtualizarPrecos {
 			case CADASTRAR:
 			case EDITAR:
 				orcamento.setValorParcial(orcamento.getValorParcial() + valor);
-				/*Double valorParcial = nota.calcularValorParcial(pagamentoDAO.getPagamentos(notaFiscalId));
-				nota.verificarStatus();*/
 				atualizarPrecoProjeto(CADASTRAR, orcamento.getId(), valor);
 				break;
 			case EXCLUIR:
@@ -116,10 +112,6 @@ public class AtualizarPrecos {
 	
 	public static void atualizarPrecoNotaFiscal(int tipoDeAtualizacao, Long pagamentoId, Double valor) {
 		NotaFiscal nota = notaFiscalDAO.read((pagamentoDAO.read(pagamentoId)).getNotaFiscalId());
-		if(nota == null) {
-			System.out.println("AtualizarPrecos.atualizarPrecoNotaFiscal() : nota null, \n pagamentoId = " +
-					pagamentoId + " \n pagamento.getNotaFiscalId() = ");
-		}
 		switch(tipoDeAtualizacao) {
 			case CADASTRAR:
 			case EDITAR:
