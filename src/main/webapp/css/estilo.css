@@ -23,6 +23,12 @@
 
 .botaoVisualizarNotaFiscal{
   position: absolute;
+  right: 0px;
+  width: 120px;
+}
+
+.botaoCadastrarPagamento{
+  position: relative;
   right: 0;
   width: 120px;
 }
