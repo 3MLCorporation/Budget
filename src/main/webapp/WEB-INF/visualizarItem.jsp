@@ -6,8 +6,8 @@
 <div>
 	<div class="container">
 		<h3><strong>Detalhes do item: ${item.nome}</strong></h3>
-		<h4>Nome: <strong>${item.nome}</strong>&emsp; Descrição: <strong>${item.descricao}</strong>&emsp; Valor: <strong>${item.valor}</strong></h4>
-		<h4>Quantidade: <strong>${item.quantidade}</strong>&emsp; Valor uniforme: <strong>${item.valor_uniforme}
+		<h4>Nome: <strong>${item.nome}</strong>&emsp; Descrição: <strong>${item.descricao}</strong>&emsp; Valor: <strong>${item.getValorFormatado()}</strong></h4>
+		<h4>Quantidade: <strong>${item.quantidade}</strong>&emsp; Valor uniforme: <strong>${item.getValorUniformeFormatado()}
 		</strong>&emsp; Unidade de medida: 
 		<strong>
 			<c:choose>

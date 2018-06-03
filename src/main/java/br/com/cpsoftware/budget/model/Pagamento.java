@@ -4,6 +4,8 @@ import java.util.Date;
 
 import com.google.appengine.api.datastore.Blob;
 
+import br.com.cpsoftware.budget.util.Formatacao;
+
 public class Pagamento {
 	private Long id;
 	private Long notaFiscalId;
@@ -65,12 +67,20 @@ public class Pagamento {
 		this.valor = valor;
 	}
 
+	public String getValorFormatado() {
+		return Formatacao.formatarDinheiro(valor);
+	}
+	
 	public Date getData() {
 		return data;
 	}
 
 	public void setData(Date data) {
 		this.data = data;
+	}
+	
+	public String getDataFormatada() {
+		return Formatacao.formatarData(data);
 	}
 	
 }

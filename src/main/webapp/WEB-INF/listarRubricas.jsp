@@ -55,8 +55,8 @@
 							<tr>
 								<td> ${rubricaMap.nomeCategoria}</td>
 								<td> ${rubricaMap.rubrica.nome}</td>
-								<td> ${rubricaMap.rubrica.valorTotal}</td>
-								<td> ${rubricaMap.rubrica.valorParcial}</td>
+								<td> ${rubricaMap.rubrica.getValorTotalFormatado()}</td>
+								<td> ${rubricaMap.rubrica.getValorParcialFormatado()}</td>
 								<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
 									<td style="width: 16%">
 										<form action="excluirRubrica" method="POST">

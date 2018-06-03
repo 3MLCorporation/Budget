@@ -60,8 +60,8 @@
 								<td> ${itemMap.nomeCategoria}</td>
 								<td> ${itemMap.nomeRubrica}</td>
 								<td> ${itemMap.item.nome}</td>
-								<td> ${itemMap.item.valor}</td>
-								<td> ${itemMap.item.valorParcial}</td>
+								<td> ${itemMap.item.getValorFormatado()}</td>
+								<td> ${itemMap.item.getValorParcialFormatado()}</td>
 								<td>
 									<form action="visualizarItem" method="GET">
 										<input type="hidden" class="form-control" value="${itemMap.item.id}" name="itemId">
@@ -76,14 +76,18 @@
 								</td>
 								<td style="width: 15%;">
 									<div class="btn-group">
-										<form action="cadastrarNotaFiscal" method="GET">
-											<input type="hidden" name="itemId" value="${itemMap.item.id }">
-											<button class="btn btn-link"> <img src="../img/adicionar.png" alt="Logo"> </button>
-							           	</form> 
-										<form action="visualizarNotaFiscal" method="GET">
-											<input type="hidden" name="itemId" value="${itemMap.item.id }">
-											<button class="btn btn-link"><img src="../img/visualizar.png" alt="Logo"> </button>
-							           	</form>
+										<c:if test="${itemMap.nota == null}">
+											<form action="cadastrarNotaFiscal" method="GET">
+												<input type="hidden" name="itemId" value="${itemMap.item.id }">
+												<button class="btn btn-link"> <img src="../img/adicionar.png" alt="Logo"> </button>
+								           	</form> 
+							           	</c:if>
+							           	<c:if test="${itemMap.nota != null}">
+											<form action="visualizarNotaFiscal" method="GET">
+												<input type="hidden" name="itemId" value="${itemMap.item.id }">
+												<button class="btn btn-link"><img src="../img/visualizar.png" alt="Logo"> </button>
+								           	</form>
+							           	</c:if>
 						           	</div> 
 								</td>
 							</tr>

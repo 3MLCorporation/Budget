@@ -49,8 +49,8 @@
 		        		<c:forEach items="${categorias}" var="categoria">
 							<tr>
 								<td> ${categoria.nome}</td>
-								<td> ${categoria.valorTotal}</td>
-								<td> ${categoria.valorParcial}</td>
+								<td> ${categoria.getValorTotalFormatado()}</td>
+								<td> ${categoria.getValorParcialFormatado()}</td>
 								<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
 									<td style="width: 16%">
 										<form action="excluirCategoria" method="POST">

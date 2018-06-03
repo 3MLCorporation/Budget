@@ -40,8 +40,8 @@
 			       		<c:forEach items="${projetos}" var="projeto">
 							<tr>
 								<td> ${projeto.nome}</td>
-								<td> ${projeto.valorTotal}</td>
-								<td> ${projeto.valorParcial}</td>
+								<td> ${projeto.getValorTotalFormatado()}</td>
+								<td> ${projeto.getValorParcialFormatado()}</td>
 								<td style="width: 12%">
 									<div class="btn-group"> 
 										<form action="selecionarProjeto" method="POST">

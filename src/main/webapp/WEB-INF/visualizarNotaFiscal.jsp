@@ -46,9 +46,9 @@
 	        <div class="card-body">
 				<div>
 					Fornecedor: <strong>${nota.fornecedor}</strong>&emsp;
-					Valor: <strong>${nota.valor}</strong>&emsp;
-					Data: <strong>${nota.data}</strong>&emsp;
-					Valor parcial: <strong>${nota.valorParcial}</strong>&emsp;
+					Valor: <strong>${nota.getValorFormatado()}</strong>&emsp;
+					Data: <strong>${nota.getDataFormatada()}</strong>&emsp;
+					Valor parcial: <strong>${nota.getValorParcialFormatado()}</strong>&emsp;
 					Status: 
 					<strong>
 			            <c:choose>
@@ -82,8 +82,8 @@
 				   		<tbody>
 				   			<c:forEach items="${pagamentos}" var="pagamento" varStatus="id">
 								<tr>
-									<td> ${pagamento.valor}</td>
-									<td> ${pagamento.data}</td>
+									<td> ${pagamento.getValorFormatado()}</td>
+									<td> ${pagamento.getDataFormatada()}</td>
 									<td style="width: 14%">
 										<div class="btn-group"> 
 				                            <form action="abrirPagamento" target="_blank" method="GET">
@@ -101,12 +101,14 @@
 							</c:forEach>
 				   	 	</tbody>
 				  	</table>
-				  	<form action="cadastrarPagamento" method="GET">
-		           		<input type="hidden" name="nota_fiscal_id" value="${nota.id }">
-		           		<div class="botaoCadastrarPagamento">
-							<button type="submit" class="btn btn-primary">Cadastrar pagamento</button>
-						</div>
-					</form>
+				  	<c:if test="${nota.status == 1}"> 
+					  	<form action="cadastrarPagamento" method="GET">
+			           		<input type="hidden" name="nota_fiscal_id" value="${nota.id }">
+			           		<div class="botaoCadastrarPagamento">
+								<button type="submit" class="btn btn-primary">Cadastrar pagamento</button>
+							</div>
+						</form>
+					</c:if>
 			  	</div>
 		  	</div>
 	  	</div>

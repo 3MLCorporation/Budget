@@ -41,7 +41,7 @@ public class ItemDAO{
 		itemEntity.setProperty(Item.RUBRICA_ID, item.getRubricaId());
 		itemEntity.setProperty(Item.NOME, item.getNome());
 		itemEntity.setProperty(Item.DESCRICAO, item.getDescricao());
-		itemEntity.setProperty(Item.VALOR_UNIFORME, item.getValor_uniforme());
+		itemEntity.setProperty(Item.VALOR_UNIFORME, item.getValorUniforme());
 		itemEntity.setProperty(Item.QUANTIDADE, item.getQuantidade());
 		itemEntity.setProperty(Item.UNIDADE_MEDIDA, item.getUnidadeMedida());
 		itemEntity.setProperty(Item.ARQUIVO_DETALHES, item.getArquivoDetalhes());
@@ -75,7 +75,7 @@ public class ItemDAO{
 		itemEntity.setProperty(Item.RUBRICA_ID, item.getRubricaId());
 		itemEntity.setProperty(Item.NOME, item.getNome());
 		itemEntity.setProperty(Item.DESCRICAO, item.getDescricao());
-		itemEntity.setProperty(Item.VALOR_UNIFORME, item.getValor_uniforme());
+		itemEntity.setProperty(Item.VALOR_UNIFORME, item.getValorUniforme());
 		itemEntity.setProperty(Item.QUANTIDADE, item.getQuantidade());
 		itemEntity.setProperty(Item.UNIDADE_MEDIDA, item.getUnidadeMedida());
 		itemEntity.setProperty(Item.ARQUIVO_DETALHES, item.getArquivoDetalhes());

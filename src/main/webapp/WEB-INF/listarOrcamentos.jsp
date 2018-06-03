@@ -49,8 +49,8 @@
 			       		<c:forEach items="${orcamentos}" var="orcamento" varStatus="id">
 							<tr>
 								<td> ${orcamento.nome}</td>
-								<td> ${orcamento.valorTotal}</td>
-								<td> ${orcamento.valorParcial}</td>
+								<td> ${orcamento.getValorTotalFormatado()}</td>
+								<td> ${orcamento.getValorParcialFormatado()}</td>
 								<td>
 								<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
 									<select id="orcamentoSelect${id.count}">

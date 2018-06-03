@@ -1,9 +1,10 @@
 package br.com.cpsoftware.budget.model;
 
 import java.util.Date;
-import java.util.List;
 
 import com.google.appengine.api.datastore.Blob;
+
+import br.com.cpsoftware.budget.util.Formatacao;
 
 public class NotaFiscal {
 	private Long id;
@@ -90,6 +91,10 @@ public class NotaFiscal {
 		this.valor = valor;
 	}
 
+	public String getValorFormatado() {
+		return Formatacao.formatarDinheiro(valor);
+	}
+	
 	/**
 	 * @return the valorParcial
 	 */
@@ -105,13 +110,17 @@ public class NotaFiscal {
 		verificarStatus();
 	}
 	
-	public Double calcularValorParcial(List<Pagamento> pagamentos) {
+	public String getValorParcialFormatado() {
+		return Formatacao.formatarDinheiro(valorParcial);
+	}
+	
+	/*public Double calcularValorParcial(List<Pagamento> pagamentos) {
 		this.valorParcial = 0d;
 		for(Pagamento pagamento : pagamentos) {
 			this.valorParcial += pagamento.getValor();
 		}
 		return this.valorParcial;
-	}
+	}*/
 
 	public Date getData() {
 		return data;
@@ -121,6 +130,10 @@ public class NotaFiscal {
 		this.data = data;
 	}
 
+	public String getDataFormatada() {
+		return Formatacao.formatarData(data);
+	}
+	
 	public int getStatus() {
 		return status;
 	}

@@ -2,6 +2,8 @@ package br.com.cpsoftware.budget.model;
 
 import com.google.appengine.api.datastore.Blob;
 
+import br.com.cpsoftware.budget.util.Formatacao;
+
 /*
  * TODO UNIDADE DE MEDIDA
  */
@@ -11,7 +13,7 @@ public class Item {
 	private Long id;
 	private String nome;
 	private String descricao;
-	private Double valor_uniforme;
+	private Double valorUniforme;
 	private Double valorParcial;
 	private int quantidade;
 	private int unidadeMedida;
@@ -41,7 +43,7 @@ public class Item {
 		this.rubricaId = rubricaId;
 		this.nome = nome;
 		this.descricao = descricao;
-		this.valor_uniforme = valor_uniforme;
+		this.valorUniforme = valor_uniforme;
 		this.quantidade = quantidade;
 		this.unidadeMedida = unidadeMedida;
 	}
@@ -51,7 +53,7 @@ public class Item {
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
-		this.valor_uniforme = valor_uniforme;
+		this.valorUniforme = valor_uniforme;
 		this.quantidade = quantidade;
 		this.unidadeMedida = unidadeMedida;
 	}
@@ -60,7 +62,7 @@ public class Item {
 		this.rubricaId = rubricaId;
 		this.nome = nome;
 		this.descricao = descricao;
-		this.valor_uniforme = valor_uniforme;
+		this.valorUniforme = valor_uniforme;
 		this.quantidade = quantidade;
 		this.unidadeMedida = unidadeMedida;
 		this.arquivoDetalhes = arquivoDetalhes;
@@ -70,7 +72,7 @@ public class Item {
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
-		this.valor_uniforme = valor_uniforme;
+		this.valorUniforme = valor_uniforme;
 		this.quantidade = quantidade;
 		this.unidadeMedida = unidadeMedida;
 		this.arquivoDetalhes = arquivoDetalhes;
@@ -80,7 +82,7 @@ public class Item {
 		this.rubricaId = rubricaId;
 		this.nome = nome;
 		this.descricao = descricao;
-		this.valor_uniforme = valor_uniforme;
+		this.valorUniforme = valor_uniforme;
 		this.quantidade = quantidade;
 		this.unidadeMedida = unidadeMedida;
 		this.arquivoDetalhes = arquivoDetalhes;
@@ -91,7 +93,7 @@ public class Item {
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
-		this.valor_uniforme = valor_uniforme;
+		this.valorUniforme = valor_uniforme;
 		this.quantidade = quantidade;
 		this.unidadeMedida = unidadeMedida;
 		this.arquivoDetalhes = arquivoDetalhes;
@@ -123,12 +125,17 @@ public class Item {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public Double getValor_uniforme() {
-		return valor_uniforme;
+	public Double getValorUniforme() {
+		return valorUniforme;
 	}
-	public void setValor_uniforme(Double valor_uniforme) {
-		this.valor_uniforme = valor_uniforme;
+	public void setValorUniforme(Double valor_uniforme) {
+		this.valorUniforme = valor_uniforme;
 	}
+	
+	public String getValorUniformeFormatado() {
+		return Formatacao.formatarDinheiro(valorUniforme);
+	}
+	
 	public Double getValorParcial() {
 		return valorParcial;
 	}
@@ -137,6 +144,10 @@ public class Item {
 		this.valorParcial = valorParcial;
 	}
 
+	public String getValorParcialFormatado() {
+		return Formatacao.formatarDinheiro(valorParcial);
+	}
+	
 	public int getQuantidade() {
 		return quantidade;
 	}
@@ -144,7 +155,11 @@ public class Item {
 		this.quantidade = quantidade;
 	}
 	public Double getValor() {
-		return valor_uniforme * quantidade;
+		return valorUniforme * quantidade;
+	}
+	
+	public String getValorFormatado() {
+		return Formatacao.formatarDinheiro(valorUniforme * quantidade);
 	}
 
 	/**

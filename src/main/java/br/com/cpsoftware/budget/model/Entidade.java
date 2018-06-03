@@ -1,5 +1,7 @@
 package br.com.cpsoftware.budget.model;
 
+import br.com.cpsoftware.budget.util.Formatacao;
+
 public class Entidade {
 	
 	private Long id;
@@ -88,16 +90,23 @@ public class Entidade {
 		return valorTotal;
 	}
 
-	public void setValorTotal(Double valor_total) {
-		this.valorTotal = valor_total;
+	public void setValorTotal(Double valorTotal) {
+		this.valorTotal = valorTotal;
+	}
+	
+	public String getValorTotalFormatado() {
+		return Formatacao.formatarDinheiro(valorTotal);
 	}
 
 	public Double getValorParcial() {
 		return valorParcial;
 	}
 
-	public void setValorParcial(Double valor_parcial) {
-		this.valorParcial = valor_parcial;
+	public void setValorParcial(Double valorParcial) {
+		this.valorParcial = valorParcial;
 	}
 
+	public String getValorParcialFormatado() {
+		return Formatacao.formatarDinheiro(valorParcial);
+	}
 }
