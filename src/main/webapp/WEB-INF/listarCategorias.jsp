@@ -40,6 +40,7 @@
 		        			<th>Categoria</th>
 		        			<th>Valor</th>
 		        			<th>Valor Parcial</th>
+		        			<th>Rubricas</th>
 		        			<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
 		        				<th>Excluir</th>
 		        			</c:if>
@@ -51,14 +52,20 @@
 								<td> ${categoria.nome}</td>
 								<td> ${categoria.getValorTotalFormatado()}</td>
 								<td> ${categoria.getValorParcialFormatado()}</td>
+								<td>
+									<form action="listarItens" method="GET">
+							         	<input type="hidden" class="form-control" value="${rubrica.id}" name="rubricaId">
+										<button type="submit" class="btn btn-link"><img src="../img/listarFamilia.png" alt="Logo" style="width:100%;"> </button>
+							        </form>
+								</td>
 								<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
 									<td style="width: 16%">
 										<form action="excluirCategoria" method="POST">
 											<input type="hidden" class="form-control" value="${categoria.id}" name="categoria_id">
 											<button type="submit" class="btn btn-link"><img src="../img/excluir.png" alt="Logo" style="width:100%;"> </button>
-							           	</form>	
+							           	</form>
 			   						</td>
-		   						</c:if>
+		   						</c:if>	
 							</tr>
 						</c:forEach>
 			   	 	</tbody>

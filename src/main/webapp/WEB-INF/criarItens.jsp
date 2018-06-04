@@ -26,6 +26,12 @@
         <li class="breadcrumb-item active">
         	<a href="/listarCategorias">Categorias</a>
         </li>
+        <li class="breadcrumb-item active">
+        	<a href="/listarRubricas">Rubricas</a>
+        </li>
+        <li class="breadcrumb-item active">
+        	<a href="/listarItens">Itens</a>
+        </li>
       </ol>
     </div>
       

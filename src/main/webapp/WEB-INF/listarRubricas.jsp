@@ -45,6 +45,7 @@
 			        		<th>Rubrica</th>
 			        		<th>Valor</th>
 			        		<th>Valor Parcial</th>
+			        		<th>Itens</th>
 			        		<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
 			        			<th>Excluir</th>
 			        		</c:if>
@@ -57,6 +58,12 @@
 								<td> ${rubricaMap.rubrica.nome}</td>
 								<td> ${rubricaMap.rubrica.getValorTotalFormatado()}</td>
 								<td> ${rubricaMap.rubrica.getValorParcialFormatado()}</td>
+								<td>
+									<form action="listarRubricas" method="GET">
+							         	<input type="hidden" class="form-control" value="${categoria.id}" name="categoriaId">
+										<button type="submit" class="btn btn-link"><img src="../img/listarFamilia.png" alt="Logo" style="width:100%;"> </button>
+							        </form>
+								</td>
 								<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
 									<td style="width: 16%">
 										<form action="excluirRubrica" method="POST">

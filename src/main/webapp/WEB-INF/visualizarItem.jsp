@@ -27,17 +27,17 @@
 		<div class="btn-group">
 			<form action="abrirArquivoDetalhesItem" target="_blank" method="GET">
 				<input type="hidden" name="itemId" value="${item.id}">
-				<button type="submit" class="btn btn-dark">Ver detalhes</button>
+				<button type="submit" class="btn btn-primary">Ver detalhes</button>
 			</form>
 			
 			<form action="abrirArquivoAuxiliarItem" target="_blank" method="GET">
 				<input type="hidden" name="itemId" value="${item.id}">
-				&emsp;<button type="submit" class="btn btn-dark">Ver arquivo auxiliar</button>
+				&emsp;<button type="submit" class="btn btn-primary">Ver arquivo auxiliar</button>
 			</form>
 			
 			<form action="visualizarNotaFiscal" method="GET">
 				<input type="hidden" name="itemId" value="${item.id }">
-				&emsp;<button type="submit" class="btn btn-dark">Ver nota fiscal</button>
+				&emsp;<button type="submit" class="btn btn-primary">Ver nota fiscal</button>
 			</form>
 		</div>
 	</div>
