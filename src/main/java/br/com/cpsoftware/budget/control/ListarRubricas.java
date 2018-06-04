@@ -25,16 +25,24 @@ public class ListarRubricas extends HttpServlet {
 		Long orcamentoEditavelId = Long.parseLong((String) req.getSession().getAttribute("orcamentoEditavel"));
 		Orcamento orcamento = (Orcamento) new OrcamentoDAO().read(orcamentoEditavelId);
 		
-		CategoriaDAO categoriaDao = new CategoriaDAO();
 		RubricaDAO rubricaDao = new RubricaDAO();
 		
 		List<Map<Object, Object>> rubricasMaps = new ArrayList<>();
 		
-		for(Categoria categoria : categoriaDao.getCategorias(orcamento.getId())) {
-			for(Map<Object, Object> rubricaMap : rubricaDao.getRubricasMaps(categoria.getId())) {
+		if(req.getParameter("categoriaId") != null) {
+			Long categoriaId = Long.parseLong(req.getParameter("categoriaId"));
+			for(Map<Object, Object> rubricaMap : rubricaDao.getRubricasMaps(categoriaId)) {
 				rubricasMaps.add(rubricaMap);
 			}
+		} else {
+			CategoriaDAO categoriaDao = new CategoriaDAO();
+			for(Categoria categoria : categoriaDao.getCategorias(orcamento.getId())) {
+				for(Map<Object, Object> rubricaMap : rubricaDao.getRubricasMaps(categoria.getId())) {
+					rubricasMaps.add(rubricaMap);
+				}
+			}
 		}
+		
 		
 		req.setAttribute("rubricasMaps", rubricasMaps);
 		req.setAttribute("orcamentoSelecionado", new OrcamentoDAO().read(Long.parseLong(

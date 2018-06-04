@@ -30,30 +30,50 @@ public class ListarItens extends HttpServlet {
 		Long orcamentoEditavelId = Long.parseLong((String) req.getSession().getAttribute("orcamentoEditavel"));
 		Orcamento orcamento = (Orcamento) new OrcamentoDAO().read(orcamentoEditavelId);
 		
-		CategoriaDAO categoriaDao = new CategoriaDAO();
-		RubricaDAO rubricaDao = new RubricaDAO();
+		
 		ItemDAO itemDao = new ItemDAO();
 		
 		List <Map<Object, Object>> itensMaps = new ArrayList<>();
 		
-		for(Categoria categoria : categoriaDao.getCategorias(orcamento.getId())) {
-			for(Rubrica rubrica : rubricaDao.getRubricas(categoria.getId())) {
-				for(Map<Object, Object> itemMap : itemDao.getItensMaps((rubrica.getId()))) {
-					Item item = (Item) itemMap.get("item");
-					NotaFiscal nota = new NotaFiscalDAO().getNotaFiscal(item.getId());
-					if(nota == null) {
-						item.setValorParcial(0d);
-					}else {
-						//item.setValorParcial(nota.calcularValorParcial(new PagamentoDAO().getPagamentos(nota.getId())));
-						item.setValorParcial(nota.getValorParcial());
+		if(req.getParameter("rubricaId") != null) {
+			Long rubricaId = Long.parseLong(req.getParameter("rubricaId"));
+			for(Map<Object, Object> itemMap : itemDao.getItensMaps((rubricaId))) {
+				Item item = (Item) itemMap.get("item");
+				NotaFiscal nota = new NotaFiscalDAO().getNotaFiscal(item.getId());
+				if(nota == null) {
+					item.setValorParcial(0d);
+				}else {
+					//item.setValorParcial(nota.calcularValorParcial(new PagamentoDAO().getPagamentos(nota.getId())));
+					item.setValorParcial(nota.getValorParcial());
+				}
+				itemMap.put("item", item);
+				itemMap.put("nota", nota);
+				
+				itensMaps.add(itemMap);
+			}
+		} else {
+			CategoriaDAO categoriaDao = new CategoriaDAO();
+			RubricaDAO rubricaDao = new RubricaDAO();
+			for(Categoria categoria : categoriaDao.getCategorias(orcamento.getId())) {
+				for(Rubrica rubrica : rubricaDao.getRubricas(categoria.getId())) {
+					for(Map<Object, Object> itemMap : itemDao.getItensMaps((rubrica.getId()))) {
+						Item item = (Item) itemMap.get("item");
+						NotaFiscal nota = new NotaFiscalDAO().getNotaFiscal(item.getId());
+						if(nota == null) {
+							item.setValorParcial(0d);
+						}else {
+							//item.setValorParcial(nota.calcularValorParcial(new PagamentoDAO().getPagamentos(nota.getId())));
+							item.setValorParcial(nota.getValorParcial());
+						}
+						itemMap.put("item", item);
+						itemMap.put("nota", nota);
+						
+						itensMaps.add(itemMap);
 					}
-					itemMap.put("item", item);
-					itemMap.put("nota", nota);
-					
-					itensMaps.add(itemMap);
 				}
 			}
 		}
+		
 		
 		req.setAttribute("itensMaps", itensMaps);
 		
