@@ -96,24 +96,24 @@
 								</c:forEach>
 						</select>
 					</div> --%>
-			   <div class="row">
+			<div class="row">
 			     <div class="form-group col-lg-6">
 			       <label>Categoria:</label>
 			       <select class="form-control" name="categoria">
-			         <c:forEach items="${categorias}" var="categoria">
-			         <option>${categoria.nome}</option>
-			       </c:forEach>
-			     </select>
-			   </div>
+		         		<c:forEach items="${categorias}" var="categoria">
+			        		 <option>${categoria.nome}</option>
+		       			</c:forEach>
+			     	</select>
+		   		 </div>
 			
-			   <div class="form-group col-lg-6">
-			     <label>Rubrica:</label>
-			     <select class="form-control" name="rubrica_id">
-			       <c:forEach items="${rubricas}" var="rubrica">
-			       <option value="${rubrica.id }">${rubrica.nome}</option>
-			     </c:forEach>
-			   </select>
-			 </div>
+			     <div class="form-group col-lg-6">
+				     <label>Rubrica:</label>
+				     <select class="form-control" name="rubrica_id">
+		       			<c:forEach items="${rubricas}" var="rubrica">
+				      	 	<option value="${rubrica.id }">${rubrica.nome}</option>
+			    		 </c:forEach>
+				   	</select>
+				 </div>
 			</div>  
 			<button type="submit" class="btn btn-primary botaoCadastro">Cadastrar</button>
 			</form>
