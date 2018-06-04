@@ -31,9 +31,6 @@
         <li class="breadcrumb-item active">
         	<a href="/listarItens">Item</a>
         </li>
-        <li class="breadcrumb-item active">
-        	<a href="/visualizarNotaFiscal">Nota fiscal</a>
-        </li>
       </ol>
     </div>
 

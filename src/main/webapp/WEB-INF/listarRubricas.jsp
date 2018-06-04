@@ -59,8 +59,8 @@
 								<td> ${rubricaMap.rubrica.getValorTotalFormatado()}</td>
 								<td> ${rubricaMap.rubrica.getValorParcialFormatado()}</td>
 								<td>
-									<form action="listarRubricas" method="GET">
-							         	<input type="hidden" class="form-control" value="${categoria.id}" name="categoriaId">
+									<form action="listarItens" method="GET">
+							         	<input type="hidden" class="form-control" value="${rubricaMap.rubrica.id}" name="rubricaId">
 										<button type="submit" class="btn btn-link"><img src="../img/listarFamilia.png" alt="Logo" style="width:100%;"> </button>
 							        </form>
 								</td>
