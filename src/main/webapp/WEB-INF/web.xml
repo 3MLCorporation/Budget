@@ -211,6 +211,15 @@
    		<servlet-name>cadastrarItem</servlet-name>
    		<url-pattern>/cadastrarItem</url-pattern>
    </servlet-mapping>
+   
+   <servlet>
+   		<servlet-name>escolherRubrica</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.EscolherRubrica</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>escolherRubrica</servlet-name>
+   		<url-pattern>/escolherRubrica</url-pattern>
+   </servlet-mapping>
 
    <servlet>
    		<servlet-name>listarItens</servlet-name>

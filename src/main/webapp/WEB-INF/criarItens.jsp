@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <script src="../js/script.js"></script>
-	
+ 	
 <div>
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -99,7 +99,8 @@
 			<div class="row">
 			     <div class="form-group col-lg-6">
 			       <label>Categoria:</label>
-			       <select class="form-control" name="categoria">
+			       <select id="categoria-select" class="form-control" name="categoria">
+		         		<option value="">Selecione</option>
 		         		<c:forEach items="${categorias}" var="categoria">
 			        		 <option>${categoria.nome}</option>
 		       			</c:forEach>
@@ -108,10 +109,11 @@
 			
 			     <div class="form-group col-lg-6">
 				     <label>Rubrica:</label>
-				     <select class="form-control" name="rubrica_id">
-		       			<c:forEach items="${rubricas}" var="rubrica">
+				     <select id="rubrica-select" class="form-control" name="rubrica_id">
+				     	<option value="">Selecione uma categoria acima</option>
+		       			<%-- <c:forEach items="${rubricas}" var="rubrica">
 				      	 	<option value="${rubrica.id }">${rubrica.nome}</option>
-			    		 </c:forEach>
+			    		 </c:forEach> --%>
 				   	</select>
 				 </div>
 			</div>  
@@ -120,3 +122,18 @@
 	  	</div>
   	</div>
 </div>
+
+<script>
+            $("#categoria-select").change(function() {
+                var id = $(this).val();
+                $.get("escolherRubrica", {
+						categoriaId : id
+                    }, function(responseJson) {
+	                    var $rubricaSelect = $("#rubrica-select");
+	                    $rubricaSelect.empty(); 
+	                    $.each(responseJson, function(index, rubrica) {
+	                        $("<option>").val(rubrica.id).text(rubrica.nome).appendTo($rubricaSelect);
+                    	});                   
+               		});
+            });
+      </script>

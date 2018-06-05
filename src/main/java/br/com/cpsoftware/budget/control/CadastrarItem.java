@@ -50,7 +50,7 @@ public class CadastrarItem extends HttpServlet {
 		req.setAttribute("page", "criarItens");
 		
 	    req.setAttribute("categorias", categorias);
-	    req.setAttribute("rubricas", rubricas);
+	    //req.setAttribute("rubricas", rubricas);
 		
 	    req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}
