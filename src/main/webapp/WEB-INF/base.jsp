@@ -35,143 +35,97 @@
             <span class="nav-link-text">Gráficos</span>
           </a>
         </li>
-        <!--<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="charts.html">
-            <i class="fa fa-fw fa-area-chart"></i>
-            <span class="nav-link-text">Charts</span>
-          </a>
-        </li>-->
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseTabelas" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-table"></i>
-            <span class="nav-link-text">Tabelas</span>
-          </a>
-           <ul class="sidenav-second-level collapse" id="collapseTabelas">
-           <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
-           <li>
-              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseProjetos">Projeto</a>
-              <ul class="sidenav-third-level collapse" id="collapseProjetos">
-                <li><a class="dropdown-item" href="/cadastrarProjeto">Criar</a></li>
-                <li><a class="dropdown-item" href="/listarProjetos">Listar</a></li>
-              </ul>
-            </li>
-			<c:if test="${not empty sessionScope.projetoEditavel}">
-            <li>
-              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseOrcamentos">Orçamento</a>
-              <ul class="sidenav-third-level collapse" id="collapseOrcamentos">
-                <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
-                    <li><a class="dropdown-item" href="/cadastrarOrcamento">Criar</a></li>
-                </c:if>
-                <li><a class="dropdown-item" href="/listarOrcamentos">Listar</a></li>
-              </ul>
-            </li>
-             </c:if>
-            </c:if>
-			
-			<c:if test="${not empty sessionScope.orcamentoEditavel}">
-            <li>
-              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseCategorias">Categoria</a>
-              <ul class="sidenav-third-level collapse" id="collapseCategorias">
-                <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
-                	<li><a class="dropdown-item" href="/cadastrarCategoria">Criar</a></li>
-                </c:if>
-                <li><a class="dropdown-item" href="/listarCategorias">Listar</a></li>
-              </ul>
-            </li>
 
-            <li>
-              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseRubricas">Rubrica</a>
-              <ul class="sidenav-third-level collapse" id="collapseRubricas">
-                <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
-                	<li><a class="dropdown-item" href="/cadastrarRubrica">Criar</a></li>
-                </c:if>
-                <li><a class="dropdown-item" href="/listarRubricas">Listar</a></li>
-              </ul>
-            </li>
+        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="usuarios">
+          <a class="nav-link" href="/principal">
+            <i class="fa fa-fw fa-user"></i>
+            <span class="nav-link-text">Usuários</span>
+          </a>
+        </li>
 
-            <li>
-              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseItens">Item</a>
-              <ul class="sidenav-third-level collapse" id="collapseItens">
-                <li><a class="dropdown-item" href="/cadastrarItem">Criar</a></li>
-                <li><a class="dropdown-item" href="/listarItens">Listar</a></li>
-              </ul>
-            </li>
-            </c:if>
-          </ul>
-        </li>
-        <!--<li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-wrench"></i>
-            <span class="nav-link-text">Components</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseComponents">
-            <li>
-              <a href="navbar.html">Navbar</a>
-            </li>
-            <li>
-              <a href="cards.html">Cards</a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Example Pages">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-file"></i>
-            <span class="nav-link-text">Example Pages</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseExamplePages">
-            <li>
-              <a href="login.html">Login Page</a>
-            </li>
-            <li>
-              <a href="register.html">Registration Page</a>
-            </li>
-            <li>
-              <a href="forgot-password.html">Forgot Password Page</a>
-            </li>
-            <li>
-              <a href="blank.html">Blank Page</a>
-            </li>
-          </ul>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Menu Levels">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti" data-parent="#exampleAccordion">
-            <i class="fa fa-fw fa-sitemap"></i>
-            <span class="nav-link-text">Menu Levels</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseMulti">
-            <li>
-              <a href="#">Second Level Item</a>
-            </li>
-            <li>
-              <a href="#">Second Level Item</a>
-            </li>
-            <li>
-              <a href="#">Second Level Item</a>
-            </li>
-            <li>
-              <a class="nav-link-collapse collapsed" data-toggle="collapse" href="#collapseMulti2">Third Level</a>
-              <ul class="sidenav-third-level collapse" id="collapseMulti2">
+        <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Projetos">
+            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseProjetos" data-parent="#exampleAccordion">
+              <i class="fa fa-fw fa-list-ul"></i>
+              <span class="nav-link-text">Projetos</span>
+            </a>
+            <ul class="sidenav-second-level collapse" id="collapseProjetos">
+              <li>
+                <a href="/cadastrarProjeto">Criar</a>
+              </li>
+              <li>
+                <a href="/listarProjetos">Listar</a>
+              </li>
+            </ul>
+          </li>
+
+          <c:if test="${not empty sessionScope.projetoEditavel}">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Orcamentos">
+              <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseOrcamentos" data-parent="#exampleAccordion">
+                <i class="fa fa-fw fa-money-check-alt"></i>
+                <span class="nav-link-text">Orçamento</span>
+              </a>
+              <ul class="sidenav-second-level collapse" id="collapseOrcamentos">
                 <li>
-                  <a href="#">Third Level Item</a>
+                  <a href="/cadastrarOrcamento">Criar</a>
                 </li>
                 <li>
-                  <a href="#">Third Level Item</a>
-                </li>
-                <li>
-                  <a href="#">Third Level Item</a>
+                  <a href="/listarOrcamentos">Listar</a>
                 </li>
               </ul>
             </li>
-          </ul>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Link">
-          <a class="nav-link" href="#">
-            <i class="fa fa-fw fa-link"></i>
-            <span class="nav-link-text">Link</span>
-          </a>
-        </li>
-        -->
+          </c:if>
+        </c:if>
+
+        <c:if test="${not empty sessionScope.orcamentoEditavel}">
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Categorias">
+            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseCategorias" data-parent="#exampleAccordion">
+              <i class="fa fa-fw fa-chart-line"></i>
+              <span class="nav-link-text">Categoria</span>
+            </a>
+            <ul class="sidenav-second-level collapse" id="collapseCategorias">
+              <li>
+                <a href="/cadastrarCategoria">Criar</a>
+              </li>
+              <li>
+                <a href="/listarCategorias">Listar</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Rubricas">
+            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseRubricas" data-parent="#exampleAccordion">
+              <i class="fa fa-fw fa-project-diagram"></i>
+              <span class="nav-link-text">Rubrica</span>
+            </a>
+            <ul class="sidenav-second-level collapse" id="collapseRubricas">
+              <li>
+                <a href="/cadastrarRubrica">Criar</a>
+              </li>
+              <li>
+                <a href="/listarRubricas">Listar</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Itens">
+            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseItens" data-parent="#exampleAccordion">
+              <i class="fa fa-fw fa-dolly"></i>
+              <span class="nav-link-text">Item</span>
+            </a>
+            <ul class="sidenav-second-level collapse" id="collapseItens">
+              <li>
+                <a href="/cadastrarItem">Criar</a>
+              </li>
+              <li>
+                <a href="/listarItens">Listar</a>
+              </li>
+            </ul>
+          </li>
+        </c:if>
       </ul>
+
+
       <ul class="navbar-nav sidenav-toggler">
         <li class="nav-item">
           <a class="nav-link text-center" id="sidenavToggler">
@@ -180,18 +134,6 @@
         </li>
       </ul>
       <ul class="navbar-nav ml-auto">
-        <li class="nav-item">
-          <form class="form-inline my-2 my-lg-0 mr-lg-2">
-            <div class="input-group">
-              <input class="form-control" type="text" placeholder="Pesquisa">
-              <span class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                  <i class="fa fa-search"></i>
-                </button>
-              </span>
-            </div>
-          </form>
-        </li>
         <li class="nav-item">
           <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
             <i class="fa fa-fw fa-sign-out"></i>Sair</a>

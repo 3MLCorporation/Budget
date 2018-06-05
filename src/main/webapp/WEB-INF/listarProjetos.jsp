@@ -42,16 +42,16 @@
 								<td> ${projeto.nome}</td>
 								<td> ${projeto.getValorTotalFormatado()}</td>
 								<td> ${projeto.getValorParcialFormatado()}</td>
-								<td style="width: 12%">
+								<td>
 									<div class="btn-group"> 
 										<form action="selecionarProjeto" method="POST">
 											<input type="hidden" class="form-control" value="${projeto.id}" name="projetoEditavel">
-											<button type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo" style="width:100%;"> </button>
+											<button type="submit" class="btn btn-link"><img src="../img/editar.png" alt="Logo"></button>
 							           	</form> 
 			
 										<form action="excluirProjeto" method="POST">
 											<input type="hidden" class="form-control" value="${projeto.id}" name="projeto_id">
-											<button type="submit" class="btn btn-link"> <img src="../img/excluir.png" alt="Logo" style="width:100%;"> </button>
+											<button type="submit" class="btn btn-link"><img src="../img/excluir.png" alt="Logo"></button>
 							           	</form>
 						           	</div> 
 			  					</td>
