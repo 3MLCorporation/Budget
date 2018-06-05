@@ -102,7 +102,7 @@
 			       <select id="categoria-select" class="form-control" name="categoria">
 		         		<option value="">Selecione</option>
 		         		<c:forEach items="${categorias}" var="categoria">
-			        		 <option>${categoria.nome}</option>
+			        		 <option value="${categoria.id }">${categoria.nome}</option>
 		       			</c:forEach>
 			     	</select>
 		   		 </div>
@@ -124,16 +124,18 @@
 </div>
 
 <script>
-            $("#categoria-select").change(function() {
-                var id = $(this).val();
-                $.get("escolherRubrica", {
-						categoriaId : id
-                    }, function(responseJson) {
-	                    var $rubricaSelect = $("#rubrica-select");
-	                    $rubricaSelect.empty(); 
-	                    $.each(responseJson, function(index, rubrica) {
-	                        $("<option>").val(rubrica.id).text(rubrica.nome).appendTo($rubricaSelect);
-                    	});                   
-               		});
-            });
-      </script>
+      $("#categoria-select").change(function() {
+          var id = $(this).val();
+          if(id){
+        	  $.get("escolherRubrica", {
+  				categoriaId : id
+             }, function(responseJson) {
+  	              var $rubricaSelect = $("#rubrica-select");
+  	              $rubricaSelect.empty(); 
+  	              $.each(responseJson, function(index, rubrica) {
+  	                  $("<option>").val(rubrica.id).text(rubrica.nome).appendTo($rubricaSelect);
+  	             	});                   
+         		});
+          }
+      });
+</script>
