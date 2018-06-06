@@ -63,12 +63,12 @@
 			   name="descricao" required="required">
 			 </div>
 			 <div class="form-group">
-			   <label for="text">Quantidade:</label> <input type="text"
+			   <label for="text">Quantidade:</label> <input type="number"
 			   class="form-control" placeholder="Fornecer a quantidade de itens"
 			   name="quantidade" required="required" id="quantidadeItem" onblur="calcularValorTotalItem()">
 			 </div>
 			 <div class="form-group">
-			   <label for="text">Valor:</label> <input type="text"
+			   <label for="text">Valor:</label> <input type="number"
 			   class="form-control" placeholder="Fornecer o valor uniforme do item em reais"
 			   name="valor_uniforme" required="required" id="valorUniformeItem" onblur="calcularValorTotalItem()">
 			 </div>

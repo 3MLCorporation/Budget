@@ -37,7 +37,7 @@
 			        name="nome" required="required">
 			   </div>
 			   <div class="form-group">
-			       <label for="text">Valor:</label> <input type="text"
+			       <label for="text">Valor:</label> <input type="number"
 			       class="form-control" placeholder="Fornecer o valor estimado do orçamento"
 			       name="valor">
 			    </div>
