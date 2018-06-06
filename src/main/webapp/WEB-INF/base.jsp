@@ -30,18 +30,20 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="/visualizarGraficos">
+          <a class="nav-link" href="/mostrarGraficos">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Gráficos</span>
           </a>
         </li>
 
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="usuarios">
-          <a class="nav-link" href="/principal">
-            <i class="fa fa-fw fa-user"></i>
-            <span class="nav-link-text">Usuários</span>
-          </a>
-        </li>
+        <c:if test="${sessionScope.usuario.perfil == 0}"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="usuarios">
+            <a class="nav-link" href="/principal">
+              <i class="fa fa-fw fa-user"></i>
+              <span class="nav-link-text">Usuários</span>
+            </a>
+          </li>
+        </c:if>
 
         <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Projetos">
@@ -58,23 +60,25 @@
               </li>
             </ul>
           </li>
+        </c:if>
 
-          <c:if test="${not empty sessionScope.projetoEditavel}">
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Orcamentos">
-              <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseOrcamentos" data-parent="#exampleAccordion">
-                <i class="fa fa-fw fa-money-check-alt"></i>
-                <span class="nav-link-text">Orçamento</span>
-              </a>
-              <ul class="sidenav-second-level collapse" id="collapseOrcamentos">
+        <c:if test="${not empty sessionScope.projetoEditavel || sessionScope.usuario.perfil == 2}"> <!--O orçamento só irá aparecer caso o projeto não esteja vazio ou caso o usuário seja padrão-->
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Orcamentos">
+            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseOrcamentos" data-parent="#exampleAccordion">
+              <i class="fa fa-fw fa-money-check-alt"></i>
+              <span class="nav-link-text">Orçamento</span>
+            </a>
+            <ul class="sidenav-second-level collapse" id="collapseOrcamentos">
+              <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
                 <li>
                   <a href="/cadastrarOrcamento">Criar</a>
                 </li>
-                <li>
-                  <a href="/listarOrcamentos">Listar</a>
-                </li>
-              </ul>
-            </li>
-          </c:if>
+              </c:if>
+              <li>
+                <a href="/listarOrcamentos">Listar</a>
+              </li>
+            </ul>
+          </li>
         </c:if>
 
         <c:if test="${not empty sessionScope.orcamentoEditavel}">
@@ -84,9 +88,11 @@
               <span class="nav-link-text">Categoria</span>
             </a>
             <ul class="sidenav-second-level collapse" id="collapseCategorias">
-              <li>
-                <a href="/cadastrarCategoria">Criar</a>
-              </li>
+              <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
+                <li>
+                  <a href="/cadastrarCategoria">Criar</a>
+                </li>
+              </c:if>
               <li>
                 <a href="/listarCategorias">Listar</a>
               </li>
@@ -99,9 +105,11 @@
               <span class="nav-link-text">Rubrica</span>
             </a>
             <ul class="sidenav-second-level collapse" id="collapseRubricas">
-              <li>
-                <a href="/cadastrarRubrica">Criar</a>
-              </li>
+              <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
+                <li>
+                  <a href="/cadastrarRubrica">Criar</a>
+                </li>
+              </c:if>
               <li>
                 <a href="/listarRubricas">Listar</a>
               </li>

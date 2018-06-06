@@ -337,6 +337,15 @@
    		<servlet-name>sobre</servlet-name>
    		<url-pattern>/sobre</url-pattern>
    </servlet-mapping>
+
+   <servlet>
+         <servlet-name>mostrarGraficos</servlet-name>
+         <servlet-class>br.com.cpsoftware.budget.control.MostrarGraficos</servlet-class>
+   </servlet>
+   <servlet-mapping>
+         <servlet-name>mostrarGraficos</servlet-name>
+         <url-pattern>/mostrarGraficos</url-pattern>
+   </servlet-mapping>
   
    
   <welcome-file-list>
