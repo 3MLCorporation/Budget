@@ -36,7 +36,6 @@ public class VisualizarNotaFiscal extends HttpServlet {
 		}else {
 			List<Pagamento> pagamentos = new PagamentoDAO().getPagamentos(nota.getId());
 			
-			//nota.calcularValorParcial(pagamentos);
 			
 			req.setAttribute("nota", nota);
 			req.setAttribute("pagamentos", pagamentos);
