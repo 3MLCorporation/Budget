@@ -12,12 +12,10 @@ import br.com.cpsoftware.budget.util.Excluir;
 @SuppressWarnings("serial")
 public class ExcluirNotaFiscal extends HttpServlet {
 
-	
 	/*
 	 * TODO AJUSTAR ISSO NA TELA !!!
 	 * 
 	 */
-	
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
