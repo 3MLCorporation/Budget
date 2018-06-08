@@ -69,7 +69,7 @@
           </div>
 
           <br/>
-          <button type="submit" class="btn btn-primary">Cadastrar</button> 
+          <button type="submit" class="btn btn-dark">Cadastrar</button> 
         </form>
       </div>
     </div>

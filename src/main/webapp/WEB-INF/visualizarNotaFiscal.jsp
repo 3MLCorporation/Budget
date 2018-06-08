@@ -58,7 +58,7 @@
 				<form action="abrirNotaFiscal" target="_blank" method="GET">
 					<input type="hidden" name="notaId" value="${nota.id}">
 					<div class="botaoVisualizarNotaFiscal">
-						<button type="submit" class="btn btn-primary">Ver arquivo</button>
+						<button type="submit" class="btn btn-dark">Ver arquivo</button>
 					</div>
 				</form>
 	        </div>
@@ -102,7 +102,7 @@
 					  	<form action="cadastrarPagamento" method="GET">
 			           		<input type="hidden" name="nota_fiscal_id" value="${nota.id }">
 			           		<div class="botaoCadastrarPagamento">
-								<button type="submit" class="btn btn-primary">Cadastrar pagamento</button>
+								&emsp;<button type="submit" class="btn btn-dark">Cadastrar pagamento</button>
 							</div>
 						</form>
 					</c:if>

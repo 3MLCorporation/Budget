@@ -5,6 +5,7 @@
 <head>
   <title>Budget</title>
   <meta charset="UTF-8">
+  <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="../css/estilo.css">
   <script src="../js/script.js"></script>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -65,7 +66,13 @@
         <c:if test="${not empty sessionScope.projetoEditavel || sessionScope.usuario.perfil == 2}"> <!--O orçamento só irá aparecer caso o projeto não esteja vazio ou caso o usuário seja padrão-->
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Orcamentos">
             <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseOrcamentos" data-parent="#exampleAccordion">
-              <i class="fa fa-fw fa-money-check-alt"></i>
+              <c:if test="${sessionScope.usuario.perfil == 2}">
+                <i class="fa fa-fw fa-list-ul"></i>
+              </c:if>
+              
+              <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
+                <i class="fa fa-fw fa-money-check-alt"></i>
+              </c:if>
               <span class="nav-link-text">Orçamento</span>
             </a>
             <ul class="sidenav-second-level collapse" id="collapseOrcamentos">
