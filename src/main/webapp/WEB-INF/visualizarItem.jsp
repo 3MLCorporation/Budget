@@ -41,7 +41,6 @@
         	<i class="fa fa-area-chart"></i> Detalhes do item
         </div>
         <div class="card-body">
-			Item: <strong>${item.nome}</strong>&emsp;
 			Nome: <strong>${item.nome}</strong>&emsp;
 			Descrição: <strong>${item.descricao}</strong>&emsp;
 			Valor: <strong>${item.getValorFormatado()}</strong>&emsp;
@@ -74,23 +73,25 @@
 					&emsp;<button type="submit" class="btn btn-dark">Ver arquivo auxiliar</button>
 				</form>
 				
-				<form action="visualizarNotaFiscal" method="GET">
-					<input type="hidden" name="itemId" value="${item.id }">
-					&emsp;<button type="submit" class="btn btn-dark">Ver nota fiscal</button>
-				</form>
+				<c:if test="${ notaId != null }"> 
+					<form action="visualizarNotaFiscal" method="GET">
+						<input type="hidden" name="itemId" value="${item.id }">
+						&emsp;<button type="submit" class="btn btn-dark">Ver nota fiscal</button>
+					</form>
+				</c:if>
 			</div>
         </div>
   	</div>
 
-
-  	<c:if test="${empty nota }"> 
+	
+  	<c:if test="${empty notaId }"> 
    		<div class="card mb-3">
    			<div class="card-header">
 		        Nota fiscal não cadastrada
 		    </div>
    			<div class="card-body">
 				<form action="cadastrarNotaFiscal" method="GET">
-					<input type="hidden" name="itemId" value="${itemId }">
+					<input type="hidden" name="itemId" value="${item.id }">
 					<button class="btn btn-dark"> Cadastrar nota </button>
 	       		</form>
 	       	</div>
