@@ -145,11 +145,13 @@ public class Excluir {
 		
 		//Mas, como ele não tem, tenho que chamar a nota fiscal e passar o valor parcial dela, assim:
 		NotaFiscal nota = notaFiscalDAO.getNotaFiscal(itemId);
-		AtualizarPrecos.atualizarPrecoRubrica(AtualizarPrecos.EXCLUIR, itemId, nota.getValorParcial());
+		if(nota != null) {
+			AtualizarPrecos.atualizarPrecoRubrica(AtualizarPrecos.EXCLUIR, itemId, nota.getValorParcial());
+			excluirNotaFiscal(itemId);
+		}
 		
 		itemDAO.delete(itemId);
 		
-		excluirNotaFiscal(itemId);
 		
 		return true;
 	}
