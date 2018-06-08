@@ -4,7 +4,7 @@
 	pageEncoding="UTF-8"%>
 	
 <div>
-    <div class="container-fluid">
+    <%-- <div class="container-fluid">
       <!-- Breadcrumbs-->
 	      <ol class="breadcrumb">
 	        <li class="breadcrumb-item">
@@ -20,7 +20,7 @@
 		        </li>
 	        </c:if>
 	      </ol>
-	 </div>
+	 </div> --%>
 
    	<div class="card mb-3">
    	    <div class="card-header">
