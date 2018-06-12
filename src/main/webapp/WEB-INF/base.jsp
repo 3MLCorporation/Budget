@@ -30,7 +30,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-        <c:if test="sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
+        <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
             <a class="nav-link" href="/mostrarGraficos">
               <i class="fa fa-fw fa-dashboard"></i>
