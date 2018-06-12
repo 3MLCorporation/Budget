@@ -30,14 +30,16 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="/mostrarGraficos">
-            <i class="fa fa-fw fa-dashboard"></i>
-            <span class="nav-link-text">Gráficos</span>
-          </a>
-        </li>
+        <c:if test="sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+            <a class="nav-link" href="/mostrarGraficos">
+              <i class="fa fa-fw fa-dashboard"></i>
+              <span class="nav-link-text">Gráficos</span>
+            </a>
+          </li>
+        </c:if>
 
-        <c:if test="${sessionScope.usuario.perfil == 0}"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
+        <c:if test="${sessionScope.usuario.perfil == 0}">
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="usuarios">
             <a class="nav-link" href="/principal">
               <i class="fa fa-fw fa-user"></i>
