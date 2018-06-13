@@ -27,21 +27,21 @@
       
    	<div class="card mb-3">
    	    <div class="card-header">
-        	<i class="fa fa-area-chart"></i> Cadastrar orçamento
+        	<i class="fa fa-area-chart"></i> Atualizar orçamento
         </div>
 	   	<div class="card-body">
-			<form action="cadastrarOrcamento" method="POST">
+			<form action="atualizarOrcamento" method="POST">
 			    <div class="form-group">
 			        <label for="descricao">Orcamento:</label> <input type="text"
-			        class="form-control" placeholder="Fornecer o nome do novo orçamento"
-			        name="nome" required="required">
+			        class="form-control" placeholder="Fornecer o novo nome do novo orçamento"
+			        name="nome" value="${orcamento.nome}">
 			   </div>
 			   <div class="form-group">
 			       <label for="text">Valor:</label> <input type="number" pattern="[0-9.]"
-			       class="form-control" placeholder="Fornecer o valor estimado do orçamento"
-			       name="valor">
+			       class="form-control" placeholder="Fornecer o novo valor estimado do orçamento"
+			       name="valor" value="${orcamento.valor}">
 			    </div>
-			    <button type="submit" class="btn btn-dark botaoCadastro">Cadastrar</button>
+			    <button type="submit" class="btn btn-dark botaoCadastro">Atualizar</button>
 			</form>
 	  	</div>
   	</div>

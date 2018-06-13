@@ -42,7 +42,7 @@
 		        			<th>Valor Parcial</th>
 		        			<th>Rubricas</th>
 		        			<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
-		        				<th>Excluir</th>
+		        				<th>Editar categoria</th>
 		        			</c:if>
       					</tr>
 			   		</thead>
@@ -59,11 +59,19 @@
 							        </form>
 								</td>
 								<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
-									<td style="width: 16%">
-										<form action="excluirCategoria" method="POST">
-											<input type="hidden" class="form-control" value="${categoria.id}" name="categoria_id">
-											<button type="submit" class="btn btn-link"><img src="../img/excluir.png" alt="Logo" style="width:100%;"> </button>
-							           	</form>
+									<td>
+										<div class="btn-group">
+											<form action="atualizarCategoria" method="GET">
+												<input type="hidden" class="form-control" value="${categoria.id}" name="categoriaId">												
+												<button type="submit" class="btn btn-link"><img src="../img/atualizar.png" alt="Logo"></button>
+											</form>
+								           												
+											<form action="excluirCategoria" method="POST">
+												<input type="hidden" class="form-control" value="${categoria.id}" name="categoria_id">
+												<button type="submit" class="btn btn-link"><img src="../img/excluir.png" alt="Logo" style="width:100%;"> </button>
+								           	</form>
+									           	
+							            </div>
 			   						</td>
 		   						</c:if>	
 							</tr>

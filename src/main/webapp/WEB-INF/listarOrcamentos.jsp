@@ -65,52 +65,57 @@
 									<c:if test="${orcamento.status == 2}">Finalizado</c:if>
 								</c:if>
 								</td>
-								<td style="width: 18%">
+								<td>
 									<div class="btn-group">
-									<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
-										<form action="atualizarStatusOrcamento" method="POST">
-											<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamentoId">
-											<input type="hidden" class="form-control" id="statusOrcamento${id.count }" name="statusSelecionado">
-											<button type="submit"  onclick="getStatusOrcamento('${id.count}')" class="btn btn-link"><img src="../img/salvar.png" alt="Logo"></button>
-								    	</form>  
-							    	 </c:if>
-							    	 <!--Orcamento em elaboracao e usuarios admin/gerente  -->
-							    	 <c:if test="${orcamento.status == 0 && (sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1) }">
-						    	 		<form action="selecionarOrcamento" method="POST">
-											<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamentoEditavel">
-											<button type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo"> </button>
-							           	</form> 
-							    	 </c:if>
-							    	 <!--Orcamento em elaboracao e usuario padrao  -->
-							    	 <c:if test="${orcamento.status == 0 && sessionScope.usuario.perfil == 2}">
-							    	  	<!--TODO Mostrar alerta na tela!!!  -->
-										<button  disabled="disabled" type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo"> </button>
-							    	 </c:if>
-							    	 <!--Orcamento em controle e usuarios admin/gerente  -->
-							    	 <c:if test="${orcamento.status == 1 }">
-							    	 	<form action="selecionarOrcamento" method="POST">
-											<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamentoEditavel">
-											<button type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo"> </button>
-							           	</form> 
-							    	 </c:if>
-									<!--Orcamento finalizado e usuarios admin/gerente  -->	
-									<c:if test="${orcamento.status == 2 && (sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1) }">
-							    	 	<form action="selecionarOrcamento" method="POST">
-											<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamentoEditavel">
-											<button type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo"> </button>
-							           	</form> 
-							    	 </c:if>
-							    	 <!--Orcamento finalizado e usuario padrao -->	
-									<c:if test="${orcamento.status == 2 && sessionScope.usuario.perfil == 2 }">
-										<!--TODO Mostrar alerta na tela!!!  -->
-							    	 	<button  disabled="disabled" type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo"> </button>
-							    	 </c:if>
-							        <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
-										<form action="excluirOrcamento" method="POST">
-											<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamento_id">
-											<button type="submit" class="btn btn-link"> <img src="../img/excluir.png" alt="Logo"> </button>
-							           	</form>
-						           	</c:if>
+										<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
+											<form action="atualizarStatusOrcamento" method="POST">
+												<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamentoId">
+												<input type="hidden" class="form-control" id="statusOrcamento${id.count }" name="statusSelecionado">
+												<button type="submit"  onclick="getStatusOrcamento('${id.count}')" class="btn btn-link"><img src="../img/salvar.png" alt="Logo"></button>
+									    	</form>  
+								    	 </c:if>
+								    	 <!--Orcamento em elaboracao e usuarios admin/gerente  -->
+								    	 <c:if test="${orcamento.status == 0 && (sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1) }">
+							    	 		<form action="selecionarOrcamento" method="POST">
+												<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamentoEditavel">
+												<button type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo"> </button>
+								           	</form> 
+								    	 </c:if>
+								    	 <!--Orcamento em elaboracao e usuario padrao  -->
+								    	 <c:if test="${orcamento.status == 0 && sessionScope.usuario.perfil == 2}">
+								    	  	<!--TODO Mostrar alerta na tela!!!  -->
+											<button  disabled="disabled" type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo"> </button>
+								    	 </c:if>
+								    	 <!--Orcamento em controle e usuarios admin/gerente  -->
+								    	 <c:if test="${orcamento.status == 1 }">
+								    	 	<form action="selecionarOrcamento" method="POST">
+												<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamentoEditavel">
+												<button type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo"> </button>
+								           	</form> 
+								    	 </c:if>
+										<!--Orcamento finalizado e usuarios admin/gerente  -->	
+										<c:if test="${orcamento.status == 2 && (sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1) }">
+								    	 	<form action="selecionarOrcamento" method="POST">
+												<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamentoEditavel">
+												<button type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo"> </button>
+								           	</form> 
+								    	 </c:if>
+								    	 <!--Orcamento finalizado e usuario padrao -->	
+										<c:if test="${orcamento.status == 2 && sessionScope.usuario.perfil == 2 }">
+											<!--TODO Mostrar alerta na tela!!!  -->
+								    	 	<button  disabled="disabled" type="submit" class="btn btn-link"> <img src="../img/editar.png" alt="Logo"> </button>
+								    	 </c:if>
+								        <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
+											<form action="atualizarOrcamento" method="GET">
+												<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamentoId">												
+												<button type="submit" class="btn btn-link"><img src="../img/atualizar.png" alt="Logo"></button>
+											</form>
+
+											<form action="excluirOrcamento" method="POST">
+												<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamento_id">
+												<button type="submit" class="btn btn-link"> <img src="../img/excluir.png" alt="Logo"> </button>
+								           	</form>
+							           	</c:if>
 						           	</div>
 		   						</td>
 		   						<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">

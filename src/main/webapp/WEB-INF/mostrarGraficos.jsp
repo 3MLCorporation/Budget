@@ -36,7 +36,7 @@
         <!-- Example Pie Chart Card-->
         <div class="card mb-3">
           <div class="card-header">
-            <i class="fa fa-pie-chart"></i> Exemplo de gráfico em torta</div>
+            <i class="fa fa-pie-chart"></i> Exemplo de gráfico em pizza</div>
           <div class="card-body">
             <canvas id="myPieChart" width="100%" height="100"></canvas>
           </div>
@@ -45,15 +45,11 @@
       </div>
     </div>
   </div>
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
   <!-- Page level plugin JavaScript-->
-  <script src="vendor/chart.js/Chart.min.js"></script>
+  <script src="../vendor/chart.js/Chart.min.js"></script>
   <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin.min.js"></script>
+  <script src="../js/sb-admin.min.js"></script>
   <!-- Custom scripts for this page-->
-  <script src="js/sb-admin-charts.min.js"></script>
+  <script src="../js/sb-admin-charts.min.js"></script>
 </div>

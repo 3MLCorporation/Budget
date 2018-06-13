@@ -10,38 +10,33 @@
         <li class="breadcrumb-item">
           <c:if test="${not empty orcamentoSelecionado}">
 	          <a href="">
-				${orcamentoSelecionado}
+	       		${orcamentoSelecionado}
 	          </a>
           </c:if>
         </li>
-        <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
-	        <li class="breadcrumb-item active">
-	        	<a href="/listarProjetos">Projetos</a>
-	        </li>
-        </c:if>
         <li class="breadcrumb-item active">
-        	<a href="/listarOrcamentos">Orçamentos</a>
+        	<a href="/listarProjetos">Projetos</a>
         </li>
       </ol>
     </div>
       
    	<div class="card mb-3">
    	    <div class="card-header">
-        	<i class="fa fa-area-chart"></i> Cadastrar orçamento
+        	<i class="fa fa-area-chart"></i> Atualizar projeto
         </div>
 	   	<div class="card-body">
-			<form action="cadastrarOrcamento" method="POST">
+			<form action="atualizarProjeto" method="POST">
 			    <div class="form-group">
-			        <label for="descricao">Orcamento:</label> <input type="text"
-			        class="form-control" placeholder="Fornecer o nome do novo orçamento"
-			        name="nome" required="required">
+			        <label for="descricao">Projeto:</label> <input type="text"
+			        class="form-control" placeholder="Fornecer o nome do novo projeto"
+			        name="nome" value="${projeto.nome}">
 			   </div>
 			   <div class="form-group">
 			       <label for="text">Valor:</label> <input type="number" pattern="[0-9.]"
-			       class="form-control" placeholder="Fornecer o valor estimado do orçamento"
-			       name="valor">
+			       class="form-control" placeholder="Fornecer o novo valor estimado do projeto"
+			       name="valor" value="${projeto.valor}">
 			    </div>
-			    <button type="submit" class="btn btn-dark botaoCadastro">Cadastrar</button>
+			    <button type="submit" class="btn btn-dark botaoCadastro">Atualizar</button>
 			</form>
 	  	</div>
   	</div>

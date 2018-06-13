@@ -346,7 +346,51 @@
          <servlet-name>mostrarGraficos</servlet-name>
          <url-pattern>/mostrarGraficos</url-pattern>
    </servlet-mapping>
+   
+   <servlet>
+         <servlet-name>atualizarProjeto</servlet-name>
+         <servlet-class>br.com.cpsoftware.budget.control.AtualizarProjeto</servlet-class>
+   </servlet>
+   <servlet-mapping>
+         <servlet-name>atualizarProjeto</servlet-name>
+         <url-pattern>/atualizarProjeto</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+         <servlet-name>atualizarOrcamento</servlet-name>
+         <servlet-class>br.com.cpsoftware.budget.control.AtualizarOrcamento</servlet-class>
+   </servlet>
+   <servlet-mapping>
+         <servlet-name>atualizarOrcamento</servlet-name>
+         <url-pattern>/atualizarOrcamento</url-pattern>
+   </servlet-mapping>
+   
+    <servlet>
+         <servlet-name>atualizarCategoria</servlet-name>
+         <servlet-class>br.com.cpsoftware.budget.control.AtualizarCategoria</servlet-class>
+   </servlet>
+   <servlet-mapping>
+         <servlet-name>atualizarCategoria</servlet-name>
+         <url-pattern>/atualizarCategoria</url-pattern>
+   </servlet-mapping>  
   
+   <servlet>
+         <servlet-name>atualizarRubrica</servlet-name>
+         <servlet-class>br.com.cpsoftware.budget.control.AtualizarRubrica</servlet-class>
+   </servlet>
+   <servlet-mapping>
+         <servlet-name>atualizarRubrica</servlet-name>
+         <url-pattern>/atualizarRubrica</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+         <servlet-name>atualizarItem</servlet-name>
+         <servlet-class>br.com.cpsoftware.budget.control.AtualizarItem</servlet-class>
+   </servlet>
+   <servlet-mapping>
+         <servlet-name>atualizarItem</servlet-name>
+         <url-pattern>/atualizarItem</url-pattern>
+   </servlet-mapping>
    
   <welcome-file-list>
     <welcome-file>login</welcome-file>

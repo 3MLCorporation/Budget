@@ -50,7 +50,7 @@
 			        		<th>Valor</th>
 			        		<th>Valor Parcial</th>
 			        		<th>Detalhes</th>
-			        		<th>Item</th>
+			        		<th>Editar tem</th>
 			        		<th>Nota fiscal</th>
       					</tr>
 			   		</thead>
@@ -69,12 +69,19 @@
 							         </form>
 								</td>
 								<td>
-									<form action="excluirItem" method="POST">
-										<input type="hidden" class="form-control" value="${itemMap.item.id}" name="item_id">
-										<button type="submit" class="btn btn-link"> <img src="../img/excluir.png" alt="Logo"> </button>
-							         </form>
+									<div class="btn-group">
+										<form action="atualizarItem" method="GET">
+											<input type="hidden" class="form-control" value="${itemMap.item.id}" name="itemId">	
+											<button type="submit" class="btn btn-link"><img src="../img/atualizar.png" alt="Logo"></button>
+										</form>
+
+										<form action="excluirItem" method="POST">
+											<input type="hidden" class="form-control" value="${itemMap.item.id}" name="item_id">
+											<button type="submit" class="btn btn-link"> <img src="../img/excluir.png" alt="Logo"> </button>
+								        </form>
+							     	</div>
 								</td>
-								<td style="width: 15%;">
+								<td>
 									<div class="btn-group">
 										<c:if test="${itemMap.nota == null}">
 											<form action="cadastrarNotaFiscal" method="GET">

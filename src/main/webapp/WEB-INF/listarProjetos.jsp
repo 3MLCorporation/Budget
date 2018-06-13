@@ -44,11 +44,16 @@
 								<td> ${projeto.getValorParcialFormatado()}</td>
 								<td>
 									<div class="btn-group"> 
-										<form action="selecionarProjeto" method="POST">
+										<form action="atualizarProjeto" method="GET">
+											<input type="hidden" class="form-control" value="${projeto.id}" name="projetoId">
+											<button type="submit" class="btn btn-link"><img src="../img/atualizar.png" alt="Logo"></button>
+										</form>
+
+							           	<form action="selecionarProjeto" method="POST">
 											<input type="hidden" class="form-control" value="${projeto.id}" name="projetoEditavel">
 											<button type="submit" class="btn btn-link"><img src="../img/editar.png" alt="Logo"></button>
-							           	</form> 
-			
+							           	</form>
+							           				
 										<form action="excluirProjeto" method="POST">
 											<input type="hidden" class="form-control" value="${projeto.id}" name="projeto_id">
 											<button type="submit" class="btn btn-link"><img src="../img/excluir.png" alt="Logo"></button>
