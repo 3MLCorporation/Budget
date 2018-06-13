@@ -7,10 +7,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.cpsoftware.budget.dao.RubricaDAO;
+
+@SuppressWarnings("serial")
 public class AtualizarRubrica extends HttpServlet {
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		 req.setAttribute("page", "atualizarRubrica");           
-		 req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
+		Long rubricaId = Long.parseLong(req.getParameter("rubricaId"));
+		
+		req.setAttribute("rubrica", new RubricaDAO().read(rubricaId));
+		req.setAttribute("page", "atualizarRubrica");           
+		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}
+	
 }

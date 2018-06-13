@@ -7,10 +7,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.cpsoftware.budget.dao.ProjetoDAO;
+
+@SuppressWarnings("serial")
 public class AtualizarProjeto extends HttpServlet {
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		 req.setAttribute("page", "atualizarProjeto");           
-		 req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
+		Long projetoId = Long.parseLong(req.getParameter("projetoId"));
+		
+		req.setAttribute("projeto", new ProjetoDAO().read(projetoId));
+		req.setAttribute("page", "atualizarProjeto");           
+		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}
+	
 }

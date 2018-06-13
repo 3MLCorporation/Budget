@@ -45,7 +45,7 @@
 		    <div class="form-group">
 		       <label for="text">Valor:</label> <input type="number" pattern="[0-9.]"
 		       class="form-control" placeholder="Fornecer o novo valor estimado da rubrica"
-		       name="valor" value="${rubrica.valor}">
+		       name="valor" value="${rubrica.valorTotal}">
 		    </div>
 		         <%-- <div class="form-group">
 		       	 <label>Orçamento:</label>

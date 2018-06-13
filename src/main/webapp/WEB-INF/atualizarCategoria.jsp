@@ -42,7 +42,7 @@
 		      <div class="form-group">
 		           <label for="text">Valor:</label> <input type="number" pattern="[0-9.]"
 		           class="form-control" placeholder="Fornecer o novo valor da categoria"
-		           name="valor" value="${categoria.valor}">
+		           name="valor" value="${categoria.valorTotal}">
 		       </div>
 	    	<%-- <div class="form-group">
 		     	 <label>Orçamento:</label>
