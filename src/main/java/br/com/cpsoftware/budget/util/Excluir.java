@@ -55,6 +55,7 @@ public class Excluir {
 	
 	private static void excluirOrcamento(Long projetoId) {
 		for(Orcamento orcamento : orcamentoDAO.getOrcamentos(projetoId)) {
+			excluirOrcamentoUsuario(orcamento.getId());
 			orcamentoDAO.delete(orcamento.getId());
 			excluirCategoria(orcamento.getId());
 		}
