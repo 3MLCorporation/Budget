@@ -3,7 +3,7 @@ package br.com.cpsoftware.budget.model;
 public class Fornecedor {
 
 	private Long id;
-	private String fornecedor;
+	private String nome;
 	private String cnpj;
 	private String uf;
 	
@@ -13,10 +13,10 @@ public class Fornecedor {
 	public static final String CNPJ = "cnpj";
 	public static final String UF = "uf";
 	
-	public Fornecedor(Long id, String fornecedor, String cnpj, String uf) {
+	public Fornecedor(Long id, String nome, String cnpj, String uf) {
 		super();
 		this.id = id;
-		this.fornecedor = fornecedor;
+		this.nome = nome;
 		this.cnpj = cnpj;
 		this.uf = uf;
 	}
@@ -29,12 +29,12 @@ public class Fornecedor {
 		this.id = id;
 	}
 
-	public String getFornecedor() {
-		return fornecedor;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setFornecedor(String fornecedor) {
-		this.fornecedor = fornecedor;
+	public void setNome(String fornecedor) {
+		this.nome = fornecedor;
 	}
 
 	public String getCnpj() {
