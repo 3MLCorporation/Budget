@@ -33,11 +33,22 @@
 			   </div>
 			   <div class="form-group">
 			       <label for="text">Valor:</label> <input type="number" pattern="[0-9.]"
-			       class="form-control" placeholder="Fornecer o novo valor estimado do projeto"
+			       id="valor" class="form-control" placeholder="Fornecer o novo valor estimado do projeto"
 			       name="valor" value="${projeto.valorTotal}">
 			    </div>
+			    <input type="hidden" class="form-control" value="${projeto.id}" name="projetoId">
 			    <button type="submit" class="btn btn-dark botaoCadastro">Atualizar</button>
 			</form>
 	  	</div>
   	</div>
 </div>
+
+<script>
+	$(document).ready(function(){
+	    $("form").delegate('#valor', 'focusout', function(){
+	        if($(this).val() < 0){
+	            $(this).val('0');
+	        }
+	    });
+	});
+</script>

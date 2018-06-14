@@ -11,7 +11,7 @@ public class Formatacao {
 		
 		Locale locale = new Locale("pt", "BR");
 		NumberFormat currencyFormatter = NumberFormat.getCurrencyInstance(locale);
-		currencyFormatter.setMinimumFractionDigits(0);
+		currencyFormatter.setMinimumFractionDigits(2);
 		
 		return currencyFormatter.format(valor);
 	}
