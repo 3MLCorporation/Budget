@@ -123,6 +123,7 @@
   	</div>
 </div>
 
+<!--
 <script>
       $("#categoria-select").change(function() {
           var id = $(this).val();
@@ -139,3 +140,4 @@
           }
       });
 </script>
+-->

@@ -4,10 +4,6 @@ function calcularValorTotalItem() {
 	document.getElementById('resultado').value = "R$ "+ quantidadeItens * valorItens;
 }
 
-mostrarAlerta = function(){
-	alert('Você não possui nenhum orçamento.');
-}
-
 function getValorPerfil(perfilSelectCount){
 	var select = document.getElementById('perfilSelect' + perfilSelectCount);
 	var perfilSelecionado = select.options[select.selectedIndex].value;
