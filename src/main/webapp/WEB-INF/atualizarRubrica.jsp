@@ -44,7 +44,7 @@
 		    </div>
 		    <div class="form-group">
 		       <label for="text">Valor:</label> <input type="number" pattern="[0-9.]"
-		       class="form-control" placeholder="Fornecer o novo valor estimado da rubrica"
+		       id="valor" class="form-control" placeholder="Fornecer o novo valor estimado da rubrica"
 		       name="valor" value="${rubrica.valorTotal}">
 		    </div>
 		         <%-- <div class="form-group">
@@ -63,8 +63,19 @@
 		          </c:forEach>
 		       </select>
 		      </div>
+		      <input type="hidden" class="form-control" value="${rubrica.id}" name="rubricaId">
 		      <button type="submit" class="btn btn-dark botaoCadastro">Atualizar</button>
 		    </form>
 	  	</div>
   	</div>
 </div>
+
+<script>
+	$(document).ready(function(){
+	    $("form").delegate('#valor', 'focusout', function(){
+	        if($(this).val() < 0){
+	            $(this).val('0');
+	        }
+	    });
+	});
+</script>

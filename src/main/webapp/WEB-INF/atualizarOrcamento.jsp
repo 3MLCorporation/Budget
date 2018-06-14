@@ -38,11 +38,22 @@
 			   </div>
 			   <div class="form-group">
 			       <label for="text">Valor:</label> <input type="number" pattern="[0-9.]"
-			       class="form-control" placeholder="Fornecer o novo valor estimado do orçamento"
+			       id="valor" class="form-control" placeholder="Fornecer o novo valor estimado do orçamento"
 			       name="valor" value="${orcamento.valorTotal}">
 			    </div>
+			    <input type="hidden" class="form-control" value="${orcamento.id}" name="orcamentoId">
 			    <button type="submit" class="btn btn-dark botaoCadastro">Atualizar</button>
 			</form>
 	  	</div>
   	</div>
 </div>
+
+<script>
+	$(document).ready(function(){
+	    $("form").delegate('#valor', 'focusout', function(){
+	        if($(this).val() < 0){
+	            $(this).val('0');
+	        }
+	    });
+	});
+</script>
