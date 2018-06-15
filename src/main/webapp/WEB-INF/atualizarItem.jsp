@@ -69,7 +69,7 @@
 			 </div>
 			 <div class="form-group">
 			   <label for="text">Valor:</label> <input type="number"
-			   class="form-control" placeholder="Fornecer o novo valor uniforme do item em reais"
+			   id="valor" class="form-control" placeholder="Fornecer o novo valor uniforme do item em reais"
 			   name="valor_uniforme" id="valorUniformeItem" value="${item.valorUniforme}" onblur="calcularValorTotalItem()">
 			 </div>
 			 <div class="form-group">
@@ -102,7 +102,7 @@
 			       <select id="categoria-select" class="form-control" name="categoria">
 		         		<option value="">Selecione</option>
 		         		<c:forEach items="${categorias}" var="categoria">
-			        		 <option value="${categoria.id }">${categoria.nome}</option>
+			        		 <option value="${categoria.id }" ${categoriaAtual.id == categoria.id ? 'selected' : ''}>${categoria.nome}</option>
 		       			</c:forEach>
 			     	</select>
 		   		 </div>
@@ -110,13 +110,13 @@
 			     <div class="form-group col-lg-6">
 				     <label>Rubrica:</label>
 				     <select id="rubrica-select" class="form-control" name="rubrica_id">
-				     	<option value="">Selecione uma categoria acima</option>
-		       			<%-- <c:forEach items="${rubricas}" var="rubrica">
-				      	 	<option value="${rubrica.id }">${rubrica.nome}</option>
-			    		 </c:forEach> --%>
+		       			<c:forEach items="${rubricas}" var="rubrica">
+				      	 	<option value="${rubrica.id }" ${rubricaAtual.id == rubrica.id ? 'selected' : ''}>${rubrica.nome}</option>
+			    		 </c:forEach>
 				   	</select>
 				 </div>
 			</div>  
+			<input type="hidden" class="form-control" value="${item.id}" name="id">
 			<button type="submit" class="btn btn-dark botaoCadastro">Atualizar</button>
 			</form>
 	  	</div>
@@ -125,18 +125,28 @@
 
 
 <script>
-      $("#categoria-select").change(function() {
-          var id = $(this).val();
-          if(id){
-        	  $.get("escolherRubrica", {
-  				categoriaId : id
-             }, function(responseJson) {
-  	              var $rubricaSelect = $("#rubrica-select");
-  	              $rubricaSelect.empty(); 
-  	              $.each(responseJson, function(index, rubrica) {
-  	                  $("<option>").val(rubrica.id).text(rubrica.nome).appendTo($rubricaSelect);
-  	             	});                   
-         		});
-          }
-      });
+		
+		$(document).ready(function(){
+		    $("form").delegate('#valor', 'focusout', function(){
+		        if($(this).val() < 0){
+		            $(this).val('0');
+		        }
+		    });
+		});
+		
+		$("#categoria-select").change(function() {
+		    var id = $(this).val();
+		    if(id){
+		  	  $.get("escolherRubrica", {
+				categoriaId : id
+		       }, function(responseJson) {
+		           var $rubricaSelect = $("#rubrica-select");
+		           $rubricaSelect.empty(); 
+		           $.each(responseJson, function(index, rubrica) {
+		               $("<option>").val(rubrica.id).text(rubrica.nome).appendTo($rubricaSelect);
+		          	});                   
+		   		});
+		    }
+		});
+		
 </script>

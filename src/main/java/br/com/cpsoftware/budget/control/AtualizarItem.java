@@ -32,6 +32,7 @@ import br.com.cpsoftware.budget.model.Rubrica;
 public class AtualizarItem extends HttpServlet {
 	
 	private ItemDAO itemDao = new ItemDAO();
+	private CategoriaDAO categoriaDao = new CategoriaDAO();
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -41,24 +42,32 @@ public class AtualizarItem extends HttpServlet {
 		List<Categoria> categorias = new ArrayList<>();
 		List<Rubrica> rubricas = new ArrayList<>();
 		
-		for(Categoria categoria : new CategoriaDAO().getCategorias(orcamento.getId())) {
+		for(Categoria categoria : this.categoriaDao.getCategorias(orcamento.getId())) {
 			categorias.add(categoria);
-			rubricas.addAll(new RubricaDAO().getRubricas(categoria.getId()));
 		}
 		
-		Long itemId = Long.parseLong(req.getParameter("itemId"));
 
+		
+		Long itemId = Long.parseLong(req.getParameter("itemId"));
+		Item item = new ItemDAO().read(itemId);
+		Rubrica rubricaAtual = (Rubrica)new RubricaDAO().read(item.getRubricaId());
+		Categoria categoriaAtual = (Categoria) this.categoriaDao.read((rubricaAtual.getCategoriaId()));
+		rubricas.addAll(new RubricaDAO().getRubricas(categoriaAtual.getId()));
+		
 	    req.setAttribute("categorias", categorias);
-		req.setAttribute("item", new ItemDAO().read(itemId));
-		req.setAttribute("page", "atualizarItem");           
+	    req.setAttribute("categoriaAtual", categoriaAtual);
+	    req.setAttribute("rubricas", rubricas);
+	    req.setAttribute("rubricaAtual", rubricaAtual);
+		req.setAttribute("item", item);
+		req.setAttribute("page", "atualizarItem");
 		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Long itemId = Long.parseLong(req.getParameter("itemId"));
 		
 		boolean isMultipart = ServletFileUpload.isMultipartContent(req);
+		Long itemId = null;
 		Long rubricaId = null;
 		String nome = null;
 		String descricao = null;
@@ -81,6 +90,8 @@ public class AtualizarItem extends HttpServlet {
 					if (item.isFormField()) {
 						if (item.getFieldName().equals(Item.RUBRICA_ID))
 							rubricaId = new Long(Streams.asString(stream));
+						if (item.getFieldName().equals(Item.ID))
+							itemId = new Long(Streams.asString(stream));
 						if (item.getFieldName().equals(Item.NOME))
 							nome = new String(Streams.asString(stream));
 						if (item.getFieldName().equals(Item.DESCRICAO))
@@ -114,10 +125,10 @@ public class AtualizarItem extends HttpServlet {
 		item.setQuantidade(quantidade);
 		item.setUnidadeMedida(unidadeMedida);
 		
-		if(arquivoDetalhes != null) {
+		if(arquivoDetalhes.getBytes().length > 0) {
 			item.setArquivoDetalhes(arquivoDetalhes);
 		}
-		if(arquivoAuxiliar != null) {
+		if(arquivoAuxiliar.getBytes().length > 0) {
 			item.setArquivoAuxiliar(arquivoAuxiliar);
 		}
 		
