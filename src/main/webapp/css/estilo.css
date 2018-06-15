@@ -23,7 +23,13 @@
 
 .botaoVisualizarNotaFiscal{
   position: absolute;
-  right: 0px;
+  right: : 0px;
+  width: 120px;
+}
+
+.botaoAtualizarNotaFiscal{
+  position: absolute;
+  left: 0px;
   width: 120px;
 }
 

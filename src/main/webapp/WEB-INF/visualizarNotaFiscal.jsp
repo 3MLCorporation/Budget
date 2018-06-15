@@ -65,7 +65,7 @@
 
 					<form action="atualizarArquivo" target="_blank" method="GET">
 						<input type="hidden" name="notaId" value="${nota.id}">
-						<div class="botaoVisualizarNotaFiscal">
+						<div class="botaoAtualizarNotaFiscal">
 							<button type="submit" class="btn btn-dark">Atualizar nota</button>
 						</div>
 					</form>					
@@ -90,7 +90,7 @@
 								<tr>
 									<td> ${pagamento.getValorFormatado()}</td>
 									<td> ${pagamento.getDataFormatada()}</td>
-									<td>
+									<td style="width: 14%;">
 										<div class="btn-group"> 
 				                            <form action="abrirPagamento" target="_blank" method="GET">
 				                                <input type="hidden" value="${pagamento.id }" name="pagamentoId">
