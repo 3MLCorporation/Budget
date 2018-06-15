@@ -55,17 +55,18 @@
 		            </strong>
 				</div>
 				
-				<div class="btn-group">
+				<br/>
+				<div class="btn-group botaoVisualizarNotaFiscal">
 					<form action="abrirNotaFiscal" target="_blank" method="GET">
 						<input type="hidden" name="notaId" value="${nota.id}">
-						<div class="botaoVisualizarNotaFiscal">
+						<div>
 							<button type="submit" class="btn btn-dark">Ver nota</button>
 						</div>
 					</form>
-
+					&emsp;
 					<form action="atualizarArquivo" target="_blank" method="GET">
 						<input type="hidden" name="notaId" value="${nota.id}">
-						<div class="botaoAtualizarNotaFiscal">
+						<div>
 							<button type="submit" class="btn btn-dark">Atualizar nota</button>
 						</div>
 					</form>					
