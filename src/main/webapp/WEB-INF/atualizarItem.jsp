@@ -49,12 +49,12 @@
 			   <div class="form-group">
 			     <label for="text">Unidade de medida:</label>
 			     <select class="form-control" name="unidade_medida">
-			      <option value="0">Verba</option>
-			      <option value="1">Unidade</option>
-			      <option value="2">Mês</option>
-			      <option value="3">Quilograma</option>
-			      <option value="4">Metro</option>
-			      <option value="5">Litro</option>
+			      <option value="0" ${item.unidadeMedida == 0 ? 'selected' : ''}>Verba</option>
+			      <option value="1" ${item.unidadeMedida == 1 ? 'selected' : ''}>Unidade</option>
+			      <option value="2" ${item.unidadeMedida == 2 ? 'selected' : ''}>Mês</option>
+			      <option value="3" ${item.unidadeMedida == 3 ? 'selected' : ''}>Quilograma</option>
+			      <option value="4" ${item.unidadeMedida == 4 ? 'selected' : ''}>Metro</option>
+			      <option value="5" ${item.unidadeMedida == 5 ? 'selected' : ''}>Litro</option>
 			    </select>
 			  </div>
 			  <div class="form-group">
