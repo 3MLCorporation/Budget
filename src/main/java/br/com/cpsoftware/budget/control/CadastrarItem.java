@@ -22,11 +22,9 @@ import com.google.appengine.api.datastore.Blob;
 import br.com.cpsoftware.budget.dao.CategoriaDAO;
 import br.com.cpsoftware.budget.dao.ItemDAO;
 import br.com.cpsoftware.budget.dao.OrcamentoDAO;
-import br.com.cpsoftware.budget.dao.RubricaDAO;
 import br.com.cpsoftware.budget.model.Categoria;
 import br.com.cpsoftware.budget.model.Item;
 import br.com.cpsoftware.budget.model.Orcamento;
-import br.com.cpsoftware.budget.model.Rubrica;
 
 @SuppressWarnings("serial")
 public class CadastrarItem extends HttpServlet {
@@ -40,11 +38,11 @@ public class CadastrarItem extends HttpServlet {
 		Orcamento orcamento = (Orcamento) new OrcamentoDAO().read(orcamentoEditavelId);
 		
 		List<Categoria> categorias = new ArrayList<>();
-		List<Rubrica> rubricas = new ArrayList<>();
+		//List<Rubrica> rubricas = new ArrayList<>();
 		
 		for(Categoria categoria : new CategoriaDAO().getCategorias(orcamento.getId())) {
 			categorias.add(categoria);
-			rubricas.addAll(new RubricaDAO().getRubricas(categoria.getId()));
+			//rubricas.addAll(new RubricaDAO().getRubricas(categoria.getId()));
 		}
 		
 		req.setAttribute("page", "criarItens");
