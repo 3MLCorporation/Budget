@@ -64,7 +64,7 @@
 						</div>
 					</form>
 					&emsp;
-					<form action="atualizarArquivo" target="_blank" method="GET">
+					<form action="atualizarNotaFiscal" target="_blank" method="GET">
 						<input type="hidden" name="notaId" value="${nota.id}">
 						<div>
 							<button type="submit" class="btn btn-dark">Atualizar nota</button>

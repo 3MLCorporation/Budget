@@ -392,6 +392,24 @@
          <url-pattern>/atualizarItem</url-pattern>
    </servlet-mapping>
    
+   <servlet>
+         <servlet-name>atualizarPagamento</servlet-name>
+         <servlet-class>br.com.cpsoftware.budget.control.AtualizarPagamento</servlet-class>
+   </servlet>
+   <servlet-mapping>
+         <servlet-name>atualizarPagamento</servlet-name>
+         <url-pattern>/atualizarPagamento</url-pattern>
+   </servlet-mapping>
+
+   <servlet>
+         <servlet-name>atualizarNotaFiscal</servlet-name>
+         <servlet-class>br.com.cpsoftware.budget.control.AtualizarNotaFiscal</servlet-class>
+   </servlet>
+   <servlet-mapping>
+         <servlet-name>atualizarNotaFiscal</servlet-name>
+         <url-pattern>/atualizarNotaFiscal</url-pattern>
+   </servlet-mapping>
+
   <welcome-file-list>
     <welcome-file>login</welcome-file>
   </welcome-file-list>
