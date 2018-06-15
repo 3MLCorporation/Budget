@@ -62,19 +62,17 @@
     ctx=document.getElementById("graficoBarra"),graficoBarra=new Chart(ctx,{type:"bar",data:{labels:["Janeiro","Fevereiro","Março","Abril","Maio","Junho"],datasets:[{label:"Revenue",backgroundColor:"rgba(2,117,216,1)",borderColor:"rgba(2,117,216,1)",data:[4215,5312,6251,7841,9821,14984]}]},options:{scales:{xAxes:[{time:{unit:"month"},gridLines:{display:!1},ticks:{maxTicksLimit:6}}],yAxes:[{ticks:{min:0,max:15e3,maxTicksLimit:5},gridLines:{display:!0}}]},legend:{display:!1}}}),
 
     /* Gráfico de pizza*/
-    ctx=document.getElementById("graficoPizza"),graficoPizza=new Chart(ctx,{type:"pie",data:{labels:["Valor livre","Valor gasto"/*,"Yellow","Green"*/],datasets:[{data:[50,50/*valorLivre(),${projeto.getValorParcial()}*/],backgroundColor:["#007bff","#dc3545"/*,"#ffc107","#28a745"*/]}]}});
+    ctx=document.getElementById("graficoPizza"),graficoPizza=new Chart(ctx,{type:"pie",data:{labels:["Valor livre","Valor gasto"/*,"Yellow","Green"*/],datasets:[{data:[valorLivre(),${projeto.getValorParcial()}],backgroundColor:["#007bff","#dc3545"/*,"#ffc107","#28a745"*/]}]}});
 
 
     //Fazer essa função no servlet
 
-    /*
     function valorLivre(){
       var valorParcial = ${projeto.getValorParcial()};
       var valorMaximo = ${projeto.getValorTotal();
       var valorLivre = valorMaximo - valorParcial;
       return valorLivre;
-    }
-    */
+    }    
     
 
   </script>
