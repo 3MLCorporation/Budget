@@ -55,12 +55,21 @@
 		            </strong>
 				</div>
 				
-				<form action="abrirNotaFiscal" target="_blank" method="GET">
-					<input type="hidden" name="notaId" value="${nota.id}">
-					<div class="botaoVisualizarNotaFiscal">
-						<button type="submit" class="btn btn-dark">Ver arquivo</button>
-					</div>
-				</form>
+				<div class="btn-group">
+					<form action="abrirNotaFiscal" target="_blank" method="GET">
+						<input type="hidden" name="notaId" value="${nota.id}">
+						<div class="botaoVisualizarNotaFiscal">
+							<button type="submit" class="btn btn-dark">Ver nota</button>
+						</div>
+					</form>
+
+					<form action="atualizarArquivo" target="_blank" method="GET">
+						<input type="hidden" name="notaId" value="${nota.id}">
+						<div class="botaoVisualizarNotaFiscal">
+							<button type="submit" class="btn btn-dark">Atualizar nota</button>
+						</div>
+					</form>					
+				</div>
 	        </div>
 
 	   	    <div class="card-header">
@@ -81,17 +90,23 @@
 								<tr>
 									<td> ${pagamento.getValorFormatado()}</td>
 									<td> ${pagamento.getDataFormatada()}</td>
-									<td style="width: 14%">
+									<td>
 										<div class="btn-group"> 
 				                            <form action="abrirPagamento" target="_blank" method="GET">
-				                                <input type="hidden" name="pagamentoId" value="${pagamento.id }">
-				                                <button type="submit" class="btn btn-link"><img src="../img/visualizar.png" style="width: 80%;"></button>
+				                                <input type="hidden" value="${pagamento.id }" name="pagamentoId">
+				                                <button type="submit" class="btn btn-link"><img src="../img/visualizar.png"></button>
 				                            </form>
+
+											<form action="atualizarPagamento" method="GET">
+												<input type="hidden" class="form-control" value="${pagamento.id}" name="pagamentoId">
+												<button type="submit" class="btn btn-link"><img src="../img/atualizar.png" alt="Logo"></button>
+											</form>
+
 											<form action="excluirPagamento" method="POST">
 												<input type="hidden" name="nota_fiscal_id" value="${nota.id }">
 												<input type="hidden" class="form-control" value="${pagamento.id}" name="pagamento_id">
-												<button type="submit" class="btn btn-link"> <img src="../img/excluir.png" alt="Logo" style="width:100%;"> </button>
-											</form>
+												<button type="submit" class="btn btn-link"> <img src="../img/excluir.png" alt="Logo"> </button>
+											</form>									
 										</div>	
 									</td>
 								</tr>
