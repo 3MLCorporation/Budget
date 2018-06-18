@@ -267,6 +267,15 @@
    </servlet-mapping>
    
    <servlet>
+   		<servlet-name>cadastrarFornecedor</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.CadastrarFornecedor</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>cadastrarFornecedor</servlet-name>
+   		<url-pattern>/cadastrarFornecedor</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
    		<servlet-name>cadastrarNotaFiscal</servlet-name>
    		<servlet-class>br.com.cpsoftware.budget.control.CadastrarNotaFiscal</servlet-class>
    </servlet>

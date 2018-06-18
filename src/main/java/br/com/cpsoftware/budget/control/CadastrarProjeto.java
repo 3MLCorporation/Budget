@@ -18,7 +18,7 @@ public class CadastrarProjeto extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		 req.setAttribute("page", "criarProjeto");           // Tells base.jsp to include form.jsp
+		 req.setAttribute("page", "criarProjeto");
 		 req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}
 	

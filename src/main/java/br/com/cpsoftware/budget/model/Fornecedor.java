@@ -14,8 +14,13 @@ public class Fornecedor {
 	public static final String UF = "uf";
 	
 	public Fornecedor(Long id, String nome, String cnpj, String uf) {
-		super();
 		this.id = id;
+		this.nome = nome;
+		this.cnpj = cnpj;
+		this.uf = uf;
+	}
+	
+	public Fornecedor(String nome, String cnpj, String uf) {
 		this.nome = nome;
 		this.cnpj = cnpj;
 		this.uf = uf;
