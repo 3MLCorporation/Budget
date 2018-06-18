@@ -12,18 +12,21 @@
 		   	<form action="cadastrarFornecedor" method="POST">
 		  		<div class="form-group">
 		       	   <label for="text">Nome:</label> <input type="text"
-		        	class="form-control" placeholder="Fornecer o nome da nova categoria"
+		        	class="form-control" placeholder="Fornecer o nome do fornecedor"
 		       	   name="nome" required="required">
 		      </div>
 		      <div class="form-group">
 		           <label for="text">CNPJ:</label> <input type="number"
-		           class="form-control" placeholder="Fornecer o valor da categoria"
+		           class="form-control" placeholder="Fornecer o cnpj do fornecedor"
 		           name="cnpj" required="required">
 		       </div>
 		      <div class="form-group">
-		           <label for="text">UF:</label> <input type="number"
-		           class="form-control" placeholder="Fornecer o valor da categoria"
-		           name="uf" required="required">
+		           <label for="text">UF:</label> 
+			       <select class="form-control" name="uf">
+			         <c:forEach items="${ufs}" var="uf">
+			            <option value="${uf}">${uf}</option>
+			          </c:forEach>
+			       </select>		           
 		       </div>		       
 		      <button type="submit" class="btn btn-dark botaoCadastro">Cadastrar</button>
 		  	</form>

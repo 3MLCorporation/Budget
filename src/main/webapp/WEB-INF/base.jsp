@@ -51,7 +51,7 @@
         <c:if test="${sessionScope.usuario.perfil == 0}">
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="usuarios">
             <a class="nav-link" href="/cadastrarFornecedor">
-              <i class="fas fa-handshake"></i>
+              <i class="fa fa-fw fa-area-chart"></i>
               <span class="nav-link-text">Fornecedores</span>
             </a>
           </li>
