@@ -20,12 +20,10 @@ import org.apache.commons.io.IOUtils;
 
 import com.google.appengine.api.datastore.Blob;
 
-import br.com.cpsoftware.budget.dao.ItemDAO;
 import br.com.cpsoftware.budget.dao.NotaFiscalDAO;
-import br.com.cpsoftware.budget.dao.RubricaDAO;
 import br.com.cpsoftware.budget.model.NotaFiscal;
-import br.com.cpsoftware.budget.model.Rubrica;
 
+@SuppressWarnings("serial")
 public class AtualizarNotaFiscal extends HttpServlet {
 	
 	private NotaFiscalDAO notaFiscalDao = new NotaFiscalDAO();
@@ -33,19 +31,19 @@ public class AtualizarNotaFiscal extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		Long notaFiscalId = Long.parseLong(req.getParameter("notaFiscalId"));
+		Long notaFiscalId = Long.parseLong(req.getParameter("notaId"));
 		
-		req.setAttribute("notaFiscal", new NotaFiscalDAO().read(notaFiscalId));
-		req.setAttribute("page", "atualizarNotaFiscal");           
+		req.setAttribute("nota", new NotaFiscalDAO().read(notaFiscalId));
+		req.setAttribute("page", "atualizarNotaFiscal");
 		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Long notaFiscalId = Long.parseLong(req.getParameter("notaFiscalId"));
 		
 		boolean isMultipart = ServletFileUpload.isMultipartContent(req);
 		Long itemId = null;
+		Long notaFiscalId = null;
 		String fornecedor = null;
 		Double valor = null;
 		Date data = null;
@@ -65,8 +63,10 @@ public class AtualizarNotaFiscal extends HttpServlet {
 					if (item.isFormField()) {
 						if (item.getFieldName().equals(NotaFiscal.ITEM_ID))
 							itemId = new Long(Streams.asString(stream));
-						if (item.getFieldName().equals(NotaFiscal.FORNECEDOR))
-							fornecedor = new String(Streams.asString(stream));
+						if (item.getFieldName().equals(NotaFiscal.ID))
+							notaFiscalId = new Long(Streams.asString(stream));
+						/*if (item.getFieldName().equals(NotaFiscal.FORNECEDOR))
+							fornecedor = new String(Streams.asString(stream));*/
 						if (item.getFieldName().equals(NotaFiscal.VALOR))
 							valor = new Double(Streams.asString(stream));
 						if (item.getFieldName().equals(NotaFiscal.DATA))
@@ -85,8 +85,11 @@ public class AtualizarNotaFiscal extends HttpServlet {
 		}
 		
 		NotaFiscal notaFiscal = (NotaFiscal) this.notaFiscalDao.read(notaFiscalId);
-		notaFiscal.setItemId(itemId);
-		notaFiscal.setFornecedor(fornecedor);
+		
+		//TODO Mover nota para outro item ??
+		//notaFiscal.setItemId(itemId);
+		
+		//notaFiscal.setFornecedor(fornecedor);
 		notaFiscal.setValor(valor);
 		notaFiscal.setData(data);
 		
@@ -96,7 +99,8 @@ public class AtualizarNotaFiscal extends HttpServlet {
 		
 		this.notaFiscalDao.update(notaFiscal);
 		
-		// resp.sendRedirect("/visualizarNotaFiscal?itemId=" + notaFiscal.getItemId());
+		//TODO Por enquanto, fica assim
+		resp.sendRedirect("/visualizarNotaFiscal?itemId=" + notaFiscal.getItemId());
 		
 	}
 }

@@ -39,25 +39,25 @@
           <i class="fa fa-area-chart"></i> Atualizar nota fiscal
         </div>
       <div class="card-body">
-        <form action="atualizarrNotaFiscal" method="POST" enctype="multipart/form-data">
-          <input type="hidden" name="item_id" value="${item_id }">
-          <div class="form-group">
+        <form action="atualizarNotaFiscal" method="POST" enctype="multipart/form-data">
+          <input type="hidden" name="item_id" value="${nota.itemId }">
+          <%-- <div class="form-group">
             <label for="text">Fornecedor</label> <input type="text"
             class="form-control" placeholder="Fornecer o novo fornecedor"
-            name="fornecedor">
-          </div>
+            name="fornecedor" value="${fornecedor }" >
+          </div> --%>
 
           <div class="form-group">
             <label for="text">Valor</label> <input type="number" pattern="[0-9.]"
-            class="form-control" placeholder="Fornecer o novo valor da nota"
-            name="valor">
+            id="valor" class="form-control" placeholder="Fornecer o novo valor da nota"
+            name="valor" value="${nota.valor }">
           </div>
 
           <div class="row">
             <div class="form-group col-lg-6">
               <label for="text">Data</label> <input type="date"
               class="form-control" placeholder="Fornecer a nova data de emissão da nota"
-              name="data">
+              name="data" value="${nota.getDataFormatadaUS() }">
 
             </div>
 
@@ -69,8 +69,19 @@
           </div>
 
           <br/>
+		  <input type="hidden" class="form-control" value="${nota.id}" name="id">
           <button type="submit" class="btn btn-dark">Atualizar</button> 
         </form>
       </div>
     </div>
 </div>
+
+<script>
+	$(document).ready(function(){
+	    $("form").delegate('#valor', 'focusout', function(){
+	        if($(this).val() < 0){
+	            $(this).val('0');
+	        }
+	    });
+	});
+</script>

@@ -20,11 +20,10 @@ import org.apache.commons.io.IOUtils;
 
 import com.google.appengine.api.datastore.Blob;
 
-import br.com.cpsoftware.budget.dao.NotaFiscalDAO;
 import br.com.cpsoftware.budget.dao.PagamentoDAO;
-import br.com.cpsoftware.budget.model.NotaFiscal;
 import br.com.cpsoftware.budget.model.Pagamento;
 
+@SuppressWarnings("serial")
 public class AtualizarPagamento extends HttpServlet {
 	
 	private PagamentoDAO pagamentoDao = new PagamentoDAO();
@@ -34,17 +33,17 @@ public class AtualizarPagamento extends HttpServlet {
 		
 		Long pagamentoId = Long.parseLong(req.getParameter("pagamentoId"));
 		
-		req.setAttribute("pagamento", new NotaFiscalDAO().read(pagamentoId));
+		req.setAttribute("pagamento", pagamentoDao.read(pagamentoId));
 		req.setAttribute("page", "atualizarPagamento");           
 		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Long pagamentoId = Long.parseLong(req.getParameter("pagamentoId"));
 		
 		boolean isMultipart = ServletFileUpload.isMultipartContent(req);
 		Long notaFiscalId = null;
+		Long pagamentoId = null;
 		Double valor = null;
 		Date data = null;
 		Blob arquivo = null;
@@ -62,6 +61,8 @@ public class AtualizarPagamento extends HttpServlet {
 
 					if (item.isFormField()) {
 						if (item.getFieldName().equals(Pagamento.NOTA_FISCAL_ID))
+							notaFiscalId = new Long(Streams.asString(stream));
+						if (item.getFieldName().equals(Pagamento.ID))
 							pagamentoId = new Long(Streams.asString(stream));
 						if (item.getFieldName().equals(Pagamento.VALOR))
 							valor = new Double(Streams.asString(stream));
@@ -81,7 +82,10 @@ public class AtualizarPagamento extends HttpServlet {
 		}
 		
 		Pagamento pagamento = (Pagamento) this.pagamentoDao.read(pagamentoId);
-		pagamento.setNotaFiscalId(notaFiscalId);
+		
+		//TODO Mover pagamento para outra nota ??
+		//pagamento.setNotaFiscalId(notaFiscalId);
+		
 		pagamento.setValor(valor);
 		pagamento.setData(data);
 		
@@ -91,7 +95,9 @@ public class AtualizarPagamento extends HttpServlet {
 		
 		this.pagamentoDao.update(pagamento);
 		
-		// resp.sendRedirect("/visualizarNotaFiscal?itemId=" + pagamento.getNotaFiscalId());
+		//TODO Por enquanto, fica assim
+		req.getSession().setAttribute("notaId", notaFiscalId);
+		resp.sendRedirect("/visualizarNotaFiscal");
 		
 	}
 }

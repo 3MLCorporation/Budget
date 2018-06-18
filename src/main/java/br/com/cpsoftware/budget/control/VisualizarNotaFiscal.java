@@ -30,7 +30,7 @@ public class VisualizarNotaFiscal extends HttpServlet {
 			req.getSession().setAttribute("notaId", null);
 		}
 		
-		if(nota == null) {
+		if(nota == null) {//itemId passado para o botão de cadastrar nota
 			Long itemId = Long.parseLong(req.getParameter("itemId"));
 			req.setAttribute("itemId", itemId);
 		}else {

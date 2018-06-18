@@ -83,4 +83,8 @@ public class Pagamento {
 		return Formatacao.formatarData(data);
 	}
 	
+	public String getDataFormatadaUS() {
+		return Formatacao.formatarDataFormatoUS(data);
+	}
+	
 }

@@ -1,6 +1,7 @@
 package br.com.cpsoftware.budget.util;
 
 import java.text.NumberFormat;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -30,6 +31,13 @@ public class Formatacao {
 		dataFormatada += "/";
 		
 		dataFormatada += calendar.get(Calendar.YEAR);
+		
+		return dataFormatada;
+	}
+	
+	public static String formatarDataFormatoUS(Date data) {
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+		String dataFormatada = formatter.format(data);
 		
 		return dataFormatada;
 	}

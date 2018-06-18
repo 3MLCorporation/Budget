@@ -88,21 +88,13 @@
 			    name="arquivo_auxiliar" accept=".pdf">
 			  </div>
 			</div>
-			     <%-- <div class="form-group">
-			     	 <label>Orçamento:</label>
-			     	 	<select class="form-control" name="orcamento">
-								<c:forEach items="${orcamentos}" var="orcamento">
-									<option>${orcamento.nome}</option>
-								</c:forEach>
-						</select>
-					</div> --%>
 			<div class="row">
 			     <div class="form-group col-lg-6">
 			       <label>Categoria:</label>
 			       <select id="categoria-select" class="form-control" name="categoria">
 		         		<option value="">Selecione</option>
 		         		<c:forEach items="${categorias}" var="categoria">
-			        		 <option value="${categoria.id }" ${categoriaAtual.id == categoria.id ? 'selected' : ''}>${categoria.nome}</option>
+			        		 <option value="${categoria.id }" ${categoriaAtualId == categoria.id ? 'selected' : ''}>${categoria.nome}</option>
 		       			</c:forEach>
 			     	</select>
 		   		 </div>
@@ -111,7 +103,7 @@
 				     <label>Rubrica:</label>
 				     <select id="rubrica-select" class="form-control" name="rubrica_id">
 		       			<c:forEach items="${rubricas}" var="rubrica">
-				      	 	<option value="${rubrica.id }" ${rubricaAtual.id == rubrica.id ? 'selected' : ''}>${rubrica.nome}</option>
+				      	 	<option value="${rubrica.id }" ${rubricaAtualId == rubrica.id ? 'selected' : ''}>${rubrica.nome}</option>
 			    		 </c:forEach>
 				   	</select>
 				 </div>

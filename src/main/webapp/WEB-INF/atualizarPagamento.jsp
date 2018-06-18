@@ -41,7 +41,7 @@
         <div class="card-body">
           <form action="atualizarPagamento" method="POST" enctype="multipart/form-data">
             <div class="form-group">
-              <input type="hidden" name="nota_fiscal_id" value="${nota_fiscal_id }">
+              <input type="hidden" name="nota_fiscal_id" value="${pagamento.notaFiscalId }">
               <label for="text">Arquivo</label> <input type="file"
               class="form-control" placeholder="Fornecer o novo arquivo da nota"
               name="arquivo" accept=".pdf">
@@ -49,21 +49,32 @@
             <div class="row">
               <div class="form-group col-lg-6">
                 <label for="text">Valor</label> <input type="number" pattern="[0-9.]"
-                class="form-control" placeholder="Fornecer o novo valor da nota"
-                name="valor">
+                id="valor" class="form-control" placeholder="Fornecer o novo valor da nota"
+                name="valor" value="${pagamento.valor }">
               </div>
 
 
               <div class="form-group col-lg-6">
                 <label for="text">Data</label> <input type="date"
                 class="form-control" placeholder="Fornecer a nova data de emissão da nota"
-                name="data">
+                name="data" value="${pagamento.getDataFormatadaUS()}">
               </div>
             </div>
             
             <br/>
+            <input type="hidden" class="form-control" value="${pagamento.id}" name="id">
             <button type="submit" class="btn btn-dark">Atualizar</button> 
           </form>
         </div>
     </div>
 </div>
+
+<script>
+	$(document).ready(function(){
+	    $("form").delegate('#valor', 'focusout', function(){
+	        if($(this).val() < 0){
+	            $(this).val('0');
+	        }
+	    });
+	});
+</script>

@@ -50,14 +50,15 @@ public class AtualizarItem extends HttpServlet {
 		
 		Long itemId = Long.parseLong(req.getParameter("itemId"));
 		Item item = new ItemDAO().read(itemId);
+		
 		Rubrica rubricaAtual = (Rubrica)new RubricaDAO().read(item.getRubricaId());
 		Categoria categoriaAtual = (Categoria) this.categoriaDao.read((rubricaAtual.getCategoriaId()));
 		rubricas.addAll(new RubricaDAO().getRubricas(categoriaAtual.getId()));
 		
 	    req.setAttribute("categorias", categorias);
-	    req.setAttribute("categoriaAtual", categoriaAtual);
+	    req.setAttribute("categoriaAtualId", rubricaAtual.getCategoriaId());
 	    req.setAttribute("rubricas", rubricas);
-	    req.setAttribute("rubricaAtual", rubricaAtual);
+	    req.setAttribute("rubricaAtualId", rubricaAtual.getId());
 		req.setAttribute("item", item);
 		req.setAttribute("page", "atualizarItem");
 		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
