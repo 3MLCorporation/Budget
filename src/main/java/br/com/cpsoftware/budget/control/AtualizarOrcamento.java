@@ -17,9 +17,11 @@ public class AtualizarOrcamento extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Long orcamentoId = Long.parseLong(req.getParameter("orcamentoId"));
 		
-		req.setAttribute("orcamento", this.orcamentoDao.read(orcamentoId));
+		Long orcamentoEditavelId = Long.parseLong(req.getParameter("orcamentoId"));
+		req.getSession().setAttribute("orcamentoEditavel", orcamentoEditavelId);
+		
+		req.setAttribute("orcamento", this.orcamentoDao.read(orcamentoEditavelId));
 		req.setAttribute("page", "atualizarOrcamento");           
 		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}

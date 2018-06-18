@@ -8,9 +8,9 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <c:if test="${not empty orcamentoSelecionado}">
+          <c:if test="${not empty projeto}">
 	          <a href="">
-	       		${orcamentoSelecionado}
+	       		${projeto.nome}
 	          </a>
           </c:if>
         </li>

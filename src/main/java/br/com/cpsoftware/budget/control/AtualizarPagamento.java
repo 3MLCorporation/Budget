@@ -20,7 +20,9 @@ import org.apache.commons.io.IOUtils;
 
 import com.google.appengine.api.datastore.Blob;
 
+import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.dao.PagamentoDAO;
+import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.Pagamento;
 
 @SuppressWarnings("serial")
@@ -33,6 +35,10 @@ public class AtualizarPagamento extends HttpServlet {
 		
 		Long pagamentoId = Long.parseLong(req.getParameter("pagamentoId"));
 		
+		Long orcamentoEditavelId = Long.parseLong((String) req.getSession().getAttribute("orcamentoEditavel"));
+		Orcamento orcamento = (Orcamento) new OrcamentoDAO().read(orcamentoEditavelId);
+		
+		req.setAttribute("orcamentoSelecionado", orcamento.getNome());
 		req.setAttribute("pagamento", pagamentoDao.read(pagamentoId));
 		req.setAttribute("page", "atualizarPagamento");           
 		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);

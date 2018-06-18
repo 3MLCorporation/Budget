@@ -17,9 +17,14 @@ public class AtualizarProjeto extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Long projetoId = Long.parseLong(req.getParameter("projetoId"));
 		
-		req.setAttribute("projeto", this.projetoDAO.read(projetoId));
+		Long projetoId = Long.parseLong(req.getParameter("projetoId"));
+		Projeto projeto = (Projeto) this.projetoDAO.read(projetoId);
+		
+		req.getSession().setAttribute("projetoEditavel", projetoId);
+		req.getSession().setAttribute("orcamentoEditavel", null);
+		
+		req.setAttribute("projeto", projeto);
 		req.setAttribute("page", "atualizarProjeto");           
 		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
 	}

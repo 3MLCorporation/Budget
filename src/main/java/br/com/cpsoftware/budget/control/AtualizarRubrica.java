@@ -34,6 +34,7 @@ public class AtualizarRubrica extends HttpServlet {
 		Long rubricaId = Long.parseLong(req.getParameter("rubricaId"));
 		Rubrica rubrica = (Rubrica) this.rubricaDao.read(rubricaId);
 		
+		req.setAttribute("orcamentoSelecionado", orcamento.getNome());
 		req.setAttribute("categoriaAtualId", rubrica.getCategoriaId());
 		req.setAttribute("categorias", categorias);
 		req.setAttribute("rubrica", rubrica);

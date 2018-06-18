@@ -21,7 +21,9 @@ import org.apache.commons.io.IOUtils;
 import com.google.appengine.api.datastore.Blob;
 
 import br.com.cpsoftware.budget.dao.NotaFiscalDAO;
+import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.model.NotaFiscal;
+import br.com.cpsoftware.budget.model.Orcamento;
 
 @SuppressWarnings("serial")
 public class AtualizarNotaFiscal extends HttpServlet {
@@ -33,6 +35,10 @@ public class AtualizarNotaFiscal extends HttpServlet {
 		
 		Long notaFiscalId = Long.parseLong(req.getParameter("notaId"));
 		
+		Long orcamentoEditavelId = Long.parseLong((String) req.getSession().getAttribute("orcamentoEditavel"));
+		Orcamento orcamento = (Orcamento) new OrcamentoDAO().read(orcamentoEditavelId);
+		
+		req.setAttribute("orcamentoSelecionado", orcamento.getNome());
 		req.setAttribute("nota", new NotaFiscalDAO().read(notaFiscalId));
 		req.setAttribute("page", "atualizarNotaFiscal");
 		req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);

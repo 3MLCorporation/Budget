@@ -55,6 +55,7 @@ public class AtualizarItem extends HttpServlet {
 		Categoria categoriaAtual = (Categoria) this.categoriaDao.read((rubricaAtual.getCategoriaId()));
 		rubricas.addAll(new RubricaDAO().getRubricas(categoriaAtual.getId()));
 		
+		req.setAttribute("orcamentoSelecionado", orcamento.getNome());
 	    req.setAttribute("categorias", categorias);
 	    req.setAttribute("categoriaAtualId", rubricaAtual.getCategoriaId());
 	    req.setAttribute("rubricas", rubricas);

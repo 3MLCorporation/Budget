@@ -48,6 +48,15 @@
           </li>
         </c:if>
 
+        <c:if test="${sessionScope.usuario.perfil == 0}">
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="usuarios">
+            <a class="nav-link" href="/cadastrarFornecedor">
+              <i class="fas fa-handshake"></i>
+              <span class="nav-link-text">Fornecedores</span>
+            </a>
+          </li>
+        </c:if>
+
         <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Projetos">
             <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseProjetos" data-parent="#exampleAccordion">
