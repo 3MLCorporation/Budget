@@ -31,6 +31,7 @@ public class CadastrarOrcamento extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		Long projetoId = Long.parseLong((String) req.getSession().getAttribute("projetoEditavel"));
 		String nome = req.getParameter("nome");
 		String valor = req.getParameter("valor");

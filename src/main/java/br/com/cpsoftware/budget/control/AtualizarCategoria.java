@@ -19,6 +19,7 @@ public class AtualizarCategoria extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		Long categoriaId = Long.parseLong(req.getParameter("categoriaId"));
 		
 		Long orcamentoEditavelId = Long.parseLong((String) req.getSession().getAttribute("orcamentoEditavel"));

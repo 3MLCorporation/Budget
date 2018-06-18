@@ -23,6 +23,7 @@ public class AtualizarRubrica extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		Long orcamentoEditavelId = Long.parseLong((String) req.getSession().getAttribute("orcamentoEditavel"));
 		Orcamento orcamento = (Orcamento) new OrcamentoDAO().read(orcamentoEditavelId);
 		List<Categoria> categorias = new ArrayList<>();

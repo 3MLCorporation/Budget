@@ -31,6 +31,7 @@ public class AtualizarProjeto extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
 		Long projetoId = Long.parseLong(req.getParameter("projetoId"));
 		String nome = req.getParameter("nome");
 		Double valor = Double.parseDouble(req.getParameter("valor"));

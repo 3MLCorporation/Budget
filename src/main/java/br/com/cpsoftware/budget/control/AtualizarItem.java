@@ -36,6 +36,7 @@ public class AtualizarItem extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		Long orcamentoEditavelId = Long.parseLong((String) req.getSession().getAttribute("orcamentoEditavel"));
 		Orcamento orcamento = (Orcamento) new OrcamentoDAO().read(orcamentoEditavelId);
 		
@@ -45,8 +46,6 @@ public class AtualizarItem extends HttpServlet {
 		for(Categoria categoria : this.categoriaDao.getCategorias(orcamento.getId())) {
 			categorias.add(categoria);
 		}
-		
-
 		
 		Long itemId = Long.parseLong(req.getParameter("itemId"));
 		Item item = new ItemDAO().read(itemId);

@@ -20,10 +20,10 @@ public class CadastrarCategoria extends HttpServlet {
 		
 		req.setAttribute("page", "criarCategoria");
 	    req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
+	    
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
 		
 		Long orcamentoId = Long.parseLong((String) req.getSession().getAttribute("orcamentoEditavel"));
 		

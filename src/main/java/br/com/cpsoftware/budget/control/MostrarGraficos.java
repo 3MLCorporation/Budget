@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.dao.ProjetoDAO;
 
 /**
