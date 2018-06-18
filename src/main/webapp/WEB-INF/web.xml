@@ -276,6 +276,24 @@
    </servlet-mapping>
    
    <servlet>
+   		<servlet-name>listarFornecedores</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.ListarFornecedores</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>listarFornecedores</servlet-name>
+   		<url-pattern>/listarFornecedores</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
+   		<servlet-name>excluirFornecedor</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.ExcluirFornecedor</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>excluirFornecedor</servlet-name>
+   		<url-pattern>/excluirFornecedor</url-pattern>
+   </servlet-mapping>
+   
+   <servlet>
    		<servlet-name>cadastrarNotaFiscal</servlet-name>
    		<servlet-class>br.com.cpsoftware.budget.control.CadastrarNotaFiscal</servlet-class>
    </servlet>
