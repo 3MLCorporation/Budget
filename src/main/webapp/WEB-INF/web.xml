@@ -437,6 +437,15 @@
          <url-pattern>/atualizarNotaFiscal</url-pattern>
    </servlet-mapping>
 
+   <servlet>
+         <servlet-name>atualizarFornecedor</servlet-name>
+         <servlet-class>br.com.cpsoftware.budget.control.AtualizarFornecedor</servlet-class>
+   </servlet>
+   <servlet-mapping>
+         <servlet-name>atualizarFornecedor</servlet-name>
+         <url-pattern>/atualizarFornecedor</url-pattern>
+   </servlet-mapping>
+
   <welcome-file-list>
     <welcome-file>login</welcome-file>
   </welcome-file-list>
