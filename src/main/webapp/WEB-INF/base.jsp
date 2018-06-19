@@ -48,12 +48,20 @@
           </li>
         </c:if>
 
-        <c:if test="${sessionScope.usuario.perfil == 0}">
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="usuarios">
-            <a class="nav-link" href="/cadastrarFornecedor">
+        <c:if test="${sessionScope.usuario.perfil == 0">
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Projetos">
+            <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseFornecedor" data-parent="#exampleAccordion">
               <i class="fa fa-fw fa-area-chart"></i>
               <span class="nav-link-text">Fornecedores</span>
             </a>
+            <ul class="sidenav-second-level collapse" id="collapseFornecedor">
+              <li>
+                <a href="/cadastrarFornecedor">Criar</a>
+              </li>
+              <li>
+                <a href="/listarFornecedor">Listar</a>
+              </li>
+            </ul>
           </li>
         </c:if>
 
