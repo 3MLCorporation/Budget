@@ -12,6 +12,7 @@ import br.com.cpsoftware.budget.dao.PagamentoDAO;
 import br.com.cpsoftware.budget.dao.ProjetoDAO;
 import br.com.cpsoftware.budget.dao.RubricaDAO;
 import br.com.cpsoftware.budget.model.Categoria;
+import br.com.cpsoftware.budget.model.Fornecedor;
 import br.com.cpsoftware.budget.model.Item;
 import br.com.cpsoftware.budget.model.NotaFiscal;
 import br.com.cpsoftware.budget.model.Orcamento;
@@ -202,4 +203,5 @@ public class Excluir {
 		
 		return true;
 	}
+
 }

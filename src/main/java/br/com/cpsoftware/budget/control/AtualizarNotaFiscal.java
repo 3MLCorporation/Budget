@@ -50,7 +50,7 @@ public class AtualizarNotaFiscal extends HttpServlet {
 		boolean isMultipart = ServletFileUpload.isMultipartContent(req);
 		Long itemId = null;
 		Long notaFiscalId = null;
-		String fornecedor = null;
+		//String fornecedor = null;
 		Double valor = null;
 		Date data = null;
 		Blob arquivo = null;

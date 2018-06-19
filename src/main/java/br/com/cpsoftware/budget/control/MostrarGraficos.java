@@ -16,6 +16,7 @@ import br.com.cpsoftware.budget.dao.ProjetoDAO;
  * @author PROJETOS
  *
  */
+@SuppressWarnings("serial")
 public class MostrarGraficos extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
