@@ -81,14 +81,14 @@
 					<label for="text">Detalhes</label>
 					<div class="btn-group">			    
 					  	<c:if test="${not empty item.arquivoDetalhes}"> 
-							<form action="abrirArquivoDetalhesItem" target="_blank" method="GET">
+							<form action="abrirArquivoDetalhesItem" target="_blank" method="GET" id="formAtualizarItem">
 								<input type="hidden" name="itemId" value="${item.id}">
 								<button type="submit" class="btn btn-link"><img src="../img/visualizar.png" alt="Logo" style="width:60%;"></button>
 							</form>
 						</c:if>								    	
 
 					  	<c:if test="${not empty item.arquivoDetalhes}"> 
-							<form action="excluirDetalhesItem" method="POST">
+							<form action="excluirDetalhesItem" method="POST" id="formAtualizarItem">
 								<input type="hidden" class="form-control" value="${arquivoDetalhes.id}" name="arquivoDetalhes_id">
 								<button type="submit" class="btn btn-link"><img src="../img/excluir.png" alt="Logo" style="width:60%;"> </button>
 				           	</form>		  		
@@ -101,14 +101,14 @@
 					<label for="text">Auxiliar</label>
 					<div class="btn-group">			    
 					  	<c:if test="${not empty item.arquivoAuxiliar}"> 
-							<form action="abrirArquivoAuxiliarItem" target="_blank" method="GET">
+							<form action="abrirArquivoAuxiliarItem" target="_blank" method="GET" id="formAtualizarItem">
 								<input type="hidden" name="itemId" value="${item.id}">
 								<button type="submit" class="btn btn-link"><img src="../img/visualizar.png" alt="Logo" style="width:60%;"></button>
 							</form>
 						</c:if>								    	
 
 					  	<c:if test="${not empty item.arquivoAuxiliar}"> 
-							<form action="excluirAuxiliarItem" method="POST">
+							<form action="excluirAuxiliarItem" method="POST" id="formAtualizarItem">
 								<input type="hidden" class="form-control" value="${arquivoAuxiliar.id}" name="arquivoAuxiliar_id">
 								<button type="submit" class="btn btn-link"><img src="../img/excluir.png" alt="Logo" style="width:60%;"> </button>
 				           	</form>		  		
@@ -138,7 +138,7 @@
 				 </div>
 			</div>  
 			<input type="hidden" class="form-control" value="${item.id}" name="id">
-			<button class="btn btn-dark botaoCadastro" onclick="submitAtualizarItem()">Ataualizar</button>
+			<button class="btn btn-dark botaoCadastro" onclick="submitAtualizarItem()">Atualizar</button>
 			</form>
 	  	</div>
   	</div>
