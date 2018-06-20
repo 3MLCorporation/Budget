@@ -40,7 +40,7 @@
         	<i class="fa fa-area-chart"></i> Atualizar item
         </div>
 	   	<div class="card-body">
-			<form action="atualizarItem" method="POST" enctype="multipart/form-data" >
+			<form action="atualizarItem" method="POST" enctype="multipart/form-data" id="formAtualizarItem">
 			   <div class="form-group">
 			     <label for="text">Item:</label> <input type="text"
 			     class="form-control" placeholder="Fornecer o novo nome do novo item"
@@ -138,7 +138,7 @@
 				 </div>
 			</div>  
 			<input type="hidden" class="form-control" value="${item.id}" name="id">
-			<button type="submit" class="btn btn-dark botaoCadastro">Atualizar</button>
+			<button class="btn btn-dark botaoCadastro" onclick="submitAtualizarItem()">Ataualizar</button>
 			</form>
 	  	</div>
   	</div>
@@ -146,7 +146,11 @@
 
 
 <script>
-		
+
+		function submitAtualizarItem(){
+			document.getElementById('formAtualizarItem').submit();
+		}
+
 		$(document).ready(function(){
 		    $("form").delegate('#valor', 'focusout', function(){
 		        if($(this).val() < 0){
