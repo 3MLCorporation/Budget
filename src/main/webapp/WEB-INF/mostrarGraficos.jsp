@@ -45,6 +45,7 @@
       </div>
     </div>
   </div>
+</div>
 
   <!-- Page level plugin JavaScript-->
   <script src="../vendor/chart.js/Chart.min.js"></script>
@@ -69,7 +70,7 @@
     /*
     function valorLivre(){
       var valorParcial = ${projeto.getValorParcial()};
-      var valorMaximo = ${projeto.getValorTotal();
+      var valorMaximo = ${projeto.getValorTotal()};
       var valorLivre = valorMaximo - valorParcial;
       return valorLivre;
     }    

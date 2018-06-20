@@ -27,6 +27,7 @@ import br.com.cpsoftware.budget.model.Categoria;
 import br.com.cpsoftware.budget.model.Item;
 import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.Rubrica;
+import br.com.cpsoftware.budget.util.AtualizarPrecos;
 
 @SuppressWarnings("serial")
 public class AtualizarItem extends HttpServlet {
@@ -133,7 +134,13 @@ public class AtualizarItem extends HttpServlet {
 			item.setArquivoAuxiliar(arquivoAuxiliar);
 		}
 		
+		//Atualizo a rubrica anterior, excluindo o valor parcial do item
+		//AtualizarPrecos.atualizarPrecoRubrica(AtualizarPrecos.EXCLUIR, itemId, item.getValorParcial());
+		
 		this.itemDao.update(item);
+		
+		//Atualizo a nova rubrica, adicionando o valor parcial do item
+		//AtualizarPrecos.atualizarPrecoRubrica(AtualizarPrecos.EDITAR, itemId, item.getValorParcial());
 		
 		resp.sendRedirect("/listarItens");
 		
