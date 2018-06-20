@@ -83,7 +83,7 @@
 					  	<c:if test="${not empty item.arquivoDetalhes}"> 
 							<form action="abrirArquivoDetalhesItem" target="_blank" method="GET">
 								<input type="hidden" name="itemId" value="${item.id}">
-								<button type="submit" class="btn btn-dark"><img src="../img/atualizar.png" alt="Logo" style="width:60%;"></button>
+								<button type="submit" class="btn btn-link"><img src="../img/visualizar.png" alt="Logo" style="width:60%;"></button>
 							</form>
 						</c:if>								    	
 
@@ -103,11 +103,11 @@
 					  	<c:if test="${not empty item.arquivoAuxiliar}"> 
 							<form action="abrirArquivoAuxiliarItem" target="_blank" method="GET">
 								<input type="hidden" name="itemId" value="${item.id}">
-								<button type="submit" class="btn btn-dark"><img src="../img/atualizar.png" alt="Logo" style="width:60%;"></button>
+								<button type="submit" class="btn btn-dark"><img src="../img/visualizar.png" alt="Logo" style="width:60%;"></button>
 							</form>
 						</c:if>								    	
 
-					  	<c:if test="${not empty item.arquivoDetalhes}"> 
+					  	<c:if test="${not empty item.arquivoAuxiliar}"> 
 							<form action="excluirAuxiliarItem" method="POST">
 								<input type="hidden" class="form-control" value="${arquivoAuxiliar.id}" name="arquivoAuxiliar_id">
 								<button type="submit" class="btn btn-link"><img src="../img/excluir.png" alt="Logo" style="width:60%;"> </button>
