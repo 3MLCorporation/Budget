@@ -179,9 +179,17 @@ public class Item {
 	public Blob getArquivoDetalhes() {
 		return arquivoDetalhes;
 	}
-
+	
 	public void setArquivoDetalhes(Blob arquivoDetalhes) {
 		this.arquivoDetalhes = arquivoDetalhes;
+	}
+
+	public boolean isArquivoDetalhesVazio() {
+		if(this.arquivoDetalhes.getBytes().length > 0) {
+			return false;
+		}else {
+			return true;
+		}
 	}
 
 	public Blob getArquivoAuxiliar() {
@@ -190,6 +198,14 @@ public class Item {
 
 	public void setArquivoAuxiliar(Blob arquivoAuxiliar) {
 		this.arquivoAuxiliar = arquivoAuxiliar;
+	}
+
+	public boolean isArquivoAuxiliarVazio() {
+		if(this.arquivoAuxiliar.getBytes().length > 0) {
+			return false;
+		}else {
+			return true;
+		}
 	}
 
 	

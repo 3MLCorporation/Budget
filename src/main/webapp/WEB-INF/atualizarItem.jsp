@@ -80,18 +80,15 @@
 				<div class="form-group col-lg-6">
 					<label for="text">Detalhes</label>
 					<div class="btn-group">			    
-					  	<c:if test="${not empty item.arquivoDetalhes}"> 
-							<form action="abrirArquivoDetalhesItem" target="_blank" method="GET" id="formAtualizarItem">
-								<input type="hidden" name="itemId" value="${item.id}">
-								<button type="submit" class="btn btn-link"><img src="../img/visualizar.png" alt="Logo" style="width:60%;"></button>
-							</form>
-						</c:if>								    	
-
-					  	<c:if test="${not empty item.arquivoDetalhes}"> 
-							<form action="excluirDetalhesItem" method="POST" id="formAtualizarItem">
-								<input type="hidden" class="form-control" value="${arquivoDetalhes.id}" name="arquivoDetalhes_id">
-								<button type="submit" class="btn btn-link"><img src="../img/excluir.png" alt="Logo" style="width:60%;"> </button>
-				           	</form>		  		
+					  	<c:if test="${!item.isArquivoDetalhesVazio()}"> 
+								<a href="/abrirArquivoDetalhesItem?itemId=${item.id}" target="_blank">
+									<img src="../img/visualizar.png" alt="Logo" style="width:60%;">
+								</a>
+													    	
+								<a href="/excluirArquivoDetalhesItem?itemId=${item.id}" target="_blank">
+									<img src="../img/excluir.png" alt="Logo" style="width:60%;">
+							  	</a>
+									
 						</c:if>	
 					</div>		
 					<input type="file" class="form-control" placeholder="Fornecer o novo detalhes do item" name="arquivo_detalhes" accept=".pdf">
@@ -100,18 +97,14 @@
 				<div class="form-group col-lg-6">
 					<label for="text">Auxiliar</label>
 					<div class="btn-group">			    
-					  	<c:if test="${not empty item.arquivoAuxiliar}"> 
-							<form action="abrirArquivoAuxiliarItem" target="_blank" method="GET" id="formAtualizarItem">
-								<input type="hidden" name="itemId" value="${item.id}">
-								<button type="submit" class="btn btn-link"><img src="../img/visualizar.png" alt="Logo" style="width:60%;"></button>
-							</form>
-						</c:if>								    	
-
-					  	<c:if test="${not empty item.arquivoAuxiliar}"> 
-							<form action="excluirAuxiliarItem" method="POST" id="formAtualizarItem">
-								<input type="hidden" class="form-control" value="${arquivoAuxiliar.id}" name="arquivoAuxiliar_id">
-								<button type="submit" class="btn btn-link"><img src="../img/excluir.png" alt="Logo" style="width:60%;"> </button>
-				           	</form>		  		
+					  	<c:if test="${!item.isArquivoAuxiliarVazio()}"> 
+								<a href="/abrirArquivoAuxiliarItem?itemId=${item.id}" target="_blank">
+									<img src="../img/visualizar.png" alt="Logo" style="width:60%;">
+								</a>
+								
+								<a href="/excluirAuxiliarItem?itemId=${item.id}" target="_blank">
+									<img src="../img/excluir.png" alt="Logo" style="width:60%;">
+				           		</a>
 						</c:if>	
 					</div>						 
 					<input type="file" class="form-control" placeholder="Fornecer o novo arquivo auxiliar" name="arquivo_auxiliar" accept=".pdf">
@@ -138,7 +131,7 @@
 				 </div>
 			</div>  
 			<input type="hidden" class="form-control" value="${item.id}" name="id">
-			<button class="btn btn-dark botaoCadastro" onclick="submitAtualizarItem()">Atualizar</button>
+			<button type="submit" class="btn btn-dark botaoCadastro">Atualizar</button>
 			</form>
 	  	</div>
   	</div>
@@ -147,9 +140,9 @@
 
 <script>
 
-		function submitAtualizarItem(){
-			document.getElementById('formAtualizarItem').submit();
-		}
+		/*function submitAtualizarItem(form){
+			document.getElementById(form).submit();
+		}*/
 
 		$(document).ready(function(){
 		    $("form").delegate('#valor', 'focusout', function(){
