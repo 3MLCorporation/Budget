@@ -3,7 +3,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <script src="../js/script.js"></script>
-	
+
 <div>
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -13,11 +13,11 @@
         </li>
       </ol>
     </div>
-      
+
    	<div class="card mb-3">
    	    <div class="card-header">
-        	<i class="fa fa-area-chart"></i> Categorias cadastradas
-        	
+        	<i class="fa fa-area-chart"></i> Usuários cadastrados
+
         </div>
 	   	<div class="card-body">
 		   	<div class="table-responsive">
@@ -28,7 +28,7 @@
 			      			<th>Login</th>
 			        		<th>Email</th>
 			        		<th>Perfil</th>
-			        		<th></th>		   			
+			        		<th></th>
       					</tr>
 			   		</thead>
 			   		<tbody id="myTable">
@@ -49,8 +49,8 @@
 											<input type="hidden" class="form-control" value="${usuario.id}" name="usuarioParaAtulizar">
 											<input type="hidden" class="form-control" id="valorPerfil${id.count }" name="perfilAtualizado">
 											<button type="submit"  onclick="getValorPerfil('${id.count}')" class="btn btn-link"><img src="../img/salvar.png" alt="Logo"></button>
-							           	</form> 
-	
+							           	</form>
+
 										<form action="visualizarUsuario" method="POST">
 											<input type="hidden" class="form-control" name="">
 											<button type="submit" class="btn btn-link"><img src="../img/visualizar.png" alt="Logo" style="width:100%;"></button>

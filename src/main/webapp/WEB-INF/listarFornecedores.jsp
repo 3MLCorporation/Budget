@@ -2,11 +2,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-<div>     
+
+<div>
        <div class="card mb-3">
            <div class="card-header">
-            <i class="fa fa-area-chart"></i> Fornecedores cadastradas
+            <i class="fa fa-area-chart"></i> Fornecedores cadastrados
         </div>
            <div class="card-body">
                <div class="table-responsive">
@@ -28,10 +28,10 @@
                                 <td>
                                     <div class="btn-group">
                                         <form action="atualizarFornecedor" method="GET">
-                                            <input type="hidden" class="form-control" value="${fornecedor.id}" name="fornecedorId">                                                
+                                            <input type="hidden" class="form-control" value="${fornecedor.id}" name="fornecedorId">
                                             <button type="submit" class="btn btn-link"><img src="../img/atualizar.png" alt="Logo"></button>
                                         </form>
-                                                                                       
+
                                         <form action="excluirFornecedor" method="POST">
                                             <input type="hidden" class="form-control" value="${fornecedor.id}" name="fornecedor_id">
                                             <button type="submit" class="btn btn-link"><img src="../img/excluir.png" alt="Logo"></button>
