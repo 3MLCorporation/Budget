@@ -13,16 +13,18 @@
                 <table class="table table-bordered" id="dataTable">
                        <thead>
                            <tr>
-                            <th>Fornecedor</th>
+                            <th>Nome de fantasia</th>
+                            <th>Razão Social</th>
                             <th>CNPJ</th>
                             <th>UF</th>
                             <th>Editar fornecedor</th>
                           </tr>
                        </thead>
                        <tbody id="myTable">
-                        <c:forEach items="${categorias}" var="categoria">
+                        <c:forEach items="${fornecedores}" var="fornecedor">
                             <tr>
-                                <td> ${fornecedor.nome}</td>
+                                <td> ${fornecedor.nomeFantasia}</td>
+                                <td> ${fornecedor.razaoSocial}</td>
                                 <td> ${fornecedor.cnpj}</td>
                                 <td> ${fornecedor.uf}</td>
                                 <td>
@@ -33,7 +35,7 @@
                                         </form>
 
                                         <form action="excluirFornecedor" method="POST">
-                                            <input type="hidden" class="form-control" value="${fornecedor.id}" name="fornecedor_id">
+                                            <input type="hidden" class="form-control" value="${fornecedor.id}" name="fornecedorId">
                                             <button type="submit" class="btn btn-link"><img src="../img/excluir.png" alt="Logo"></button>
                                            </form>
                                     </div>

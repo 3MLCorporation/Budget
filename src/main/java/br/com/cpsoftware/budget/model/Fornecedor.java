@@ -3,25 +3,29 @@ package br.com.cpsoftware.budget.model;
 public class Fornecedor {
 
 	private Long id;
-	private String nome;
+	private String nomeFantasia;
+	private String razaoSocial;
 	private String cnpj;
 	private String uf;
 	
 	//Definição das keys do banco
 	public static final String ID = "id";
-	public static final String NOME = "nome";
+	public static final String NOME_FANTASIA = "nome_fantasia";
+	public static final String RAZAO_SOCIAL = "razao_social";
 	public static final String CNPJ = "cnpj";
 	public static final String UF = "uf";
 	
-	public Fornecedor(Long id, String nome, String cnpj, String uf) {
+	public Fornecedor(Long id, String nome, String razao, String cnpj, String uf) {
 		this.id = id;
-		this.nome = nome;
+		this.nomeFantasia = nome;
+		this.razaoSocial = razao;
 		this.cnpj = cnpj;
 		this.uf = uf;
 	}
 	
-	public Fornecedor(String nome, String cnpj, String uf) {
-		this.nome = nome;
+	public Fornecedor(String nome, String razao, String cnpj, String uf) {
+		this.nomeFantasia = nome;
+		this.razaoSocial = razao;
 		this.cnpj = cnpj;
 		this.uf = uf;
 	}
@@ -34,12 +38,20 @@ public class Fornecedor {
 		this.id = id;
 	}
 
-	public String getNome() {
-		return nome;
+	public String getNomeFantasia() {
+		return nomeFantasia;
 	}
 
-	public void setNome(String fornecedor) {
-		this.nome = fornecedor;
+	public void setNomeFantasia(String nomeFantasia) {
+		this.nomeFantasia = nomeFantasia;
+	}
+	
+	public String getRazaoSocial() {
+		return razaoSocial;
+	}
+
+	public void setRazaoSocial(String razaoSocial) {
+		this.razaoSocial = razaoSocial;
 	}
 
 	public String getCnpj() {

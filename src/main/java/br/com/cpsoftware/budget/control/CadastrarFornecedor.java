@@ -26,11 +26,12 @@ public class CadastrarFornecedor extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String nome = req.getParameter("nome");
+		String nomeFantasia = req.getParameter("nomeFantasia");
+		String razaoSocial = req.getParameter("razaoSocial");
 		String cnpj = req.getParameter("cnpj");
 		String uf = req.getParameter("uf");
 		
-		Fornecedor fornecedor = new Fornecedor(nome, cnpj, uf);
+		Fornecedor fornecedor = new Fornecedor(nomeFantasia, razaoSocial, cnpj, uf);
 		
 		new FornecedorDAO().create(fornecedor);
 		

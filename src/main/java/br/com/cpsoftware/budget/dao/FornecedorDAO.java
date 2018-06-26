@@ -27,7 +27,8 @@ public class FornecedorDAO {
 	
 	public Long create(Fornecedor fornecedor) {
 		Entity fornecedorEntity = new Entity(FORNECEDOR_KIND);
-		fornecedorEntity.setProperty(Fornecedor.NOME, fornecedor.getNome());
+		fornecedorEntity.setProperty(Fornecedor.NOME_FANTASIA, fornecedor.getNomeFantasia());
+		fornecedorEntity.setProperty(Fornecedor.RAZAO_SOCIAL, fornecedor.getRazaoSocial());
 		fornecedorEntity.setProperty(Fornecedor.CNPJ, fornecedor.getCnpj());
 		fornecedorEntity.setProperty(Fornecedor.UF, fornecedor.getUf());
 		
@@ -48,8 +49,9 @@ public class FornecedorDAO {
 	public void update(Fornecedor fornecedor) {
 		Key key = KeyFactory.createKey(FORNECEDOR_KIND, fornecedor.getId());
 		Entity fornecedorEntity = new Entity(key);
-		
-		fornecedorEntity.setProperty(Fornecedor.NOME, fornecedor.getNome());
+
+		fornecedorEntity.setProperty(Fornecedor.NOME_FANTASIA, fornecedor.getNomeFantasia());
+		fornecedorEntity.setProperty(Fornecedor.RAZAO_SOCIAL, fornecedor.getRazaoSocial());
 		fornecedorEntity.setProperty(Fornecedor.CNPJ, fornecedor.getCnpj());
 		fornecedorEntity.setProperty(Fornecedor.UF, fornecedor.getUf());
 
@@ -63,7 +65,8 @@ public class FornecedorDAO {
 	
 	private Fornecedor entityToFornecedor(Entity fornecedorEntity) {
 		return new Fornecedor(fornecedorEntity.getKey().getId(),
-							 (String)fornecedorEntity.getProperty(Fornecedor.NOME),
+							 (String)fornecedorEntity.getProperty(Fornecedor.NOME_FANTASIA),
+							 (String)fornecedorEntity.getProperty(Fornecedor.RAZAO_SOCIAL),
 							 (String)fornecedorEntity.getProperty(Fornecedor.CNPJ),
 							 (String)fornecedorEntity.getProperty(Fornecedor.UF));
 	}
@@ -80,7 +83,7 @@ public class FornecedorDAO {
 	
 	public List<Fornecedor> getFornecedores(){
 		
-		Query query = new Query(FORNECEDOR_KIND).addSort(Fornecedor.NOME, SortDirection.ASCENDING);
+		Query query = new Query(FORNECEDOR_KIND).addSort(Fornecedor.NOME_FANTASIA, SortDirection.ASCENDING);
 		
 		PreparedQuery preparedQuery = datastore.prepare(query);
 		

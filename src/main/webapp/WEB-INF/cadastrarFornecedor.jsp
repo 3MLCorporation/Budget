@@ -11,10 +11,15 @@
 	   	<div class="card-body">
 		   	<form action="cadastrarFornecedor" method="POST">
 		  		<div class="form-group">
-		       	   <label for="text">Nome:</label> <input type="text"
-		        	class="form-control" placeholder="Fornecer o nome do fornecedor"
-		       	   name="nome" required="required">
-		      </div>
+		       	   <label for="text">Nome de fantasia:</label> <input type="text"
+		        	class="form-control" placeholder="Fornecer o nome de fantasia"
+		       	   name="nomeFantasia" required="required">
+		      	</div>
+		      	<div class="form-group">
+		       	   <label for="text">Razão social:</label> <input type="text"
+		        	class="form-control" placeholder="Fornecer a razão social"
+		       	   name="razaoSocial" required="required">
+		      	</div>
 		      <div class="form-group">
 		           <label for="text">CNPJ:</label> <input type="number"
 		           class="form-control" placeholder="Fornecer o cnpj do fornecedor"
