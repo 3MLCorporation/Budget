@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import br.com.cpsoftware.budget.dao.CategoriaDAO;
+import br.com.cpsoftware.budget.dao.FornecedorDAO;
 import br.com.cpsoftware.budget.dao.ItemDAO;
 import br.com.cpsoftware.budget.dao.NotaFiscalDAO;
 import br.com.cpsoftware.budget.dao.OrcamentoDAO;
@@ -28,6 +29,7 @@ public class Excluir {
 	private static CategoriaDAO categoriaDAO = new CategoriaDAO();
 	private static RubricaDAO rubricaDAO = new RubricaDAO();
 	private static ItemDAO itemDAO = new ItemDAO();
+	private static FornecedorDAO fornecedorDAO = new FornecedorDAO();
 	private static NotaFiscalDAO notaFiscalDAO = new NotaFiscalDAO();
 	private static PagamentoDAO pagamentoDAO = new PagamentoDAO();
 	private static OrcamentoUsuarioDAO orcamentoUsuarioDAO = new OrcamentoUsuarioDAO();
@@ -202,6 +204,14 @@ public class Excluir {
 		pagamentoDAO.delete(pagamentoId);
 		
 		return true;
+	}
+
+	public static void excluirFornecedor(HttpServletRequest req, HttpServletResponse resp) {
+
+		Long fornecedorId = Long.parseLong(req.getParameter("fornecedor_id"));
+		
+		fornecedorDAO.delete(fornecedorId);
+		
 	}
 
 }
