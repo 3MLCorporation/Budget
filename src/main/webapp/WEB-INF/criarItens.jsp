@@ -138,4 +138,20 @@
          		});
           }
       });
+
+	$(document).ready(function(){
+	    $("form").delegate('#quantidadeItem', 'focusout', function(){
+	        if($(this).val() < 0){
+	            $(this).val('0');
+	        }
+	    });
+	});
+
+	$(document).ready(function(){
+	    $("form").delegate('#valorUniformeItem', 'focusout', function(){
+	        if($(this).val() < 0){
+	            $(this).val('0');
+	        }
+	    });
+	});	
 </script>

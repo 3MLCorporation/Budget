@@ -44,7 +44,7 @@
 		    </div>
 		    <div class="form-group">
 		       <label for="text">Valor:</label> <input type="number" pattern="[0-9.]"
-		       class="form-control" placeholder="Fornecer o valor estimado da rubrica"
+		       class="form-control" placeholder="Fornecer o valor estimado da rubrica" id="valor"
 		       name="valor">
 		    </div>
 		         <%-- <div class="form-group">
@@ -68,3 +68,13 @@
 	  	</div>
   	</div>
 </div>
+
+<script>
+	$(document).ready(function(){
+	    $("form").delegate('#valor', 'focusout', function(){
+	        if($(this).val() < 0){
+	            $(this).val('0');
+	        }
+	    });
+	});
+</script>

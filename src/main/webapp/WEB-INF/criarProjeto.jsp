@@ -33,7 +33,7 @@
 			   </div>
 			   <div class="form-group">
 			       <label for="text">Valor:</label> <input type="number" pattern="[0-9.]"
-			       class="form-control" placeholder="Fornecer o valor estimado do projeto"
+			       class="form-control" placeholder="Fornecer o valor estimado do projeto" id="valor"
 			       name="valor">
 			    </div>
 			    <button type="submit" class="btn btn-dark botaoCadastro">Cadastrar</button>
@@ -41,3 +41,13 @@
 	  	</div>
   	</div>
 </div>
+
+<script>
+	$(document).ready(function(){
+	    $("form").delegate('#valor', 'focusout', function(){
+	        if($(this).val() < 0){
+	            $(this).val('0');
+	        }
+	    });
+	});
+</script>

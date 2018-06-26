@@ -39,13 +39,3 @@
 	  	</div>
   	</div>
 </div>
-
-<script>
-	$(document).ready(function(){
-	    $("form").delegate('#valor', 'focusout', function(){
-	        if($(this).val() < 0){
-	            $(this).val('0');
-	        }
-	    });
-	});
-</script>
