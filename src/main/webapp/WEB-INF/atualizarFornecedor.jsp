@@ -1,0 +1,51 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+	
+<div>
+   	<div class="card mb-3">
+   		<div class="card-header">
+        	<i class="fa fa-area-chart"></i> Atualizar fornecedor
+        </div>
+
+	   	<div class="card-body">
+		   	<form action="atualizarFornecedor" method="POST">
+		  		<div class="form-group">
+		       	   <label for="text">Nome de fantasia:</label> <input type="text"
+		        	class="form-control" placeholder="Fornecer o novo nome de fantasia"
+		       	   name="nomeFantasia">
+		      	</div>
+		      	<div class="form-group">
+		       	   <label for="text">Razão social:</label> <input type="text"
+		        	class="form-control" placeholder="Fornecer a nova razão social"
+		       	   name="razaoSocial">
+		      	</div>
+		      <div class="form-group">
+		           <label for="text">CNPJ:</label> <input type="number"
+		           class="form-control" placeholder="Fornecer o novo cnpj do fornecedor"
+		           name="cnpj">
+		       </div>
+		      <div class="form-group">
+		           <label for="text">UF:</label> 
+			       <select class="form-control" name="uf">
+			         <c:forEach items="${ufs}" var="uf">
+			            <option value="${uf}">${uf}</option>
+			          </c:forEach>
+			       </select>		           
+		       </div>		       
+		      <button type="submit" class="btn btn-dark botaoCadastro">Atualizar</button>
+		  	</form>
+	  	</div>
+  	</div>
+</div>
+
+<script>
+	$(document).ready(function(){
+	    $("form").delegate('#valor', 'focusout', function(){
+	        if($(this).val() < 0){
+	            $(this).val('0');
+	        }
+	    });
+	});
+</script>
