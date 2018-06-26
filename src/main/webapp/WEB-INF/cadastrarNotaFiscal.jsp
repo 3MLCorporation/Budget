@@ -3,11 +3,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.js"></script>
   
 <div>
     <div class="container-fluid">
@@ -51,18 +46,6 @@
             <label for="text">Fornecedor</label> <input type="text"
             class="form-control" placeholder="Fornecer o fornecedor"
             name="fornecedor">
-
-            <div class="row-fluid">
-              <select data-live-search="true" data-live-search-style="startsWith" class="selectpicker">
-                <option>Tom Foolery</option>
-                <option>Bill Gordon</option>
-                <option>Elizabeth Warren</option>
-                <option>Mario Flores</option>
-                <option>Don Young</option>
-                <option disabled="disabled">Marvin Martinez</option>
-              </select>
-            </div>      
-
           </div>
 
           <div class="form-group">
