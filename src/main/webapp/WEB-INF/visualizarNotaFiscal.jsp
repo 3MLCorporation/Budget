@@ -74,7 +74,7 @@
 	        </div>
 
 	   	    <div class="card-header">
-	        	<i class="fa fa-area-chart"></i> Pagamentos cadastradas
+	        	<i class="fa fa-area-chart"></i> Pagamentos cadastrados
 	        </div>
 		   	<div class="card-body">
 			   	<div class="table-responsive">

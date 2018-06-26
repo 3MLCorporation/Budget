@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.cpsoftware.budget.dao.ItemDAO;
 import br.com.cpsoftware.budget.dao.NotaFiscalDAO;
 import br.com.cpsoftware.budget.dao.PagamentoDAO;
 import br.com.cpsoftware.budget.model.NotaFiscal;
@@ -24,7 +25,7 @@ public class VisualizarNotaFiscal extends HttpServlet {
 		
 		if(notaId == null) {
 			Long itemId = Long.parseLong(req.getParameter("itemId"));
-			nota = new NotaFiscalDAO().getNotaFiscal(itemId);
+			//nota = new NotaFiscalDAO().read(new ItemDAO().read(itemId).rea);
 		}else {	//Depois que cadastra
 			nota = new NotaFiscalDAO().read(notaId);
 			req.getSession().setAttribute("notaId", null);

@@ -144,15 +144,17 @@ public class Excluir {
 		Long itemId = Long.parseLong(req.getParameter("item_id"));
 		
 		//Se o Item tivesse valor parcial, ficaria assim:
-		//Item item = itemDAO.read(itemId);
-		//Atualizar.atualizarPrecoRubrica(Atualizar.EXCLUIR, itemId, item.getValorParcial());
+		Item item = itemDAO.read(itemId);
+		AtualizarPrecos.atualizarPrecoRubrica(AtualizarPrecos.EXCLUIR, itemId, item.getValorParcial());
 		
 		//Mas, como ele não tem, tenho que chamar a nota fiscal e passar o valor parcial dela, assim:
-		NotaFiscal nota = notaFiscalDAO.getNotaFiscal(itemId);
+		
+		
+		/*NotaFiscal nota = notaFiscalDAO.getNotasFiscais(itemId);
 		if(nota != null) {
 			AtualizarPrecos.atualizarPrecoRubrica(AtualizarPrecos.EXCLUIR, itemId, nota.getValorParcial());
 			excluirNotaFiscal(itemId);
-		}
+		}*/
 		
 		itemDAO.delete(itemId);
 		
@@ -162,9 +164,14 @@ public class Excluir {
 
 	private static void excluirNotaFiscal(Long itemId) {
 		
-		NotaFiscal nota = notaFiscalDAO.getNotaFiscal(itemId);
+		/*NotaFiscal nota = notaFiscalDAO.getNotasFiscais(itemId);
 		if(nota != null) {
 			notaFiscalDAO.delete(nota.getId());
+			excluirPagamento(nota.getId());
+		}*/
+		
+		for(NotaFiscal nota : notaFiscalDAO.getNotasFiscais(itemId)) {
+			itemDAO.delete(nota.getId());
 			excluirPagamento(nota.getId());
 		}
 	}

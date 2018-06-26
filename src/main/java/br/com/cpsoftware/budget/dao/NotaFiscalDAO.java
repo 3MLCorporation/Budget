@@ -1,12 +1,15 @@
 package br.com.cpsoftware.budget.dao;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.google.appengine.api.datastore.Blob;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.EntityNotFoundException;
+import com.google.appengine.api.datastore.FetchOptions;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.PreparedQuery;
@@ -82,7 +85,7 @@ public class NotaFiscalDAO {
 							 ((Long) notaFiscalEntity.getProperty(NotaFiscal.STATUS)).intValue());
 	}
 	
-/*	private List<NotaFiscal> entitiesToNotaFiscal(List<Entity> entities) {
+	private List<NotaFiscal> entitiesToNotaFiscal(List<Entity> entities) {
 		List<NotaFiscal> resultNotasFiscais = new ArrayList<>();
 		
 		for (Entity entidade : entities) {
@@ -90,9 +93,9 @@ public class NotaFiscalDAO {
 		}
 		
 		return resultNotasFiscais;
-	}*/
+	}
 	
-	public NotaFiscal getNotaFiscal(Long itemId){
+	public List<NotaFiscal> getNotasFiscais(Long itemId){
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 		Query query = new Query(NOTA_FISCAL_KIND).addSort(NotaFiscal.FORNECEDOR, SortDirection.ASCENDING);
@@ -102,10 +105,10 @@ public class NotaFiscalDAO {
 		
 		PreparedQuery preparedQuery = datastore.prepare(query);
 		
-		Entity notaFiscalEntity = preparedQuery.asSingleEntity();
+		List<Entity> notaFiscalEntities = preparedQuery.asList(FetchOptions.Builder.withDefaults());
 		
-		if(notaFiscalEntity != null) {
-			return entityToNotaFiscal(notaFiscalEntity);
+		if(!notaFiscalEntities.isEmpty()) {
+			return entitiesToNotaFiscal(notaFiscalEntities);
 		}else {
 			return null;
 		}

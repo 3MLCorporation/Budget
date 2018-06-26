@@ -1,6 +1,7 @@
 package br.com.cpsoftware.budget.control;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -22,12 +23,9 @@ public class VisualizarItem extends HttpServlet {
 		
 		Item item = new ItemDAO().read(itemId);
 		
-		NotaFiscal nota = new NotaFiscalDAO().getNotaFiscal(itemId); 
+		List<NotaFiscal> notas = new NotaFiscalDAO().getNotasFiscais(itemId); 
 		
-		if(nota != null) {
-			req.setAttribute("notaId", nota.getId());
-		}
-		
+		req.setAttribute("notas", notas);
 		req.setAttribute("item", item);
 		req.setAttribute("page", "visualizarItem");
 	    req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
