@@ -100,13 +100,13 @@
 			   		<tbody>
 			   			<c:forEach items="${notas}" var="nota" varStatus="id">
 							<tr>
-								<td> ${nota.fornecedor()}</td>
-								<td> ${nota.getValorTotalFormatado()}</td>
+								<td> ${nota.fornecedor}</td>
+								<td> ${nota.getValorFormatado()}</td>
 								<td> ${nota.getValorParcialFormatado()}</td>
 								<td> ${nota.getDataFormatada()}</td>
 								<td style="width: 14%;">
 									<div class="btn-group"> 
-			                            <form action="visualizarNotaFiscal" target="_blank" method="GET">
+			                            <form action="visualizarNotaFiscal" method="GET">
 			                                <input type="hidden" value="${nota.id }" name="notaId">
 			                                <button type="submit" class="btn btn-link"><img src="../img/visualizar.png"></button>
 			                            </form>
@@ -126,14 +126,12 @@
 						</c:forEach>
 			   	 	</tbody>
 			  	</table>
-			  	<c:if test="${nota.status == 1}"> 
-				  	<form action="cadastrarPagamento" method="GET">
-		           		<input type="hidden" name="nota_fiscal_id" value="${nota.id }">
-		           		<div class="botaoCadastrarPagamento">
-							&emsp;<button type="submit" class="btn btn-dark">Cadastrar pagamento</button>
-						</div>
-					</form>
-				</c:if>
+			  	<form action="cadastrarNotaFiscal" method="GET">
+	           		<input type="hidden" name="itemId" value="${item.id }">
+	           		<div class="botaoCadastrarPagamento">
+						&emsp;<button type="submit" class="btn btn-dark">Cadastrar nota</button>
+					</div>
+				</form>
 		  	</div>
 	  	</div>        
   	</div>

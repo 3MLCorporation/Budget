@@ -51,7 +51,7 @@
 			        		<th>Valor Parcial</th>
 			        		<th>Detalhes</th>
 			        		<th>Editar tem</th>
-			        		<th>Nota fiscal</th>
+			        		<!-- <th>Nota fiscal</th> -->
       					</tr>
 			   		</thead>
 			   		<tbody id="myTable">
@@ -81,7 +81,7 @@
 								        </form>
 							     	</div>
 								</td>
-								<td>
+								<%-- <td>
 									<div class="btn-group">
 										<c:if test="${itemMap.nota == null}">
 											<form action="cadastrarNotaFiscal" method="GET">
@@ -96,7 +96,7 @@
 								           	</form>
 							           	</c:if>
 						           	</div> 
-								</td>
+								</td> --%>
 							</tr>
 						</c:forEach>
 			   	 	</tbody>

@@ -106,7 +106,7 @@ public class AtualizarNotaFiscal extends HttpServlet {
 		this.notaFiscalDao.update(notaFiscal);
 		
 		//TODO Por enquanto, fica assim
-		resp.sendRedirect("/visualizarNotaFiscal?itemId=" + notaFiscal.getItemId());
+		resp.sendRedirect("/visualizarNotaFiscal?notaId=" + notaFiscal.getId());
 		
 	}
 }

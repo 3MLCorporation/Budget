@@ -171,7 +171,7 @@ public class Excluir {
 		}*/
 		
 		for(NotaFiscal nota : notaFiscalDAO.getNotasFiscais(itemId)) {
-			itemDAO.delete(nota.getId());
+			notaFiscalDAO.delete(nota.getId());
 			excluirPagamento(nota.getId());
 		}
 	}

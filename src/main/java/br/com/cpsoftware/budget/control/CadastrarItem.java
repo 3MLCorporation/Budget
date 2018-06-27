@@ -100,7 +100,7 @@ public class CadastrarItem extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			Item item = new Item(rubricaId, nome, descricao, valorUniforme, quantidade, unidadeMedida, arquivoDetalhes, arquivoAuxiliar);
+			Item item = new Item(rubricaId, nome, descricao, valorUniforme, quantidade, 0d, unidadeMedida, arquivoDetalhes, arquivoAuxiliar);
 			this.dao.create(item);
 			
 			resp.sendRedirect("/listarItens");

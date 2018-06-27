@@ -99,15 +99,15 @@ public class AtualizarPrecos {
 		switch(tipoDeAtualizacao) {
 			case CADASTRAR:
 			case EDITAR:
-				//item.setValorParcial(item.getValorParcial() + valor);
+				item.setValorParcial(item.getValorParcial() + valor);
 				atualizarPrecoRubrica(CADASTRAR, item.getId(), valor);
 				break;
 			case EXCLUIR:
-				//item.setValorParcial(item.getValorParcial() - valor);
+				item.setValorParcial(item.getValorParcial() - valor);
 				atualizarPrecoRubrica(EXCLUIR, item.getId(), valor);
 				break;
 		}	
-		//itemDAO.update(item);
+		itemDAO.update(item);
 	}
 	
 	public static void atualizarPrecoNotaFiscal(int tipoDeAtualizacao, Long pagamentoId, Double valor) {

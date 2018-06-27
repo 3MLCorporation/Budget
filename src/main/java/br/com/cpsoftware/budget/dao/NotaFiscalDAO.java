@@ -107,10 +107,6 @@ public class NotaFiscalDAO {
 		
 		List<Entity> notaFiscalEntities = preparedQuery.asList(FetchOptions.Builder.withDefaults());
 		
-		if(!notaFiscalEntities.isEmpty()) {
-			return entitiesToNotaFiscal(notaFiscalEntities);
-		}else {
-			return null;
-		}
+		return entitiesToNotaFiscal(notaFiscalEntities);
 	}
 }
