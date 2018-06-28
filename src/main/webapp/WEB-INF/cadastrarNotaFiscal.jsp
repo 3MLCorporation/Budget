@@ -2,8 +2,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
   pageEncoding="UTF-8"%>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.min.css">
 
-  
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
+<!-- (Optional) Latest compiled and minified JavaScript translation files -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/i18n/defaults-*.min.js"></script>
+
 <div>
     <div class="container-fluid">
       <!-- Breadcrumbs-->
@@ -43,10 +50,15 @@
         <form action="cadastrarNotaFiscal" method="POST" enctype="multipart/form-data">
           <input type="hidden" name="item_id" value="${item_id }">
           <div class="form-group">
-            <label for="text">Fornecedor</label> <input type="text"
-            class="form-control" placeholder="Fornecer o fornecedor"
-            name="fornecedor">
-          </div>
+            <label for="text">Fornecedor</label>
+            <div class="row-fluid">
+              <select required data-live-search="true" data-live-search-style="startsWith" class="selectpicker form-control" name="fornecedor_id">
+                <c:forEach items="${fornecedores}" var="fornecedor">
+                  <option value="${fornecedor.id}">${fornecedor.nome}</option>
+                </c:forEach>
+              </select>
+            </div>
+          </div>         
 
           <div class="form-group">
             <label for="text">Valor</label> <input type="number" pattern="[0-9.]"
