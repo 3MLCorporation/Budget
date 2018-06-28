@@ -42,7 +42,7 @@
 	        </div>
 	        <div class="card-body">
 				<div>
-					Fornecedor: <strong>${nota.fornecedor}</strong>&emsp;
+					Fornecedor: <strong>${fornecedor}</strong>&emsp;
 					Valor: <strong>${nota.getValorFormatado()}</strong>&emsp;
 					Data: <strong>${nota.getDataFormatada()}</strong>&emsp;
 					Valor parcial: <strong>${nota.getValorParcialFormatado()}</strong>&emsp;

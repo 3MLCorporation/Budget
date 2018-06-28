@@ -50,7 +50,7 @@ public class AtualizarNotaFiscal extends HttpServlet {
 		boolean isMultipart = ServletFileUpload.isMultipartContent(req);
 		Long itemId = null;
 		Long notaFiscalId = null;
-		//String fornecedor = null;
+		Long fornecedorId = null;
 		Double valor = null;
 		Date data = null;
 		Blob arquivo = null;
@@ -71,8 +71,8 @@ public class AtualizarNotaFiscal extends HttpServlet {
 							itemId = new Long(Streams.asString(stream));
 						if (item.getFieldName().equals(NotaFiscal.ID))
 							notaFiscalId = new Long(Streams.asString(stream));
-						/*if (item.getFieldName().equals(NotaFiscal.FORNECEDOR))
-							fornecedor = new String(Streams.asString(stream));*/
+						if (item.getFieldName().equals(NotaFiscal.FORNECEDOR_ID))
+							fornecedorId = new Long(Streams.asString(stream));
 						if (item.getFieldName().equals(NotaFiscal.VALOR))
 							valor = new Double(Streams.asString(stream));
 						if (item.getFieldName().equals(NotaFiscal.DATA))
@@ -83,7 +83,7 @@ public class AtualizarNotaFiscal extends HttpServlet {
 						}
 					}
 				}
-			}catch (FileUploadException e) {
+			} catch (FileUploadException e) {
 				e.printStackTrace();
 			} catch (ParseException e) {
 				e.printStackTrace();
@@ -95,7 +95,7 @@ public class AtualizarNotaFiscal extends HttpServlet {
 		//TODO Mover nota para outro item ??
 		//notaFiscal.setItemId(itemId);
 		
-		//notaFiscal.setFornecedor(fornecedor);
+		notaFiscal.setFornecedor(fornecedorId);
 		notaFiscal.setValor(valor);
 		notaFiscal.setData(data);
 		

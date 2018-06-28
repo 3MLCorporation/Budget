@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.com.cpsoftware.budget.dao.FornecedorDAO;
 import br.com.cpsoftware.budget.dao.NotaFiscalDAO;
 import br.com.cpsoftware.budget.dao.PagamentoDAO;
 import br.com.cpsoftware.budget.model.NotaFiscal;
@@ -33,6 +34,7 @@ public class VisualizarNotaFiscal extends HttpServlet {
 		List<Pagamento> pagamentos = new PagamentoDAO().getPagamentos(nota.getId());
 		
 		req.setAttribute("nota", nota);
+		req.setAttribute("fornecedor", new FornecedorDAO().read(nota.getFornecedorId()).getNomeFantasia());
 		req.setAttribute("pagamentos", pagamentos);
 		req.setAttribute("page", "visualizarNotaFiscal");
 	    req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);

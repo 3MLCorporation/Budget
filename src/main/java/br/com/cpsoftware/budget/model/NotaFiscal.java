@@ -9,8 +9,8 @@ import br.com.cpsoftware.budget.util.Formatacao;
 public class NotaFiscal {
 	private Long id;
 	private Long itemId;
+	private Long fornecedorId;
 	private Blob arquivo;
-	private String fornecedor;
 	private Double valor;
 	private Double valorParcial;
 	private Date data;
@@ -19,8 +19,8 @@ public class NotaFiscal {
 	//Definição das keys do banco
 	public static final String ID = "id";
 	public static final String ITEM_ID = "item_id";
+	public static final String FORNECEDOR_ID = "fornecedor_id";
 	public static final String ARQUIVO = "arquivo";
-	public static final String FORNECEDOR = "fornecedor";
 	public static final String VALOR = "valor";
 	public static final String VALOR_PARCIAL = "valor_parcial";
 	public static final String DATA = "data";
@@ -30,21 +30,21 @@ public class NotaFiscal {
 	public static final int STATUS_PARCIAL = 1;
 	public static final int STATUS_QUITADO = 2;
 	
-	public NotaFiscal(Long itemId, Long id, Blob arquivo, String fornecedor, Double valor, Double valorParcial, Date data, int status) {
+	public NotaFiscal(Long itemId, Long id, Long fornecedorId, Blob arquivo, Double valor, Double valorParcial, Date data, int status) {
 		this.itemId = itemId;
 		this.id = id;
+		this.fornecedorId = fornecedorId;
 		this.arquivo = arquivo;
-		this.fornecedor = fornecedor;
 		this.valor = valor;
 		this.valorParcial = valorParcial;
 		this.data = data;
 		this.status = status;
 	}
 
-	public NotaFiscal(Long itemId, Blob arquivo, String fornecedor, Double valor, Double valorParcial, Date data, int status) {
+	public NotaFiscal(Long itemId, Long fornecedorId, Blob arquivo, Double valor, Double valorParcial, Date data, int status) {
 		this.itemId = itemId;
+		this.fornecedorId = fornecedorId;
 		this.arquivo = arquivo;
-		this.fornecedor = fornecedor;
 		this.valor = valor;
 		this.valorParcial = valorParcial;
 		this.data = data;
@@ -67,20 +67,20 @@ public class NotaFiscal {
 		this.itemId = itemId;
 	}
 
+	public Long getFornecedorId() {
+		return fornecedorId;
+	}
+
+	public void setFornecedor(Long fornecedorId) {
+		this.fornecedorId = fornecedorId;
+	}
+
 	public Blob getArquivo() {
 		return arquivo;
 	}
 
 	public void setArquivo(Blob arquivo) {
 		this.arquivo = arquivo;
-	}
-
-	public String getFornecedor() {
-		return fornecedor;
-	}
-
-	public void setFornecedor(String fornecedor) {
-		this.fornecedor = fornecedor;
 	}
 
 	public Double getValor() {

@@ -39,7 +39,7 @@
     
     <datastore-index kind="NotaFiscal" ancestor="false" source="manual">
         <property name="item_id" direction="asc"/>
-        <property name="fornecedor" direction="asc"/>
+        <property name="data" direction="asc"/>
     </datastore-index>
     
     <datastore-index kind="Pagamento" ancestor="false" source="manual">

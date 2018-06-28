@@ -98,9 +98,9 @@
       					</tr>
 			   		</thead>
 			   		<tbody>
-			   			<c:forEach items="${notas}" var="nota" varStatus="id">
+			   			<c:forEach items="${notas}" var="nota" varStatus="count">
 							<tr>
-								<td> ${nota.fornecedor}</td>
+								<td> ${fornecedores[count.index]}</td>
 								<td> ${nota.getValorFormatado()}</td>
 								<td> ${nota.getValorParcialFormatado()}</td>
 								<td> ${nota.getDataFormatada()}</td>

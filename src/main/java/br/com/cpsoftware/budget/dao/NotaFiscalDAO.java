@@ -33,8 +33,8 @@ public class NotaFiscalDAO {
 	public Long create(NotaFiscal nota) {
 		Entity notaFiscalEntity = new Entity(NOTA_FISCAL_KIND);
 		notaFiscalEntity.setProperty(NotaFiscal.ITEM_ID, nota.getItemId());
-		notaFiscalEntity.setProperty(NotaFiscal.ARQUIVO, nota.getArquivo());//???
-		notaFiscalEntity.setProperty(NotaFiscal.FORNECEDOR, nota.getFornecedor());
+		notaFiscalEntity.setProperty(NotaFiscal.FORNECEDOR_ID, nota.getFornecedorId());
+		notaFiscalEntity.setProperty(NotaFiscal.ARQUIVO, nota.getArquivo());
 		notaFiscalEntity.setProperty(NotaFiscal.VALOR, nota.getValor());
 		notaFiscalEntity.setProperty(NotaFiscal.VALOR_PARCIAL, nota.getValorParcial());
 		notaFiscalEntity.setProperty(NotaFiscal.DATA, nota.getData());
@@ -59,8 +59,8 @@ public class NotaFiscalDAO {
 		Entity notaFiscalEntity = new Entity(key);
 		
 		notaFiscalEntity.setProperty(NotaFiscal.ITEM_ID, nota.getItemId());
-		notaFiscalEntity.setProperty(NotaFiscal.ARQUIVO, nota.getArquivo());//???
-		notaFiscalEntity.setProperty(NotaFiscal.FORNECEDOR, nota.getFornecedor());
+		notaFiscalEntity.setProperty(NotaFiscal.FORNECEDOR_ID, nota.getFornecedorId());
+		notaFiscalEntity.setProperty(NotaFiscal.ARQUIVO, nota.getArquivo());
 		notaFiscalEntity.setProperty(NotaFiscal.VALOR, nota.getValor());
 		notaFiscalEntity.setProperty(NotaFiscal.VALOR_PARCIAL, nota.getValorParcial());
 		notaFiscalEntity.setProperty(NotaFiscal.DATA, nota.getData());
@@ -77,8 +77,8 @@ public class NotaFiscalDAO {
 	private NotaFiscal entityToNotaFiscal(Entity notaFiscalEntity) {
 		return new NotaFiscal((Long)notaFiscalEntity.getProperty(NotaFiscal.ITEM_ID),
 							 notaFiscalEntity.getKey().getId(),
+							 (Long)notaFiscalEntity.getProperty(NotaFiscal.FORNECEDOR_ID),
 							 (Blob)notaFiscalEntity.getProperty(NotaFiscal.ARQUIVO),
-							 (String)notaFiscalEntity.getProperty(NotaFiscal.FORNECEDOR),
 							 (Double)notaFiscalEntity.getProperty(NotaFiscal.VALOR),
 							 (Double)notaFiscalEntity.getProperty(NotaFiscal.VALOR_PARCIAL),
 							 (Date)notaFiscalEntity.getProperty(NotaFiscal.DATA),
@@ -98,7 +98,7 @@ public class NotaFiscalDAO {
 	public List<NotaFiscal> getNotasFiscais(Long itemId){
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Query query = new Query(NOTA_FISCAL_KIND).addSort(NotaFiscal.FORNECEDOR, SortDirection.ASCENDING);
+		Query query = new Query(NOTA_FISCAL_KIND).addSort(NotaFiscal.DATA, SortDirection.ASCENDING);
 		
 		Filter itemFilter = new FilterPredicate(NotaFiscal.ITEM_ID, FilterOperator.EQUAL, itemId);
 		query.setFilter(itemFilter);
