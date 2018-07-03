@@ -52,14 +52,16 @@
           <div class="form-group">
             <label for="text">Fornecedor</label>
             <div class="row-fluid">
-              <select required data-live-search="true" data-live-search-style="startsWith" class="selectpicker form-control" name="fornecedor_id">
+              <select required data-live-search="true" data-live-search-style="startsWith" class="selectpicker form-control" title="Selecione..." name="fornecedor_id">
                 <c:forEach items="${fornecedores}" var="fornecedor">
                   <option value="${fornecedor.id}">${fornecedor.nomeFantasia}</option>
                 </c:forEach>
               </select>
             </div>
           </div>         
-
+			
+		  <a href="/cadastrarFornecedor" class="btn btn-light">Cadastrar fornecedor</a>
+		  
           <div class="form-group">
             <label for="text">Valor</label> <input type="number" pattern="[0-9.]"
             class="form-control" placeholder="Fornecer o valor da nota" id="valor"

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.cpsoftware.budget.dao.FornecedorDAO;
 import br.com.cpsoftware.budget.dao.UnidadeFederativaDAO;
 import br.com.cpsoftware.budget.model.Fornecedor;
+import br.com.cpsoftware.budget.model.Usuario;
 
 @SuppressWarnings("serial")
 public class CadastrarFornecedor extends HttpServlet {
@@ -35,7 +36,20 @@ public class CadastrarFornecedor extends HttpServlet {
 		
 		new FornecedorDAO().create(fornecedor);
 		
-		resp.sendRedirect("/principal");
+		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
+		
+		switch(usuario.getPerfil()) {
+		
+			case Usuario.PERFIL_ADMIN:
+				resp.sendRedirect("/principal");
+				break;
+			case Usuario.PERFIL_GERENTE:
+			case Usuario.PERFIL_PADRAO:
+				resp.sendRedirect("/listarItens");
+				break;
+			
+		}
+		
 		
 	}
 	
