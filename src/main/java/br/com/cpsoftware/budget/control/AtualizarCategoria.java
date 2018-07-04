@@ -39,7 +39,7 @@ public class AtualizarCategoria extends HttpServlet {
 		
 		Categoria categoria = (Categoria) this.categoriaDao.read(categoriaId);
 		categoria.setNome(nome);
-		categoria.setValorTotal(valor);
+		categoria.setValorEstimado(valor);
 		
 		this.categoriaDao.update(categoria);
 		

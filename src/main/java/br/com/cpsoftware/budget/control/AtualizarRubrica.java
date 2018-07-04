@@ -55,15 +55,15 @@ public class AtualizarRubrica extends HttpServlet {
 		Rubrica rubrica = (Rubrica) this.rubricaDao.read(rubricaId);
 		rubrica.setCategoriaId(categoriaId);
 		rubrica.setNome(nome);
-		rubrica.setValorTotal(valor);
+		rubrica.setValorEstimado(valor);
 		
 		//Atualizo a categoria anterior, excluindo o valor parcial da rubrica
-		AtualizarPrecos.atualizarPrecoCategoria(AtualizarPrecos.EXCLUIR, rubricaId, rubrica.getValorParcial());
+		AtualizarPrecos.atualizarPrecoCategoria(AtualizarPrecos.EXCLUIR, rubricaId, rubrica.getValorRealizado());
 		
 		this.rubricaDao.update(rubrica);
 		
 		//Atualizo a nova categoria, adicionando o valor parcial da rubrica
-		AtualizarPrecos.atualizarPrecoCategoria(AtualizarPrecos.EDITAR, rubricaId, rubrica.getValorParcial());
+		AtualizarPrecos.atualizarPrecoCategoria(AtualizarPrecos.EDITAR, rubricaId, rubrica.getValorRealizado());
 		
 		resp.sendRedirect("/listarRubricas");
 		

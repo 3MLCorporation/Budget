@@ -34,7 +34,7 @@ public class AtualizarOrcamento extends HttpServlet {
 		
 		Orcamento orcamento = (Orcamento) this.orcamentoDao.read(orcamentoId);
 		orcamento.setNome(nome);
-		orcamento.setValorTotal(valor);
+		orcamento.setValorEstimado(valor);
 		
 		this.orcamentoDao.update(orcamento);
 		

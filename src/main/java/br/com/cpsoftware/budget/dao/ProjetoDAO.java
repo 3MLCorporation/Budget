@@ -36,8 +36,8 @@ public class ProjetoDAO implements EntidadeDao{
 		Entity projetoEntity = new Entity(PROJETO_KIND);
 		projetoEntity.setProperty(Projeto.GERENTE_ID, (( Projeto) projeto).getGerenteId());
 		projetoEntity.setProperty(Projeto.NOME, projeto.getNome());
-		projetoEntity.setProperty(Projeto.VALOR_TOTAL, projeto.getValorTotal());
-		projetoEntity.setProperty(Projeto.VALOR_PARCIAL, projeto.getValorParcial());
+		projetoEntity.setProperty(Projeto.VALOR_ESTIMADO, projeto.getValorEstimado());
+		projetoEntity.setProperty(Projeto.VALOR_REALIZADO, projeto.getValorRealizado());
 		
 		Key projetoKey = datastore.put(projetoEntity);
 		
@@ -69,8 +69,8 @@ public class ProjetoDAO implements EntidadeDao{
 		
 		projetoEntity.setProperty(Projeto.GERENTE_ID, (( Projeto) projeto).getGerenteId());
 		projetoEntity.setProperty(Projeto.NOME, projeto.getNome());
-		projetoEntity.setProperty(Projeto.VALOR_TOTAL, projeto.getValorTotal());
-		projetoEntity.setProperty(Projeto.VALOR_PARCIAL, projeto.getValorParcial());
+		projetoEntity.setProperty(Projeto.VALOR_ESTIMADO, projeto.getValorEstimado());
+		projetoEntity.setProperty(Projeto.VALOR_REALIZADO, projeto.getValorRealizado());
 
 		datastore.put(projetoEntity);
 	}
@@ -90,8 +90,8 @@ public class ProjetoDAO implements EntidadeDao{
 		return new Projeto((Long) projetoEntity.getProperty(Projeto.GERENTE_ID),
 							projetoEntity.getKey().getId(),
 							(String)projetoEntity.getProperty(Projeto.NOME),
-							((Double)projetoEntity.getProperty(Projeto.VALOR_TOTAL)),
-							(Double)projetoEntity.getProperty(Projeto.VALOR_PARCIAL));
+							((Double)projetoEntity.getProperty(Projeto.VALOR_ESTIMADO)),
+							(Double)projetoEntity.getProperty(Projeto.VALOR_REALIZADO));
 	}
 	
 	

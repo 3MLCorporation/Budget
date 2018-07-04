@@ -69,7 +69,7 @@ public class Excluir {
 		
 		Long orcamentoId = Long.parseLong(req.getParameter("orcamento_id"));
 		Orcamento orcamento = (Orcamento) orcamentoDAO.read(orcamentoId);
-		AtualizarPrecos.atualizarPrecoProjeto(AtualizarPrecos.EXCLUIR, orcamentoId, orcamento.getValorParcial());
+		AtualizarPrecos.atualizarPrecoProjeto(AtualizarPrecos.EXCLUIR, orcamentoId, orcamento.getValorRealizado());
 		orcamentoDAO.delete(orcamentoId);
 		
 		excluirCategoria(orcamentoId);
@@ -98,7 +98,7 @@ public class Excluir {
 		Long categoriaId = Long.parseLong(req.getParameter("categoria_id"));
 		
 		Categoria categoria = (Categoria) categoriaDAO.read(categoriaId);
-		AtualizarPrecos.atualizarPrecoOrcamento(AtualizarPrecos.EXCLUIR, categoriaId, categoria.getValorParcial());
+		AtualizarPrecos.atualizarPrecoOrcamento(AtualizarPrecos.EXCLUIR, categoriaId, categoria.getValorRealizado());
 		
 		categoriaDAO.delete(categoriaId);
 		
@@ -121,7 +121,7 @@ public class Excluir {
 		Long rubricaId = Long.parseLong(req.getParameter("rubrica_id"));
 		
 		Rubrica rubrica = (Rubrica) rubricaDAO.read(rubricaId);
-		AtualizarPrecos.atualizarPrecoCategoria(AtualizarPrecos.EXCLUIR, rubricaId, rubrica.getValorParcial());
+		AtualizarPrecos.atualizarPrecoCategoria(AtualizarPrecos.EXCLUIR, rubricaId, rubrica.getValorRealizado());
 		
 		rubricaDAO.delete(rubricaId);
 		

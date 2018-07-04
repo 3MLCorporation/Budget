@@ -39,8 +39,8 @@ public class OrcamentoDAO implements EntidadeDao{
 		Entity orcamentoEntity = new Entity(ORCAMENTO_KIND);
 		orcamentoEntity.setProperty(Orcamento.PROJETO_ID, ((Orcamento) orcamento).getProjetoId());
 		orcamentoEntity.setProperty(Orcamento.NOME, orcamento.getNome());
-		orcamentoEntity.setProperty(Orcamento.VALOR_TOTAL, orcamento.getValorTotal());
-		orcamentoEntity.setProperty(Orcamento.VALOR_PARCIAL, orcamento.getValorParcial());
+		orcamentoEntity.setProperty(Orcamento.VALOR_ESTIMADO, orcamento.getValorEstimado());
+		orcamentoEntity.setProperty(Orcamento.VALOR_REALIZADO, orcamento.getValorRealizado());
 		orcamentoEntity.setProperty(Orcamento.STATUS, ((Orcamento) orcamento).getStatus());
 		
 		Key orcamentoKey = datastore.put(orcamentoEntity);
@@ -73,8 +73,8 @@ public class OrcamentoDAO implements EntidadeDao{
 		Entity orcamentoEntity = new Entity(key);
 		orcamentoEntity.setProperty(Orcamento.PROJETO_ID, ((Orcamento) orcamento).getProjetoId());
 		orcamentoEntity.setProperty(Orcamento.NOME, orcamento.getNome());
-		orcamentoEntity.setProperty(Orcamento.VALOR_TOTAL, orcamento.getValorTotal());
-		orcamentoEntity.setProperty(Orcamento.VALOR_PARCIAL, orcamento.getValorParcial());
+		orcamentoEntity.setProperty(Orcamento.VALOR_ESTIMADO, orcamento.getValorEstimado());
+		orcamentoEntity.setProperty(Orcamento.VALOR_REALIZADO, orcamento.getValorRealizado());
 		orcamentoEntity.setProperty(Orcamento.STATUS, ((Orcamento) orcamento).getStatus());
 
 		datastore.put(orcamentoEntity);
@@ -95,8 +95,9 @@ public class OrcamentoDAO implements EntidadeDao{
 		return new Orcamento((Long) orcamentoEntity.getProperty(Orcamento.PROJETO_ID),
 							orcamentoEntity.getKey().getId(),
 							(String)orcamentoEntity.getProperty(Orcamento.NOME),
-							((Double)orcamentoEntity.getProperty(Orcamento.VALOR_TOTAL)),
-							(Double)orcamentoEntity.getProperty(Orcamento.VALOR_PARCIAL),
+							((Double)orcamentoEntity.getProperty(Orcamento.VALOR_ESTIMADO)),
+							((Double)orcamentoEntity.getProperty(Orcamento.VALOR_ORCADO)),
+							(Double)orcamentoEntity.getProperty(Orcamento.VALOR_REALIZADO),
 							((Long) orcamentoEntity.getProperty(Orcamento.STATUS)).intValue());
 	}
 	

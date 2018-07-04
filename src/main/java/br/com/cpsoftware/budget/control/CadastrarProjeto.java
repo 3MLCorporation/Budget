@@ -34,14 +34,14 @@ public class CadastrarProjeto extends HttpServlet {
 		
 		System.out.println("Gerente_Id - " + usuario.getId());
 		System.out.println("Nome - " + projeto.getNome());
-		System.out.println("Valor - " + projeto.getValorTotal());
+		System.out.println("Valor - " + projeto.getValorEstimado());
 		
 		
 		Long projetoId = dao.create(projeto);
 		
 		Projeto aux = (Projeto) dao.read(projetoId);
 		System.err.println("Nome do projeto no banco - " + aux.getNome());
-		System.err.println("Valor do projeto no banco - " + aux.getValorTotal());
+		System.err.println("Valor do projeto no banco - " + aux.getValorEstimado());
 		
 		
 		resp.sendRedirect("/listarProjetos");

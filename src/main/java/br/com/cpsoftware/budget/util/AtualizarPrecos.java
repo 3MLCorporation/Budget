@@ -36,10 +36,10 @@ public class AtualizarPrecos {
 		switch(tipoDeAtualizacao) {
 			case CADASTRAR:
 			case EDITAR:
-				projeto.setValorParcial(projeto.getValorParcial() + valor);
+				projeto.setValorRealizado(projeto.getValorRealizado() + valor);
 				break;
 			case EXCLUIR:
-				projeto.setValorParcial(projeto.getValorParcial() - valor);
+				projeto.setValorRealizado(projeto.getValorRealizado() - valor);
 				break;
 		}	
 		projetoDAO.update(projeto);
@@ -50,11 +50,11 @@ public class AtualizarPrecos {
 		switch(tipoDeAtualizacao) {
 			case CADASTRAR:
 			case EDITAR:
-				orcamento.setValorParcial(orcamento.getValorParcial() + valor);
+				orcamento.setValorRealizado(orcamento.getValorRealizado() + valor);
 				atualizarPrecoProjeto(CADASTRAR, orcamento.getId(), valor);
 				break;
 			case EXCLUIR:
-				orcamento.setValorParcial(orcamento.getValorParcial() - valor);
+				orcamento.setValorRealizado(orcamento.getValorRealizado() - valor);
 				atualizarPrecoProjeto(EXCLUIR, orcamento.getId(), valor);
 				break;
 		}	
@@ -66,11 +66,11 @@ public class AtualizarPrecos {
 		switch(tipoDeAtualizacao) {
 			case CADASTRAR:
 			case EDITAR:
-				categoria.setValorParcial(categoria.getValorParcial() + valor);
+				categoria.setValorRealizado(categoria.getValorRealizado() + valor);
 				atualizarPrecoOrcamento(CADASTRAR, categoria.getId(), valor);
 				break;
 			case EXCLUIR:
-				categoria.setValorParcial(categoria.getValorParcial() - valor);
+				categoria.setValorRealizado(categoria.getValorRealizado() - valor);
 				atualizarPrecoOrcamento(EXCLUIR, categoria.getId(), valor);
 				break;
 		}	
@@ -82,11 +82,11 @@ public class AtualizarPrecos {
 		switch(tipoDeAtualizacao) {
 			case CADASTRAR:
 			case EDITAR:
-				rubrica.setValorParcial(rubrica.getValorParcial() + valor);
+				rubrica.setValorRealizado(rubrica.getValorRealizado() + valor);
 				atualizarPrecoCategoria(CADASTRAR, rubrica.getId(), valor);
 				break;
 			case EXCLUIR:
-				rubrica.setValorParcial(rubrica.getValorParcial() - valor);
+				rubrica.setValorRealizado(rubrica.getValorRealizado() - valor);
 				atualizarPrecoCategoria(EXCLUIR, rubrica.getId(), valor);
 				break;
 		}	

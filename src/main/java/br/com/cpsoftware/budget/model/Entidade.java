@@ -6,37 +6,40 @@ public class Entidade {
 	
 	private Long id;
 	private String nome;
-	private Double valorTotal;
-	private Double valorParcial;
-	
+	private Double valorEstimado;
+	private Double valorOrcado;
+	private Double valorRealizado;
+
 	//Definição das keys do banco
 	public static final String ID = "id";
 	public static final String NOME = "nome";
-	public static final String VALOR_TOTAL = "valor_total";
-	public static final String VALOR_PARCIAL = "valor_parcial";
+	public static final String VALOR_ESTIMADO = "valor_estimado";
+	public static final String VALOR_ORCADO = "valor_orcado";
+	public static final String VALOR_REALIZADO = "valor_realizado";
 	
-	public Entidade(String nome, Double valor_total, Double valorParcial) {
+	public Entidade(String nome, Double valorEstimado, Double valorOrcado, Double valorParcial) {
 		this.nome = nome;
-		this.valorTotal = valor_total;
-		this.valorParcial = valorParcial;
+		this.valorEstimado = valorEstimado;
+		this.valorRealizado = valorParcial;
 	}
 	
-	public Entidade(String nome, Double valor_total) {
+	public Entidade(String nome, Double valorEstimado) {
 		this.nome = nome;
-		this.valorTotal = valor_total;
+		this.valorEstimado = valorEstimado;
 	}
 	
-	public Entidade(Long id, String nome, Double valor_total) {
+	public Entidade(Long id, String nome, Double valorEstimado) {
 		this.id = id;
 		this.nome = nome;
-		this.valorTotal = valor_total;
+		this.valorEstimado = valorEstimado;
 	}
 	
-	public Entidade(Long id, String nome, Double valor_total, Double valor_parcial) {
+	public Entidade(Long id, String nome, Double valorEstimado, Double valorOrcado, Double valorRealizado) {
 		this.id = id;
 		this.nome = nome;
-		this.valorTotal = valor_total;
-		this.valorParcial = valor_parcial;
+		this.valorEstimado = valorEstimado;
+		this.valorOrcado = valorOrcado;
+		this.valorRealizado = valorRealizado;
 	}
 	/*public static class Builder {
 		private Long id;
@@ -86,27 +89,39 @@ public class Entidade {
 		this.nome = nome;
 	}
 
-	public Double getValorTotal() {
-		return valorTotal;
+	public Double getValorEstimado() {
+		return valorEstimado;
 	}
 
-	public void setValorTotal(Double valorTotal) {
-		this.valorTotal = valorTotal;
+	public void setValorEstimado(Double valorEstimado) {
+		this.valorEstimado = valorEstimado;
 	}
 	
-	public String getValorTotalFormatado() {
-		return Formatacao.formatarDinheiro(valorTotal);
+	public String getValorEstimadoFormatado() {
+		return Formatacao.formatarDinheiro(valorEstimado);
+	}
+	
+	public Double getValorOrcado() {
+		return valorOrcado;
 	}
 
-	public Double getValorParcial() {
-		return valorParcial;
+	public void setValorOrcado(Double valorOrcado) {
+		this.valorOrcado = valorOrcado;
+	}
+	
+	public String getValorOrcadoFormatado() {
+		return Formatacao.formatarDinheiro(valorOrcado);
 	}
 
-	public void setValorParcial(Double valorParcial) {
-		this.valorParcial = valorParcial;
+	public Double getValorRealizado() {
+		return valorRealizado;
 	}
 
-	public String getValorParcialFormatado() {
-		return Formatacao.formatarDinheiro(valorParcial);
+	public void setValorRealizado(Double valorRealizado) {
+		this.valorRealizado = valorRealizado;
+	}
+
+	public String getValorRealizadoFormatado() {
+		return Formatacao.formatarDinheiro(valorRealizado);
 	}
 }

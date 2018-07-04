@@ -38,7 +38,7 @@ public class AtualizarProjeto extends HttpServlet {
 		
 		Projeto projeto = (Projeto) this.projetoDAO.read(projetoId);
 		projeto.setNome(nome);
-		projeto.setValorTotal(valor);
+		projeto.setValorEstimado(valor);
 		
 		this.projetoDAO.update(projeto);
 		
