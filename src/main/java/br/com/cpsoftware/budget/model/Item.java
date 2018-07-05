@@ -26,7 +26,7 @@ public class Item {
 	public static final String ID = "id";
 	public static final String NOME = "nome";
 	public static final String DESCRICAO = "descricao";
-	public static final String VALOR_UNIFORME = "preco_unitario";
+	public static final String PRECO_UNITARIO = "preco_unitario";
 	public static final String QUANTIDADE = "quantidade";
 	public static final String VALOR_ORCADO = "valor_orcado";
 	public static final String VALOR_REALIZADO = "valor_realizado";

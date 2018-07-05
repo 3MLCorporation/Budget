@@ -41,8 +41,9 @@ public class ItemDAO{
 		itemEntity.setProperty(Item.RUBRICA_ID, item.getRubricaId());
 		itemEntity.setProperty(Item.NOME, item.getNome());
 		itemEntity.setProperty(Item.DESCRICAO, item.getDescricao());
-		itemEntity.setProperty(Item.VALOR_UNIFORME, item.getPrecoUnitario());
+		itemEntity.setProperty(Item.PRECO_UNITARIO, item.getPrecoUnitario());
 		itemEntity.setProperty(Item.QUANTIDADE, item.getQuantidade());
+		itemEntity.setProperty(Item.VALOR_ORCADO, item.getValorOrcado());
 		itemEntity.setProperty(Item.VALOR_REALIZADO, item.getValorRealizado());
 		itemEntity.setProperty(Item.UNIDADE_MEDIDA, item.getUnidadeMedida());
 		itemEntity.setProperty(Item.ARQUIVO_DETALHES, item.getArquivoDetalhes());
@@ -76,8 +77,9 @@ public class ItemDAO{
 		itemEntity.setProperty(Item.RUBRICA_ID, item.getRubricaId());
 		itemEntity.setProperty(Item.NOME, item.getNome());
 		itemEntity.setProperty(Item.DESCRICAO, item.getDescricao());
-		itemEntity.setProperty(Item.VALOR_UNIFORME, item.getPrecoUnitario());
+		itemEntity.setProperty(Item.PRECO_UNITARIO, item.getPrecoUnitario());
 		itemEntity.setProperty(Item.QUANTIDADE, item.getQuantidade());
+		itemEntity.setProperty(Item.VALOR_ORCADO, item.getValorOrcado());
 		itemEntity.setProperty(Item.VALOR_REALIZADO, item.getValorRealizado());
 		itemEntity.setProperty(Item.UNIDADE_MEDIDA, item.getUnidadeMedida());
 		itemEntity.setProperty(Item.ARQUIVO_DETALHES, item.getArquivoDetalhes());
@@ -96,8 +98,9 @@ public class ItemDAO{
 				 itemEntity.getKey().getId(),
 				 (String)itemEntity.getProperty(Item.NOME),
 				 (String)itemEntity.getProperty(Item.DESCRICAO),
-				 (Double)itemEntity.getProperty(Item.VALOR_UNIFORME),
+				 (Double)itemEntity.getProperty(Item.PRECO_UNITARIO),
 				 ((Long)itemEntity.getProperty(Item.QUANTIDADE)).intValue(),
+				 (Double)itemEntity.getProperty(Item.VALOR_ORCADO),
 				 (Double)itemEntity.getProperty(Item.VALOR_REALIZADO),
 				 ((Long)itemEntity.getProperty(Item.UNIDADE_MEDIDA)).intValue(),
 				 (Blob)itemEntity.getProperty(Item.ARQUIVO_DETALHES),

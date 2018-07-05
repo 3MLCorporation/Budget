@@ -81,7 +81,7 @@ public class CadastrarItem extends HttpServlet {
 							nome = new String(Streams.asString(stream));
 						if (item.getFieldName().equals(Item.DESCRICAO))
 							descricao = new String(Streams.asString(stream));
-						if (item.getFieldName().equals(Item.VALOR_UNIFORME))
+						if (item.getFieldName().equals(Item.PRECO_UNITARIO))
 							valorUniforme = new Double(Streams.asString(stream));
 						if (item.getFieldName().equals(Item.QUANTIDADE))
 							quantidade = new Integer(Streams.asString(stream));

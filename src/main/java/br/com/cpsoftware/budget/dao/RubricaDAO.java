@@ -41,6 +41,7 @@ public class RubricaDAO implements EntidadeDao{
 		rubricaEntity.setProperty(Rubrica.CATEGORIA_ID, ((Rubrica) rubrica).getCategoriaId());
 		rubricaEntity.setProperty(Rubrica.NOME, rubrica.getNome());
 		rubricaEntity.setProperty(Rubrica.VALOR_ESTIMADO, rubrica.getValorEstimado());
+		rubricaEntity.setProperty(Rubrica.VALOR_ORCADO, rubrica.getValorOrcado());
 		rubricaEntity.setProperty(Rubrica.VALOR_REALIZADO, rubrica.getValorRealizado());
 		
 		Key rubricaKey = datastore.put(rubricaEntity);
@@ -73,6 +74,7 @@ public class RubricaDAO implements EntidadeDao{
 		rubricaEntity.setProperty(Rubrica.CATEGORIA_ID, ((Rubrica) rubrica).getCategoriaId());
 		rubricaEntity.setProperty(Rubrica.NOME, rubrica.getNome());
 		rubricaEntity.setProperty(Rubrica.VALOR_ESTIMADO, rubrica.getValorEstimado());
+		rubricaEntity.setProperty(Rubrica.VALOR_ORCADO, rubrica.getValorOrcado());
 		rubricaEntity.setProperty(Rubrica.VALOR_REALIZADO, rubrica.getValorRealizado());
 
 		datastore.put(rubricaEntity);
@@ -91,6 +93,7 @@ public class RubricaDAO implements EntidadeDao{
 						 rubricaEntity.getKey().getId(),
 						 (String)rubricaEntity.getProperty(Rubrica.NOME),
 						 (Double)rubricaEntity.getProperty(Rubrica.VALOR_ESTIMADO),
+						 (Double)rubricaEntity.getProperty(Rubrica.VALOR_ORCADO),
 						 (Double)rubricaEntity.getProperty(Rubrica.VALOR_REALIZADO));
 	}
 	
