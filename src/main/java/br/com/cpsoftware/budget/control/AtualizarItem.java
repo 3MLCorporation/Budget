@@ -123,7 +123,7 @@ public class AtualizarItem extends HttpServlet {
 		item.setRubricaId(rubricaId);
 		item.setNome(nome);
 		item.setDescricao(descricao);
-		item.setValorUniforme(valorUniforme);
+		item.setPrecoUnitario(valorUniforme);
 		item.setQuantidade(quantidade);
 		item.setUnidadeMedida(unidadeMedida);
 		

@@ -12,7 +12,7 @@ public class NotaFiscal {
 	private Long fornecedorId;
 	private Blob arquivo;
 	private Double valor;
-	private Double valorParcial;
+	private Double valorRealizado;
 	private Date data;
 	private int status;
 	
@@ -22,7 +22,7 @@ public class NotaFiscal {
 	public static final String FORNECEDOR_ID = "fornecedor_id";
 	public static final String ARQUIVO = "arquivo";
 	public static final String VALOR = "valor";
-	public static final String VALOR_PARCIAL = "valor_parcial";
+	public static final String VALOR_REALIZADO = "valor_realizado";
 	public static final String DATA = "data";
 	public static final String STATUS = "status";
 	
@@ -30,23 +30,23 @@ public class NotaFiscal {
 	public static final int STATUS_PARCIAL = 1;
 	public static final int STATUS_QUITADO = 2;
 	
-	public NotaFiscal(Long itemId, Long id, Long fornecedorId, Blob arquivo, Double valor, Double valorParcial, Date data, int status) {
+	public NotaFiscal(Long itemId, Long id, Long fornecedorId, Blob arquivo, Double valor, Double valorRealizado, Date data, int status) {
 		this.itemId = itemId;
 		this.id = id;
 		this.fornecedorId = fornecedorId;
 		this.arquivo = arquivo;
 		this.valor = valor;
-		this.valorParcial = valorParcial;
+		this.valorRealizado = valorRealizado;
 		this.data = data;
 		this.status = status;
 	}
 
-	public NotaFiscal(Long itemId, Long fornecedorId, Blob arquivo, Double valor, Double valorParcial, Date data, int status) {
+	public NotaFiscal(Long itemId, Long fornecedorId, Blob arquivo, Double valor, Double valorRealizado, Date data, int status) {
 		this.itemId = itemId;
 		this.fornecedorId = fornecedorId;
 		this.arquivo = arquivo;
 		this.valor = valor;
-		this.valorParcial = valorParcial;
+		this.valorRealizado = valorRealizado;
 		this.data = data;
 		this.status = status;
 	}
@@ -95,23 +95,17 @@ public class NotaFiscal {
 		return Formatacao.formatarDinheiro(valor);
 	}
 	
-	/**
-	 * @return the valorParcial
-	 */
-	public Double getValorParcial() {
-		return valorParcial;
+	public Double getValorRealizado() {
+		return valorRealizado;
 	}
 
-	/**
-	 * @param valorParcial the valorParcial to set
-	 */
-	public void setValorParcial(Double valorParcial) {
-		this.valorParcial = valorParcial;
+	public void setValorRealizado(Double valorRealizado) {
+		this.valorRealizado = valorRealizado;
 		verificarStatus();
 	}
 	
-	public String getValorParcialFormatado() {
-		return Formatacao.formatarDinheiro(valorParcial);
+	public String getValorRealizadoFormatado() {
+		return Formatacao.formatarDinheiro(valorRealizado);
 	}
 	
 	/*public Double calcularValorParcial(List<Pagamento> pagamentos) {
@@ -143,7 +137,7 @@ public class NotaFiscal {
 	}
 
 	private void verificarStatus() {
-		if(this.valor.equals(this.valorParcial)) {
+		if(this.valor.equals(this.valorRealizado)) {
 			this.status = NotaFiscal.STATUS_QUITADO;
 		}else {
 			this.status = NotaFiscal.STATUS_PARCIAL;

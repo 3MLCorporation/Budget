@@ -13,8 +13,9 @@ public class Item {
 	private Long id;
 	private String nome;
 	private String descricao;
-	private Double valorUniforme;
-	private Double valorParcial;
+	private Double precoUnitario;
+	private Double valorOrcado;
+	private Double valorRealizado;
 	private int quantidade;
 	private int unidadeMedida;
 	private Blob arquivoDetalhes;
@@ -25,9 +26,10 @@ public class Item {
 	public static final String ID = "id";
 	public static final String NOME = "nome";
 	public static final String DESCRICAO = "descricao";
-	public static final String VALOR_UNIFORME = "valor_uniforme";
+	public static final String VALOR_UNIFORME = "preco_unitario";
 	public static final String QUANTIDADE = "quantidade";
-	public static final String VALOR_PARCIAL = "valor_parcial";
+	public static final String VALOR_ORCADO = "valor_orcado";
+	public static final String VALOR_REALIZADO = "valor_realizado";
 	public static final String UNIDADE_MEDIDA = "unidade_medida";
 	public static final String ARQUIVO_DETALHES = "arquivo_detalhes";
 	public static final String ARQUIVO_AUXILIAR = "arquivo_auxiliar";
@@ -40,72 +42,80 @@ public class Item {
 	public static final int UNIDADE_MEDIDA_METRO = 4;
 	public static final int UNIDADE_MEDIDA_LITRO = 5;
 	
-	public Item(Long rubricaId, String nome, String descricao, Double valorUniforme, int quantidade, Double valorParcial, int unidadeMedida) {
+	public Item(Long rubricaId, String nome, String descricao, Double precoUnitario, int quantidade, Double valorOrcado, Double valorRealizado, int unidadeMedida) {
 		this.rubricaId = rubricaId;
 		this.nome = nome;
 		this.descricao = descricao;
-		this.valorUniforme = valorUniforme;
+		this.precoUnitario = precoUnitario;
 		this.quantidade = quantidade;
-		this.valorParcial = valorParcial;
+		this.valorOrcado = valorOrcado;
+		this.valorRealizado = valorRealizado;
 		this.unidadeMedida = unidadeMedida;
 	}
 	
-	public Item(Long rubricaId, Long id,String nome, String descricao, Double valor_uniforme, int quantidade, Double valorParcial, int unidadeMedida) {
+	public Item(Long rubricaId, Long id,String nome, String descricao, Double precoUnitario, int quantidade, Double valorOrcado, Double valorRealizado, int unidadeMedida) {
 		this.rubricaId = rubricaId;
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
-		this.valorUniforme = valor_uniforme;
+		this.precoUnitario = precoUnitario;
 		this.quantidade = quantidade;
-		this.valorParcial = valorParcial;
+		this.valorOrcado = valorOrcado;
+		this.valorRealizado = valorRealizado;
 		this.unidadeMedida = unidadeMedida;
 	}
 	
-	public Item(Long rubricaId, String nome, String descricao, Double valor_uniforme, int quantidade, Double valorParcial, int unidadeMedida, Blob arquivoDetalhes) {
+	public Item(Long rubricaId, String nome, String descricao, Double precoUnitario, int quantidade, Double valorOrcado, Double valorRealizado, int unidadeMedida, Blob arquivoDetalhes) {
 		this.rubricaId = rubricaId;
 		this.nome = nome;
 		this.descricao = descricao;
-		this.valorUniforme = valor_uniforme;
+		this.precoUnitario = precoUnitario;
 		this.quantidade = quantidade;
-		this.valorParcial = valorParcial;
+		this.valorOrcado = valorOrcado;
+		this.valorRealizado = valorRealizado;
 		this.unidadeMedida = unidadeMedida;
 		this.arquivoDetalhes = arquivoDetalhes;
 	}
-	public Item(Long rubricaId, Long id, String nome, String descricao, Double valor_uniforme, int quantidade, Double valorParcial, int unidadeMedida, Blob arquivoDetalhes) {
+	public Item(Long rubricaId, Long id, String nome, String descricao, Double precoUnitario, int quantidade, Double valorOrcado, Double valorRealizado, int unidadeMedida, Blob arquivoDetalhes) {
 		this.rubricaId = rubricaId;
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
-		this.valorUniforme = valor_uniforme;
+		this.precoUnitario = precoUnitario;
 		this.quantidade = quantidade;
-		this.valorParcial = valorParcial;
+		this.valorOrcado = valorOrcado;
+		this.valorRealizado = valorRealizado;
 		this.unidadeMedida = unidadeMedida;
 		this.arquivoDetalhes = arquivoDetalhes;
 	}
 
-	public Item(Long rubricaId, String nome, String descricao, Double valor_uniforme, int quantidade, Double valorParcial, int unidadeMedida, Blob arquivoDetalhes, Blob arquivoAuxiliar) {
+	public Item(Long rubricaId, String nome, String descricao, Double precoUnitario, int quantidade, Double valorOrcado, Double valorRealizado, int unidadeMedida, Blob arquivoDetalhes, Blob arquivoAuxiliar) {
 		this.rubricaId = rubricaId;
 		this.nome = nome;
 		this.descricao = descricao;
-		this.valorUniforme = valor_uniforme;
 		this.quantidade = quantidade;
-		this.valorParcial = valorParcial;
+		this.precoUnitario = precoUnitario;
+		this.valorOrcado = valorOrcado;
+		this.valorRealizado = valorRealizado;
 		this.unidadeMedida = unidadeMedida;
 		this.arquivoDetalhes = arquivoDetalhes;
 		this.arquivoAuxiliar = arquivoAuxiliar;
 	}
-	public Item(Long rubricaId, Long id, String nome, String descricao, Double valor_uniforme, int quantidade, Double valorParcial, int unidadeMedida, Blob arquivoDetalhes, Blob arquivoAuxiliar) {
+	
+	public Item(Long rubricaId, Long id, String nome, String descricao, Double precoUnitario, int quantidade, Double valorOrcado, Double valorRealizado, int unidadeMedida, Blob arquivoDetalhes, Blob arquivoAuxiliar) {
 		this.rubricaId = rubricaId;
 		this.id = id;
 		this.nome = nome;
 		this.descricao = descricao;
-		this.valorUniforme = valor_uniforme;
 		this.quantidade = quantidade;
-		this.valorParcial = valorParcial;
+		this.precoUnitario = precoUnitario;
+		this.valorOrcado = valorOrcado;
+		this.valorRealizado = valorRealizado;
 		this.unidadeMedida = unidadeMedida;
 		this.arquivoDetalhes = arquivoDetalhes;
 		this.arquivoAuxiliar = arquivoAuxiliar;
 	}
+	
 	public Long getRubricaId() {
 		return rubricaId;
 	}
@@ -132,27 +142,39 @@ public class Item {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public Double getValorUniforme() {
-		return valorUniforme;
+	public Double getPrecoUnitario() {
+		return precoUnitario;
 	}
-	public void setValorUniforme(Double valor_uniforme) {
-		this.valorUniforme = valor_uniforme;
-	}
-	
-	public String getValorUniformeFormatado() {
-		return Formatacao.formatarDinheiro(valorUniforme);
+	public void setPrecoUnitario(Double precoUnitario) {
+		this.precoUnitario = precoUnitario;
 	}
 	
-	public Double getValorParcial() {
-		return valorParcial;
+	public String getPrecoUnitarioFormatado() {
+		return Formatacao.formatarDinheiro(precoUnitario);
+	}
+	
+	public Double getValorOrcado() {
+		return valorOrcado;
 	}
 
-	public void setValorParcial(Double valorParcial) {
-		this.valorParcial = valorParcial;
+	public void setValorOrcado(Double valorOrcado) {
+		this.valorOrcado = valorOrcado;
+	}
+	
+	public String getValorOrcadoFormatado() {
+		return Formatacao.formatarDinheiro(valorOrcado);
 	}
 
-	public String getValorParcialFormatado() {
-		return Formatacao.formatarDinheiro(valorParcial);
+	public Double getValorRealizado() {
+		return valorRealizado;
+	}
+
+	public void setValorRealizado(Double valorRealizado) {
+		this.valorRealizado = valorRealizado;
+	}
+
+	public String getValorRealizadoFormatado() {
+		return Formatacao.formatarDinheiro(valorRealizado);
 	}
 	
 	public int getQuantidade() {
@@ -162,23 +184,17 @@ public class Item {
 		this.quantidade = quantidade;
 	}
 	public Double getValor() {
-		return valorUniforme * quantidade;
+		return precoUnitario * quantidade;
 	}
 	
 	public String getValorFormatado() {
-		return Formatacao.formatarDinheiro(valorUniforme * quantidade);
+		return Formatacao.formatarDinheiro(precoUnitario * quantidade);
 	}
-
-	/**
-	 * @return the unidadeMedida
-	 */
+	
 	public int getUnidadeMedida() {
 		return unidadeMedida;
 	}
 
-	/**
-	 * @param unidadeMedida the unidadeMedida to set
-	 */
 	public void setUnidadeMedida(int unidadeMedida) {
 		this.unidadeMedida = unidadeMedida;
 	}

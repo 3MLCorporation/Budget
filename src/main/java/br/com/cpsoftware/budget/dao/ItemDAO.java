@@ -41,9 +41,9 @@ public class ItemDAO{
 		itemEntity.setProperty(Item.RUBRICA_ID, item.getRubricaId());
 		itemEntity.setProperty(Item.NOME, item.getNome());
 		itemEntity.setProperty(Item.DESCRICAO, item.getDescricao());
-		itemEntity.setProperty(Item.VALOR_UNIFORME, item.getValorUniforme());
+		itemEntity.setProperty(Item.VALOR_UNIFORME, item.getPrecoUnitario());
 		itemEntity.setProperty(Item.QUANTIDADE, item.getQuantidade());
-		itemEntity.setProperty(Item.VALOR_PARCIAL, item.getValorParcial());
+		itemEntity.setProperty(Item.VALOR_REALIZADO, item.getValorRealizado());
 		itemEntity.setProperty(Item.UNIDADE_MEDIDA, item.getUnidadeMedida());
 		itemEntity.setProperty(Item.ARQUIVO_DETALHES, item.getArquivoDetalhes());
 		itemEntity.setProperty(Item.ARQUIVO_AUXILIAR, item.getArquivoAuxiliar());
@@ -76,9 +76,9 @@ public class ItemDAO{
 		itemEntity.setProperty(Item.RUBRICA_ID, item.getRubricaId());
 		itemEntity.setProperty(Item.NOME, item.getNome());
 		itemEntity.setProperty(Item.DESCRICAO, item.getDescricao());
-		itemEntity.setProperty(Item.VALOR_UNIFORME, item.getValorUniforme());
+		itemEntity.setProperty(Item.VALOR_UNIFORME, item.getPrecoUnitario());
 		itemEntity.setProperty(Item.QUANTIDADE, item.getQuantidade());
-		itemEntity.setProperty(Item.VALOR_PARCIAL, item.getValorParcial());
+		itemEntity.setProperty(Item.VALOR_REALIZADO, item.getValorRealizado());
 		itemEntity.setProperty(Item.UNIDADE_MEDIDA, item.getUnidadeMedida());
 		itemEntity.setProperty(Item.ARQUIVO_DETALHES, item.getArquivoDetalhes());
 		itemEntity.setProperty(Item.ARQUIVO_AUXILIAR, item.getArquivoAuxiliar());
@@ -98,7 +98,7 @@ public class ItemDAO{
 				 (String)itemEntity.getProperty(Item.DESCRICAO),
 				 (Double)itemEntity.getProperty(Item.VALOR_UNIFORME),
 				 ((Long)itemEntity.getProperty(Item.QUANTIDADE)).intValue(),
-				 (Double)itemEntity.getProperty(Item.VALOR_PARCIAL),
+				 (Double)itemEntity.getProperty(Item.VALOR_REALIZADO),
 				 ((Long)itemEntity.getProperty(Item.UNIDADE_MEDIDA)).intValue(),
 				 (Blob)itemEntity.getProperty(Item.ARQUIVO_DETALHES),
 				 (Blob)itemEntity.getProperty(Item.ARQUIVO_AUXILIAR));

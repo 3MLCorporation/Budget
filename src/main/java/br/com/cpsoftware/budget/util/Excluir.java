@@ -145,7 +145,7 @@ public class Excluir {
 		
 		//Se o Item tivesse valor parcial, ficaria assim:
 		Item item = itemDAO.read(itemId);
-		AtualizarPrecos.atualizarPrecoRubrica(AtualizarPrecos.EXCLUIR, itemId, item.getValorParcial());
+		AtualizarPrecos.atualizarPrecoRubrica(AtualizarPrecos.EXCLUIR, itemId, item.getValorRealizado());
 		
 		//Mas, como ele não tem, tenho que chamar a nota fiscal e passar o valor parcial dela, assim:
 		
@@ -181,7 +181,7 @@ public class Excluir {
 		Long notaId = Long.parseLong(req.getParameter("nota_id"));
 		
 		NotaFiscal nota = notaFiscalDAO.read(notaId);
-		AtualizarPrecos.atualizarPrecoItem(AtualizarPrecos.EXCLUIR, notaId, nota.getValorParcial());
+		AtualizarPrecos.atualizarPrecoItem(AtualizarPrecos.EXCLUIR, notaId, nota.getValorRealizado());
 		
 		notaFiscalDAO.delete(notaId);
 		

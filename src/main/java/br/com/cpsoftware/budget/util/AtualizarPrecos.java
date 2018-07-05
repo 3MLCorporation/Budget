@@ -99,11 +99,11 @@ public class AtualizarPrecos {
 		switch(tipoDeAtualizacao) {
 			case CADASTRAR:
 			case EDITAR:
-				item.setValorParcial(item.getValorParcial() + valor);
+				item.setValorRealizado(item.getValorRealizado() + valor);
 				atualizarPrecoRubrica(CADASTRAR, item.getId(), valor);
 				break;
 			case EXCLUIR:
-				item.setValorParcial(item.getValorParcial() - valor);
+				item.setValorRealizado(item.getValorRealizado() - valor);
 				atualizarPrecoRubrica(EXCLUIR, item.getId(), valor);
 				break;
 		}	
@@ -118,11 +118,11 @@ public class AtualizarPrecos {
 				
 				//Aqui o valor é tratado igual, pois ele já vem ajustado, 
 				//tanto para cadastro(todo o valor), como para edição(diferença calculada no metodo anterior);
-				nota.setValorParcial(nota.getValorParcial() + valor);
+				nota.setValorRealizado(nota.getValorRealizado() + valor);
 				atualizarPrecoItem(CADASTRAR, nota.getId(), valor);
 				break;
 			case EXCLUIR:
-				nota.setValorParcial(nota.getValorParcial() - valor);
+				nota.setValorRealizado(nota.getValorRealizado() - valor);
 				atualizarPrecoItem(EXCLUIR, nota.getId(), valor);
 				break;
 		}	
