@@ -30,7 +30,13 @@ public class CadastrarProjeto extends HttpServlet {
 		String nome = req.getParameter("nome");
 		String valor = req.getParameter("valor");
 		 
-		Projeto projeto = new Projeto(usuario.getId(), nome, Double.parseDouble(valor), 0d);
+		Projeto projeto = new Projeto(
+			usuario.getId(),
+			nome,
+			Double.parseDouble(valor), //valorEstimado
+			0d,// valorOrcado
+			0d // valorParcial
+		);
 		
 		System.out.println("Gerente_Id - " + usuario.getId());
 		System.out.println("Nome - " + projeto.getNome());

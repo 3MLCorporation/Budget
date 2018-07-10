@@ -55,7 +55,7 @@ public class CadastrarItem extends HttpServlet {
 		Long rubricaId = null;
 		String nome = null;
 		String descricao = null;
-		Double valorUniforme = null;
+		Double precoUnitario = null;
 		int quantidade = 0;
 		int unidadeMedida = 0;
 		Blob arquivoDetalhes = null;
@@ -80,7 +80,7 @@ public class CadastrarItem extends HttpServlet {
 						if (item.getFieldName().equals(Item.DESCRICAO))
 							descricao = new String(Streams.asString(stream));
 						if (item.getFieldName().equals(Item.PRECO_UNITARIO))
-							valorUniforme = new Double(Streams.asString(stream));
+							precoUnitario = new Double(Streams.asString(stream));
 						if (item.getFieldName().equals(Item.QUANTIDADE))
 							quantidade = new Integer(Streams.asString(stream));
 						if (item.getFieldName().equals(Item.UNIDADE_MEDIDA))
@@ -98,7 +98,7 @@ public class CadastrarItem extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			Item item = new Item(rubricaId, nome, descricao, valorUniforme, quantidade, 0d, unidadeMedida, arquivoDetalhes, arquivoAuxiliar);
+			Item item = new Item(rubricaId, nome, descricao, precoUnitario, quantidade, 0d, 0d, unidadeMedida, arquivoDetalhes, arquivoAuxiliar);
 			this.dao.create(item);
 			
 			resp.sendRedirect("/listarItens");

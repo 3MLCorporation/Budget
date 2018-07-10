@@ -37,8 +37,14 @@ public class CadastrarOrcamento extends HttpServlet {
 		String valor = req.getParameter("valor");
 				 
 		 
-		Orcamento orcamento = new Orcamento(projetoId, nome, Double.parseDouble(valor), 0d,
-											0d, Orcamento.STATUS_ELABORACAO);
+		Orcamento orcamento = new Orcamento(
+			projetoId, 
+			nome, 
+			Double.parseDouble(valor), //valorEstimado
+			0d, // valorOrcado
+			0d, // valorParcial
+			Orcamento.STATUS_ELABORACAO
+		);
 		
 		System.out.println("Projeto_Id - " + projetoId);
 		System.out.println("Nome - " + orcamento.getNome());
