@@ -27,7 +27,6 @@ import br.com.cpsoftware.budget.model.Categoria;
 import br.com.cpsoftware.budget.model.Item;
 import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.Rubrica;
-import br.com.cpsoftware.budget.util.AtualizarPrecos;
 
 @SuppressWarnings("serial")
 public class AtualizarItem extends HttpServlet {

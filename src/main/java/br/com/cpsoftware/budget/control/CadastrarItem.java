@@ -38,11 +38,9 @@ public class CadastrarItem extends HttpServlet {
 		Orcamento orcamento = (Orcamento) new OrcamentoDAO().read(orcamentoEditavelId);
 		
 		List<Categoria> categorias = new ArrayList<>();
-		//List<Rubrica> rubricas = new ArrayList<>();
 		
 		for(Categoria categoria : new CategoriaDAO().getCategorias(orcamento.getId())) {
 			categorias.add(categoria);
-			//rubricas.addAll(new RubricaDAO().getRubricas(categoria.getId()));
 		}
 		
 		req.setAttribute("page", "criarItens");
