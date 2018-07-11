@@ -36,8 +36,9 @@
 			   		<thead>
 			   			<tr>
 			     			<th>Orçamento</th>
-		        			<th>Valor</th>
-		        			<th>Valor Parcial</th>
+		        			<th>Valor estimado</th>
+		        			<th>Valor orçado</th>
+		        			<th>Valor realizado</th>
 		        			<th>Status</th>
 		        			<th>&emsp;Editar<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"> orçamento</c:if></th>
 		        			<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
@@ -49,8 +50,9 @@
 			       		<c:forEach items="${orcamentos}" var="orcamento" varStatus="id">
 							<tr>
 								<td> ${orcamento.nome}</td>
-								<td> ${orcamento.getValorTotalFormatado()}</td>
-								<td> ${orcamento.getValorParcialFormatado()}</td>
+								<td> ${orcamento.getValorEstimadoFormatado()}</td>
+								<td> ${orcamento.getValorOrcadoFormatado()}</td>
+								<td> ${orcamento.getValorRealizadoFormatado()}</td>
 								<td>
 								<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
 									<select id="orcamentoSelect${id.count}">

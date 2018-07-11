@@ -38,8 +38,9 @@
 			   		<thead>
 			   			<tr>
 		        			<th>Categoria</th>
-		        			<th>Valor</th>
-		        			<th>Valor Parcial</th>
+		        			<th>Valor estimado</th>
+		        			<th>Valor orçado</th>
+		        			<th>Valor realizado</th>
 		        			<th>Rubricas</th>
 		        			<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
 		        				<th>Editar categoria</th>
@@ -50,8 +51,9 @@
 		        		<c:forEach items="${categorias}" var="categoria">
 							<tr>
 								<td> ${categoria.nome}</td>
-								<td> ${categoria.getValorTotalFormatado()}</td>
-								<td> ${categoria.getValorParcialFormatado()}</td>
+								<td> ${categoria.getValorEstimadoFormatado()}</td>
+								<td> ${categoria.getValorOrcadoFormatado()}</td>
+								<td> ${categoria.getValorRealizadoFormatado()}</td>
 								<td>
 									<form action="listarRubricas" method="GET">
 							         	<input type="hidden" class="form-control" value="${categoria.id}" name="categoriaId">

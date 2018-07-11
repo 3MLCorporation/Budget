@@ -31,8 +31,9 @@
 			   		<thead>
 			     			<tr>
 				       			<th>Projeto</th>
-				       			<th>Valor</th>
-				       			<th>Valor Parcial</th>
+				       			<th>Valor estimado</th>
+				       			<th>Valor orçado</th>
+				       			<th>Valor realizado</th>
 				       			<th>Editar projeto</th>
 			     			</tr>
 			   		</thead>
@@ -40,8 +41,9 @@
 			       		<c:forEach items="${projetos}" var="projeto">
 							<tr>
 								<td> ${projeto.nome}</td>
-								<td> ${projeto.getValorTotalFormatado()}</td>
-								<td> ${projeto.getValorParcialFormatado()}</td>
+								<td> ${projeto.getValorEstimadoFormatado()}</td>
+								<td> ${projeto.getValorOrcadoFormatado()}</td>
+								<td> ${projeto.getValorRealizadoFormatado()}</td>
 								<td>
 									<div class="btn-group"> 
 										<form action="atualizarProjeto" method="GET">

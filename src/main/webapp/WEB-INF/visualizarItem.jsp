@@ -45,7 +45,7 @@
 			Descrição: <strong>${item.descricao}</strong>&emsp;
 			Valor: <strong>${item.getValorFormatado()}</strong>&emsp;
 			Quantidade: <strong>${item.quantidade}</strong>&emsp;
-			Valor uniforme: <strong>${item.getValorUniformeFormatado()}</strong>&emsp;
+			Preço unitário: <strong>${item.getPrecoUnitarioFormatado()}</strong>&emsp;
 			Unidade de medida: 
 			<strong>
 				<c:choose>
@@ -58,7 +58,9 @@
 					<c:otherwise>---</c:otherwise>
 				</c:choose>
 			</strong>
-
+			<br/>
+			Valor orçado: <strong>${item.getValorOrcadoFormatado()}</strong>&emsp;
+			Valor realizado: <strong>${item.getValorRealizadoFormatado()}</strong>&emsp;
 			<br/>
 			<br/>
 
@@ -92,7 +94,7 @@
 			   			<tr>
 			   				<th>Fornecedor</th>
 							<th>Valor total</th>
-							<th>Valor parcial</th>
+							<th>Valor realizado</th>
 							<th>Data</th>
 							<th></th>
       					</tr>
@@ -102,7 +104,7 @@
 							<tr>
 								<td> ${fornecedores[count.index]}</td>
 								<td> ${nota.getValorFormatado()}</td>
-								<td> ${nota.getValorParcialFormatado()}</td>
+								<td> ${nota.getValorRealizadoFormatado()}</td>
 								<td> ${nota.getDataFormatada()}</td>
 								<td style="width: 14%;">
 									<div class="btn-group"> 

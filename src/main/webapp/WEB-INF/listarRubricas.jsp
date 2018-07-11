@@ -43,8 +43,9 @@
 			   			<tr>
 			        		<th>Categoria</th>
 			        		<th>Rubrica</th>
-			        		<th>Valor</th>
-			        		<th>Valor Parcial</th>
+		        			<th>Valor estimado</th>
+		        			<th>Valor orçado</th>
+		        			<th>Valor realizado</th>
 			        		<th>Itens</th>
 			        		<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
 			        			<th>Editar rubrica</th>
@@ -56,8 +57,9 @@
 							<tr>
 								<td> ${rubricaMap.nomeCategoria}</td>
 								<td> ${rubricaMap.rubrica.nome}</td>
-								<td> ${rubricaMap.rubrica.getValorTotalFormatado()}</td>
-								<td> ${rubricaMap.rubrica.getValorParcialFormatado()}</td>
+								<td> ${rubricaMap.rubrica.getValorEstimadoFormatado()}</td>
+								<td> ${rubricaMap.rubrica.getValorOrcadoFormatado()}</td>
+								<td> ${rubricaMap.rubrica.getValorRealizadoFormatado()}</td>
 								<td>
 									<form action="listarItens" method="GET">
 							         	<input type="hidden" class="form-control" value="${rubricaMap.rubrica.id}" name="rubricaId">

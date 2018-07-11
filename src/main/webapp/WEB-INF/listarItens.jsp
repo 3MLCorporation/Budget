@@ -47,8 +47,9 @@
 			        		<th>Categoria</th>
 			        		<th>Rubrica</th>
 			        		<th>Item</th>
-			        		<th>Valor</th>
-			        		<th>Valor Parcial</th>
+		        			<th>Valor estimado</th>
+		        			<th>Valor orçado</th>
+		        			<th>Valor realizado</th>
 			        		<th>Detalhes</th>
 			        		<th>Editar tem</th>
 			        		<!-- <th>Nota fiscal</th> -->
@@ -61,7 +62,8 @@
 								<td> ${itemMap.nomeRubrica}</td>
 								<td> ${itemMap.item.nome}</td>
 								<td> ${itemMap.item.getValorFormatado()}</td>
-								<td> ${itemMap.item.getValorParcialFormatado()}</td>
+								<td> ${itemMap.item.getValorOrcadoFormatado()}</td>
+								<td> ${itemMap.item.getValorRealizadoFormatado()}</td>
 								<td>
 									<form action="visualizarItem" method="GET">
 										<input type="hidden" class="form-control" value="${itemMap.item.id}" name="itemId">

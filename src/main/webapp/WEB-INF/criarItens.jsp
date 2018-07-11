@@ -70,7 +70,7 @@
 			 <div class="form-group">
 			   <label for="text">Valor:</label> <input type="number"
 			   class="form-control" placeholder="Fornecer o valor uniforme do item em reais"
-			   name="valor_uniforme" required="required" id="valorUniformeItem" onblur="calcularValorTotalItem()">
+			   name="preco_unitario" required="required" id="valorUniformeItem" onblur="calcularValorTotalItem()">
 			 </div>
 			 <div class="form-group">
 			   <label for="text">Valor total:</label> <input type="text" readonly="readonly" placeholder="Valor total da soma dos itens" class="form-control" id="resultado">

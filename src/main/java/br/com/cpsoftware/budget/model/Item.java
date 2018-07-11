@@ -153,6 +153,21 @@ public class Item {
 		return Formatacao.formatarDinheiro(precoUnitario);
 	}
 	
+	public int getQuantidade() {
+		return quantidade;
+	}
+	public void setQuantidade(int quantidade) {
+		this.quantidade = quantidade;
+	}
+	
+	//TODO getValor ou getValorEstimado?
+	public Double getValor() {
+		return precoUnitario * quantidade;
+	}
+	public String getValorFormatado() {
+		return Formatacao.formatarDinheiro(precoUnitario * quantidade);
+	}
+	
 	public Double getValorOrcado() {
 		return valorOrcado;
 	}
@@ -175,20 +190,6 @@ public class Item {
 
 	public String getValorRealizadoFormatado() {
 		return Formatacao.formatarDinheiro(valorRealizado);
-	}
-	
-	public int getQuantidade() {
-		return quantidade;
-	}
-	public void setQuantidade(int quantidade) {
-		this.quantidade = quantidade;
-	}
-	public Double getValor() {
-		return precoUnitario * quantidade;
-	}
-	
-	public String getValorFormatado() {
-		return Formatacao.formatarDinheiro(precoUnitario * quantidade);
 	}
 	
 	public int getUnidadeMedida() {
