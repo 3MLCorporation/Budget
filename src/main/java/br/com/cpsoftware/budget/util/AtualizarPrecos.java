@@ -78,19 +78,50 @@ public class AtualizarPrecos {
 	}
 	
 	//TODO Continuar a partir daqui
-	public static void atualizarPrecoOrcamento(int tipoDeAtualizacao, Long categoriaId, Double valor) {
-		Orcamento orcamento = (Orcamento) orcamentoDAO.read(((Categoria) categoriaDAO.read(categoriaId)).getOrcamentoId());
+	public static void atualizarPrecoOrcamento(int tipoDeAtualizacao, int tipoValor, Long categoriaId, Double valor) {
+		Categoria categoria = (Categoria) categoriaDAO.read(categoriaId);
+		Orcamento orcamento = (Orcamento) orcamentoDAO.read(categoria.getOrcamentoId());
 		switch(tipoDeAtualizacao) {
+		
 			case CADASTRAR:
-			case EDITAR:
-				orcamento.setValorRealizado(orcamento.getValorRealizado() + valor);
-				atualizarPrecoProjeto(CADASTRAR, ORCADO, orcamento.getId(), valor);
+				switch(tipoValor) {
+					case ORCADO:
+						orcamento.setValorOrcado(orcamento.getValorOrcado() + valor);
+						break;
+					case REALIZADO:
+						orcamento.setValorRealizado(orcamento.getValorRealizado() + valor);
+						atualizarPrecoProjeto(CADASTRAR, REALIZADO, orcamento.getId(), valor);
+						break;
+				}
 				break;
+			
+			case EDITAR:
+				switch(tipoValor) {
+					case ORCADO:
+						orcamento.setValorOrcado(orcamento.getValorOrcado() + (valor - categoria.getValorEstimado()));
+						break;
+					case REALIZADO:
+						orcamento.setValorRealizado(orcamento.getValorRealizado() + valor);
+						atualizarPrecoProjeto(EDITAR, REALIZADO, orcamento.getId(), valor);
+						break;
+				}
+				break;
+				
 			case EXCLUIR:
-				orcamento.setValorRealizado(orcamento.getValorRealizado() - valor);
-				atualizarPrecoProjeto(EXCLUIR, ORCADO, orcamento.getId(), valor);
+				switch(tipoValor) {
+					case ORCADO:
+						orcamento.setValorOrcado(orcamento.getValorOrcado() - valor);
+						orcamento.setValorRealizado(orcamento.getValorRealizado() - categoria.getValorRealizado());
+						atualizarPrecoProjeto(EXCLUIR, ORCADO, orcamento.getId(), valor);
+						break;
+					case REALIZADO:
+						orcamento.setValorRealizado(orcamento.getValorRealizado() - valor);
+						atualizarPrecoProjeto(EXCLUIR, REALIZADO, orcamento.getId(), valor);
+						break;
+				}
 				break;
 		}	
+		
 		orcamentoDAO.update(orcamento);
 	}
 	
@@ -100,11 +131,11 @@ public class AtualizarPrecos {
 			case CADASTRAR:
 			case EDITAR:
 				categoria.setValorRealizado(categoria.getValorRealizado() + valor);
-				atualizarPrecoOrcamento(CADASTRAR, categoria.getId(), valor);
+				atualizarPrecoOrcamento(CADASTRAR, ORCADO, categoria.getId(), valor);
 				break;
 			case EXCLUIR:
 				categoria.setValorRealizado(categoria.getValorRealizado() - valor);
-				atualizarPrecoOrcamento(EXCLUIR, categoria.getId(), valor);
+				atualizarPrecoOrcamento(EXCLUIR, ORCADO,  categoria.getId(), valor);
 				break;
 		}	
 		categoriaDAO.update(categoria);

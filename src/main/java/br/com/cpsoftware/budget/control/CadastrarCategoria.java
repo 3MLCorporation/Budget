@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.cpsoftware.budget.dao.CategoriaDAO;
 import br.com.cpsoftware.budget.model.Categoria;
+import br.com.cpsoftware.budget.util.AtualizarPrecos;
 
 @SuppressWarnings("serial")
 public class CadastrarCategoria extends HttpServlet {
@@ -35,7 +36,18 @@ public class CadastrarCategoria extends HttpServlet {
 			0d // valorParcial
 		);
 		
-		dao.create(categoria);
+		Long categoriaId = dao.create(categoria);
+		
+        if(categoriaId != null) {
+            AtualizarPrecos.atualizarPrecoOrcamento(
+                AtualizarPrecos.CADASTRAR,
+                AtualizarPrecos.ORCADO,
+                categoriaId,
+                categoria.getValorEstimado()
+            );
+        }
+        
+
 		
 		resp.sendRedirect("/listarCategorias");
 	}

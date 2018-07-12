@@ -102,7 +102,12 @@ public class Excluir {
 		Long categoriaId = Long.parseLong(req.getParameter("categoria_id"));
 		
 		Categoria categoria = (Categoria) categoriaDAO.read(categoriaId);
-		AtualizarPrecos.atualizarPrecoOrcamento(AtualizarPrecos.EXCLUIR, categoriaId, categoria.getValorRealizado());
+		AtualizarPrecos.atualizarPrecoOrcamento(
+			AtualizarPrecos.EXCLUIR,
+			AtualizarPrecos.ORCADO,
+			categoriaId,
+			categoria.getValorRealizado()
+		);
 		
 		categoriaDAO.delete(categoriaId);
 		

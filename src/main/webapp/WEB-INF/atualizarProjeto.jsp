@@ -34,7 +34,7 @@
 			   <div class="form-group">
 			       <label for="text">Valor:</label> <input type="number" pattern="[0-9.]"
 			       id="valor" class="form-control" placeholder="Fornecer o novo valor estimado do projeto"
-			       name="valor" value="${projeto.valorTotal}">
+			       name="valor" value="${projeto.valorEstimado}">
 			    </div>
 			    <input type="hidden" class="form-control" value="${projeto.id}" name="projetoId">
 			    <button type="submit" class="btn btn-dark botaoCadastro">Atualizar</button>
