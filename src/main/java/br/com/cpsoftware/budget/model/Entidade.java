@@ -20,6 +20,7 @@ public class Entidade {
 	public Entidade(String nome, Double valorEstimado, Double valorOrcado, Double valorParcial) {
 		this.nome = nome;
 		this.valorEstimado = valorEstimado;
+		this.valorOrcado = valorOrcado;
 		this.valorRealizado = valorParcial;
 	}
 	

@@ -30,8 +30,8 @@ public class AtualizarPrecos {
 	public static final int EXCLUIR = 1;
 	public static final int EDITAR = 2;
 
-	public static final int ORCADO = 0;
-	public static final int REALIZADO = 1;
+	public static final int ORCADO = 3;
+	public static final int REALIZADO = 4;
 	
 	
 	public static void atualizarPrecoProjeto(int tipoDeAtualizacao, int tipoValor, Long orcamentoId, Double valor) {
@@ -48,12 +48,12 @@ public class AtualizarPrecos {
 						projeto.setValorRealizado(projeto.getValorRealizado() + valor);
 						break;
 				}
+				break;
 				
 			case EDITAR:
 				switch(tipoValor) {
 					case ORCADO:
-						projeto.setValorOrcado(projeto.getValorOrcado() + valor);
-						projeto.setValorRealizado(projeto.getValorRealizado() + orcamento.getValorRealizado());
+						projeto.setValorOrcado(projeto.getValorOrcado() + (valor - orcamento.getValorEstimado()));
 						break;
 					case REALIZADO:
 						projeto.setValorRealizado(projeto.getValorRealizado() + valor);
@@ -77,6 +77,7 @@ public class AtualizarPrecos {
 		projetoDAO.update(projeto);
 	}
 	
+	//TODO Continuar a partir daqui
 	public static void atualizarPrecoOrcamento(int tipoDeAtualizacao, Long categoriaId, Double valor) {
 		Orcamento orcamento = (Orcamento) orcamentoDAO.read(((Categoria) categoriaDAO.read(categoriaId)).getOrcamentoId());
 		switch(tipoDeAtualizacao) {

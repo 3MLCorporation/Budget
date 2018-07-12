@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.model.Orcamento;
+import br.com.cpsoftware.budget.util.AtualizarPrecos;
 
 @SuppressWarnings("serial")
 public class AtualizarOrcamento extends HttpServlet {
@@ -35,6 +36,13 @@ public class AtualizarOrcamento extends HttpServlet {
 		Orcamento orcamento = (Orcamento) this.orcamentoDao.read(orcamentoId);
 		orcamento.setNome(nome);
 		orcamento.setValorEstimado(valor);
+		
+		AtualizarPrecos.atualizarPrecoProjeto(
+				AtualizarPrecos.EDITAR,
+				AtualizarPrecos.ORCADO,
+				orcamentoId,
+				valor
+		);
 		
 		this.orcamentoDao.update(orcamento);
 		

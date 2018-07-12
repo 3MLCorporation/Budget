@@ -39,7 +39,7 @@
 			   <div class="form-group">
 			       <label for="text">Valor:</label> <input type="number" pattern="[0-9.]"
 			       id="valor" class="form-control" placeholder="Fornecer o novo valor estimado do orçamento"
-			       name="valor" value="${orcamento.valorTotal}">
+			       name="valor" value="${orcamento.valorEstimado}">
 			    </div>
 			    <input type="hidden" class="form-control" value="${orcamento.id}" name="orcamentoId">
 			    <button type="submit" class="btn btn-dark botaoCadastro">Atualizar</button>

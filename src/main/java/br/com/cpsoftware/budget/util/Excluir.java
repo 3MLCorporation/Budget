@@ -68,7 +68,12 @@ public class Excluir {
 		
 		Long orcamentoId = Long.parseLong(req.getParameter("orcamento_id"));
 		Orcamento orcamento = (Orcamento) orcamentoDAO.read(orcamentoId);
-		AtualizarPrecos.atualizarPrecoProjeto(AtualizarPrecos.EXCLUIR, orcamentoId, orcamento.getValorRealizado());
+		AtualizarPrecos.atualizarPrecoProjeto(
+			AtualizarPrecos.EXCLUIR,
+			AtualizarPrecos.ORCADO,
+			orcamentoId,
+			orcamento.getValorEstimado()
+		);
 		orcamentoDAO.delete(orcamentoId);
 		
 		excluirCategoria(orcamentoId);

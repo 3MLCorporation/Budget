@@ -11,6 +11,7 @@ import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.dao.ProjetoDAO;
 import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.Usuario;
+import br.com.cpsoftware.budget.util.AtualizarPrecos;
 
 @SuppressWarnings("serial")
 public class CadastrarOrcamento extends HttpServlet {
@@ -52,6 +53,15 @@ public class CadastrarOrcamento extends HttpServlet {
 		
 		
 		Long orcamentoId = this.dao.create(orcamento);
+		
+		if(orcamentoId != null) {
+			AtualizarPrecos.atualizarPrecoProjeto(
+				AtualizarPrecos.CADASTRAR,
+				AtualizarPrecos.ORCADO,
+				orcamentoId,
+				orcamento.getValorEstimado()
+			);
+		}
 		
 		Orcamento aux = (Orcamento) this.dao.read(orcamentoId);
 		System.err.println("Nome do orcamento no banco - " + aux.getNome());
