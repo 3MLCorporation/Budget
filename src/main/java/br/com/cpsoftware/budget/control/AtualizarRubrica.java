@@ -15,7 +15,8 @@ import br.com.cpsoftware.budget.dao.RubricaDAO;
 import br.com.cpsoftware.budget.model.Categoria;
 import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.Rubrica;
-import br.com.cpsoftware.budget.util.AtualizarPrecos;
+import br.com.cpsoftware.budget.util.AtualizarValoresOrcados;
+import br.com.cpsoftware.budget.util.AtualizarValoresRealizados;
 
 
 @SuppressWarnings("serial")
@@ -57,13 +58,35 @@ public class AtualizarRubrica extends HttpServlet {
 		rubrica.setNome(nome);
 		rubrica.setValorEstimado(valor);
 		
+		//TODO Fazer classe util.Mover ??
+		
+		AtualizarValoresOrcados.atualizarPrecoCategoria(
+			AtualizarValoresOrcados.EXCLUIR,
+			rubricaId,
+			rubrica.getValorEstimado()
+		);
+				
 		//Atualizo a categoria anterior, excluindo o valor parcial da rubrica
-		AtualizarPrecos.atualizarPrecoCategoria(AtualizarPrecos.EXCLUIR, rubricaId, rubrica.getValorRealizado());
+		AtualizarValoresRealizados.atualizarPrecoCategoria(
+			AtualizarValoresRealizados.EXCLUIR,
+			rubricaId,
+			rubrica.getValorRealizado()
+		);
 		
 		this.rubricaDao.update(rubrica);
 		
+		AtualizarValoresOrcados.atualizarPrecoCategoria(
+			AtualizarValoresOrcados.CADASTRAR,
+			rubricaId,
+			rubrica.getValorEstimado()
+		);
+		
 		//Atualizo a nova categoria, adicionando o valor parcial da rubrica
-		AtualizarPrecos.atualizarPrecoCategoria(AtualizarPrecos.EDITAR, rubricaId, rubrica.getValorRealizado());
+		AtualizarValoresRealizados.atualizarPrecoCategoria(
+			AtualizarValoresRealizados.EDITAR,
+			rubricaId,
+			rubrica.getValorRealizado()
+		);
 		
 		resp.sendRedirect("/listarRubricas");
 		

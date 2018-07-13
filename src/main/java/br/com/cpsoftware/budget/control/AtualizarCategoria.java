@@ -11,7 +11,7 @@ import br.com.cpsoftware.budget.dao.CategoriaDAO;
 import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.model.Categoria;
 import br.com.cpsoftware.budget.model.Orcamento;
-import br.com.cpsoftware.budget.util.AtualizarPrecos;
+import br.com.cpsoftware.budget.util.AtualizarValoresOrcados;
 
 @SuppressWarnings("serial")
 public class AtualizarCategoria extends HttpServlet {
@@ -42,11 +42,10 @@ public class AtualizarCategoria extends HttpServlet {
 		categoria.setNome(nome);
 		categoria.setValorEstimado(valor);
 		
-		AtualizarPrecos.atualizarPrecoOrcamento(
-				AtualizarPrecos.EDITAR,
-				AtualizarPrecos.ORCADO,
-				categoriaId,
-				valor
+		AtualizarValoresOrcados.atualizarPrecoOrcamento(
+			AtualizarValoresOrcados.EDITAR,
+			categoriaId,
+			valor
 		);
 		
 		this.categoriaDao.update(categoria);

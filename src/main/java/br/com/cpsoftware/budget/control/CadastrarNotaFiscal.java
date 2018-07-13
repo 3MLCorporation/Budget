@@ -25,6 +25,7 @@ import br.com.cpsoftware.budget.dao.FornecedorDAO;
 import br.com.cpsoftware.budget.dao.NotaFiscalDAO;
 import br.com.cpsoftware.budget.model.Fornecedor;
 import br.com.cpsoftware.budget.model.NotaFiscal;
+import br.com.cpsoftware.budget.util.AtualizarValoresOrcados;
 
 @SuppressWarnings("serial")
 public class CadastrarNotaFiscal extends HttpServlet {
@@ -85,7 +86,17 @@ public class CadastrarNotaFiscal extends HttpServlet {
 				NotaFiscal notaFiscal = new NotaFiscal(itemId, fornecedorId, arquivo, valor, 0d, data, NotaFiscal.STATUS_PARCIAL);
 				NotaFiscalDAO  dao = new NotaFiscalDAO();
 				
-				req.getSession().setAttribute("notaId", dao.create(notaFiscal));
+				Long notaId = dao.create(notaFiscal);
+				
+				if(notaId != null) {
+					AtualizarValoresOrcados.atualizarPrecoItem(
+		    			AtualizarValoresOrcados.CADASTRAR,
+		                notaId,
+		                notaFiscal.getValor()
+		            );
+				}
+				
+				req.getSession().setAttribute("notaId", notaId);
 				resp.sendRedirect("/visualizarNotaFiscal");
 			}
 			

@@ -24,6 +24,7 @@ import br.com.cpsoftware.budget.dao.NotaFiscalDAO;
 import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.model.NotaFiscal;
 import br.com.cpsoftware.budget.model.Orcamento;
+import br.com.cpsoftware.budget.util.AtualizarValoresOrcados;
 
 @SuppressWarnings("serial")
 public class AtualizarNotaFiscal extends HttpServlet {
@@ -102,6 +103,12 @@ public class AtualizarNotaFiscal extends HttpServlet {
 		if(arquivo.getBytes().length > 0) {
 			notaFiscal.setArquivo(arquivo);
 		}
+		
+		AtualizarValoresOrcados.atualizarPrecoItem(
+			AtualizarValoresOrcados.EDITAR,
+			notaFiscalId,
+			notaFiscal.getValor()
+		);
 		
 		this.notaFiscalDao.update(notaFiscal);
 		

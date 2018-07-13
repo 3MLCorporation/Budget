@@ -22,7 +22,7 @@ import com.google.appengine.api.datastore.Blob;
 
 import br.com.cpsoftware.budget.dao.PagamentoDAO;
 import br.com.cpsoftware.budget.model.Pagamento;
-import br.com.cpsoftware.budget.util.AtualizarPrecos;
+import br.com.cpsoftware.budget.util.AtualizarValoresRealizados;
 
 @SuppressWarnings("serial")
 public class CadastrarPagamento extends HttpServlet {
@@ -80,7 +80,7 @@ public class CadastrarPagamento extends HttpServlet {
 				Long pagamentoId = pagamentoDao.create(pagamento);
 				
 				//TODO DISCUTIR: atualizarPrecoPagamento ou atualizarPrecoNotaFiscal??
-				AtualizarPrecos.atualizarPrecoPagamento(AtualizarPrecos.CADASTRAR, pagamentoId, pagamento.getValor());
+				AtualizarValoresRealizados.atualizarPrecoPagamento(AtualizarValoresRealizados.CADASTRAR, pagamentoId, pagamento.getValor());
 				
 				/*NotaFiscal nota = new NotaFiscalDAO().read(notaFiscalId);
 				nota.setValorParcial(nota.getValorParcial() + valor);

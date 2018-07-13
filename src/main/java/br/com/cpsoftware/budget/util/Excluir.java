@@ -19,7 +19,7 @@ import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.OrcamentoUsuario;
 import br.com.cpsoftware.budget.model.Pagamento;
 import br.com.cpsoftware.budget.model.Rubrica;
-import br.com.cpsoftware.budget.util.AtualizarPrecos;
+import br.com.cpsoftware.budget.util.AtualizarValoresRealizados;
 
 public class Excluir {
 	
@@ -68,12 +68,19 @@ public class Excluir {
 		
 		Long orcamentoId = Long.parseLong(req.getParameter("orcamento_id"));
 		Orcamento orcamento = (Orcamento) orcamentoDAO.read(orcamentoId);
-		AtualizarPrecos.atualizarPrecoProjeto(
-			AtualizarPrecos.EXCLUIR,
-			AtualizarPrecos.ORCADO,
+		
+		AtualizarValoresOrcados.atualizarPrecoProjeto(
+			AtualizarValoresOrcados.EXCLUIR,
 			orcamentoId,
 			orcamento.getValorEstimado()
 		);
+		
+		AtualizarValoresRealizados.atualizarPrecoProjeto(
+			AtualizarValoresRealizados.EXCLUIR,
+			orcamentoId,
+			orcamento.getValorRealizado()
+		);
+		
 		orcamentoDAO.delete(orcamentoId);
 		
 		excluirCategoria(orcamentoId);
@@ -100,11 +107,16 @@ public class Excluir {
 	public static boolean excluirCategoria(HttpServletRequest req, HttpServletResponse resp) {
 		
 		Long categoriaId = Long.parseLong(req.getParameter("categoria_id"));
-		
 		Categoria categoria = (Categoria) categoriaDAO.read(categoriaId);
-		AtualizarPrecos.atualizarPrecoOrcamento(
-			AtualizarPrecos.EXCLUIR,
-			AtualizarPrecos.ORCADO,
+		
+		AtualizarValoresOrcados.atualizarPrecoOrcamento(
+			AtualizarValoresOrcados.EXCLUIR,
+			categoriaId,
+			categoria.getValorEstimado()
+		);
+			
+		AtualizarValoresRealizados.atualizarPrecoOrcamento(
+			AtualizarValoresRealizados.EXCLUIR,
 			categoriaId,
 			categoria.getValorRealizado()
 		);
@@ -128,10 +140,20 @@ public class Excluir {
 	public static boolean excluirRubrica(HttpServletRequest req, HttpServletResponse resp) {
 		
 		Long rubricaId = Long.parseLong(req.getParameter("rubrica_id"));
-		
 		Rubrica rubrica = (Rubrica) rubricaDAO.read(rubricaId);
-		AtualizarPrecos.atualizarPrecoCategoria(AtualizarPrecos.EXCLUIR, rubricaId, rubrica.getValorRealizado());
 		
+		AtualizarValoresOrcados.atualizarPrecoCategoria(
+			AtualizarValoresOrcados.EXCLUIR,
+			rubricaId,
+			rubrica.getValorEstimado()
+		);
+			
+		AtualizarValoresRealizados.atualizarPrecoCategoria(
+			AtualizarValoresRealizados.EXCLUIR,
+			rubricaId,
+			rubrica.getValorRealizado()
+		);
+			
 		rubricaDAO.delete(rubricaId);
 		
 		excluirItem(rubricaId);
@@ -154,7 +176,6 @@ public class Excluir {
 		
 		//Se o Item tivesse valor parcial, ficaria assim:
 		Item item = itemDAO.read(itemId);
-		AtualizarPrecos.atualizarPrecoRubrica(AtualizarPrecos.EXCLUIR, itemId, item.getValorRealizado());
 		
 		//Mas, como ele não tem, tenho que chamar a nota fiscal e passar o valor parcial dela, assim:
 		
@@ -164,6 +185,18 @@ public class Excluir {
 			AtualizarPrecos.atualizarPrecoRubrica(AtualizarPrecos.EXCLUIR, itemId, nota.getValorParcial());
 			excluirNotaFiscal(itemId);
 		}*/
+		
+		AtualizarValoresOrcados.atualizarPrecoRubrica(
+			AtualizarValoresOrcados.EXCLUIR,
+			itemId,
+			item.getValor()
+		);
+			
+		AtualizarValoresRealizados.atualizarPrecoRubrica(
+			AtualizarValoresRealizados.EXCLUIR,
+			itemId,
+			item.getValorRealizado()
+		);
 		
 		itemDAO.delete(itemId);
 		
@@ -190,8 +223,19 @@ public class Excluir {
 		Long notaId = Long.parseLong(req.getParameter("nota_id"));
 		
 		NotaFiscal nota = notaFiscalDAO.read(notaId);
-		AtualizarPrecos.atualizarPrecoItem(AtualizarPrecos.EXCLUIR, notaId, nota.getValorRealizado());
 		
+		AtualizarValoresOrcados.atualizarPrecoItem(
+			AtualizarValoresOrcados.EXCLUIR,
+			notaId,
+			nota.getValor()
+		);
+			
+		AtualizarValoresRealizados.atualizarPrecoItem(
+			AtualizarValoresRealizados.EXCLUIR,
+			notaId,
+			nota.getValorRealizado()
+		);
+			
 		notaFiscalDAO.delete(notaId);
 		
 		excluirPagamento(notaId);
@@ -215,7 +259,12 @@ public class Excluir {
 		Pagamento pagamento = pagamentoDAO.read(pagamentoId);
 
 		//TODO DISCUTIR: atualizarPrecoPagamento ou atualizarPrecoNotaFiscal??
-		AtualizarPrecos.atualizarPrecoPagamento(AtualizarPrecos.EXCLUIR, pagamentoId, pagamento.getValor());
+		AtualizarValoresRealizados.atualizarPrecoPagamento(
+			AtualizarValoresRealizados.EXCLUIR,
+			pagamentoId,
+			pagamento.getValor()
+		);
+		
 		System.out.println("SAIU DO ATUALIZAR PREÇOS!!");
 		pagamentoDAO.delete(pagamentoId);
 		

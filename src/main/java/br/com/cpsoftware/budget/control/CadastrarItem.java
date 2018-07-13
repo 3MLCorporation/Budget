@@ -25,6 +25,7 @@ import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.model.Categoria;
 import br.com.cpsoftware.budget.model.Item;
 import br.com.cpsoftware.budget.model.Orcamento;
+import br.com.cpsoftware.budget.util.AtualizarValoresOrcados;
 
 @SuppressWarnings("serial")
 public class CadastrarItem extends HttpServlet {
@@ -99,7 +100,15 @@ public class CadastrarItem extends HttpServlet {
 			}
 			
 			Item item = new Item(rubricaId, nome, descricao, precoUnitario, quantidade, 0d, 0d, unidadeMedida, arquivoDetalhes, arquivoAuxiliar);
-			this.dao.create(item);
+			Long itemId = this.dao.create(item);
+			
+			if(itemId != null) {
+				AtualizarValoresOrcados.atualizarPrecoRubrica(
+	    			AtualizarValoresOrcados.CADASTRAR,
+	                itemId,
+	                item.getValor()
+	            );
+			}
 			
 			resp.sendRedirect("/listarItens");
 		}

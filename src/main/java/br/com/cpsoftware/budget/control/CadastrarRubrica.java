@@ -15,6 +15,7 @@ import br.com.cpsoftware.budget.dao.RubricaDAO;
 import br.com.cpsoftware.budget.model.Categoria;
 import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.Rubrica;
+import br.com.cpsoftware.budget.util.AtualizarValoresOrcados;
 
 @SuppressWarnings("serial")
 public class CadastrarRubrica extends HttpServlet {
@@ -51,7 +52,15 @@ public class CadastrarRubrica extends HttpServlet {
 			0d // valorParcial
 		);
 		
-		dao.create(rubrica);
+		Long rubricaId = dao.create(rubrica);
+		
+		if(rubricaId != null) {
+			AtualizarValoresOrcados.atualizarPrecoCategoria(
+				AtualizarValoresOrcados.CADASTRAR,
+	            rubricaId,
+	            rubrica.getValorEstimado()
+            );
+		}
 	
 		resp.sendRedirect("/listarRubricas");
 	}
