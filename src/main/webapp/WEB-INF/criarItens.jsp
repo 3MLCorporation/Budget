@@ -68,8 +68,8 @@
 			   name="quantidade" required="required" id="quantidadeItem" onblur="calcularValorTotalItem()">
 			 </div>
 			 <div class="form-group">
-			   <label for="text">Valor:</label> <input type="number"
-			   class="form-control" placeholder="Fornecer o valor uniforme do item em reais"
+			   <label for="text">Preço unitário:</label> <input type="number"
+			   class="form-control" placeholder="Fornecer o preço unitário do item em reais"
 			   name="preco_unitario" required="required" id="valorUniformeItem" onblur="calcularValorTotalItem()">
 			 </div>
 			 <div class="form-group">

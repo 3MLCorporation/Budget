@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +21,10 @@ import org.apache.commons.io.IOUtils;
 
 import com.google.appengine.api.datastore.Blob;
 
+import br.com.cpsoftware.budget.dao.FornecedorDAO;
 import br.com.cpsoftware.budget.dao.NotaFiscalDAO;
 import br.com.cpsoftware.budget.dao.OrcamentoDAO;
+import br.com.cpsoftware.budget.model.Fornecedor;
 import br.com.cpsoftware.budget.model.NotaFiscal;
 import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.util.AtualizarValoresOrcados;
@@ -38,7 +41,9 @@ public class AtualizarNotaFiscal extends HttpServlet {
 		
 		Long orcamentoEditavelId = Long.parseLong((String) req.getSession().getAttribute("orcamentoEditavel"));
 		Orcamento orcamento = (Orcamento) new OrcamentoDAO().read(orcamentoEditavelId);
+		List <Fornecedor> fornecedores = new FornecedorDAO().getFornecedores();
 		
+		req.setAttribute("fornecedores", fornecedores);
 		req.setAttribute("orcamentoSelecionado", orcamento.getNome());
 		req.setAttribute("nota", new NotaFiscalDAO().read(notaFiscalId));
 		req.setAttribute("page", "atualizarNotaFiscal");

@@ -41,11 +41,16 @@
       <div class="card-body">
         <form action="atualizarNotaFiscal" method="POST" enctype="multipart/form-data">
           <input type="hidden" name="item_id" value="${nota.itemId }">
-          <%-- <div class="form-group">
-            <label for="text">Fornecedor</label> <input type="text"
-            class="form-control" placeholder="Fornecer o novo fornecedor"
-            name="fornecedor" value="${fornecedor }" >
-          </div> --%>
+          <div class="form-group">
+            <label for="text">Fornecedor</label>
+            <div class="row-fluid">
+              <select required data-live-search="true" data-live-search-style="startsWith" class="selectpicker form-control" title="Selecione..." name="fornecedor_id">
+                <c:forEach items="${fornecedores}" var="fornecedor">
+                  <option value="${fornecedor.id}">${fornecedor.nomeFantasia}</option>
+                </c:forEach>
+              </select>
+            </div>
+          </div> 
 
           <div class="form-group">
             <label for="text">Valor</label> <input type="number" pattern="[0-9.]"

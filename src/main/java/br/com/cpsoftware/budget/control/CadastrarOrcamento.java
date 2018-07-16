@@ -35,13 +35,19 @@ public class CadastrarOrcamento extends HttpServlet {
 		
 		Long projetoId = Long.parseLong((String) req.getSession().getAttribute("projetoEditavel"));
 		String nome = req.getParameter("nome");
-		String valor = req.getParameter("valor");
+		Double valor;
+		try {
+			valor = Double.parseDouble(req.getParameter("valor"));
+		}catch (NumberFormatException e) {
+			valor = 0d;
+			e.printStackTrace();
+		}
 				 
 		 
 		Orcamento orcamento = new Orcamento(
 			projetoId, 
 			nome, 
-			Double.parseDouble(valor), //valorEstimado
+			valor, //valorEstimado
 			0d, // valorOrcado
 			0d, // valorParcial
 			Orcamento.STATUS_ELABORACAO
