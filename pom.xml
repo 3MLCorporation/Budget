@@ -18,6 +18,7 @@
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
 		<maven.compiler.showDeprecation>true</maven.compiler.showDeprecation>
+		<itext.version>RELEASE</itext.version>
 	</properties>
 
 	<dependencyManagement>
@@ -96,6 +97,34 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
+		
+		<!-- always needed -->
+	    <dependency>
+	        <groupId>com.itextpdf</groupId>
+	        <artifactId>kernel</artifactId>
+	        <version>${itext.version}</version>
+	    </dependency>
+	
+	    <!-- always needed -->
+	    <dependency>
+	        <groupId>com.itextpdf</groupId>
+	        <artifactId>io</artifactId>
+	        <version>${itext.version}</version>
+	    </dependency>
+	
+	    <!-- always needed -->
+	    <dependency>
+	        <groupId>com.itextpdf</groupId>
+	        <artifactId>layout</artifactId>
+	        <version>${itext.version}</version>
+	    </dependency>
+	
+	    <!-- only needed for forms -->
+	    <dependency>
+	        <groupId>com.itextpdf</groupId>
+	        <artifactId>forms</artifactId>
+	        <version>${itext.version}</version>
+	    </dependency>
 	</dependencies>
 
 	<build>
