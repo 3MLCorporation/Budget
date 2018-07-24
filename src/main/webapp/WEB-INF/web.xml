@@ -446,6 +446,15 @@
          <url-pattern>/atualizarFornecedor</url-pattern>
    </servlet-mapping>
 
+   <servlet>
+         <servlet-name>gerarRelatorio</servlet-name>
+         <servlet-class>br.com.cpsoftware.budget.control.GerarRelatorio</servlet-class>
+   </servlet>
+   <servlet-mapping>
+         <servlet-name>gerarRelatorio</servlet-name>
+         <url-pattern>/gerarRelatorio</url-pattern>
+   </servlet-mapping>   
+
   <welcome-file-list>
     <welcome-file>login</welcome-file>
   </welcome-file-list>

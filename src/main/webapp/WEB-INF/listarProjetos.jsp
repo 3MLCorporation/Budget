@@ -35,6 +35,7 @@
 				       			<th>Valor orçado</th>
 				       			<th>Valor realizado</th>
 				       			<th>Editar projeto</th>
+				       			<th>Gerar relatório</th>
 			     			</tr>
 			   		</thead>
 			   		<tbody id="myTable">
@@ -60,7 +61,13 @@
 											<input type="hidden" class="form-control" value="${projeto.id}" name="projeto_id">
 											<button type="submit" class="btn btn-link"><img src="../img/excluir.png" alt="Logo"></button>
 							           	</form>
-						           	</div> 
+						           	</div>
+						           	<td>
+							           	<form action="gerarRelatorio" method="GET">
+											<input type="hidden" class="form-control" value="${projeto.id}" name="projetoEditavel">
+											<button type="submit" class="btn btn-link"><img src="../img/relatorio.png" alt="Logo"></button>
+							           	</form>
+						           	</td> 
 			  					</td>
 							</tr>
 						</c:forEach>
