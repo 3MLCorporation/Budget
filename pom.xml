@@ -98,32 +98,40 @@
 			<scope>test</scope>
 		</dependency>
 		
-		<!-- always needed -->
-	    <dependency>
+		<dependency>
 	        <groupId>com.itextpdf</groupId>
 	        <artifactId>kernel</artifactId>
-	        <version>${itext.version}</version>
+	        <version>7.0.4</version>
 	    </dependency>
-	
-	    <!-- always needed -->
 	    <dependency>
 	        <groupId>com.itextpdf</groupId>
 	        <artifactId>io</artifactId>
-	        <version>${itext.version}</version>
+	        <version>7.0.4</version>
 	    </dependency>
-	
-	    <!-- always needed -->
 	    <dependency>
 	        <groupId>com.itextpdf</groupId>
 	        <artifactId>layout</artifactId>
-	        <version>${itext.version}</version>
+	        <version>7.0.4</version>
 	    </dependency>
-	
-	    <!-- only needed for forms -->
 	    <dependency>
 	        <groupId>com.itextpdf</groupId>
 	        <artifactId>forms</artifactId>
-	        <version>${itext.version}</version>
+	        <version>7.0.4</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>com.itextpdf</groupId>
+	        <artifactId>pdfa</artifactId>
+	        <version>7.0.4</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>com.itextpdf</groupId>
+	        <artifactId>pdftest</artifactId>
+	        <version>7.0.4</version>
+	    </dependency>
+	    <dependency>
+	        <groupId>org.slf4j</groupId>
+	        <artifactId>slf4j-log4j12</artifactId>
+	        <version>1.7.18</version>
 	    </dependency>
 	</dependencies>
 
