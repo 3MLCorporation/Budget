@@ -22,7 +22,6 @@ public class AdicionarEditor extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		//Long orcamentoId = Long.parseLong((String) req.getSession().getAttribute("orcamentoEditavel"));
 		if(req.getParameter("orcamento") != null) { //Quando o gerente clica no botao de AdicionarEditor na tela de listarOrcamento;
 			Long orcamentoId = Long.parseLong(req.getParameter("orcamento"));
 			req.getSession().setAttribute("orcamentoEditavel", orcamentoId.toString());
