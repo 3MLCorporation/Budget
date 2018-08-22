@@ -110,17 +110,17 @@
 									<div class="btn-group"> 
 			                            <form action="visualizarNotaFiscal" method="GET">
 			                                <input type="hidden" value="${nota.id }" name="notaId">
-			                                <button type="submit" class="btn btn-link"><img src="../img/visualizar.png"></button>
+			                                <button type="submit" class="btn btn-link"><!--<img src="../img/visualizar.png">--><i class="material-icons" style="color:black">visibility</i></button> <!--Visualizar--></button>
 			                            </form>
 
 										<form action="atualizarNotaFiscal" method="GET">
 											<input type="hidden" class="form-control" value="${nota.id}" name="notaId">
-											<button type="submit" class="btn btn-link"><img src="../img/atualizar.png" alt="Logo"></button>
+											<button type="submit" class="btn btn-link"><!--<img src="../img/atualizar.png" alt="Logo">--><i class="material-icons" style="color:black" >mode_edit</i></button> <!--EDITAR-->
 										</form>
 
 										<form action="excluirNotaFiscal" method="POST">
 											<input type="hidden" class="form-control" value="${nota.id}" name="nota_id">
-											<button type="submit" class="btn btn-link"> <img src="../img/excluir.png" alt="Logo"> </button>
+											<button type="submit" class="btn btn-link"><!--<img src="../img/excluir.png" alt="Logo">--> <i class="material-icons" style="color:black" >delete_forever</i> </button> <!--DELETAR-->
 										</form>									
 									</div>	
 								</td>

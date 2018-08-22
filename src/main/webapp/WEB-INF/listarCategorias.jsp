@@ -41,10 +41,8 @@
 		        			<th>Valor estimado</th>
 		        			<th>Valor orçado</th>
 		        			<th>Valor realizado</th>
-		        			<th>Rubricas</th>
-		        			<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
-		        				<th>Editar categoria</th>
-		        			</c:if>
+		        			<!--<th>Rubricas</th>-->
+		        			<th>Editar categoria</th>
       					</tr>
 			   		</thead>
 			   		<tbody id="myTable">
@@ -55,27 +53,25 @@
 								<td> ${categoria.getValorOrcadoFormatado()}</td>
 								<td> ${categoria.getValorRealizadoFormatado()}</td>
 								<td>
-									<form action="listarRubricas" method="GET">
-							         	<input type="hidden" class="form-control" value="${categoria.id}" name="categoriaId">
-										<button type="submit" class="btn btn-link"><img src="../img/listarFamilia.png" alt="Logo" style="width:100%;"> </button>
-							        </form>
-								</td>
-								<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
-									<td>
-										<div class="btn-group">
+									<div class="btn-group">
+										<form action="listarRubricas" method="GET">
+								         	<input type="hidden" class="form-control" value="${categoria.id}" name="categoriaId">
+											<button type="submit" class="btn btn-link"><!--<img src="../img/editar.png" alt="Logo">--><i class="material-icons" style="color:black" >format_align_justify</i> </button> <!--LISTAR-->
+								        </form>
+									
+										<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
 											<form action="atualizarCategoria" method="GET">
 												<input type="hidden" class="form-control" value="${categoria.id}" name="categoriaId">												
-												<button type="submit" class="btn btn-link"><img src="../img/atualizar.png" alt="Logo"></button>
+												<button type="submit" class="btn btn-link"><!--<img src="../img/atualizar.png" alt="Logo">--><i class="material-icons" style="color:black" >mode_edit</i></button> <!--EDITAR-->
 											</form>
 								           												
 											<form action="excluirCategoria" method="POST">
 												<input type="hidden" class="form-control" value="${categoria.id}" name="categoria_id">
-												<button type="submit" class="btn btn-link"><img src="../img/excluir.png" alt="Logo" style="width:100%;"> </button>
+												<button type="submit" class="btn btn-link"><!--<img src="../img/excluir.png" alt="Logo">--> <i class="material-icons" style="color:black" >delete_forever</i> </button> <!--DELETAR-->
 								           	</form>
-									           	
-							            </div>
-			   						</td>
-		   						</c:if>	
+				   						</c:if>
+			   						</div>
+		   						</td>	
 							</tr>
 						</c:forEach>
 			   	 	</tbody>

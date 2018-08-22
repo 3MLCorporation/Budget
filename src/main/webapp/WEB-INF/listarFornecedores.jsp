@@ -31,12 +31,12 @@
                                     <div class="btn-group">
                                         <form action="atualizarFornecedor" method="GET">
                                             <input type="hidden" class="form-control" value="${fornecedor.id}" name="fornecedorId">
-                                            <button type="submit" class="btn btn-link"><img src="../img/atualizar.png" alt="Logo"></button>
+                                            <button type="submit" class="btn btn-link"><!--<img src="../img/atualizar.png" alt="Logo">--><i class="material-icons" style="color:black" >mode_edit</i></button> <!--EDITAR-->
                                         </form>
 
                                         <form action="excluirFornecedor" method="POST">
                                             <input type="hidden" class="form-control" value="${fornecedor.id}" name="fornecedorId">
-                                            <button type="submit" class="btn btn-link"><img src="../img/excluir.png" alt="Logo"></button>
+                                            <button type="submit" class="btn btn-link"><!--<img src="../img/excluir.png" alt="Logo">--> <i class="material-icons" style="color:black" >delete_forever</i> </button> <!--DELETAR-->
                                            </form>
                                     </div>
                                    </td>

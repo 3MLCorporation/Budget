@@ -46,10 +46,10 @@
 		        			<th>Valor estimado</th>
 		        			<th>Valor orçado</th>
 		        			<th>Valor realizado</th>
-			        		<th>Itens</th>
-			        		<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
-			        			<th>Editar rubrica</th>
-			        		</c:if>
+			        		<!--<th>Itens</th>
+			        		<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"> PERFIL_ADMIN || PERFIL_GERENTE-->
+			        		<th>Editar rubrica</th>
+			        		<!--</c:if>-->
       					</tr>
 			   		</thead>
 			   		<tbody id="myTable">
@@ -61,26 +61,24 @@
 								<td> ${rubricaMap.rubrica.getValorOrcadoFormatado()}</td>
 								<td> ${rubricaMap.rubrica.getValorRealizadoFormatado()}</td>
 								<td>
-									<form action="listarItens" method="GET">
-							         	<input type="hidden" class="form-control" value="${rubricaMap.rubrica.id}" name="rubricaId">
-										<button type="submit" class="btn btn-link"><img src="../img/listarFamilia.png" alt="Logo" style="width:100%;"> </button>
-							        </form>
-								</td>
-								<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
-									<td>
-										<div class="btn-group">
+									<div class="btn-group">
+										<form action="listarItens" method="GET">
+								         	<input type="hidden" class="form-control" value="${rubricaMap.rubrica.id}" name="rubricaId">
+											<button type="submit" class="btn btn-link"><!--<img src="../img/editar.png" alt="Logo">--><i class="material-icons" style="color:black" >format_align_justify</i> </button> <!--LISTAR-->
+								        </form>
+								        <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
 											<form action="atualizarRubrica" method="GET">
 												<input type="hidden" class="form-control" value="${rubricaMap.rubrica.id}" name="rubricaId">												
-												<button type="submit" class="btn btn-link"><img src="../img/atualizar.png" alt="Logo"></button>
+												<button type="submit" class="btn btn-link"><!--<img src="../img/atualizar.png" alt="Logo">--><i class="material-icons" style="color:black" >mode_edit</i></button> <!--EDITAR-->
 											</form>
 								           												
 											<form action="excluirRubrica" method="POST">
 												<input type="hidden" class="form-control" value="${rubricaMap.rubrica.id}" name="rubrica_id">
-												<button type="submit" class="btn btn-link"><img src="../img/excluir.png" alt="Logo" style="width:100%;"> </button>
+												<button type="submit" class="btn btn-link"><!--<img src="../img/excluir.png" alt="Logo">--> <i class="material-icons" style="color:black" >delete_forever</i> </button> <!--DELETAR-->
 								           	</form>
-								        </div>	
-			   						</td>
-		   						</c:if>
+										</c:if>	
+									</div>
+		   						</td>
 							</tr>
 						</c:forEach>
 			   	 	</tbody>

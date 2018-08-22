@@ -35,7 +35,7 @@
 				       			<th>Valor orçado</th>
 				       			<th>Valor realizado</th>
 				       			<th>Editar projeto</th>
-				       			<th>Gerar relatório</th>
+				       			<!--<th>Gerar relatório</th>-->
 			     			</tr>
 			   		</thead>
 			   		<tbody id="myTable">
@@ -49,26 +49,25 @@
 									<div class="btn-group"> 
 										<form action="atualizarProjeto" method="GET">
 											<input type="hidden" class="form-control" value="${projeto.id}" name="projetoId">
-											<button type="submit" class="btn btn-link"><img src="../img/atualizar.png" alt="Logo"></button>
+											<button type="submit" class="btn btn-link"><!--<img src="../img/atualizar.png" alt="Logo">--><i class="material-icons" style="color:black" >mode_edit</i></button> <!--EDITAR-->
 										</form>
 
 							           	<form action="selecionarProjeto" method="POST">
 											<input type="hidden" class="form-control" value="${projeto.id}" name="projetoEditavel">
-											<button type="submit" class="btn btn-link"><img src="../img/editar.png" alt="Logo"></button>
+											<button type="submit" class="btn btn-link"><!--<img src="../img/editar.png" alt="Logo">--><i class="material-icons" style="color:black" >format_align_justify</i> </button> <!--LISTAR-->
 							           	</form>
 							           				
 										<form action="excluirProjeto" method="POST">
 											<input type="hidden" class="form-control" value="${projeto.id}" name="projeto_id">
-											<button type="submit" class="btn btn-link"><img src="../img/excluir.png" alt="Logo"></button>
+											<button type="submit" class="btn btn-link"><!--<img src="../img/excluir.png" alt="Logo">--><i class="material-icons" style="color:black" >delete_forever</i> </button> <!--DELETAR-->
 							           	</form>
-						           	</div>
-						           	<td>
+
 							           	<form action="gerarRelatorio" method="GET">
 											<input type="hidden" class="form-control" value="${projeto.id}" name="projetoEditavel">
-											<button type="submit" class="btn btn-link"><img src="../img/relatorio.png" alt="Logo"></button>
+											<button type="submit" class="btn btn-link"><!--<img src="../img/relatorio.png" alt="Logo">--><i class="material-icons" style="color:black">insert_drive_file</i></button> <!--PDF-->
 							           	</form>
-						           	</td> 
-			  					</td>
+						           	</div>
+						        </td>
 							</tr>
 						</c:forEach>
 			   	 	</tbody>

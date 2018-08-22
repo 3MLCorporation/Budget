@@ -50,8 +50,8 @@
 		        			<th>Valor estimado</th>
 		        			<th>Valor orçado</th>
 		        			<th>Valor realizado</th>
-			        		<th>Detalhes</th>
-			        		<th>Editar tem</th>
+			        		<!--<th>Detalhes</th>-->
+			        		<th>Editar Item</th>
 			        		<!-- <th>Nota fiscal</th> -->
       					</tr>
 			   		</thead>
@@ -65,21 +65,19 @@
 								<td> ${itemMap.item.getValorOrcadoFormatado()}</td>
 								<td> ${itemMap.item.getValorRealizadoFormatado()}</td>
 								<td>
-									<form action="visualizarItem" method="GET">
-										<input type="hidden" class="form-control" value="${itemMap.item.id}" name="itemId">
-										<button type="submit" class="btn btn-link"> <img src="../img/detalhes.png" alt="Logo"> </button>
-							         </form>
-								</td>
-								<td>
 									<div class="btn-group">
+										<form action="visualizarItem" method="GET">
+											<input type="hidden" class="form-control" value="${itemMap.item.id}" name="itemId">
+											<button type="submit" class="btn btn-link"> <!--<img src="../img/detalhes.png" alt="Logo">--><i class="material-icons" style="color:black">info</i></button> <!--Detalhes-->
+								         </form>
 										<form action="atualizarItem" method="GET">
 											<input type="hidden" class="form-control" value="${itemMap.item.id}" name="itemId">	
-											<button type="submit" class="btn btn-link"><img src="../img/atualizar.png" alt="Logo"></button>
+											<button type="submit" class="btn btn-link"><!--<img src="../img/atualizar.png" alt="Logo">--><i class="material-icons" style="color:black" >mode_edit</i></button> <!--EDITAR-->
 										</form>
 
 										<form action="excluirItem" method="POST">
 											<input type="hidden" class="form-control" value="${itemMap.item.id}" name="item_id">
-											<button type="submit" class="btn btn-link"> <img src="../img/excluir.png" alt="Logo"> </button>
+											<button type="submit" class="btn btn-link"><!--<img src="../img/excluir.png" alt="Logo">--> <i class="material-icons" style="color:black" >delete_forever</i> </button> <!--DELETAR-->
 								        </form>
 							     	</div>
 								</td>
