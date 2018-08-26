@@ -62,8 +62,8 @@
 											<button type="submit" class="btn btn-link"><!--<img src="../img/excluir.png" alt="Logo">--><i class="material-icons" style="color:black" >delete_forever</i> </button> <!--DELETAR-->
 							           	</form>
 
-							           	<form action="gerarRelatorio" method="GET">
-											<input type="hidden" class="form-control" value="${projeto.id}" name="projetoEditavel">
+							           	<form action="gerarRelatorio" target="_blank" method="GET">
+											<input type="hidden" class="form-control" value="${projeto.id}" name="projetoId">
 											<button type="submit" class="btn btn-link"><!--<img src="../img/relatorio.png" alt="Logo">--><i class="material-icons" style="color:black">insert_drive_file</i></button> <!--PDF-->
 							           	</form>
 						           	</div>
