@@ -50,6 +50,7 @@ public class AtualizarPagamento extends HttpServlet {
 		boolean isMultipart = ServletFileUpload.isMultipartContent(req);
 		Long notaFiscalId = null;
 		Long pagamentoId = null;
+		int tipo = 0;
 		Double valor = null;
 		Date data = null;
 		Blob arquivo = null;
@@ -70,6 +71,8 @@ public class AtualizarPagamento extends HttpServlet {
 							notaFiscalId = new Long(Streams.asString(stream));
 						if (item.getFieldName().equals(Pagamento.ID))
 							pagamentoId = new Long(Streams.asString(stream));
+						if (item.getFieldName().equals(Pagamento.TIPO))
+							tipo = new Integer(Streams.asString(stream));
 						if (item.getFieldName().equals(Pagamento.VALOR))
 							valor = new Double(Streams.asString(stream));
 						if (item.getFieldName().equals(Pagamento.DATA))
@@ -92,6 +95,7 @@ public class AtualizarPagamento extends HttpServlet {
 		//TODO Mover pagamento para outra nota ??
 		//pagamento.setNotaFiscalId(notaFiscalId);
 		
+		pagamento.setTipo(tipo);
 		pagamento.setValor(valor);
 		pagamento.setData(data);
 		

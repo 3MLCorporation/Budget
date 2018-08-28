@@ -53,6 +53,12 @@
           </div> 
 
           <div class="form-group">
+            <label for="text">Número</label> <input type="text"
+            id="numero" class="form-control"
+            name="numero" value="${nota.numero }">
+          </div>
+          
+          <div class="form-group">
             <label for="text">Valor</label> <input type="number" pattern="[0-9.]"
             id="valor" class="form-control" placeholder="Fornecer o novo valor da nota"
             name="valor" value="${nota.valor }">

@@ -46,6 +46,19 @@
               class="form-control" placeholder="Fornecer o arquivo da nota"
               name="arquivo" required="required" accept=".pdf">
             </div>
+            
+            <div class="form-group">
+		    	<label for="text">Tipo de pagamento: </label>
+	     		<select class="form-control" name="tipo">
+			      <option value="1">Boleto bancário</option>
+			      <option value="2">Depósito bancário</option>
+			      <option value="3">Cheque</option>
+			      <option value="4">Fatura</option>
+			      <option value="5">DARF</option>
+			      <option value="6">ISSQN</option>
+			    </select>
+		  	</div>
+			  
             <div class="row">
               <div class="form-group col-lg-6">
                 <label for="text">Valor</label> <input type="number" pattern="[0-9.]"

@@ -35,6 +35,7 @@ public class PagamentoDAO {
 		Entity pagamentoEntity = new Entity(PAGAMENTO_KIND);
 		pagamentoEntity.setProperty(Pagamento.NOTA_FISCAL_ID, pagamento.getNotaFiscalId());
 		pagamentoEntity.setProperty(Pagamento.ARQUIVO, pagamento.getArquivo());//???
+		pagamentoEntity.setProperty(Pagamento.TIPO, pagamento.getTipo());
 		pagamentoEntity.setProperty(Pagamento.VALOR, pagamento.getValor());
 		pagamentoEntity.setProperty(Pagamento.DATA, pagamento.getData());
 		
@@ -58,6 +59,7 @@ public class PagamentoDAO {
 		
 		pagamentoEntity.setProperty(Pagamento.NOTA_FISCAL_ID, pagamento.getNotaFiscalId());
 		pagamentoEntity.setProperty(Pagamento.ARQUIVO, pagamento.getArquivo());//???
+		pagamentoEntity.setProperty(Pagamento.TIPO, pagamento.getTipo());
 		pagamentoEntity.setProperty(Pagamento.VALOR, pagamento.getValor());
 		pagamentoEntity.setProperty(Pagamento.DATA, pagamento.getData());
 
@@ -72,7 +74,8 @@ public class PagamentoDAO {
 	private Pagamento entityToPagamento(Entity pagamentoEntity) {
 		return new Pagamento((Long)pagamentoEntity.getProperty(Pagamento.NOTA_FISCAL_ID),
 				 pagamentoEntity.getKey().getId(),
-				 (Blob)pagamentoEntity.getProperty(NotaFiscal.ARQUIVO),
+				 (Blob)pagamentoEntity.getProperty(Pagamento.ARQUIVO),
+				 ((Long)pagamentoEntity.getProperty(Pagamento.TIPO)).intValue(),
 				 (Double)pagamentoEntity.getProperty(NotaFiscal.VALOR),
 				 (Date)pagamentoEntity.getProperty(NotaFiscal.DATA));
 	}

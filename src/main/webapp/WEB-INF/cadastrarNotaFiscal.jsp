@@ -63,6 +63,12 @@
 		  <a href="/cadastrarFornecedor" class="btn btn-light">Cadastrar fornecedor</a>
 		  
           <div class="form-group">
+            <label for="text">Número</label> <input type="text"
+            class="form-control" id="numero"
+            name="numero" required="required">
+          </div>
+          
+          <div class="form-group">
             <label for="text">Valor</label> <input type="number" pattern="[0-9.]"
             class="form-control" placeholder="Fornecer o valor da nota" id="valor"
             name="valor" required="required">

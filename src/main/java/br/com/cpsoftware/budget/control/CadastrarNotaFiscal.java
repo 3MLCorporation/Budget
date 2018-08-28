@@ -46,6 +46,7 @@ public class CadastrarNotaFiscal extends HttpServlet {
 		boolean isMultipart = ServletFileUpload.isMultipartContent(req);
 		Long itemId = null;
 		Long fornecedorId = null;
+		String numero = null;
 		Double valor = null;
 		Date data = null;
 		Blob arquivo = null;
@@ -66,6 +67,8 @@ public class CadastrarNotaFiscal extends HttpServlet {
 							itemId = new Long(Streams.asString(stream));
 						if (item.getFieldName().equals(NotaFiscal.FORNECEDOR_ID))
 							fornecedorId = new Long(Streams.asString(stream));
+						if (item.getFieldName().equals(NotaFiscal.NUMERO))
+							numero = Streams.asString(stream);
 						if (item.getFieldName().equals(NotaFiscal.VALOR))
 							valor = new Double(Streams.asString(stream));
 						if (item.getFieldName().equals(NotaFiscal.DATA))
@@ -83,7 +86,7 @@ public class CadastrarNotaFiscal extends HttpServlet {
 			}
 			
 			if (arquivo != null && arquivo.getBytes().length > 0){
-				NotaFiscal notaFiscal = new NotaFiscal(itemId, fornecedorId, arquivo, valor, 0d, data, NotaFiscal.STATUS_PARCIAL);
+				NotaFiscal notaFiscal = new NotaFiscal(itemId, fornecedorId, numero, arquivo, valor, 0d, data, NotaFiscal.STATUS_PARCIAL);
 				NotaFiscalDAO  dao = new NotaFiscalDAO();
 				
 				Long notaId = dao.create(notaFiscal);

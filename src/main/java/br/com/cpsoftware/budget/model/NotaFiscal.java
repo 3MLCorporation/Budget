@@ -10,6 +10,7 @@ public class NotaFiscal {
 	private Long id;
 	private Long itemId;
 	private Long fornecedorId;
+	private String numero;
 	private Blob arquivo;
 	private Double valor;
 	private Double valorRealizado;
@@ -20,6 +21,7 @@ public class NotaFiscal {
 	public static final String ID = "id";
 	public static final String ITEM_ID = "item_id";
 	public static final String FORNECEDOR_ID = "fornecedor_id";
+	public static final String NUMERO = "numero";
 	public static final String ARQUIVO = "arquivo";
 	public static final String VALOR = "valor";
 	public static final String VALOR_REALIZADO = "valor_realizado";
@@ -30,10 +32,11 @@ public class NotaFiscal {
 	public static final int STATUS_PARCIAL = 1;
 	public static final int STATUS_QUITADO = 2;
 	
-	public NotaFiscal(Long itemId, Long id, Long fornecedorId, Blob arquivo, Double valor, Double valorRealizado, Date data, int status) {
+	public NotaFiscal(Long itemId, Long id, Long fornecedorId, String numero, Blob arquivo, Double valor, Double valorRealizado, Date data, int status) {
 		this.itemId = itemId;
 		this.id = id;
 		this.fornecedorId = fornecedorId;
+		this.numero = numero;
 		this.arquivo = arquivo;
 		this.valor = valor;
 		this.valorRealizado = valorRealizado;
@@ -41,9 +44,10 @@ public class NotaFiscal {
 		this.status = status;
 	}
 
-	public NotaFiscal(Long itemId, Long fornecedorId, Blob arquivo, Double valor, Double valorRealizado, Date data, int status) {
+	public NotaFiscal(Long itemId, Long fornecedorId, String numero, Blob arquivo, Double valor, Double valorRealizado, Date data, int status) {
 		this.itemId = itemId;
 		this.fornecedorId = fornecedorId;
+		this.numero = numero;
 		this.arquivo = arquivo;
 		this.valor = valor;
 		this.valorRealizado = valorRealizado;
@@ -73,6 +77,14 @@ public class NotaFiscal {
 
 	public void setFornecedor(Long fornecedorId) {
 		this.fornecedorId = fornecedorId;
+	}
+
+	public String getNumero() {
+		return numero;
+	}
+	
+	public void setNumero(String numero) {
+		this.numero = numero;
 	}
 
 	public Blob getArquivo() {

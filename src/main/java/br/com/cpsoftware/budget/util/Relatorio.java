@@ -121,8 +121,7 @@ public class Relatorio {
 				table.addCell(nota.getValorFormatado());
 				subTotalNF += nota.getValor();
 				table.addCell(nota.getDataFormatada());
-				//TODO Substituir pelo numero da nota fiscal - table.addCell(nota.getNumero());
-				table.addCell(String.valueOf(nota.getId()));
+				table.addCell(nota.getNumero());
 				
 				List<Pagamento> pagamentos = pagamentoDAO.getPagamentos(nota.getId());
 				if(!pagamentos.isEmpty()) {
@@ -130,8 +129,7 @@ public class Relatorio {
 					table.addCell(pagamento.getValorFormatado());
 					subTotalPg += pagamento.getValor();
 					table.addCell(pagamento.getDataFormatada());
-					//TODO Substituir pelo tipo de pagamento - pagamento.getTipo() (?)
-					table.addCell(String.valueOf(pagamento.getId()));
+					table.addCell(String.valueOf(pagamento.getTipoString()));
 				}else {
 					addEmptyCells(table, 3);
 				}

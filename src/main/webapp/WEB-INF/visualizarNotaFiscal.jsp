@@ -42,6 +42,7 @@
 	        </div>
 	        <div class="card-body">
 				<div>
+					Número: <strong>${nota.numero}</strong>&emsp;
 					Fornecedor: <strong>${fornecedor}</strong>&emsp;
 					Valor: <strong>${nota.getValorFormatado()}</strong>&emsp;
 					Data: <strong>${nota.getDataFormatada()}</strong>&emsp;
@@ -81,6 +82,7 @@
 		            <table class="table table-bordered" id="dataTable">
 				   		<thead>
 				   			<tr>
+				   				<th>Tipo</th>
 				   				<th>Valor</th>
 								<th>Data</th>
 								<th></th>
@@ -89,6 +91,17 @@
 				   		<tbody>
 				   			<c:forEach items="${pagamentos}" var="pagamento" varStatus="id">
 								<tr>
+									<td>
+										<c:choose>
+											<c:when test = "${pagamento.tipo  == 1}">Boleto bancário</c:when>
+											<c:when test = "${pagamento.tipo  == 2}">Depósito bancário</c:when>
+											<c:when test = "${pagamento.tipo  == 3}">Cheque</c:when>
+											<c:when test = "${pagamento.tipo  == 4}">Fatura</c:when>
+											<c:when test = "${pagamento.tipo  == 5}">DARF</c:when>
+											<c:when test = "${pagamento.tipo  == 6}">ISSQN</c:when>
+											<c:otherwise>---</c:otherwise>
+										</c:choose>
+									</td>
 									<td> ${pagamento.getValorFormatado()}</td>
 									<td> ${pagamento.getDataFormatada()}</td>
 									<td style="width: 14%;">

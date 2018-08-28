@@ -46,6 +46,19 @@
               class="form-control" placeholder="Fornecer o novo arquivo da nota"
               name="arquivo" accept=".pdf">
             </div>
+            
+            <div class="form-group">
+			     <label for="text">Tipo de pagamento: </label>
+			     <select class="form-control" name="tipo">
+			      <option value="1" ${pagamento.tipo == 1 ? 'selected' : ''}>Boleto bancário</option>
+			      <option value="2" ${pagamento.tipo == 2 ? 'selected' : ''}>Depósito bancário</option>
+			      <option value="3" ${pagamento.tipo == 3 ? 'selected' : ''}>Cheque</option>
+			      <option value="4" ${pagamento.tipo == 4 ? 'selected' : ''}>Fatura</option>
+			      <option value="5" ${pagamento.tipo == 5 ? 'selected' : ''}>DARF</option>
+			      <option value="5" ${pagamento.tipo == 6 ? 'selected' : ''}>ISSQN</option>
+			    </select>
+		  	</div>
+			  
             <div class="row">
               <div class="form-group col-lg-6">
                 <label for="text">Valor</label> <input type="number" pattern="[0-9.]"

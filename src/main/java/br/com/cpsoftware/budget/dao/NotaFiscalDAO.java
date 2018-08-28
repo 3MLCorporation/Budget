@@ -34,6 +34,7 @@ public class NotaFiscalDAO {
 		Entity notaFiscalEntity = new Entity(NOTA_FISCAL_KIND);
 		notaFiscalEntity.setProperty(NotaFiscal.ITEM_ID, nota.getItemId());
 		notaFiscalEntity.setProperty(NotaFiscal.FORNECEDOR_ID, nota.getFornecedorId());
+		notaFiscalEntity.setProperty(NotaFiscal.NUMERO, nota.getNumero());
 		notaFiscalEntity.setProperty(NotaFiscal.ARQUIVO, nota.getArquivo());
 		notaFiscalEntity.setProperty(NotaFiscal.VALOR, nota.getValor());
 		notaFiscalEntity.setProperty(NotaFiscal.VALOR_REALIZADO, nota.getValorRealizado());
@@ -60,6 +61,7 @@ public class NotaFiscalDAO {
 		
 		notaFiscalEntity.setProperty(NotaFiscal.ITEM_ID, nota.getItemId());
 		notaFiscalEntity.setProperty(NotaFiscal.FORNECEDOR_ID, nota.getFornecedorId());
+		notaFiscalEntity.setProperty(NotaFiscal.NUMERO, nota.getNumero());
 		notaFiscalEntity.setProperty(NotaFiscal.ARQUIVO, nota.getArquivo());
 		notaFiscalEntity.setProperty(NotaFiscal.VALOR, nota.getValor());
 		notaFiscalEntity.setProperty(NotaFiscal.VALOR_REALIZADO, nota.getValorRealizado());
@@ -78,6 +80,7 @@ public class NotaFiscalDAO {
 		return new NotaFiscal((Long)notaFiscalEntity.getProperty(NotaFiscal.ITEM_ID),
 							 notaFiscalEntity.getKey().getId(),
 							 (Long)notaFiscalEntity.getProperty(NotaFiscal.FORNECEDOR_ID),
+							 (String) notaFiscalEntity.getProperty(NotaFiscal.NUMERO),
 							 (Blob)notaFiscalEntity.getProperty(NotaFiscal.ARQUIVO),
 							 (Double)notaFiscalEntity.getProperty(NotaFiscal.VALOR),
 							 (Double)notaFiscalEntity.getProperty(NotaFiscal.VALOR_REALIZADO),

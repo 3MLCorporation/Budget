@@ -57,6 +57,7 @@ public class AtualizarNotaFiscal extends HttpServlet {
 		Long itemId = null;
 		Long notaFiscalId = null;
 		Long fornecedorId = null;
+		String numero = null;
 		Double valor = null;
 		Date data = null;
 		Blob arquivo = null;
@@ -79,6 +80,8 @@ public class AtualizarNotaFiscal extends HttpServlet {
 							notaFiscalId = new Long(Streams.asString(stream));
 						if (item.getFieldName().equals(NotaFiscal.FORNECEDOR_ID))
 							fornecedorId = new Long(Streams.asString(stream));
+						if (item.getFieldName().equals(NotaFiscal.NUMERO))
+							numero = Streams.asString(stream);
 						if (item.getFieldName().equals(NotaFiscal.VALOR))
 							valor = new Double(Streams.asString(stream));
 						if (item.getFieldName().equals(NotaFiscal.DATA))
@@ -102,6 +105,7 @@ public class AtualizarNotaFiscal extends HttpServlet {
 		//notaFiscal.setItemId(itemId);
 		
 		notaFiscal.setFornecedor(fornecedorId);
+		notaFiscal.setNumero(numero);
 		notaFiscal.setValor(valor);
 		notaFiscal.setData(data);
 		
