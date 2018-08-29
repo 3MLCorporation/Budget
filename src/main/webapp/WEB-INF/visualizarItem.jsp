@@ -110,7 +110,7 @@
 									<div class="btn-group"> 
 			                            <form action="visualizarNotaFiscal" method="GET">
 			                                <input type="hidden" value="${nota.id }" name="notaId">
-			                                <button type="submit" class="btn btn-link"><!--<img src="../img/visualizar.png">--><i class="material-icons" style="color:black">visibility</i></button> <!--Visualizar--></button>
+			                                <button type="submit" class="btn btn-link"><!--<img src="../img/visualizar.png">--><i class="material-icons" style="color:black">visibility</i></button> <!--Visualizar-->
 			                            </form>
 
 										<form action="atualizarNotaFiscal" method="GET">

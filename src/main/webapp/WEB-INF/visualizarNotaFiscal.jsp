@@ -108,18 +108,21 @@
 										<div class="btn-group"> 
 				                            <form action="abrirPagamento" target="_blank" method="GET">
 				                                <input type="hidden" value="${pagamento.id }" name="pagamentoId">
-				                                <button type="submit" class="btn btn-link"><img src="../img/visualizar.png"></button>
+				                                <button type="submit" class="btn btn-link"><!--<img src="../img/visualizar.png">-->
+				                                	<i class="material-icons" style="color:black">visibility</i></button> <!--Visualizar-->
 				                            </form>
 
 											<form action="atualizarPagamento" method="GET">
 												<input type="hidden" class="form-control" value="${pagamento.id}" name="pagamentoId">
-												<button type="submit" class="btn btn-link"><img src="../img/atualizar.png" alt="Logo"></button>
+												<button type="submit" class="btn btn-link"><!--<img src="../img/atualizar.png" alt="Logo">-->
+													<i class="material-icons" style="color:black" >mode_edit</i></button> <!--EDITAR-->
 											</form>
 
 											<form action="excluirPagamento" method="POST">
 												<input type="hidden" name="nota_fiscal_id" value="${nota.id }">
 												<input type="hidden" class="form-control" value="${pagamento.id}" name="pagamento_id">
-												<button type="submit" class="btn btn-link"> <img src="../img/excluir.png" alt="Logo"> </button>
+												<button type="submit" class="btn btn-link"> <!--<img src="../img/excluir.png" alt="Logo">--> 
+													<i class="material-icons" style="color:black" >delete_forever</i> </button> <!--DELETAR-->
 											</form>									
 										</div>	
 									</td>
