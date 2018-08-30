@@ -77,6 +77,11 @@
 			   	 	</tbody>
 			  	</table>
 		  	</div>
+		  	<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
+			  	<form action="cadastrarCategoria" method="GET">
+					&emsp;<button type="submit" class="btn btn-dark">Cadastrar categoria</button>
+				</form>
+			</c:if>
 	  	</div>
   	</div>
 </div>

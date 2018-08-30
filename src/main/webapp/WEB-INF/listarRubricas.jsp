@@ -46,10 +46,7 @@
 		        			<th>Valor estimado</th>
 		        			<th>Valor orçado</th>
 		        			<th>Valor realizado</th>
-			        		<!--<th>Itens</th>
-			        		<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"> PERFIL_ADMIN || PERFIL_GERENTE-->
 			        		<th>Editar rubrica</th>
-			        		<!--</c:if>-->
       					</tr>
 			   		</thead>
 			   		<tbody id="myTable">
@@ -84,6 +81,11 @@
 			   	 	</tbody>
 			  	</table>
 		  	</div>
+	  		<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
+			  	<form action="cadastrarRubrica" method="GET">
+					&emsp;<button type="submit" class="btn btn-dark">Cadastrar rubrica</button>
+				</form>
+			</c:if>
 	  	</div>
   	</div>
 </div>

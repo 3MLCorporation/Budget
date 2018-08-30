@@ -46,7 +46,7 @@
             <div class="row-fluid">
               <select required data-live-search="true" data-live-search-style="startsWith" class="selectpicker form-control" title="Selecione..." name="fornecedor_id">
                 <c:forEach items="${fornecedores}" var="fornecedor">
-                  <option value="${fornecedor.id}">${fornecedor.nomeFantasia}</option>
+                  <option value="${fornecedor.id}" ${nota.fornecedorId == fornecedor.id ? 'selected' : '' }>${fornecedor.nomeFantasia}</option>
                 </c:forEach>
               </select>
             </div>
