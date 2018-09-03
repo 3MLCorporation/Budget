@@ -56,12 +56,9 @@
 											<input type="hidden" class="form-control" value="${projeto.id}" name="projetoEditavel">
 											<button type="submit" class="btn btn-link" data-toggle="tooltip" title="Listar orçamentos"><!--<img src="../img/editar.png" alt="Logo">--><i class="material-icons" style="color:black" >format_align_justify</i> </button> <!--LISTAR-->
 							           	</form>
-							           				
-										<form action="excluirProjeto" method="POST">
-											<input type="hidden" class="form-control" value="${projeto.id}" name="projeto_id">
-											<button type="submit" class="btn btn-link" title="Apagar projeto"><!--<img src="../img/excluir.png" alt="Logo">--><i class="material-icons" style="color:black" >delete_forever</i> </button> <!--DELETAR-->
-							           	</form>
 
+										<button type="submit" class="btn btn-link open-delete-modal" title="Apagar projeto" data-toggle="modal" data-target="#deletarEntidade" data-id="${projeto.id}">
+											<!--<img src="../img/excluir.png" alt="Logo">--> <i class="material-icons" style="color:black" >delete_forever</i></button> <!--DELETAR PROJETO-->								           								           	
 							           	<form action="gerarRelatorio" target="_blank" method="GET">
 											<input type="hidden" class="form-control" value="${projeto.id}" name="projetoId">
 											<button type="submit" class="btn btn-link" title="Gerar relatório"><!--<img src="../img/relatorio.png" alt="Logo">--><i class="material-icons" style="color:black">insert_drive_file</i></button> <!--PDF-->
@@ -73,6 +70,35 @@
 			   	 	</tbody>
 			  	</table>
 		  	</div>
+
+			<!--Caixa de dialogo do botão delete-->
+		    <div class="modal fade" id="deletarEntidade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		      <div class="modal-dialog" role="document">
+		        <div class="modal-content">
+		          <div class="modal-header">
+		            <h5 class="modal-title" id="exampleModalLabel">Deseja mesmo apagar o projeto?</h5>
+		            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+		              <span aria-hidden="true">×</span>
+		            </button>
+		          </div>
+		          <div class="modal-body">Pressione o botão "Deletar" se é o que deseja.</div>
+		          <div class="modal-footer">
+		            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+						<form action="excluirProjeto" method="POST">
+							<input type="hidden" class="form-control" id="entityId" value="" name="projeto_id">
+							<button type="submit" class="btn btn-primary" title="Apagar projeto">Deletar</button> <!--DELETAR-->
+				        </form>
+		          </div>
+		        </div>
+		      </div>
+		    </div>			  	
 	  	</div>
   	</div>
 </div>
+
+<script>
+	$(document).on("click",".open-delete-modal",function(){
+		var selectedId = $(this).data('id');
+		$(".modal-footer #entityId").val(selectedId);
+	});
+</script>

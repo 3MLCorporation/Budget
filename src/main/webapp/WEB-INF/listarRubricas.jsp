@@ -71,11 +71,8 @@
 													<!--<img src="../img/atualizar.png" alt="Logo">--><i class="material-icons" style="color:black" >mode_edit</i></button> <!--EDITAR-->
 											</form>
 								           												
-											<form action="excluirRubrica" method="POST">
-												<input type="hidden" class="form-control" value="${rubricaMap.rubrica.id}" name="rubrica_id">
-												<button type="submit" class="btn btn-link" title="Apagar rubrica">
-													<!--<img src="../img/excluir.png" alt="Logo">--> <i class="material-icons" style="color:black" >delete_forever</i> </button> <!--DELETAR-->
-								           	</form>
+											<button type="submit" class="btn btn-link open-delete-modal" title="Apagar rubrica" data-toggle="modal" data-target="#deletarEntidade" data-id="${rubricaMap.rubrica.id}">
+											<!--<img src="../img/excluir.png" alt="Logo">--> <i class="material-icons" style="color:black" >delete_forever</i> </button> <!--DELETAR RUBRICA-->
 										</c:if>	
 									</div>
 		   						</td>
@@ -89,6 +86,35 @@
 					&emsp;<button type="submit" class="btn btn-dark">Cadastrar rubrica</button>
 				</form>
 			</c:if>
+
+			<!--Caixa de dialogo do botão delete-->
+		    <div class="modal fade" id="deletarEntidade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		      <div class="modal-dialog" role="document">
+		        <div class="modal-content">
+		          <div class="modal-header">
+		            <h5 class="modal-title" id="exampleModalLabel">Deseja mesmo apagar a rubrica?</h5>
+		            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+		              <span aria-hidden="true">×</span>
+		            </button>
+		          </div>
+		          <div class="modal-body">Pressione o botão "Deletar" se é o que deseja.</div>
+		          <div class="modal-footer">
+		            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+						<form action="excluirRubrica" method="POST">
+							<input type="hidden" class="form-control" id="entityId" value="" name="rubrica_id">
+							<button type="submit" class="btn btn-primary" title="Apagar rubrica">Deletar</button> <!--DELETAR-->
+				        </form>
+		          </div>
+		        </div>
+		      </div>
+		    </div>			
 	  	</div>
   	</div>
 </div>
+
+<script>
+	$(document).on("click",".open-delete-modal",function(){
+		var selectedId = $(this).data('id');
+		$(".modal-footer #entityId").val(selectedId);
+	});
+</script>

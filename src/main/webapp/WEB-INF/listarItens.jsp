@@ -77,8 +77,8 @@
 												<!--<img src="../img/atualizar.png" alt="Logo">--><i class="material-icons" style="color:black" >mode_edit</i></button> <!--EDITAR-->
 										</form>
 
-										<button type="submit" class="btn btn-link open-delete-modal" title="Apagar item" data-toggle="modal" data-target="#deletarItem" data-id="${itemMap.item.id}">
-											<!--<img src="../img/excluir.png" alt="Logo">--> <i class="material-icons" style="color:black" >delete_forever</i></button>										
+										<button type="submit" class="btn btn-link open-delete-modal" title="Apagar item" data-toggle="modal" data-target="#deletarEntidade" data-id="${itemMap.item.id}">
+											<!--<img src="../img/excluir.png" alt="Logo">--> <i class="material-icons" style="color:black" >delete_forever</i></button>	<!--DELETAR ITEM-->										
 							     	</div>
 								</td>
 								<%-- <td>
@@ -109,7 +109,7 @@
 			</c:if>
 
 			<!--Caixa de dialogo do botão delete-->
-		    <div class="modal fade" id="deletarItem" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		    <div class="modal fade" id="deletarEntidade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		      <div class="modal-dialog" role="document">
 		        <div class="modal-content">
 		          <div class="modal-header">
@@ -122,7 +122,7 @@
 		          <div class="modal-footer">
 		            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
 						<form action="excluirItem" method="POST">
-							<input type="hidden" class="form-control" id="itemId" value="" name="item_id">
+							<input type="hidden" class="form-control" id="entityId" value="" name="item_id">
 							<button type="submit" class="btn btn-primary" title="Apagar item">Deletar</button> <!--DELETAR-->
 				        </form>
 		          </div>
@@ -136,6 +136,6 @@
 <script>
 	$(document).on("click",".open-delete-modal",function(){
 		var selectedId = $(this).data('id');
-		$(".modal-footer #itemId").val(selectedId);
+		$(".modal-footer #entityId").val(selectedId);
 	});
 </script>
