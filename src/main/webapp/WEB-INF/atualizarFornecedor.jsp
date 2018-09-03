@@ -13,27 +13,28 @@
 		   	<form action="atualizarFornecedor" method="POST">
 		  		<div class="form-group">
 		       	   <label for="text">Nome de fantasia:</label> <input type="text"
-		        	class="form-control" placeholder="Fornecer o novo nome de fantasia"
+		        	class="form-control" placeholder="Fornecer o novo nome de fantasia" value="${fornecedor.nomeFantasia }"
 		       	   name="nomeFantasia">
 		      	</div>
 		      	<div class="form-group">
 		       	   <label for="text">Razão social:</label> <input type="text"
-		        	class="form-control" placeholder="Fornecer a nova razão social"
+		        	class="form-control" placeholder="Fornecer a nova razão social" value="${fornecedor.razaoSocial }"
 		       	   name="razaoSocial">
 		      	</div>
 		      <div class="form-group">
 		           <label for="text">CNPJ:</label> <input type="number"
-		           class="form-control" placeholder="Fornecer o novo cnpj do fornecedor"
+		           class="form-control" placeholder="Fornecer o novo cnpj do fornecedor"  value="${fornecedor.cnpj }"
 		           name="cnpj">
 		       </div>
 		      <div class="form-group">
 		           <label for="text">UF:</label> 
 			       <select class="form-control" name="uf">
 			         <c:forEach items="${ufs}" var="uf">
-			            <option value="${uf}">${uf}</option>
+			            <option value="${uf}" ${fornecedor.uf == uf ? 'selected' : ''}>${uf}</option>
 			          </c:forEach>
 			       </select>		           
-		       </div>		       
+		       </div>		
+		       <input type="hidden" class="form-control" value="${fornecedor.id}" name="fornecedorId">       
 		      <button type="submit" class="btn btn-dark botaoCadastro" title="Atualizar fornecedor">Atualizar</button>
 		  	</form>
 	  	</div>
