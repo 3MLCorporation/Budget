@@ -66,11 +66,11 @@
           </div>
           
           <br/>
-          <button type="submit" class="btn btn-dark">Cadastrar</button> 
+          <button type="submit" class="btn btn-dark" title="Cadastrar usuário">Cadastrar</button> 
         </form>
         
         <form action="login" method="GET">
-         <div class="botaoVoltar"><button class="btn btn-dark">Voltar</button></div>
+         <div class="botaoVoltar"><button class="btn btn-dark" title="Voltar a tela de login">Voltar</button></div>
        </form>
      </div>
 

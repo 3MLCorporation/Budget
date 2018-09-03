@@ -41,7 +41,7 @@
 			       class="form-control" placeholder="Fornecer o valor estimado do orçamento" id="valor"
 			       name="valor">
 			    </div>
-			    <button type="submit" class="btn btn-dark botaoCadastro">Cadastrar</button>
+			    <button type="submit" class="btn btn-dark botaoCadastro" title="Cadastrar orçamento">Cadastrar</button>
 			</form>
 	  	</div>
   	</div>

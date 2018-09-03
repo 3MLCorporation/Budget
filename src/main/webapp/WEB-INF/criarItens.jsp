@@ -117,7 +117,7 @@
 				   	</select>
 				 </div>
 			</div>  
-			<button type="submit" class="btn btn-dark botaoCadastro">Cadastrar</button>
+			<button type="submit" class="btn btn-dark botaoCadastro" title="Cadastrar item">Cadastrar</button>
 			</form>
 	  	</div>
   	</div>

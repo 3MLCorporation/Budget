@@ -64,7 +64,7 @@
 		       </select>
 		      </div>
 		      <input type="hidden" class="form-control" value="${rubrica.id}" name="rubricaId">
-		      <button type="submit" class="btn btn-dark botaoCadastro">Atualizar</button>
+		      <button type="submit" class="btn btn-dark botaoCadastro" title="Atualizar rubrica">Atualizar</button>
 		    </form>
 	  	</div>
   	</div>

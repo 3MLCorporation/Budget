@@ -76,7 +76,7 @@
             
             <br/>
             <input type="hidden" class="form-control" value="${pagamento.id}" name="id">
-            <button type="submit" class="btn btn-dark">Atualizar</button> 
+            <button type="submit" class="btn btn-dark" title="Atualizar pagamento">Atualizar</button> 
           </form>
         </div>
     </div>

@@ -81,7 +81,7 @@
 
           <br/>
 		  <input type="hidden" class="form-control" value="${nota.id}" name="id">
-          <button type="submit" class="btn btn-dark">Atualizar</button> 
+          <button type="submit" class="btn btn-dark" title="Atualizar nota fiscal">Atualizar</button> 
         </form>
       </div>
     </div>

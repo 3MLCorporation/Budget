@@ -37,7 +37,7 @@
 			       name="valor" value="${projeto.valorEstimado}">
 			    </div>
 			    <input type="hidden" class="form-control" value="${projeto.id}" name="projetoId">
-			    <button type="submit" class="btn btn-dark botaoCadastro">Atualizar</button>
+			    <button type="submit" class="btn btn-dark botaoCadastro" title="Atualizar projeto">Atualizar</button>
 			</form>
 	  	</div>
   	</div>

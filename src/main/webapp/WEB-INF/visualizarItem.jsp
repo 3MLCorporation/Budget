@@ -31,6 +31,9 @@
         <li class="breadcrumb-item active">
         	<a href="/listarItens">Item</a>
         </li>
+        <li class="breadcrumb-item active">
+        	<a href="#">Detalhes</a>
+        </li>       
       </ol>
     </div>
 
@@ -67,12 +70,12 @@
 			<div class="btn-group">
 				<form action="abrirArquivoDetalhesItem" target="_blank" method="GET">
 					<input type="hidden" name="itemId" value="${item.id}">
-					<button type="submit" class="btn btn-dark">Ver detalhes</button>
+					<button type="submit" class="btn btn-dark" title="Visualizar arquivo de detalhes">Arquivo de Detalhes</button>
 				</form>
 				
 				<form action="abrirArquivoAuxiliarItem" target="_blank" method="GET">
 					<input type="hidden" name="itemId" value="${item.id}">
-					&emsp;<button type="submit" class="btn btn-dark">Ver arquivo auxiliar</button>
+					&emsp;<button type="submit" class="btn btn-dark" title="Visualizar arquivo auxiliar">Arquivo Auxiliar</button>
 				</form>
 				
 				<%-- <c:if test="${ notaId != null }"> 
@@ -110,17 +113,20 @@
 									<div class="btn-group"> 
 			                            <form action="visualizarNotaFiscal" method="GET">
 			                                <input type="hidden" value="${nota.id }" name="notaId">
-			                                <button type="submit" class="btn btn-link"><!--<img src="../img/visualizar.png">--><i class="material-icons" style="color:black">visibility</i></button> <!--Visualizar-->
+			                                <button type="submit" class="btn btn-link" title="Visualizar nota fiscal">
+			                                	<!--<img src="../img/visualizar.png">--><i class="material-icons" style="color:black">visibility</i></button> <!--Visualizar-->
 			                            </form>
 
 										<form action="atualizarNotaFiscal" method="GET">
 											<input type="hidden" class="form-control" value="${nota.id}" name="notaId">
-											<button type="submit" class="btn btn-link"><!--<img src="../img/atualizar.png" alt="Logo">--><i class="material-icons" style="color:black" >mode_edit</i></button> <!--EDITAR-->
+											<button type="submit" class="btn btn-link" title="Editar nota fiscal">
+												<!--<img src="../img/atualizar.png" alt="Logo">--><i class="material-icons" style="color:black" >mode_edit</i></button> <!--EDITAR-->
 										</form>
 
 										<form action="excluirNotaFiscal" method="POST">
 											<input type="hidden" class="form-control" value="${nota.id}" name="nota_id">
-											<button type="submit" class="btn btn-link"><!--<img src="../img/excluir.png" alt="Logo">--> <i class="material-icons" style="color:black" >delete_forever</i> </button> <!--DELETAR-->
+											<button type="submit" class="btn btn-link" title="Apagar nota">
+												<!--<img src="../img/excluir.png" alt="Logo">--> <i class="material-icons" style="color:black" >delete_forever</i> </button> <!--DELETAR-->
 										</form>									
 									</div>	
 								</td>
@@ -131,7 +137,7 @@
 			  	<form action="cadastrarNotaFiscal" method="GET">
 	           		<input type="hidden" name="itemId" value="${item.id }">
 	           		<div class="botaoCadastrarPagamento">
-						&emsp;<button type="submit" class="btn btn-dark">Cadastrar nota</button>
+						&emsp;<button type="submit" class="btn btn-dark" title="Cadastrar nova nota fiscal">Cadastrar nota</button>
 					</div>
 				</form>
 		  	</div>

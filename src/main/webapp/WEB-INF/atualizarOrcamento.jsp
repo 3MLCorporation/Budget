@@ -42,7 +42,7 @@
 			       name="valor" value="${orcamento.valorEstimado}">
 			    </div>
 			    <input type="hidden" class="form-control" value="${orcamento.id}" name="orcamentoId">
-			    <button type="submit" class="btn btn-dark botaoCadastro">Atualizar</button>
+			    <button type="submit" class="btn btn-dark botaoCadastro" title="Atualizar orçamento">Atualizar</button>
 			</form>
 	  	</div>
   	</div>

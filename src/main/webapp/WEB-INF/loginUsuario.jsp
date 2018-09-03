@@ -54,10 +54,10 @@
 						</label>
 					</div>
 					<br/>
-					<button type="submit" class="btn btn-dark">Logar</button>&emsp;
+					<button type="submit" class="btn btn-dark" title="Fazer login">Logar</button>&emsp;
 				</form>
 				<form action="cadastrarUsuario" method="GET">
-					<div class="botaoCadastroUsuario"><button class="btn btn-dark">Cadastrar</button></div>
+					<div class="botaoCadastroUsuario"><button class="btn btn-dark" title="Cadastrar novo usuário">Cadastrar</button></div>
 				</form>
 			</div>
 		</div>

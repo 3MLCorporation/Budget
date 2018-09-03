@@ -16,16 +16,16 @@
         </li>
         <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
 	        <li class="breadcrumb-item active">
-	        	<a href="/listarProjetos">Projetos</a>
+	        	<a href="/listarProjetos" title="Listar projetos">Projetos</a>
 	        </li>
         </c:if>
         <li class="breadcrumb-item active">
-        	<a href="/listarOrcamentos">Orçamentos</a>
+        	<a href="/listarOrcamentos" title="Listar orçamentos">Orçamentos</a>
         </li>
         <li class="breadcrumb-item active">
-        	<a href="/listarCategorias">Categorias</a>
+        	<a href="/listarCategorias" title="Listar categorias">Categorias</a>
         </li>
-        <li class="breadcrumb-item active">
+        <li class="breadcrumb-item active" title="Listar rubricas">
         	<a href="/listarRubricas">Rubricas</a>
         </li>
       </ol>
@@ -61,17 +61,20 @@
 									<div class="btn-group">
 										<form action="listarItens" method="GET">
 								         	<input type="hidden" class="form-control" value="${rubricaMap.rubrica.id}" name="rubricaId">
-											<button type="submit" class="btn btn-link"><!--<img src="../img/editar.png" alt="Logo">--><i class="material-icons" style="color:black" >format_align_justify</i> </button> <!--LISTAR-->
+											<button type="submit" class="btn btn-link" title="Listar itens">
+												<!--<img src="../img/editar.png" alt="Logo">--><i class="material-icons" style="color:black" >format_align_justify</i> </button> <!--LISTAR-->
 								        </form>
 								        <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
 											<form action="atualizarRubrica" method="GET">
 												<input type="hidden" class="form-control" value="${rubricaMap.rubrica.id}" name="rubricaId">												
-												<button type="submit" class="btn btn-link"><!--<img src="../img/atualizar.png" alt="Logo">--><i class="material-icons" style="color:black" >mode_edit</i></button> <!--EDITAR-->
+												<button type="submit" class="btn btn-link" title="Editar rubrica">
+													<!--<img src="../img/atualizar.png" alt="Logo">--><i class="material-icons" style="color:black" >mode_edit</i></button> <!--EDITAR-->
 											</form>
 								           												
 											<form action="excluirRubrica" method="POST">
 												<input type="hidden" class="form-control" value="${rubricaMap.rubrica.id}" name="rubrica_id">
-												<button type="submit" class="btn btn-link"><!--<img src="../img/excluir.png" alt="Logo">--> <i class="material-icons" style="color:black" >delete_forever</i> </button> <!--DELETAR-->
+												<button type="submit" class="btn btn-link" title="Apagar rubrica">
+													<!--<img src="../img/excluir.png" alt="Logo">--> <i class="material-icons" style="color:black" >delete_forever</i> </button> <!--DELETAR-->
 								           	</form>
 										</c:if>	
 									</div>

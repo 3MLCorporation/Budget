@@ -53,7 +53,7 @@
 					</select>
 				</div> --%>
 		      <input type="hidden" class="form-control" value="${categoria.id}" name="categoriaId">
-		      <button type="submit" class="btn btn-dark botaoCadastro">Atualizar</button>
+		      <button type="submit" class="btn btn-dark botaoCadastro" title="Atualizar categoria">Atualizar</button>
 		  	</form>
 	  	</div>
   	</div>

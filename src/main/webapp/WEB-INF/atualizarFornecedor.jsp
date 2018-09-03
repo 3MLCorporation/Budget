@@ -34,7 +34,7 @@
 			          </c:forEach>
 			       </select>		           
 		       </div>		       
-		      <button type="submit" class="btn btn-dark botaoCadastro">Atualizar</button>
+		      <button type="submit" class="btn btn-dark botaoCadastro" title="Atualizar fornecedor">Atualizar</button>
 		  	</form>
 	  	</div>
   	</div>

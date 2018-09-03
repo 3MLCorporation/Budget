@@ -56,18 +56,21 @@
 									<div class="btn-group">
 										<form action="listarRubricas" method="GET">
 								         	<input type="hidden" class="form-control" value="${categoria.id}" name="categoriaId">
-											<button type="submit" class="btn btn-link"><!--<img src="../img/editar.png" alt="Logo">--><i class="material-icons" style="color:black" >format_align_justify</i> </button> <!--LISTAR-->
+											<button type="submit" class="btn btn-link" title="Listar rubricas">
+												<!--<img src="../img/editar.png" alt="Logo">--><i class="material-icons" style="color:black" >format_align_justify</i> </button> <!--LISTAR-->
 								        </form>
 									
 										<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
 											<form action="atualizarCategoria" method="GET">
 												<input type="hidden" class="form-control" value="${categoria.id}" name="categoriaId">												
-												<button type="submit" class="btn btn-link"><!--<img src="../img/atualizar.png" alt="Logo">--><i class="material-icons" style="color:black" >mode_edit</i></button> <!--EDITAR-->
+												<button type="submit" class="btn btn-link" title="Editar categoria">
+													<!--<img src="../img/atualizar.png" alt="Logo">--><i class="material-icons" style="color:black" >mode_edit</i></button> <!--EDITAR-->
 											</form>
 								           												
 											<form action="excluirCategoria" method="POST">
 												<input type="hidden" class="form-control" value="${categoria.id}" name="categoria_id">
-												<button type="submit" class="btn btn-link"><!--<img src="../img/excluir.png" alt="Logo">--> <i class="material-icons" style="color:black" >delete_forever</i> </button> <!--DELETAR-->
+												<button type="submit" class="btn btn-link" title="Apagar categoria">
+													<!--<img src="../img/excluir.png" alt="Logo">--> <i class="material-icons" style="color:black" >delete_forever</i> </button> <!--DELETAR-->
 								           	</form>
 				   						</c:if>
 			   						</div>

@@ -81,11 +81,11 @@
 					<label for="text">Detalhes</label>
 					<div class="btn-group">			    
 					  	<c:if test="${!item.isArquivoDetalhesVazio()}"> 
-								<a href="/abrirArquivoDetalhesItem?itemId=${item.id}" target="_blank">
+								<a href="/abrirArquivoDetalhesItem?itemId=${item.id}" target="_blank" title="Visualizar arquivo de detalhes">
 									<!--<img src="../img/visualizar.png" alt="Logo" style="width:100%;">--> <i class="material-icons" style="color:black">visibility</i> <!--Visualizar-->
 								</a>
 													    	
-								<a href="/excluirArquivoDetalhesItem?itemId=${item.id}" target="_blank">
+								<a href="/excluirArquivoDetalhesItem?itemId=${item.id}" target="_blank" title="Apagar arquivo de detalhes">
 									<!--<img src="../img/excluir.png" alt="Logo">--> <i class="material-icons" style="color:black" >delete_forever</i> <!--DELETAR-->
 							  	</a>
 									
@@ -98,11 +98,11 @@
 					<label for="text">Auxiliar</label>
 					<div class="btn-group">			    
 					  	<c:if test="${!item.isArquivoAuxiliarVazio()}"> 
-								<a href="/abrirArquivoAuxiliarItem?itemId=${item.id}" target="_blank">
+								<a href="/abrirArquivoAuxiliarItem?itemId=${item.id}" target="_blank" title="Visualizar arquivo auxiliar">
 									<!--<img src="../img/visualizar.png" alt="Logo" style="width:100%;">--> <i class="material-icons" style="color:black">visibility</i> <!--Visualizar-->
 								</a>
 								
-								<a href="/excluirAuxiliarItem?itemId=${item.id}" target="_blank">
+								<a href="/excluirAuxiliarItem?itemId=${item.id}" target="_blank" title="Apagar arquivo auxiliar">
 									<!--<img src="../img/excluir.png" alt="Logo">--> <i class="material-icons" style="color:black" >delete_forever</i> <!--DELETAR-->
 				           		</a>
 						</c:if>	
@@ -131,7 +131,7 @@
 				 </div>
 			</div>  
 			<input type="hidden" class="form-control" value="${item.id}" name="id">
-			<button type="submit" class="btn btn-dark botaoCadastro">Atualizar</button>
+			<button type="submit" class="btn btn-dark botaoCadastro" title="Atualizar item">Atualizar</button>
 			</form>
 	  	</div>
   	</div>

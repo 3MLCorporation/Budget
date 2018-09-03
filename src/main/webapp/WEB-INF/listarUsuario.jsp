@@ -9,7 +9,7 @@
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
         <li class="breadcrumb-item">
-          <a href="/listarUsuarios">Usuários</a>
+          <a href="/listarUsuarios" title="Listar usuários">Usuários</a>
         </li>
       </ol>
     </div>
@@ -48,13 +48,15 @@
 										<form action="atualizarPerfil" method="POST">
 											<input type="hidden" class="form-control" value="${usuario.id}" name="usuarioParaAtulizar">
 											<input type="hidden" class="form-control" id="valorPerfil${id.count }" name="perfilAtualizado">
-											<button type="submit"  onclick="getValorPerfil('${id.count}')" class="btn btn-link"><!--<img src="../img/salvar.png" alt="Logo">--><i class="material-icons" style="color:black" >done_all</i></button> <!--SALVAR STATUS-->
+											<button type="submit"  onclick="getValorPerfil('${id.count}')" class="btn btn-link" title="Salvar status de perfil do usuário">
+												<!--<img src="../img/salvar.png" alt="Logo">--><i class="material-icons" style="color:black" >done_all</i></button> <!--SALVAR STATUS-->
 									    	</form>  
 							           	</form>
 
 										<form action="visualizarUsuario" method="POST">
 											<input type="hidden" class="form-control" name="">
-											<button type="submit" class="btn btn-link"><!--<img src="../img/visualizar.png" alt="Logo" style="width:100%;">--> <i class="material-icons" style="color:black">visibility</i></button> <!--Visualizar-->
+											<button type="submit" class="btn btn-link" title="Visualizar perfil">
+												<!--<img src="../img/visualizar.png" alt="Logo" style="width:100%;">--> <i class="material-icons" style="color:black">visibility</i></button> <!--Visualizar-->
 							           	</form>
 						           	</div>
 								</td>

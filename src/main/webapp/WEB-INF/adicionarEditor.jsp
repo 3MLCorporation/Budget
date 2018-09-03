@@ -34,7 +34,7 @@
 			  			<input type="email" class="form-control" placeholder="Fornecer o email do usuário a ser adicionado" name="email" required="required">
 			  		</div>
 			  		<div class="botaoPosicao">
-						<button type="submit" class="btn btn-dark botao">Adicionar</button>
+						<button type="submit" class="btn btn-dark botao" title="Adicionar editor">Adicionar</button>
 					</div>
 				</form>
 			</div>

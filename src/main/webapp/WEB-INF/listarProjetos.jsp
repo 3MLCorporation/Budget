@@ -49,22 +49,22 @@
 									<div class="btn-group"> 
 										<form action="atualizarProjeto" method="GET">
 											<input type="hidden" class="form-control" value="${projeto.id}" name="projetoId">
-											<button type="submit" class="btn btn-link"><!--<img src="../img/atualizar.png" alt="Logo">--><i class="material-icons" style="color:black" >mode_edit</i></button> <!--EDITAR-->
+											<button type="submit" class="btn btn-link" title="Editar projeto"><!--<img src="../img/atualizar.png" alt="Logo">--><i class="material-icons" style="color:black" >mode_edit</i></button> <!--EDITAR-->
 										</form>
 
 							           	<form action="selecionarProjeto" method="POST">
 											<input type="hidden" class="form-control" value="${projeto.id}" name="projetoEditavel">
-											<button type="submit" class="btn btn-link"><!--<img src="../img/editar.png" alt="Logo">--><i class="material-icons" style="color:black" >format_align_justify</i> </button> <!--LISTAR-->
+											<button type="submit" class="btn btn-link" data-toggle="tooltip" title="Listar orçamentos"><!--<img src="../img/editar.png" alt="Logo">--><i class="material-icons" style="color:black" >format_align_justify</i> </button> <!--LISTAR-->
 							           	</form>
 							           				
 										<form action="excluirProjeto" method="POST">
 											<input type="hidden" class="form-control" value="${projeto.id}" name="projeto_id">
-											<button type="submit" class="btn btn-link"><!--<img src="../img/excluir.png" alt="Logo">--><i class="material-icons" style="color:black" >delete_forever</i> </button> <!--DELETAR-->
+											<button type="submit" class="btn btn-link" title="Apagar projeto"><!--<img src="../img/excluir.png" alt="Logo">--><i class="material-icons" style="color:black" >delete_forever</i> </button> <!--DELETAR-->
 							           	</form>
 
 							           	<form action="gerarRelatorio" target="_blank" method="GET">
 											<input type="hidden" class="form-control" value="${projeto.id}" name="projetoId">
-											<button type="submit" class="btn btn-link"><!--<img src="../img/relatorio.png" alt="Logo">--><i class="material-icons" style="color:black">insert_drive_file</i></button> <!--PDF-->
+											<button type="submit" class="btn btn-link" title="Gerar relatório"><!--<img src="../img/relatorio.png" alt="Logo">--><i class="material-icons" style="color:black">insert_drive_file</i></button> <!--PDF-->
 							           	</form>
 						           	</div>
 						        </td>

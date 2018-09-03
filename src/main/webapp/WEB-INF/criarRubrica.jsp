@@ -63,7 +63,7 @@
 		          </c:forEach>
 		       </select>
 		      </div>
-		      <button type="submit" class="btn btn-dark botaoCadastro">Cadastrar</button>
+		      <button type="submit" class="btn btn-dark botaoCadastro" title="Cadastrar rubrica">Cadastrar</button>
 		    </form>
 	  	</div>
   	</div>
