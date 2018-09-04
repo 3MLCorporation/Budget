@@ -69,6 +69,7 @@ public class Relatorio {
 	        document.add(p);
 	        document.add(p2);
 	        
+			@SuppressWarnings("deprecation")
 			Table table = new Table(NUMERO_COLUNAS).setAutoLayout();
 			
 			addHeader(table);

@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import br.com.cpsoftware.budget.dao.FornecedorDAO;
 import br.com.cpsoftware.budget.dao.UnidadeFederativaDAO;
 import br.com.cpsoftware.budget.model.Fornecedor;
-import br.com.cpsoftware.budget.model.Usuario;
 
 @SuppressWarnings("serial")
 public class AtualizarFornecedor extends HttpServlet {
