@@ -14,12 +14,17 @@ import br.com.cpsoftware.budget.dao.ItemDAO;
 import br.com.cpsoftware.budget.dao.NotaFiscalDAO;
 import br.com.cpsoftware.budget.model.Item;
 import br.com.cpsoftware.budget.model.NotaFiscal;
+import br.com.cpsoftware.budget.dao.OrcamentoDAO;
+import br.com.cpsoftware.budget.model.Orcamento;
 
 @SuppressWarnings("serial")
 public class VisualizarItem extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		Long orcamentoEditavelId = Long.parseLong((String) req.getSession().getAttribute("orcamentoEditavel"));
+		Orcamento orcamento = (Orcamento) new OrcamentoDAO().read(orcamentoEditavelId);		
 		
 		Long itemId = Long.parseLong(req.getParameter("itemId"));
 		
@@ -34,6 +39,8 @@ public class VisualizarItem extends HttpServlet {
 		}
 		
 		req.setAttribute("item", item);
+		req.setAttribute("orcamentoSelecionado", new OrcamentoDAO().read(Long.parseLong(
+				(String) req.getSession().getAttribute("orcamentoEditavel"))).getNome());		
 		req.setAttribute("notas", notas);
 		req.setAttribute("fornecedores", fornecedores);
 		req.setAttribute("page", "visualizarItem");

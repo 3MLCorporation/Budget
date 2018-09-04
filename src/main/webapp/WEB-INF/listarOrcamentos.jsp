@@ -15,11 +15,11 @@
           </c:if>
         </li>
         <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
-	        <li class="breadcrumb-item active">
+	        <li class="breadcrumb-item active" title="Listar projetos">
 	        	<a href="/listarProjetos">Projetos</a>
 	        </li>
         </c:if>
-        <li class="breadcrumb-item active">
+        <li class="breadcrumb-item active" title="Listar orçamentos">
         	<a href="/listarOrcamentos">Orçamentos</a>
         </li>
       </ol>
@@ -71,7 +71,7 @@
 												<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamentoId">
 												<input type="hidden" class="form-control" id="statusOrcamento${id.count }" name="statusSelecionado">
 												<button type="submit"  onclick="getStatusOrcamento('${id.count}')" class="btn btn-link" title="Salvar status do orçamento">
-													<!--<img src="../img/salvar.png" alt="Logo">--><i class="material-icons" style="color:black" >done_all</i></button> <!--SALVAR STATUS-->
+													<!--<img src="../img/salvar.png" alt="Logo">--><i class="material-icons" style="color: black;">save</i></button> <!--SALVAR STATUS-->
 									    	</form>  
 								    	 </c:if>
 								    	 <!--Orcamento em elaboracao e usuarios admin/gerente  -->

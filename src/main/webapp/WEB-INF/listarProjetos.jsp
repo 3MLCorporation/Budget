@@ -14,7 +14,7 @@
 	          </a>
           </c:if>
         </li>
-        <li class="breadcrumb-item active">
+        <li class="breadcrumb-item active" title="Listar projetos">
         	<a href="/listarProjetos">Projetos</a>
         </li>
       </ol>

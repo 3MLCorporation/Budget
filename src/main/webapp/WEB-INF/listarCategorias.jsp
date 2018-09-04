@@ -15,14 +15,14 @@
           </c:if>
         </li>
         <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
-	        <li class="breadcrumb-item active">
+	        <li class="breadcrumb-item active" title="Listar projetos">
 	        	<a href="/listarProjetos">Projetos</a>
 	        </li>
         </c:if>
-        <li class="breadcrumb-item active">
+        <li class="breadcrumb-item active" title="Listar orçamentos">
         	<a href="/listarOrcamentos">Orçamentos</a>
         </li>
-        <li class="breadcrumb-item active">
+        <li class="breadcrumb-item active" title="Listar categorias">
         	<a href="/listarCategorias">Categorias</a>
         </li>
       </ol>

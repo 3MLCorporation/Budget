@@ -34,7 +34,7 @@
 			  			<input type="email" class="form-control" placeholder="Fornecer o email do usuário a ser adicionado" name="email" required="required">
 			  		</div>
 			  		<div class="botaoPosicao">
-						<button type="submit" class="btn btn-dark botao" title="Adicionar editor">Adicionar</button>
+						<button type="submit" class="btn btn-dark botao" title="Adicionar editor" data-toggle="modal" data-target="#usuarioModal">Adicionar</button>
 					</div>
 				</form>
 			</div>
@@ -64,30 +64,57 @@
 
 
 
-	<c:if test="${empty editoresCadastrados}">
+	<!--<c:if test="${empty editoresCadastrados}">
 	   	<div class="card mb-3">
 			<div class="card-header">
 	       		Este orçamento não possui editores, adicione-os!
 	    	</div>
 	    </div>
-	</c:if>
+	</c:if>-->
 	 	
-	<br/> 	
+	
+		
 	<c:if test="${not empty confirmacao }">
 		<c:if test="${not empty usuarioAdicionado}">
-			<div class="card mb-3">
-				<div class="card-header">
-		       		Usuário ${usuarioAdicionado.nome} adicionado com sucesso!
-		    	</div>
-	    	</div>
+		    <!-- Usuario encontrado | Modal-->
+		    <div class="modal fade" id="usuarioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		      <div class="modal-dialog" role="document">
+		        <div class="modal-content">
+		          <div class="modal-header">
+		            <h5 class="modal-title" id="exampleModalLabel">Adicionado com sucesso!</h5>
+		            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+		              <span aria-hidden="true">×</span>
+		            </button>
+		          </div>
+		          <div class="modal-body">O usuário foi adicionado ao orçamento.</div>
+		          <div class="modal-footer">
+		            <button class="btn btn-primary" type="button" data-dismiss="modal">Confirmar</button>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
 		</c:if>
 		<c:if test="${empty usuarioAdicionado}">
-			<div class="card mb-3">
-				<div class="card-header">
-		       		Email do usuário não encontrado, experimente tentar outro!
-		    	</div>
-	    	</div>		
+		    <!-- Usuario não encontrado | Modal-->
+		    <div class="modal fade" id="usuarioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		      <div class="modal-dialog" role="document">
+		        <div class="modal-content">
+		          <div class="modal-header">
+		            <h5 class="modal-title" id="exampleModalLabel">Falha ao adicioanr usuário!</h5>
+		            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+		              <span aria-hidden="true">×</span>
+		            </button>
+		          </div>
+		          <div class="modal-body">Email de usuário não encontrado, experimente outro.</div>
+		          <div class="modal-footer">
+		            <button class="btn btn-primary" type="button" data-dismiss="modal">Confirmar</button>
+		          </div>
+		        </div>
+		      </div>
+		    </div>
+
 		</c:if>
 	</c:if>
+
 </div>
 

@@ -49,7 +49,7 @@
 											<input type="hidden" class="form-control" value="${usuario.id}" name="usuarioParaAtulizar">
 											<input type="hidden" class="form-control" id="valorPerfil${id.count }" name="perfilAtualizado">
 											<button type="submit"  onclick="getValorPerfil('${id.count}')" class="btn btn-link" title="Salvar status de perfil do usuário">
-												<!--<img src="../img/salvar.png" alt="Logo">--><i class="material-icons" style="color:black" >done_all</i></button> <!--SALVAR STATUS-->
+												<!--<img src="../img/salvar.png" alt="Logo">--><i class="material-icons" style="color: black;">save</i></button></button> <!--SALVAR STATUS-->
 									    	</form>  
 							           	</form>
 

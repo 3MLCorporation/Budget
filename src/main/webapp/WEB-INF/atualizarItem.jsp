@@ -16,21 +16,21 @@
           </c:if>
         </li>
         <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
-	        <li class="breadcrumb-item active">
-	        	<a href="/listarProjetos">Projetos</a>
-	        </li>
+          <li class="breadcrumb-item active">
+            <a href="/listarProjetos" title="Listar projetos">Projetos</a>
+          </li>
         </c:if>
         <li class="breadcrumb-item active">
-        	<a href="/listarOrcamentos">Orçamentos</a>
+          <a href="/listarOrcamentos" title="Listar orçamentos">Orçamentos</a>
         </li>
         <li class="breadcrumb-item active">
-        	<a href="/listarCategorias">Categorias</a>
+          <a href="/listarCategorias" title="Listar categorias">Categorias</a>
         </li>
         <li class="breadcrumb-item active">
-        	<a href="/listarRubricas">Rubricas</a>
+          <a href="/listarRubricas" title="Listar rubricas">Rubricas</a>
         </li>
         <li class="breadcrumb-item active">
-        	<a href="/listarItens">Itens</a>
+          <a href="/listarItens" title="Listar itens">Itens</a>
         </li>
       </ol>
     </div>
