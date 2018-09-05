@@ -46,6 +46,7 @@
 		        			<th>Valor estimado</th>
 		        			<th>Valor orçado</th>
 		        			<th>Valor realizado</th>
+		        			<th>Valor comprovado</th>
 			        		<th>Editar rubrica</th>
       					</tr>
 			   		</thead>
@@ -57,6 +58,7 @@
 								<td> ${rubricaMap.rubrica.getValorEstimadoFormatado()}</td>
 								<td> ${rubricaMap.rubrica.getValorOrcadoFormatado()}</td>
 								<td> ${rubricaMap.rubrica.getValorRealizadoFormatado()}</td>
+								<td></td>
 								<td>
 									<div class="btn-group">
 										<form action="listarItens" method="GET">

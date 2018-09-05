@@ -41,6 +41,7 @@
 		        			<th>Valor estimado</th>
 		        			<th>Valor orçado</th>
 		        			<th>Valor realizado</th>
+		        			<th>Valor comprovado</th>
 		        			<!--<th>Rubricas</th>-->
 		        			<th>Editar categoria</th>
       					</tr>
@@ -52,6 +53,7 @@
 								<td> ${categoria.getValorEstimadoFormatado()}</td>
 								<td> ${categoria.getValorOrcadoFormatado()}</td>
 								<td> ${categoria.getValorRealizadoFormatado()}</td>
+								<td></td>
 								<td>
 									<div class="btn-group">
 										<form action="listarRubricas" method="GET">

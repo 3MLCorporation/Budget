@@ -98,8 +98,9 @@
 			   				<th>Fornecedor</th>
 							<th>Valor total</th>
 							<th>Valor realizado</th>
+							<th>Valor comprovado</th>
 							<th>Data</th>
-							<th></th>
+							<th>Editar nota fiscal</th>
       					</tr>
 			   		</thead>
 			   		<tbody>
@@ -108,6 +109,7 @@
 								<td> ${fornecedores[count.index]}</td>
 								<td> ${nota.getValorFormatado()}</td>
 								<td> ${nota.getValorRealizadoFormatado()}</td>
+								<td></td>
 								<td> ${nota.getDataFormatada()}</td>
 								<td style="width: 14%;">
 									<div class="btn-group"> 

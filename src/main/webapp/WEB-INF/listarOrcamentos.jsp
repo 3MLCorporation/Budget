@@ -39,6 +39,7 @@
 		        			<th>Valor estimado</th>
 		        			<th>Valor orçado</th>
 		        			<th>Valor realizado</th>
+		        			<th>Valor comprovado</th>		        			
 		        			<th>Status</th>
 		        			<th>&emsp;Editar<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"> orçamento</c:if></th>
 		        		</tr>
@@ -50,6 +51,7 @@
 								<td> ${orcamento.getValorEstimadoFormatado()}</td>
 								<td> ${orcamento.getValorOrcadoFormatado()}</td>
 								<td> ${orcamento.getValorRealizadoFormatado()}</td>
+								<td></td>
 								<td>
 								<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
 									<select id="orcamentoSelect${id.count}">
@@ -85,7 +87,7 @@
 								    	 <!--Orcamento em elaboracao e usuario padrao  -->
 								    	 <c:if test="${orcamento.status == 0 && sessionScope.usuario.perfil == 2}">
 								    	  	<!--TODO Mostrar alerta na tela!!!  -->
-											<button  disabled="disabled" type="submit" class="btn btn-link" title="Listar categorias"> 
+											<button  disabled="disabled" type="submit" class="btn btn-link" title="O orçamento está em elaboração"> 
 												<!--<img src="../img/editar.png" alt="Logo">--><i class="material-icons" style="color:black" >format_align_justify</i> </button> <!--LISTAR-->
 								    	 </c:if>
 								    	 <!--Orcamento em controle e usuarios admin/gerente  -->
@@ -107,7 +109,7 @@
 								    	 <!--Orcamento finalizado e usuario padrao -->	
 										<c:if test="${orcamento.status == 2 && sessionScope.usuario.perfil == 2 }">
 											<!--TODO Mostrar alerta na tela!!!  -->
-								    	 	<button  disabled="disabled" type="submit" class="btn btn-link" title="Listar categorias"> 
+								    	 	<button  disabled="disabled" type="submit" class="btn btn-link" title="O orçamento já foi finalizado"> 
 								    	 		<!--<img src="../img/editar.png" alt="Logo">--><i class="material-icons" style="color:black" >format_align_justify</i> </button> <!--LISTAR-->
 								    	 </c:if>
 								        <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">

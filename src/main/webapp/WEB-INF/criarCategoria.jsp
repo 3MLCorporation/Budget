@@ -39,11 +39,6 @@
 		        	class="form-control" placeholder="Fornecer o nome da nova categoria"
 		       	   name="nome" required="required">
 		      </div>
-		      <div class="form-group">
-		           <label for="text">Valor:</label> <input type="number" pattern="[0-9.]"
-		           class="form-control" placeholder="Fornecer o valor da categoria" id="valor"
-		           name="valor">
-		       </div>
 	    	<%-- <div class="form-group">
 		     	 <label>Orçamento:</label>
 		     	 	<select class="form-control" name="orcamentoId">
@@ -57,13 +52,3 @@
 	  	</div>
   	</div>
 </div>
-
-<script>
-	$(document).ready(function(){
-	    $("form").delegate('#valor', 'focusout', function(){
-	        if($(this).val() < 0){
-	            $(this).val('0');
-	        }
-	    });
-	});
-</script>

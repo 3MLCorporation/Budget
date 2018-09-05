@@ -50,6 +50,7 @@
 		        			<th>Valor estimado</th>
 		        			<th>Valor orçado</th>
 		        			<th>Valor realizado</th>
+		        			<th>Valor comprovado</th>
 			        		<!--<th>Detalhes</th>-->
 			        		<th>Editar Item</th>
 			        		<!-- <th>Nota fiscal</th> -->
@@ -64,6 +65,7 @@
 								<td> ${itemMap.item.getValorFormatado()}</td>
 								<td> ${itemMap.item.getValorOrcadoFormatado()}</td>
 								<td> ${itemMap.item.getValorRealizadoFormatado()}</td>
+								<td></td>
 								<td>
 									<div class="btn-group">
 										<form action="visualizarItem" method="GET">

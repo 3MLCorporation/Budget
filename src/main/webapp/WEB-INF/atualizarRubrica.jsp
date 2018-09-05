@@ -42,11 +42,6 @@
 		      class="form-control" placeholder="Fornecer o novo nome da nova rubrica"
 		      name="nome" value="${rubrica.nome}">
 		    </div>
-		    <div class="form-group">
-		       <label for="text">Valor:</label> <input type="number" pattern="[0-9.]"
-		       id="valor" class="form-control" placeholder="Fornecer o novo valor estimado da rubrica"
-		       name="valor" value="${rubrica.valorEstimado}">
-		    </div>
 		         <%-- <div class="form-group">
 		       	 <label>Orçamento:</label>
 		       	 	<select class="form-control" name="orcamento">
@@ -69,13 +64,3 @@
 	  	</div>
   	</div>
 </div>
-
-<script>
-	$(document).ready(function(){
-	    $("form").delegate('#valor', 'focusout', function(){
-	        if($(this).val() < 0){
-	            $(this).val('0');
-	        }
-	    });
-	});
-</script>
