@@ -76,6 +76,7 @@ public class AtualizarItem extends HttpServlet {
 		String descricao = null;
 		Double valorUniforme = null;
 		int quantidade = 0;
+		Double valorEstimado = 0d;
 		int unidadeMedida = 0;
 		Blob arquivoDetalhes = null;
 		Blob arquivoAuxiliar = null;
@@ -99,6 +100,8 @@ public class AtualizarItem extends HttpServlet {
 							nome = new String(Streams.asString(stream));
 						if (item.getFieldName().equals(Item.DESCRICAO))
 							descricao = new String(Streams.asString(stream));
+						if (item.getFieldName().equals(Item.VALOR_ESTIMADO))
+							valorEstimado = new Double(Streams.asString(stream));
 						if (item.getFieldName().equals(Item.PRECO_UNITARIO))
 							valorUniforme = new Double(Streams.asString(stream));
 						if (item.getFieldName().equals(Item.QUANTIDADE))
@@ -124,6 +127,7 @@ public class AtualizarItem extends HttpServlet {
 		item.setRubricaId(rubricaId);
 		item.setNome(nome);
 		item.setDescricao(descricao);
+		item.setValorEstimado(valorEstimado);
 		item.setPrecoUnitario(valorUniforme);
 		item.setQuantidade(quantidade);
 		item.setUnidadeMedida(unidadeMedida);

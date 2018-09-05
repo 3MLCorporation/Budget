@@ -53,14 +53,6 @@ public class CadastrarOrcamento extends HttpServlet {
 		
 		Long orcamentoId = this.dao.create(orcamento);
 		
-		if(orcamentoId != null) {
-			AtualizarValoresOrcados.atualizarPrecoProjeto(
-				AtualizarValoresOrcados.CADASTRAR,
-				orcamentoId,
-				orcamento.getValorEstimado()
-			);
-		}
-		
 		Orcamento aux = (Orcamento) this.dao.read(orcamentoId);
 		System.err.println("Nome do orcamento no banco - " + aux.getNome());
 		System.err.println("Valor do orcamento no banco - " + aux.getValorEstimado());

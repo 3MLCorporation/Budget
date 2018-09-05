@@ -59,6 +59,7 @@ public class CadastrarItem extends HttpServlet {
 		String descricao = null;
 		Double precoUnitario = null;
 		int quantidade = 0;
+		Double valorEstimado = 0d;
 		int unidadeMedida = 0;
 		Blob arquivoDetalhes = null;
 		Blob arquivoAuxiliar = null;
@@ -81,6 +82,8 @@ public class CadastrarItem extends HttpServlet {
 							nome = new String(Streams.asString(stream));
 						if (item.getFieldName().equals(Item.DESCRICAO))
 							descricao = new String(Streams.asString(stream));
+						if (item.getFieldName().equals(Item.VALOR_ESTIMADO))
+							valorEstimado = new Double(Streams.asString(stream));
 						if (item.getFieldName().equals(Item.PRECO_UNITARIO))
 							precoUnitario = new Double(Streams.asString(stream));
 						if (item.getFieldName().equals(Item.QUANTIDADE))
@@ -100,7 +103,7 @@ public class CadastrarItem extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			Item item = new Item(rubricaId, nome, descricao, precoUnitario, quantidade, 0d, 0d, unidadeMedida, arquivoDetalhes, arquivoAuxiliar);
+			Item item = new Item(rubricaId, nome, descricao, precoUnitario, quantidade, valorEstimado, 0d, 0d, unidadeMedida, arquivoDetalhes, arquivoAuxiliar);
 			Long itemId = this.dao.create(item);
 			
 			AtualizarValoresEstimados.atualizarValorEstimadoRubrica(rubricaId);

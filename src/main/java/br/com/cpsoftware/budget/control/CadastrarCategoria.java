@@ -38,16 +38,6 @@ public class CadastrarCategoria extends HttpServlet {
 		
 		Long categoriaId = dao.create(categoria);
 		
-        if(categoriaId != null) {
-        	AtualizarValoresOrcados.atualizarPrecoOrcamento(
-    			AtualizarValoresOrcados.CADASTRAR,
-                categoriaId,
-                categoria.getValorEstimado()
-            );
-        }
-        
-
-		
 		resp.sendRedirect("/listarCategorias");
 	}
 }

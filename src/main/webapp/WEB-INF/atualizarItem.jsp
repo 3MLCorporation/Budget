@@ -63,6 +63,11 @@
 			   name="descricao" value="${item.descricao}">
 			 </div>
 			 <div class="form-group">
+			   <label for="text">Valor estimado:</label> <input type="number"
+			   class="form-control" placeholder="Valor estimado"
+			   name="valor_estimado" value="${item.valorEstimado}" required="required">
+			 </div>
+			 <div class="form-group">
 			   <label for="text">Quantidade:</label> <input type="number" pattern="[0-9.]"
 			   class="form-control" placeholder="Fornecer a nova quantidade de itens"
 			   name="quantidade" id="quantidadeItem" value="${item.quantidade}" onblur="calcularValorTotalItem()">

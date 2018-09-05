@@ -34,7 +34,7 @@ public class AtualizarValoresOrcados {
 				projeto.setValorOrcado(projeto.getValorOrcado() + valor);
 				break;
 			case EDITAR:
-				projeto.setValorOrcado(projeto.getValorOrcado() + (valor - orcamento.getValorEstimado()));
+				projeto.setValorOrcado(projeto.getValorOrcado() + (valor - orcamento.getValorOrcado()));
 				break;
 			case EXCLUIR:
 				projeto.setValorOrcado(projeto.getValorOrcado() - valor);
@@ -51,7 +51,7 @@ public class AtualizarValoresOrcados {
 				orcamento.setValorOrcado(orcamento.getValorOrcado() + valor);
 				break;
 			case EDITAR:
-				orcamento.setValorOrcado(orcamento.getValorOrcado() + (valor - categoria.getValorEstimado()));
+				orcamento.setValorOrcado(orcamento.getValorOrcado() + (valor - categoria.getValorOrcado()));
 				break;
 			case EXCLUIR:
 				orcamento.setValorOrcado(orcamento.getValorOrcado() - valor);
@@ -68,7 +68,9 @@ public class AtualizarValoresOrcados {
 				categoria.setValorOrcado(categoria.getValorOrcado() + valor);
 				break;
 			case EDITAR:
-				categoria.setValorOrcado(categoria.getValorOrcado() + (valor - rubrica.getValorEstimado()));
+				//Antes 
+				//categoria.setValorOrcado(categoria.getValorOrcado() + (valor - rubrica.getValorEstimado()));
+				categoria.setValorOrcado(categoria.getValorOrcado() + (valor - rubrica.getValorOrcado()));
 				break;
 			case EXCLUIR:
 				categoria.setValorOrcado(categoria.getValorOrcado() - valor);

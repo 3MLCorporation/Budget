@@ -54,13 +54,14 @@ public class CadastrarRubrica extends HttpServlet {
 		
 		Long rubricaId = dao.create(rubrica);
 		
-		if(rubricaId != null) {
+		/*Antes o cálculo do valor orçado era valorOrcadoCategoria = sum(valoresEstimadosRubricas);
+		 * if(rubricaId != null) {
 			AtualizarValoresOrcados.atualizarPrecoCategoria(
 				AtualizarValoresOrcados.CADASTRAR,
 	            rubricaId,
-	            rubrica.getValorEstimado()
+	            rubrica.getValorOrcado()
             );
-		}
+		}*/
 	
 		resp.sendRedirect("/listarRubricas");
 	}

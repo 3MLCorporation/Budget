@@ -62,6 +62,11 @@
 			   class="form-control" placeholder="Fornecer a descrição do item"
 			   name="descricao" required="required">
 			 </div>
+			  <div class="form-group">
+			   <label for="text">Valor estimado:</label> <input type="number"
+			   class="form-control" placeholder="Valor estimado"
+			   name="valor_estimado" required="required">
+			 </div>
 			 <div class="form-group">
 			   <label for="text">Quantidade:</label> <input type="number" pattern="[0-9.]"
 			   class="form-control" placeholder="Fornecer a quantidade de itens"
@@ -73,7 +78,7 @@
 			   name="preco_unitario" required="required" id="valorUniformeItem" onblur="calcularValorTotalItem()">
 			 </div>
 			 <div class="form-group">
-			   <label for="text">Valor total:</label> <input type="text" readonly="readonly" placeholder="Valor total da soma dos itens" class="form-control" id="resultado">
+			   <label for="text">Valor orçado:</label> <input type="text" readonly="readonly" placeholder="Valor orçado do item" class="form-control" id="resultado">
 			 </div>
 			 
 			 <div class="row">
