@@ -28,18 +28,10 @@ public class CadastrarCategoria extends HttpServlet {
 		
 		Long orcamentoId = Long.parseLong((String) req.getSession().getAttribute("orcamentoEditavel"));
 		
-		Double valor;
-		try {
-			valor = Double.parseDouble(req.getParameter("valor"));
-		}catch (NumberFormatException e) {
-			valor = 0d;
-			e.printStackTrace();
-		}
-		
 		Categoria categoria = new Categoria(
 			orcamentoId,
 			req.getParameter("nome"),
-			valor, //valorEstimado
+			0d, //valorEstimado
 			0d, // valorOrcado
 			0d // valorParcial
 		);

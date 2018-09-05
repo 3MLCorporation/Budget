@@ -27,20 +27,22 @@ public class CadastrarProjeto extends HttpServlet {
 		ProjetoDAO dao = new ProjetoDAO();
 		
 		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
+		
 		String nome = req.getParameter("nome");
+		
+		/*Do tempo em que se colocava o valor estimado no cadastro
 		Double valor;
 		try {
 			valor = Double.parseDouble(req.getParameter("valor"));
 		}catch (NumberFormatException e) {
 			valor = 0d;
 			e.printStackTrace();
-		}
+		}*/
 		
-		 
 		Projeto projeto = new Projeto(
 			usuario.getId(),
 			nome,
-			valor, //valorEstimado
+			0d, //valorEstimado
 			0d,// valorOrcado
 			0d // valorParcial
 		);

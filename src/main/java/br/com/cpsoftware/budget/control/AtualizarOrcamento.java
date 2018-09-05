@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.model.Orcamento;
-import br.com.cpsoftware.budget.util.AtualizarValoresOrcados;
 
 @SuppressWarnings("serial")
 public class AtualizarOrcamento extends HttpServlet {
@@ -31,17 +30,19 @@ public class AtualizarOrcamento extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Long orcamentoId = Long.parseLong(req.getParameter("orcamentoId"));
 		String nome = req.getParameter("nome");
-		Double valor = Double.parseDouble(req.getParameter("valor"));
 		
 		Orcamento orcamento = (Orcamento) this.orcamentoDao.read(orcamentoId);
 		orcamento.setNome(nome);
+		
+		/*Antes teria que atualizar o valor orcado do projeto, depois que editasse
+		Double valor = Double.parseDouble(req.getParameter("valor"));
 		orcamento.setValorEstimado(valor);
 		
 		AtualizarValoresOrcados.atualizarPrecoProjeto(
 				AtualizarValoresOrcados.EDITAR,
 				orcamentoId,
 				valor
-		);
+		);*/
 		
 		this.orcamentoDao.update(orcamento);
 		

@@ -44,18 +44,10 @@ public class CadastrarRubrica extends HttpServlet {
 		
 		Long categoriaId = Long.parseLong(req.getParameter("categoriaId"));
 		
-		Double valor;
-		try {
-			valor = Double.parseDouble(req.getParameter("valor"));
-		}catch (NumberFormatException e) {
-			valor = 0d;
-			e.printStackTrace();
-		}
-		
 		Rubrica rubrica = new Rubrica(
 			categoriaId,
 			req.getParameter("nome"),
-			valor, //valorEstimado
+			0d, //valorEstimado
 			0d, // valorOrcado
 			0d // valorParcial
 		);

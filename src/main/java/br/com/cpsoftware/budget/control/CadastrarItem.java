@@ -25,6 +25,7 @@ import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.model.Categoria;
 import br.com.cpsoftware.budget.model.Item;
 import br.com.cpsoftware.budget.model.Orcamento;
+import br.com.cpsoftware.budget.util.AtualizarValoresEstimados;
 import br.com.cpsoftware.budget.util.AtualizarValoresOrcados;
 
 @SuppressWarnings("serial")
@@ -101,6 +102,8 @@ public class CadastrarItem extends HttpServlet {
 			
 			Item item = new Item(rubricaId, nome, descricao, precoUnitario, quantidade, 0d, 0d, unidadeMedida, arquivoDetalhes, arquivoAuxiliar);
 			Long itemId = this.dao.create(item);
+			
+			AtualizarValoresEstimados.atualizarValorEstimadoRubrica(rubricaId);
 			
 			if(itemId != null) {
 				AtualizarValoresOrcados.atualizarPrecoRubrica(

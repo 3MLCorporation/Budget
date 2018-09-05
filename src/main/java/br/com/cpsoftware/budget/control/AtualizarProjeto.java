@@ -34,11 +34,13 @@ public class AtualizarProjeto extends HttpServlet {
 	
 		Long projetoId = Long.parseLong(req.getParameter("projetoId"));
 		String nome = req.getParameter("nome");
+		
+		/*Antes podia editar o valor estimado
 		Double valor = Double.parseDouble(req.getParameter("valor"));
+		projeto.setValorEstimado(valor);*/
 		
 		Projeto projeto = (Projeto) this.projetoDAO.read(projetoId);
 		projeto.setNome(nome);
-		projeto.setValorEstimado(valor);
 		
 		this.projetoDAO.update(projeto);
 		

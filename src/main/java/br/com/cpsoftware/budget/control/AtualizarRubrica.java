@@ -15,7 +15,6 @@ import br.com.cpsoftware.budget.dao.RubricaDAO;
 import br.com.cpsoftware.budget.model.Categoria;
 import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.Rubrica;
-import br.com.cpsoftware.budget.util.AtualizarValoresOrcados;
 import br.com.cpsoftware.budget.util.AtualizarValoresRealizados;
 
 
@@ -51,21 +50,13 @@ public class AtualizarRubrica extends HttpServlet {
 		Long categoriaId = Long.parseLong(req.getParameter("categoriaId"));
 		Long rubricaId = Long.parseLong(req.getParameter("rubricaId"));
 		String nome = req.getParameter("nome");
-		Double valor = Double.parseDouble(req.getParameter("valor"));
 		
 		Rubrica rubrica = (Rubrica) this.rubricaDao.read(rubricaId);
 		rubrica.setCategoriaId(categoriaId);
 		rubrica.setNome(nome);
-		rubrica.setValorEstimado(valor);
 		
 		//TODO Fazer classe util.Mover ??
 		
-		AtualizarValoresOrcados.atualizarPrecoCategoria(
-			AtualizarValoresOrcados.EXCLUIR,
-			rubricaId,
-			rubrica.getValorEstimado()
-		);
-				
 		//Atualizo a categoria anterior, excluindo o valor parcial da rubrica
 		AtualizarValoresRealizados.atualizarPrecoCategoria(
 			AtualizarValoresRealizados.EXCLUIR,
@@ -74,12 +65,6 @@ public class AtualizarRubrica extends HttpServlet {
 		);
 		
 		this.rubricaDao.update(rubrica);
-		
-		AtualizarValoresOrcados.atualizarPrecoCategoria(
-			AtualizarValoresOrcados.CADASTRAR,
-			rubricaId,
-			rubrica.getValorEstimado()
-		);
 		
 		//Atualizo a nova categoria, adicionando o valor parcial da rubrica
 		AtualizarValoresRealizados.atualizarPrecoCategoria(
