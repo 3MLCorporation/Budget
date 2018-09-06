@@ -43,7 +43,7 @@
 		        			<th>Valor realizado</th>
 		        			<th>Valor comprovado</th>
 		        			<!--<th>Rubricas</th>-->
-		        			<th>Editar categoria</th>
+		        			<th style="width: 5%;">Editar categoria</th>
       					</tr>
 			   		</thead>
 			   		<tbody id="myTable">

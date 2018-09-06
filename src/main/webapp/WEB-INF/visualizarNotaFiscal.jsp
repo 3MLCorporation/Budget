@@ -91,7 +91,7 @@
 				   				<th>Tipo</th>
 				   				<th>Valor</th>
 								<th>Data</th>
-								<th></th>
+								<th style="width: 5%;"></th>
 	      					</tr>
 				   		</thead>
 				   		<tbody>

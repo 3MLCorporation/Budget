@@ -17,7 +17,7 @@
                             <th>Razão Social</th>
                             <th>CNPJ</th>
                             <th>UF</th>
-                            <th>Editar fornecedor</th>
+                            <th style="width: 5%;"></th>
                           </tr>
                        </thead>
                        <tbody id="myTable">

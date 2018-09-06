@@ -28,7 +28,7 @@
 			      			<th>Login</th>
 			        		<th>Email</th>
 			        		<th>Perfil</th>
-			        		<th></th>
+			        		<th style="width: 5%;"></th>
       					</tr>
 			   		</thead>
 			   		<tbody id="myTable">

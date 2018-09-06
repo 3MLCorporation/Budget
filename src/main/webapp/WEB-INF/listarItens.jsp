@@ -52,7 +52,7 @@
 		        			<th>Valor realizado</th>
 		        			<th>Valor comprovado</th>
 			        		<!--<th>Detalhes</th>-->
-			        		<th>Editar Item</th>
+			        		<th style="width: 5%;">Editar Item</th>
 			        		<!-- <th>Nota fiscal</th> -->
       					</tr>
 			   		</thead>

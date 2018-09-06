@@ -6,6 +6,7 @@
 <head>
 	<title>Budget</title>
 	<meta charset="UTF-8">
+	<link rel="stylesheet" href="../css/estiloLoginUsuario.css">
 	<link rel="stylesheet" href="../css/estilo.css">
 	<link rel="shortcut icon" type="image/x-icon" href="../img/favicon.png" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,6 +35,7 @@
 					<img src="../img/moeda.png" alt="Profile Picture" class="img-responsive" width="100" height="100">
 				</div>
 			</div>
+			<!--
 			<div class="container" style="width: 60%;">
 				<h2>Login</h2>
 				<br/>
@@ -61,6 +63,29 @@
 				</form>
 			</div>
 		</div>
+	</div>-->
+
+	<div class="container">
+		<form action="login" method="POST">
+			<div class="group">      
+			    <input type="text" required="required" name="login">
+			    <span class="highlight"></span>
+			    <span class="bar"></span>
+			    <label>Login</label>
+		    </div>
+		      
+		    <div class="group">      
+		     	<input type="text" required="required" name="senha">
+		      	<span class="highlight"></span>
+		      	<span class="bar"></span>
+		      	<label>Senha</label>
+		    </div>
+		    <button type="submit" class="btn btn-dark btnLogin" title="Fazer login">Logar</button>&emsp;
+	  	</form>
+	      
+		<p class="footer">
+		<a href="/cadastrarUsuario">Não possui uma conta ainda?</a>
+	  	</p>
 	</div>
 </body>
 </html>
