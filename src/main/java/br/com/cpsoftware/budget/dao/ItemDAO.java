@@ -96,18 +96,20 @@ public class ItemDAO{
 	}
 	
 	private Item entityToItem(Entity itemEntity) {
-		return new Item((Long)itemEntity.getProperty(Item.RUBRICA_ID),
-				 itemEntity.getKey().getId(),
-				 (String)itemEntity.getProperty(Item.NOME),
-				 (String)itemEntity.getProperty(Item.DESCRICAO),
-				 (Double)itemEntity.getProperty(Item.PRECO_UNITARIO),
-				 ((Long)itemEntity.getProperty(Item.QUANTIDADE)).intValue(),
-				 (Double)itemEntity.getProperty(Item.VALOR_ESTIMADO),
-				 (Double)itemEntity.getProperty(Item.VALOR_ORCADO),
-				 (Double)itemEntity.getProperty(Item.VALOR_REALIZADO),
-				 ((Long)itemEntity.getProperty(Item.UNIDADE_MEDIDA)).intValue(),
-				 (Blob)itemEntity.getProperty(Item.ARQUIVO_DETALHES),
-				 (Blob)itemEntity.getProperty(Item.ARQUIVO_AUXILIAR));
+		return new Item(
+			 (Long)itemEntity.getProperty(Item.RUBRICA_ID),
+			 itemEntity.getKey().getId(),
+			 (String)itemEntity.getProperty(Item.NOME),
+			 (String)itemEntity.getProperty(Item.DESCRICAO),
+			 (Double)itemEntity.getProperty(Item.PRECO_UNITARIO),
+			 ((Long)itemEntity.getProperty(Item.QUANTIDADE)).intValue(),
+			 (Double)itemEntity.getProperty(Item.VALOR_ESTIMADO),
+			 (Double)itemEntity.getProperty(Item.VALOR_ORCADO),
+			 (Double)itemEntity.getProperty(Item.VALOR_REALIZADO),
+			 ((Long)itemEntity.getProperty(Item.UNIDADE_MEDIDA)).intValue(),
+			 (Blob)itemEntity.getProperty(Item.ARQUIVO_DETALHES),
+			 (Blob)itemEntity.getProperty(Item.ARQUIVO_AUXILIAR)
+		 );
 	}
 	
 	private List<Item> entitiesToItem(List<Entity> entities) {

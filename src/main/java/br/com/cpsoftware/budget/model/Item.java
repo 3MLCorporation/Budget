@@ -184,6 +184,10 @@ public class Item {
 		this.valorEstimado = valorEstimado;
 	}
 
+	public String getValorEstimadoFormatado() {
+		return Formatacao.formatarDinheiro(valorEstimado);
+	}
+
 	public Double getValorOrcado() {
 		return valorOrcado;
 	}

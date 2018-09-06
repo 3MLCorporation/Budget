@@ -62,8 +62,8 @@
 								<td> ${itemMap.nomeCategoria}</td>
 								<td> ${itemMap.nomeRubrica}</td>
 								<td> ${itemMap.item.nome}</td>
+								<td> ${itemMap.item.getValorEstimadoFormatado()}</td>
 								<td> ${itemMap.item.getValorFormatado()}</td>
-								<td> ${itemMap.item.getValorOrcadoFormatado()}</td>
 								<td> ${itemMap.item.getValorRealizadoFormatado()}</td>
 								<td></td>
 								<td>

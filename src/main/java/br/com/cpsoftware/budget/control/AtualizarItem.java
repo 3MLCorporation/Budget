@@ -126,20 +126,12 @@ public class AtualizarItem extends HttpServlet {
 		
 		Item item = this.itemDao.read(itemId);
 		
+		Long rubricaAnterior = item.getRubricaId();
 		
-		if(rubricaId != item.getRubricaId()) {
-			//Atualizar os valores estimados, se o Item for movido para outra Rubrica
-			AtualizarValoresEstimados.atualizarValorEstimadoRubrica(item.getRubricaId());
-			item.setRubricaId(rubricaId);
-		}
+		item.setRubricaId(rubricaId);
 		item.setNome(nome);
 		item.setDescricao(descricao);
-		
-		if(item.getValorEstimado() != valorEstimado) {
-			item.setValorEstimado(valorEstimado);
-			AtualizarValoresEstimados.atualizarValorEstimadoRubrica(item.getRubricaId());			
-		}
-		
+		item.setValorEstimado(valorEstimado);
 		item.setPrecoUnitario(precoUnitario);
 		item.setQuantidade(quantidade);
 		item.setUnidadeMedida(unidadeMedida);
@@ -165,6 +157,15 @@ public class AtualizarItem extends HttpServlet {
 		);
 		
 		this.itemDao.update(item);
+		
+		if(!rubricaAnterior.equals(item.getRubricaId())) {
+			//Atualizar os valores estimados, se o Item for movido para outra Rubrica
+			AtualizarValoresEstimados.atualizarValorEstimadoRubrica(rubricaAnterior);
+			AtualizarValoresEstimados.atualizarValorEstimadoRubrica(item.getRubricaId());
+			System.out.println("if rubricas diferentes");
+		}else {
+			AtualizarValoresEstimados.atualizarValorEstimadoRubrica(item.getRubricaId());
+		}
 		
 		AtualizarValoresOrcados.atualizarPrecoRubrica(
 			AtualizarValoresOrcados.CADASTRAR,

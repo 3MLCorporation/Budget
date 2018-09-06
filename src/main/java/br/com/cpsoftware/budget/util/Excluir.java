@@ -82,6 +82,8 @@ public class Excluir {
 		);
 		
 		orcamentoDAO.delete(orcamentoId);
+
+		AtualizarValoresEstimados.atualizarValorEstimadoProjeto(orcamento.getProjetoId());
 		
 		excluirCategoria(orcamentoId);
 		excluirOrcamentoUsuario(orcamentoId);
@@ -123,6 +125,8 @@ public class Excluir {
 		
 		categoriaDAO.delete(categoriaId);
 		
+		AtualizarValoresEstimados.atualizarValorEstimadoOrcamento(categoria.getOrcamentoId());
+		
 		excluirRubrica(categoriaId);
 		
 		return true;
@@ -155,6 +159,8 @@ public class Excluir {
 		);
 			
 		rubricaDAO.delete(rubricaId);
+
+		AtualizarValoresEstimados.atualizarValorEstimadoCategoria(rubrica.getCategoriaId());
 		
 		excluirItem(rubricaId);
 		
@@ -199,9 +205,8 @@ public class Excluir {
 		);
 		
 		itemDAO.delete(itemId);
-		excluirNotaFiscal(item.getId());
-		
 		AtualizarValoresEstimados.atualizarValorEstimadoRubrica(item.getRubricaId());
+		excluirNotaFiscal(item.getId());
 		
 		return true;
 	}

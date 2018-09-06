@@ -24,7 +24,7 @@ public class AtualizarValoresEstimados {
 		
 		double somaEstimados = 0;
 		for(Item item: itemDAO.getItens(rubricaId)) {
-			somaEstimados += item.getValor();
+			somaEstimados += item.getValorEstimado();
 		}
 		rubrica.setValorEstimado(somaEstimados);
 		
@@ -33,7 +33,7 @@ public class AtualizarValoresEstimados {
 		atualizarValorEstimadoCategoria(rubrica.getCategoriaId());
 	}
 
-	private static void atualizarValorEstimadoCategoria(Long categoriaId) {
+	public static void atualizarValorEstimadoCategoria(Long categoriaId) {
 		Categoria categoria = (Categoria) categoriaDAO.read(categoriaId);
 		
 		double somaEstimados = 0;
@@ -48,7 +48,7 @@ public class AtualizarValoresEstimados {
 		
 	}
 
-	private static void atualizarValorEstimadoOrcamento(Long orcamentoId) {
+	public static void atualizarValorEstimadoOrcamento(Long orcamentoId) {
 		Orcamento orcamento = (Orcamento) orcamentoDAO.read(orcamentoId);
 		
 		double somaEstimados = 0;
@@ -63,7 +63,7 @@ public class AtualizarValoresEstimados {
 		
 	}
 
-	private static void atualizarValorEstimadoProjeto(Long projetoId) {
+	public static void atualizarValorEstimadoProjeto(Long projetoId) {
 		Projeto projeto = (Projeto) projetoDAO.read(projetoId);
 		
 		double somaEstimados = 0;
