@@ -199,7 +199,9 @@ public class Excluir {
 		);
 		
 		itemDAO.delete(itemId);
+		excluirNotaFiscal(item.getId());
 		
+		AtualizarValoresEstimados.atualizarValorEstimadoRubrica(item.getRubricaId());
 		
 		return true;
 	}

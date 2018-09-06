@@ -27,6 +27,7 @@ import br.com.cpsoftware.budget.model.Categoria;
 import br.com.cpsoftware.budget.model.Item;
 import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.Rubrica;
+import br.com.cpsoftware.budget.util.AtualizarValoresEstimados;
 import br.com.cpsoftware.budget.util.AtualizarValoresOrcados;
 import br.com.cpsoftware.budget.util.AtualizarValoresRealizados;
 
@@ -74,7 +75,7 @@ public class AtualizarItem extends HttpServlet {
 		Long rubricaId = null;
 		String nome = null;
 		String descricao = null;
-		Double valorUniforme = null;
+		Double precoUnitario = null;
 		int quantidade = 0;
 		Double valorEstimado = 0d;
 		int unidadeMedida = 0;
@@ -103,7 +104,7 @@ public class AtualizarItem extends HttpServlet {
 						if (item.getFieldName().equals(Item.VALOR_ESTIMADO))
 							valorEstimado = new Double(Streams.asString(stream));
 						if (item.getFieldName().equals(Item.PRECO_UNITARIO))
-							valorUniforme = new Double(Streams.asString(stream));
+							precoUnitario = new Double(Streams.asString(stream));
 						if (item.getFieldName().equals(Item.QUANTIDADE))
 							quantidade = new Integer(Streams.asString(stream));
 						if (item.getFieldName().equals(Item.UNIDADE_MEDIDA))
@@ -124,11 +125,22 @@ public class AtualizarItem extends HttpServlet {
 		
 		
 		Item item = this.itemDao.read(itemId);
-		item.setRubricaId(rubricaId);
+		
+		
+		if(rubricaId != item.getRubricaId()) {
+			//Atualizar os valores estimados, se o Item for movido para outra Rubrica
+			AtualizarValoresEstimados.atualizarValorEstimadoRubrica(item.getRubricaId());
+			item.setRubricaId(rubricaId);
+		}
 		item.setNome(nome);
 		item.setDescricao(descricao);
-		item.setValorEstimado(valorEstimado);
-		item.setPrecoUnitario(valorUniforme);
+		
+		if(item.getValorEstimado() != valorEstimado) {
+			item.setValorEstimado(valorEstimado);
+			AtualizarValoresEstimados.atualizarValorEstimadoRubrica(item.getRubricaId());			
+		}
+		
+		item.setPrecoUnitario(precoUnitario);
 		item.setQuantidade(quantidade);
 		item.setUnidadeMedida(unidadeMedida);
 		
