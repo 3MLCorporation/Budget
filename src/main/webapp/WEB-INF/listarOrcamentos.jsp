@@ -40,8 +40,8 @@
 		        			<th>Valor orçado</th>
 		        			<th>Valor realizado</th>
 		        			<th>Valor comprovado</th>		        			
-		        			<th>Status</th>
-		        			<th>&emsp;Editar<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"> orçamento</c:if></th>
+		        			<th style="width: 5%;">Status</th>
+		        			<th style="width: 5%;">Editar<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"> orçamento</c:if></th>
 		        		</tr>
 			   		</thead>
 			   		<tbody id="myTable">

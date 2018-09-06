@@ -100,7 +100,7 @@
 							<th>Valor realizado</th>
 							<th>Valor comprovado</th>
 							<th>Data</th>
-							<th>Editar nota fiscal</th>
+							<th style="width: 5%;">Editar nota fiscal</th>
       					</tr>
 			   		</thead>
 			   		<tbody>

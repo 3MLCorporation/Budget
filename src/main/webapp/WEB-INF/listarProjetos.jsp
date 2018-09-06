@@ -35,7 +35,7 @@
 				       			<th>Valor orçado</th>
 				       			<th>Valor realizado</th>
 				       			<th>Valor comprovado</th>
-				       			<th>Editar projeto</th>
+				       			<th style="width: 5%;">Editar projeto</th>
 				       			<!--<th>Gerar relatório</th>-->
 			     			</tr>
 			   		</thead>

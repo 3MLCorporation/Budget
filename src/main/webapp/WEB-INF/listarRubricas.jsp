@@ -47,7 +47,7 @@
 		        			<th>Valor orçado</th>
 		        			<th>Valor realizado</th>
 		        			<th>Valor comprovado</th>
-			        		<th>Editar rubrica</th>
+			        		<th style="width: 5%;">Editar rubrica</th>
       					</tr>
 			   		</thead>
 			   		<tbody id="myTable">
