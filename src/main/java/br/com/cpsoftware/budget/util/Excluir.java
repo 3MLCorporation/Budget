@@ -231,11 +231,11 @@ public class Excluir {
 		
 		NotaFiscal nota = notaFiscalDAO.read(notaId);
 		
-		AtualizarValoresOrcados.atualizarPrecoItem(
+		/*AtualizarValoresOrcados.atualizarPrecoItem(
 			AtualizarValoresOrcados.EXCLUIR,
 			notaId,
 			nota.getValor()
-		);
+		);*/
 			
 		AtualizarValoresRealizados.atualizarPrecoItem(
 			AtualizarValoresRealizados.EXCLUIR,

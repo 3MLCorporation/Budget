@@ -13,8 +13,7 @@ import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.Projeto;
 import br.com.cpsoftware.budget.model.Rubrica;
 
-public class AtualizarValoresOrcados {
-
+public class AtualizarValoresComprovados {
 	private static ProjetoDAO projetoDAO = new ProjetoDAO();
 	private static OrcamentoDAO orcamentoDAO = new OrcamentoDAO();
 	private static CategoriaDAO categoriaDAO = new CategoriaDAO();
@@ -31,8 +30,10 @@ public class AtualizarValoresOrcados {
 		Projeto projeto = (Projeto) projetoDAO.read(orcamento.getProjetoId());
 		switch(tipoDeAtualizacao) {
 			case CADASTRAR:
-			case EDITAR:
 				projeto.setValorOrcado(projeto.getValorOrcado() + valor);
+				break;
+			case EDITAR:
+				projeto.setValorOrcado(projeto.getValorOrcado() + (valor - orcamento.getValorOrcado()));
 				break;
 			case EXCLUIR:
 				projeto.setValorOrcado(projeto.getValorOrcado() - valor);
@@ -46,13 +47,13 @@ public class AtualizarValoresOrcados {
 		Orcamento orcamento = (Orcamento) orcamentoDAO.read(categoria.getOrcamentoId());
 		switch(tipoDeAtualizacao) {
 			case CADASTRAR:
-			case EDITAR:
 				orcamento.setValorOrcado(orcamento.getValorOrcado() + valor);
-				atualizarPrecoProjeto(CADASTRAR, orcamento.getId(), valor);
+				break;
+			case EDITAR:
+				orcamento.setValorOrcado(orcamento.getValorOrcado() + (valor - categoria.getValorOrcado()));
 				break;
 			case EXCLUIR:
 				orcamento.setValorOrcado(orcamento.getValorOrcado() - valor);
-				atualizarPrecoProjeto(EXCLUIR, orcamento.getId(), valor);
 				break;
 		}	
 		orcamentoDAO.update(orcamento);
@@ -63,16 +64,15 @@ public class AtualizarValoresOrcados {
 		Categoria categoria = (Categoria) categoriaDAO.read(rubrica.getCategoriaId());
 		switch(tipoDeAtualizacao) {
 			case CADASTRAR:
+				categoria.setValorOrcado(categoria.getValorOrcado() + valor);
+				break;
 			case EDITAR:
 				//Antes 
 				//categoria.setValorOrcado(categoria.getValorOrcado() + (valor - rubrica.getValorEstimado()));
-				//categoria.setValorOrcado(categoria.getValorOrcado() + (valor - rubrica.getValorOrcado()));
-				categoria.setValorOrcado(categoria.getValorOrcado() + valor);
-				atualizarPrecoOrcamento(CADASTRAR, categoria.getId(), valor);
+				categoria.setValorOrcado(categoria.getValorOrcado() + (valor - rubrica.getValorOrcado()));
 				break;
 			case EXCLUIR:
 				categoria.setValorOrcado(categoria.getValorOrcado() - valor);
-				atualizarPrecoOrcamento(EXCLUIR, categoria.getId(), valor);
 				break;
 		}	
 		categoriaDAO.update(categoria);
@@ -84,21 +84,18 @@ public class AtualizarValoresOrcados {
 		switch(tipoDeAtualizacao) {
 			case CADASTRAR:
 				rubrica.setValorOrcado(rubrica.getValorOrcado() + valor);
-				atualizarPrecoCategoria(CADASTRAR, rubrica.getId(), valor);
 				break;
 			case EDITAR:
-				rubrica.setValorOrcado(rubrica.getValorOrcado() + valor);
-				atualizarPrecoCategoria(EDITAR, rubrica.getId(), valor);
+				rubrica.setValorOrcado(rubrica.getValorOrcado() + (valor - item.getValor()));
 				break;
 			case EXCLUIR:
 				rubrica.setValorOrcado(rubrica.getValorOrcado() - valor);
-				atualizarPrecoCategoria(EXCLUIR, rubrica.getId(), valor);
 				break;
 		}	
 		rubricaDAO.update(rubrica);
 	}
 	
-	/*public static void atualizarPrecoItem(int tipoDeAtualizacao, Long notaId, Double valor) {
+	public static void atualizarPrecoItem(int tipoDeAtualizacao, Long notaId, Double valor) {
 		NotaFiscal notaFiscal = notaFiscalDAO.read(notaId);
 		Item item = itemDAO.read(notaFiscal.getItemId());
 		switch(tipoDeAtualizacao) {
@@ -113,6 +110,5 @@ public class AtualizarValoresOrcados {
 				break;
 		}	
 		itemDAO.update(item);
-	}*/
-	
+	}
 }

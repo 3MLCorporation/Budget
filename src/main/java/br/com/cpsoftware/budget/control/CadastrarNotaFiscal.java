@@ -91,13 +91,13 @@ public class CadastrarNotaFiscal extends HttpServlet {
 				
 				Long notaId = dao.create(notaFiscal);
 				
-				if(notaId != null) {
+				/*if(notaId != null) {
 					AtualizarValoresOrcados.atualizarPrecoItem(
 		    			AtualizarValoresOrcados.CADASTRAR,
 		                notaId,
 		                notaFiscal.getValor()
 		            );
-				}
+				}*/
 				
 				req.getSession().setAttribute("notaId", notaId);
 				resp.sendRedirect("/visualizarNotaFiscal");

@@ -113,11 +113,11 @@ public class AtualizarNotaFiscal extends HttpServlet {
 			notaFiscal.setArquivo(arquivo);
 		}
 		
-		AtualizarValoresOrcados.atualizarPrecoItem(
+		/*AtualizarValoresOrcados.atualizarPrecoItem(
 			AtualizarValoresOrcados.EDITAR,
 			notaFiscalId,
 			notaFiscal.getValor()
-		);
+		);*/
 		
 		this.notaFiscalDao.update(notaFiscal);
 		

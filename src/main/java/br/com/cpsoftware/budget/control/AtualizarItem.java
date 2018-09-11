@@ -126,6 +126,12 @@ public class AtualizarItem extends HttpServlet {
 		
 		Item item = this.itemDao.read(itemId);
 		
+		AtualizarValoresOrcados.atualizarPrecoRubrica(
+			AtualizarValoresOrcados.EXCLUIR,
+			itemId,
+			item.getValor()
+		);
+			
 		Long rubricaAnterior = item.getRubricaId();
 		
 		item.setRubricaId(rubricaId);
@@ -142,12 +148,6 @@ public class AtualizarItem extends HttpServlet {
 		if(arquivoAuxiliar.getBytes().length > 0) {
 			item.setArquivoAuxiliar(arquivoAuxiliar);
 		}
-		
-		AtualizarValoresOrcados.atualizarPrecoRubrica(
-			AtualizarValoresOrcados.EXCLUIR,
-			itemId,
-			item.getValor()
-		);
 		
 		//Atualizo a rubrica anterior, excluindo o valor parcial do item
 		AtualizarValoresRealizados.atualizarPrecoRubrica(
@@ -168,7 +168,7 @@ public class AtualizarItem extends HttpServlet {
 		}
 		
 		AtualizarValoresOrcados.atualizarPrecoRubrica(
-			AtualizarValoresOrcados.CADASTRAR,
+			AtualizarValoresOrcados.EDITAR,
 			itemId,
 			item.getValor()
 		);

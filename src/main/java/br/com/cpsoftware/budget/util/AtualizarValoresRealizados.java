@@ -116,8 +116,11 @@ public class AtualizarValoresRealizados {
 			case CADASTRAR:
 			case EDITAR:
 				
-				//Aqui o valor é tratado igual, pois ele já vem ajustado, 
-				//tanto para cadastro(todo o valor), como para edição(diferença calculada no metodo anterior);
+				/*
+				 * Aqui o valor é tratado igual, pois ele já vem ajustado, 
+			     * tanto para cadastro(todo o valor), como para edição(diferença calculada no metodo anterior);
+			     * 
+			     */
 				nota.setValorRealizado(nota.getValorRealizado() + valor);
 				atualizarPrecoItem(CADASTRAR, nota.getId(), valor);
 				break;
@@ -137,6 +140,7 @@ public class AtualizarValoresRealizados {
 				break;
 			case EDITAR://O parametro valor aqui é o novo valor do pagamento.
 				Pagamento pagamento = pagamentoDAO.read(pagamentoId);
+				
 				//O terceiro argumento é a diferença entre o novo valor e o antigo valor;
 				atualizarPrecoNotaFiscal(EDITAR, pagamentoId, (valor - pagamento.getValor()));
 				pagamento.setValor(valor);
