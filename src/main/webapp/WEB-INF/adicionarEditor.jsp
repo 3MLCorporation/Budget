@@ -105,7 +105,7 @@
 		      <div class="modal-dialog" role="document">
 		        <div class="modal-content">
 		          <div class="modal-header">
-		            <h5 class="modal-title" id="exampleModalLabel">Falha ao adicioanr usuário!</h5>
+		            <h5 class="modal-title" id="exampleModalLabel">Falha ao adicionar usuário!</h5>
 		            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
 		              <span aria-hidden="true">×</span>
 		            </button>
@@ -132,7 +132,7 @@
               <span aria-hidden="true">×</span>
             </button>
           </div>
-          <div class="modal-body">Pressione o botão "Remover" se é o que deseja.</div>
+          <div class="modal-body">Pressione o botão "Remover"</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
 				<form action="excluirOrcamento" method="POST">
