@@ -86,7 +86,9 @@ public class AtualizarNotaFiscal extends HttpServlet {
 							valor = new Double(Streams.asString(stream));
 						if (item.getFieldName().equals(NotaFiscal.DATA))
 							data = new SimpleDateFormat("yyyy-MM-dd").parse(Streams.asString(stream));
-					} else {
+					} 
+					
+					else {
 						if (item.getFieldName().startsWith(NotaFiscal.ARQUIVO)){
 							arquivo = new Blob(IOUtils.toByteArray(stream));
 						}
@@ -121,7 +123,6 @@ public class AtualizarNotaFiscal extends HttpServlet {
 		
 		this.notaFiscalDao.update(notaFiscal);
 		
-		//TODO Por enquanto, fica assim
 		resp.sendRedirect("/visualizarNotaFiscal?notaId=" + notaFiscal.getId());
 		
 	}

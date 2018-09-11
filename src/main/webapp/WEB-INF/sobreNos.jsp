@@ -1,6 +1,6 @@
 <div class="container">    
 	<div class="btn-group">
-	    <div class="card">
+	    <div>
 		    <img class="card-img-top" src="../img/flavio.jpg" alt="Card image">
 		    <div class="card-body">
 			      <h4 class="card-title">Flávio Mota</h4>
@@ -9,8 +9,11 @@
 		    </div>
 	    </div>
 	    
-	    <div class="card">
+	    <div>
 		    <img class="card-img-top" src="../img/michael.jpg" alt="Card image">
+	    <div class="card">
+		    <img class="card-img-top" src="../img/miller.jpg" alt="Card image">
+
 		    <div class="card-body">
 			      <h4 class="card-title">Michael Miller</h4>
 			      <p class="card-text">Troll de internet e ex youtuber</p>
@@ -18,16 +21,20 @@
 		    </div>
 	    </div>
 	    
-	    <div class="card">
+	    <div>
 		    <img class="card-img-top" src="../img/lucas.jpg" alt="Card image">
+
+	    <div class="card">
+		    <img class="card-img-top" src="../img/lpmito.png" alt="Card image">
+
 		    <div class="card-body">
 			      <h4 class="card-title">Lucas Gabriel</h4>
 			      <p class="card-text">Rouba auxilio</p>
-			      <a href="https://www.instagram.com/gabriel.lusca/" target="_blank" class="btn btn-dark">Ver perfil</a>
+			      <a href="https://www.instagram.com/gabrielsyphan/" target="_blank" class="btn btn-dark">Ver perfil</a>
 		    </div>
 	    </div>
 	    
-	    <div class="card">
+	    <div>
 		    <img class="card-img-top" src="../img/michel.jpg" alt="Card image">
 		    <div class="card-body">
 			      <h4 class="card-title">Michel Thomas</h4>

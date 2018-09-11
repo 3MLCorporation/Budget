@@ -109,7 +109,9 @@ public class AtualizarItem extends HttpServlet {
 							quantidade = new Integer(Streams.asString(stream));
 						if (item.getFieldName().equals(Item.UNIDADE_MEDIDA))
 							unidadeMedida = new Integer(Streams.asString(stream));
-					} else {
+					} 
+					
+					else {
 						if (item.getFieldName().startsWith(Item.ARQUIVO_DETALHES)){
 							arquivoDetalhes = new Blob(IOUtils.toByteArray(stream));
 						}
@@ -145,6 +147,7 @@ public class AtualizarItem extends HttpServlet {
 		if(arquivoDetalhes.getBytes().length > 0) {
 			item.setArquivoDetalhes(arquivoDetalhes);
 		}
+		
 		if(arquivoAuxiliar.getBytes().length > 0) {
 			item.setArquivoAuxiliar(arquivoAuxiliar);
 		}
@@ -163,7 +166,9 @@ public class AtualizarItem extends HttpServlet {
 			AtualizarValoresEstimados.atualizarValorEstimadoRubrica(rubricaAnterior);
 			AtualizarValoresEstimados.atualizarValorEstimadoRubrica(item.getRubricaId());
 			System.out.println("if rubricas diferentes");
-		}else {
+		}
+		
+		else {
 			AtualizarValoresEstimados.atualizarValorEstimadoRubrica(item.getRubricaId());
 		}
 		
