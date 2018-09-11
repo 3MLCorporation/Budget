@@ -10,7 +10,7 @@
 	    </div>
 	    
 	    <div class="card">
-		    <img class="card-img-top" src="../img/michael.jpg" alt="Card image">
+		    <img class="card-img-top" src="../img/miller.jpg" alt="Card image">
 		    <div class="card-body">
 			      <h4 class="card-title">Michael Miller</h4>
 			      <p class="card-text">Troll de internet e ex youtuber</p>
@@ -19,7 +19,7 @@
 	    </div>
 	    
 	    <div class="card">
-		    <img class="card-img-top" src="../img/lucas.jpg" alt="Card image">
+		    <img class="card-img-top" src="../img/lpmito.png" alt="Card image">
 		    <div class="card-body">
 			      <h4 class="card-title">Lucas Gabriel</h4>
 			      <p class="card-text">Rouba auxilio</p>
