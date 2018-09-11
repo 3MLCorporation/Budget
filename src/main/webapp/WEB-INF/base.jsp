@@ -5,7 +5,7 @@
 <head>
   <title>Budget</title>
   <meta charset="UTF-8">
-  <link rel="shortcut icon" href="../img/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../img/icons/favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="../css/estilo.css">
   <script src="../js/script.js"></script>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
