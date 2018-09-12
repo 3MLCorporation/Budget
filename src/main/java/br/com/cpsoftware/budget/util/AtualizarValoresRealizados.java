@@ -5,14 +5,12 @@ import br.com.cpsoftware.budget.dao.CategoriaDAO;
 import br.com.cpsoftware.budget.dao.ItemDAO;
 import br.com.cpsoftware.budget.dao.NotaFiscalDAO;
 import br.com.cpsoftware.budget.dao.OrcamentoDAO;
-import br.com.cpsoftware.budget.dao.PagamentoDAO;
 import br.com.cpsoftware.budget.dao.ProjetoDAO;
 import br.com.cpsoftware.budget.dao.RubricaDAO;
 import br.com.cpsoftware.budget.model.Categoria;
 import br.com.cpsoftware.budget.model.Item;
 import br.com.cpsoftware.budget.model.NotaFiscal;
 import br.com.cpsoftware.budget.model.Orcamento;
-import br.com.cpsoftware.budget.model.Pagamento;
 import br.com.cpsoftware.budget.model.Projeto;
 import br.com.cpsoftware.budget.model.Rubrica;
 
@@ -24,7 +22,6 @@ public class AtualizarValoresRealizados {
 	private static RubricaDAO rubricaDAO = new RubricaDAO();
 	private static ItemDAO itemDAO = new ItemDAO();
 	private static NotaFiscalDAO notaFiscalDAO = new NotaFiscalDAO();
-	private static PagamentoDAO pagamentoDAO = new PagamentoDAO();
 	
 	public static final int CADASTRAR = 0;
 	public static final int EXCLUIR = 1;
@@ -110,29 +107,24 @@ public class AtualizarValoresRealizados {
 		itemDAO.update(item);
 	}
 	
-	public static void atualizarPrecoNotaFiscal(int tipoDeAtualizacao, Long pagamentoId, Double valor) {
-		NotaFiscal nota = notaFiscalDAO.read((pagamentoDAO.read(pagamentoId)).getNotaFiscalId());
+	public static void atualizarPrecoNotaFiscal(int tipoDeAtualizacao, Long notaId, Double valor) {
 		switch(tipoDeAtualizacao) {
 			case CADASTRAR:
+				atualizarPrecoItem(CADASTRAR, notaId, valor);
+				break;
 			case EDITAR:
-				
-				/*
-				 * Aqui o valor é tratado igual, pois ele já vem ajustado, 
-			     * tanto para cadastro(todo o valor), como para edição(diferença calculada no metodo anterior);
-			     * 
-			     */
-				nota.setValorRealizado(nota.getValorRealizado() + valor);
-				atualizarPrecoItem(CADASTRAR, nota.getId(), valor);
+				NotaFiscal nota = notaFiscalDAO.read(notaId);
+				//O parametro valor aqui é o novo valor do pagamento.
+				//O terceiro argumento é a diferença entre o novo valor e o antigo valor;
+				atualizarPrecoItem(EDITAR, notaId, (valor - nota.getValor()));
 				break;
 			case EXCLUIR:
-				nota.setValorRealizado(nota.getValorRealizado() - valor);
-				atualizarPrecoItem(EXCLUIR, nota.getId(), valor);
+				atualizarPrecoItem(EXCLUIR, notaId, valor);
 				break;
-		}	
-		notaFiscalDAO.update(nota);
+		}
 	}
 	
-	//TODO PAGAMENTO VAI TER VALOR PARCIAL??
+	/*//TODO PAGAMENTO VAI TER VALOR PARCIAL??
 	public static void atualizarPrecoPagamento(int tipoDeAtualizacao, Long pagamentoId, Double valor) {
 		switch(tipoDeAtualizacao) {
 			case CADASTRAR:
@@ -150,5 +142,5 @@ public class AtualizarValoresRealizados {
 				atualizarPrecoNotaFiscal(EXCLUIR, pagamentoId, valor);
 				break;
 		}
-	}
+	}*/
 }

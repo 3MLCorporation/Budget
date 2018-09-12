@@ -240,7 +240,7 @@ public class Excluir {
 		AtualizarValoresRealizados.atualizarPrecoItem(
 			AtualizarValoresRealizados.EXCLUIR,
 			notaId,
-			nota.getValorRealizado()
+			nota.getValorComprovado()
 		);
 			
 		notaFiscalDAO.delete(notaId);

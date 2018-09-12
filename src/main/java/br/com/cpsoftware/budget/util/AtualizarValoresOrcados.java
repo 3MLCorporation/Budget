@@ -2,13 +2,11 @@ package br.com.cpsoftware.budget.util;
 
 import br.com.cpsoftware.budget.dao.CategoriaDAO;
 import br.com.cpsoftware.budget.dao.ItemDAO;
-import br.com.cpsoftware.budget.dao.NotaFiscalDAO;
 import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.dao.ProjetoDAO;
 import br.com.cpsoftware.budget.dao.RubricaDAO;
 import br.com.cpsoftware.budget.model.Categoria;
 import br.com.cpsoftware.budget.model.Item;
-import br.com.cpsoftware.budget.model.NotaFiscal;
 import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.Projeto;
 import br.com.cpsoftware.budget.model.Rubrica;
@@ -20,7 +18,6 @@ public class AtualizarValoresOrcados {
 	private static CategoriaDAO categoriaDAO = new CategoriaDAO();
 	private static RubricaDAO rubricaDAO = new RubricaDAO();
 	private static ItemDAO itemDAO = new ItemDAO();
-	private static NotaFiscalDAO notaFiscalDAO = new NotaFiscalDAO();
 	
 	public static final int CADASTRAR = 0;
 	public static final int EXCLUIR = 1;

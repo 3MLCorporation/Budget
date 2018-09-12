@@ -25,7 +25,7 @@ import br.com.cpsoftware.budget.dao.FornecedorDAO;
 import br.com.cpsoftware.budget.dao.NotaFiscalDAO;
 import br.com.cpsoftware.budget.model.Fornecedor;
 import br.com.cpsoftware.budget.model.NotaFiscal;
-import br.com.cpsoftware.budget.util.AtualizarValoresOrcados;
+import br.com.cpsoftware.budget.util.AtualizarValoresRealizados;
 
 @SuppressWarnings("serial")
 public class CadastrarNotaFiscal extends HttpServlet {
@@ -90,6 +90,8 @@ public class CadastrarNotaFiscal extends HttpServlet {
 				NotaFiscalDAO  dao = new NotaFiscalDAO();
 				
 				Long notaId = dao.create(notaFiscal);
+				
+				AtualizarValoresRealizados.atualizarPrecoNotaFiscal(AtualizarValoresRealizados.CADASTRAR, notaId, valor);
 				
 				/*if(notaId != null) {
 					AtualizarValoresOrcados.atualizarPrecoItem(

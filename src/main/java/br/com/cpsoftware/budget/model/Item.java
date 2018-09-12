@@ -17,6 +17,7 @@ public class Item {
 	private Double valorEstimado;
 	private Double valorOrcado;
 	private Double valorRealizado;
+	private Double valorComprovado;
 	private int quantidade;
 	private int unidadeMedida;
 	private Blob arquivoDetalhes;
@@ -32,6 +33,7 @@ public class Item {
 	public static final String VALOR_ESTIMADO = "valor_estimado";
 	public static final String VALOR_ORCADO = "valor_orcado";
 	public static final String VALOR_REALIZADO = "valor_realizado";
+	public static final String VALOR_COMPROVADO = "valor_comprovado";
 	public static final String UNIDADE_MEDIDA = "unidade_medida";
 	public static final String ARQUIVO_DETALHES = "arquivo_detalhes";
 	public static final String ARQUIVO_AUXILIAR = "arquivo_auxiliar";
@@ -44,7 +46,9 @@ public class Item {
 	public static final int UNIDADE_MEDIDA_METRO = 4;
 	public static final int UNIDADE_MEDIDA_LITRO = 5;
 	
-	public Item(Long rubricaId, String nome, String descricao, Double precoUnitario, int quantidade, Double valorEstimado, Double valorOrcado, Double valorRealizado, int unidadeMedida) {
+	public Item(Long rubricaId, String nome, String descricao, Double precoUnitario, int quantidade,
+			Double valorEstimado, Double valorOrcado, Double valorRealizado, Double valorComprovado, int unidadeMedida) {
+		
 		this.rubricaId = rubricaId;
 		this.nome = nome;
 		this.descricao = descricao;
@@ -53,10 +57,13 @@ public class Item {
 		this.valorEstimado = valorEstimado;
 		this.valorOrcado = valorOrcado;
 		this.valorRealizado = valorRealizado;
+		this.valorComprovado = valorComprovado;
 		this.unidadeMedida = unidadeMedida;
 	}
 	
-	public Item(Long rubricaId, Long id,String nome, String descricao, Double precoUnitario, int quantidade, Double valorEstimado, Double valorOrcado, Double valorRealizado, int unidadeMedida) {
+	public Item(Long rubricaId, Long id,String nome, String descricao, Double precoUnitario, int quantidade,
+			Double valorEstimado, Double valorOrcado, Double valorRealizado, Double valorComprovado, int unidadeMedida) {
+		
 		this.rubricaId = rubricaId;
 		this.id = id;
 		this.nome = nome;
@@ -66,10 +73,13 @@ public class Item {
 		this.valorEstimado = valorEstimado;
 		this.valorOrcado = valorOrcado;
 		this.valorRealizado = valorRealizado;
+		this.valorComprovado = valorComprovado;
 		this.unidadeMedida = unidadeMedida;
 	}
 	
-	public Item(Long rubricaId, String nome, String descricao, Double precoUnitario, int quantidade, Double valorEstimado, Double valorOrcado, Double valorRealizado, int unidadeMedida, Blob arquivoDetalhes) {
+	public Item(Long rubricaId, String nome, String descricao, Double precoUnitario, int quantidade,
+			Double valorEstimado, Double valorOrcado, Double valorRealizado, Double valorComprovado, int unidadeMedida, Blob arquivoDetalhes) {
+		
 		this.rubricaId = rubricaId;
 		this.nome = nome;
 		this.descricao = descricao;
@@ -78,10 +88,13 @@ public class Item {
 		this.valorEstimado = valorEstimado;
 		this.valorOrcado = valorOrcado;
 		this.valorRealizado = valorRealizado;
+		this.valorComprovado = valorComprovado;
 		this.unidadeMedida = unidadeMedida;
 		this.arquivoDetalhes = arquivoDetalhes;
 	}
-	public Item(Long rubricaId, Long id, String nome, String descricao, Double precoUnitario, int quantidade, Double valorEstimado, Double valorOrcado, Double valorRealizado, int unidadeMedida, Blob arquivoDetalhes) {
+	public Item(Long rubricaId, Long id, String nome, String descricao, Double precoUnitario, int quantidade,
+			Double valorEstimado, Double valorOrcado, Double valorRealizado, Double valorComprovado, int unidadeMedida, Blob arquivoDetalhes) {
+		
 		this.rubricaId = rubricaId;
 		this.id = id;
 		this.nome = nome;
@@ -91,11 +104,14 @@ public class Item {
 		this.valorEstimado = valorEstimado;
 		this.valorOrcado = valorOrcado;
 		this.valorRealizado = valorRealizado;
+		this.valorComprovado = valorComprovado;
 		this.unidadeMedida = unidadeMedida;
 		this.arquivoDetalhes = arquivoDetalhes;
 	}
 
-	public Item(Long rubricaId, String nome, String descricao, Double precoUnitario, int quantidade, Double valorEstimado, Double valorOrcado, Double valorRealizado, int unidadeMedida, Blob arquivoDetalhes, Blob arquivoAuxiliar) {
+	public Item(Long rubricaId, String nome, String descricao, Double precoUnitario, int quantidade,
+			Double valorEstimado, Double valorOrcado, Double valorRealizado, Double valorComprovado, int unidadeMedida, Blob arquivoDetalhes, Blob arquivoAuxiliar) {
+		
 		this.rubricaId = rubricaId;
 		this.nome = nome;
 		this.descricao = descricao;
@@ -104,12 +120,15 @@ public class Item {
 		this.valorEstimado = valorEstimado;
 		this.valorOrcado = valorOrcado;
 		this.valorRealizado = valorRealizado;
+		this.valorComprovado = valorComprovado;
 		this.unidadeMedida = unidadeMedida;
 		this.arquivoDetalhes = arquivoDetalhes;
 		this.arquivoAuxiliar = arquivoAuxiliar;
 	}
 	
-	public Item(Long rubricaId, Long id, String nome, String descricao, Double precoUnitario, int quantidade, Double valorEstimado, Double valorOrcado, Double valorRealizado, int unidadeMedida, Blob arquivoDetalhes, Blob arquivoAuxiliar) {
+	public Item(Long rubricaId, Long id, String nome, String descricao, Double precoUnitario, int quantidade,
+			Double valorEstimado, Double valorOrcado, Double valorRealizado, Double valorComprovado, int unidadeMedida, Blob arquivoDetalhes, Blob arquivoAuxiliar) {
+		
 		this.rubricaId = rubricaId;
 		this.id = id;
 		this.nome = nome;
@@ -119,6 +138,7 @@ public class Item {
 		this.valorEstimado = valorEstimado;
 		this.valorOrcado = valorOrcado;
 		this.valorRealizado = valorRealizado;
+		this.valorComprovado = valorComprovado;
 		this.unidadeMedida = unidadeMedida;
 		this.arquivoDetalhes = arquivoDetalhes;
 		this.arquivoAuxiliar = arquivoAuxiliar;
@@ -168,7 +188,6 @@ public class Item {
 		this.quantidade = quantidade;
 	}
 	
-	//TODO getValor ou getValorEstimado?
 	public Double getValor() {
 		return precoUnitario * quantidade;
 	}
@@ -212,6 +231,14 @@ public class Item {
 		return Formatacao.formatarDinheiro(valorRealizado);
 	}
 	
+	public Double getValorComprovado() {
+		return valorComprovado;
+	}
+
+	public void setValorComprovado(Double valorComprovado) {
+		this.valorComprovado = valorComprovado;
+	}
+
 	public int getUnidadeMedida() {
 		return unidadeMedida;
 	}

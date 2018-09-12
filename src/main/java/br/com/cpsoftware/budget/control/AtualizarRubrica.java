@@ -15,6 +15,7 @@ import br.com.cpsoftware.budget.dao.RubricaDAO;
 import br.com.cpsoftware.budget.model.Categoria;
 import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.Rubrica;
+import br.com.cpsoftware.budget.util.AtualizarValoresComprovados;
 import br.com.cpsoftware.budget.util.AtualizarValoresEstimados;
 import br.com.cpsoftware.budget.util.AtualizarValoresOrcados;
 import br.com.cpsoftware.budget.util.AtualizarValoresRealizados;
@@ -67,13 +68,21 @@ public class AtualizarRubrica extends HttpServlet {
 			rubricaId,
 			rubrica.getValorOrcado()
 		);
-		
-		//Atualizo a categoria anterior, excluindo o valor parcial da rubrica
-		AtualizarValoresRealizados.atualizarPrecoCategoria(
-			AtualizarValoresRealizados.EXCLUIR,
-			rubricaId,
-			rubrica.getValorRealizado()
-		);
+
+		if(!categoriaAnterior.equals(rubrica.getCategoriaId())) {
+			//Atualizo a categoria anterior, excluindo o valor parcial da rubrica
+			AtualizarValoresRealizados.atualizarPrecoCategoria(
+				AtualizarValoresRealizados.EXCLUIR,
+				rubricaId,
+				rubrica.getValorRealizado()
+			);
+			
+			AtualizarValoresComprovados.atualizarPrecoRubrica(
+        		AtualizarValoresComprovados.EXCLUIR,
+        		rubricaId,
+        		rubrica.getValorComprovado()
+    		);
+		}
 		
 		this.rubricaDao.update(rubrica);
 		
@@ -81,23 +90,29 @@ public class AtualizarRubrica extends HttpServlet {
 			//Atualizar os valores estimados, se a Rubrica for movido para outra Categoria
 			AtualizarValoresEstimados.atualizarValorEstimadoCategoria(categoriaAnterior);
 			AtualizarValoresEstimados.atualizarValorEstimadoCategoria(rubrica.getCategoriaId());
-			System.out.println("if categorias diferentes");
-		}else {
+			
+			//Atualizo a nova categoria, adicionando o valor parcial da rubrica
+			AtualizarValoresRealizados.atualizarPrecoCategoria(
+				AtualizarValoresRealizados.EDITAR,
+				rubricaId,
+				rubrica.getValorRealizado()
+			);
+			
+			AtualizarValoresComprovados.atualizarPrecoRubrica(
+        		AtualizarValoresComprovados.EDITAR,
+        		rubricaId,
+				rubrica.getValorRealizado()
+    		);
+		} else {
 			AtualizarValoresEstimados.atualizarValorEstimadoCategoria(rubrica.getCategoriaId());
 		}
 		
 		AtualizarValoresOrcados.atualizarPrecoCategoria(
-			AtualizarValoresOrcados.CADASTRAR,
+			AtualizarValoresOrcados.EDITAR,
 			rubricaId,
 			rubrica.getValorOrcado()
 		);
 		
-		//Atualizo a nova categoria, adicionando o valor parcial da rubrica
-		AtualizarValoresRealizados.atualizarPrecoCategoria(
-			AtualizarValoresRealizados.EDITAR,
-			rubricaId,
-			rubrica.getValorRealizado()
-		);
 		
 		resp.sendRedirect("/listarRubricas");
 		

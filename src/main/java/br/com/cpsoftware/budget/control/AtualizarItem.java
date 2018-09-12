@@ -27,6 +27,7 @@ import br.com.cpsoftware.budget.model.Categoria;
 import br.com.cpsoftware.budget.model.Item;
 import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.Rubrica;
+import br.com.cpsoftware.budget.util.AtualizarValoresComprovados;
 import br.com.cpsoftware.budget.util.AtualizarValoresEstimados;
 import br.com.cpsoftware.budget.util.AtualizarValoresOrcados;
 import br.com.cpsoftware.budget.util.AtualizarValoresRealizados;
@@ -154,12 +155,20 @@ public class AtualizarItem extends HttpServlet {
 			item.setArquivoAuxiliar(arquivoAuxiliar);
 		}
 		
-		//Atualizo a rubrica anterior, excluindo o valor parcial do item
-		AtualizarValoresRealizados.atualizarPrecoRubrica(
-			AtualizarValoresRealizados.EXCLUIR,
-			itemId,
-			item.getValorRealizado()
-		);
+        if(!rubricaAnterior.equals(item.getRubricaId())) {
+            //Atualizo a rubrica anterior, excluindo o valor parcial do item
+            AtualizarValoresRealizados.atualizarPrecoRubrica(
+                AtualizarValoresRealizados.EXCLUIR,
+                itemId,
+                item.getValorRealizado()
+            );
+            
+            AtualizarValoresComprovados.atualizarPrecoRubrica(
+        		AtualizarValoresComprovados.EXCLUIR,
+        		itemId,
+        		item.getValorComprovado()
+    		);
+        }
 		
 		this.itemDao.update(item);
 		
@@ -167,10 +176,21 @@ public class AtualizarItem extends HttpServlet {
 			//Atualizar os valores estimados, se o Item for movido para outra Rubrica
 			AtualizarValoresEstimados.atualizarValorEstimadoRubrica(rubricaAnterior);
 			AtualizarValoresEstimados.atualizarValorEstimadoRubrica(item.getRubricaId());
-			System.out.println("if rubricas diferentes");
-		}
-		
-		else {
+			
+			//Atualizo a nova rubrica, adicionando o valor parcial do item
+			AtualizarValoresRealizados.atualizarPrecoRubrica(
+				AtualizarValoresRealizados.EDITAR,
+				itemId,
+				item.getValorRealizado()
+			);
+			
+			AtualizarValoresComprovados.atualizarPrecoRubrica(
+        		AtualizarValoresComprovados.EDITAR,
+        		itemId,
+        		item.getValorComprovado()
+    		);
+			
+		} else {
 			AtualizarValoresEstimados.atualizarValorEstimadoRubrica(item.getRubricaId());
 		}
 		
@@ -180,12 +200,7 @@ public class AtualizarItem extends HttpServlet {
 			item.getValor()
 		);
 		
-		//Atualizo a nova rubrica, adicionando o valor parcial do item
-		AtualizarValoresRealizados.atualizarPrecoRubrica(
-			AtualizarValoresRealizados.EDITAR,
-			itemId,
-			item.getValorRealizado()
-		);
+		
 		
 		resp.sendRedirect("/listarItens");
 		

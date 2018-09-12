@@ -24,6 +24,7 @@ import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.dao.PagamentoDAO;
 import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.Pagamento;
+import br.com.cpsoftware.budget.util.AtualizarValoresComprovados;
 
 @SuppressWarnings("serial")
 public class AtualizarPagamento extends HttpServlet {
@@ -102,6 +103,12 @@ public class AtualizarPagamento extends HttpServlet {
 		if(arquivo.getBytes().length > 0) {
 			pagamento.setArquivo(arquivo);
 		}
+		
+		AtualizarValoresComprovados.atualizarPrecoPagamento(
+			AtualizarValoresComprovados.EDITAR,
+			pagamentoId,
+			valor
+		);
 		
 		this.pagamentoDao.update(pagamento);
 		
