@@ -39,6 +39,7 @@ public class ProjetoDAO implements EntidadeDao{
 		projetoEntity.setProperty(Projeto.VALOR_ESTIMADO, projeto.getValorEstimado());
 		projetoEntity.setProperty(Projeto.VALOR_ORCADO, projeto.getValorOrcado());
 		projetoEntity.setProperty(Projeto.VALOR_REALIZADO, projeto.getValorRealizado());
+		projetoEntity.setProperty(Projeto.VALOR_COMPROVADO, projeto.getValorComprovado());
 		
 		Key projetoKey = datastore.put(projetoEntity);
 		
@@ -73,6 +74,7 @@ public class ProjetoDAO implements EntidadeDao{
 		projetoEntity.setProperty(Projeto.VALOR_ESTIMADO, projeto.getValorEstimado());
 		projetoEntity.setProperty(Projeto.VALOR_ORCADO, projeto.getValorOrcado());
 		projetoEntity.setProperty(Projeto.VALOR_REALIZADO, projeto.getValorRealizado());
+		projetoEntity.setProperty(Projeto.VALOR_COMPROVADO, projeto.getValorComprovado());
 
 		datastore.put(projetoEntity);
 	}
@@ -94,7 +96,8 @@ public class ProjetoDAO implements EntidadeDao{
 							(String)projetoEntity.getProperty(Projeto.NOME),
 							(Double)projetoEntity.getProperty(Projeto.VALOR_ESTIMADO),
 							(Double)projetoEntity.getProperty(Projeto.VALOR_ORCADO),
-							(Double)projetoEntity.getProperty(Projeto.VALOR_REALIZADO));
+							(Double)projetoEntity.getProperty(Projeto.VALOR_REALIZADO),
+							(Double)projetoEntity.getProperty(Projeto.VALOR_COMPROVADO));
 	}
 	
 	

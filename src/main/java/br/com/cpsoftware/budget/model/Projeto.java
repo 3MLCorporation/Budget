@@ -7,13 +7,13 @@ public class Projeto extends Entidade{
 	//Definição das keys do banco
 	public static final String GERENTE_ID = "gerente_id";
 	
-	public Projeto(Long gerenteId, Long id, String nome, Double valorEstimado, Double valorOrcado, Double valorRealizado) {
-		super(id, nome, valorEstimado, valorOrcado, valorRealizado);
+	public Projeto(Long gerenteId, Long id, String nome, Double valorEstimado, Double valorOrcado, Double valorRealizado, Double valorComprovado) {
+		super(id, nome, valorEstimado, valorOrcado, valorRealizado, valorComprovado);
 		this.gerenteId = gerenteId;
 	}
 
-	public Projeto(Long gerenteId, String nome, Double valorEstimado, Double valorOrcado, Double valorRealizado) {
-		super(nome, valorEstimado, valorOrcado, valorRealizado);
+	public Projeto(Long gerenteId, String nome, Double valorEstimado, Double valorOrcado, Double valorRealizado, Double valorComprovado) {
+		super(nome, valorEstimado, valorOrcado, valorRealizado, valorComprovado);
 		this.gerenteId = gerenteId;
 	}
 

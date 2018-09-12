@@ -44,7 +44,8 @@ public class CadastrarProjeto extends HttpServlet {
 			nome,
 			0d, //valorEstimado
 			0d,// valorOrcado
-			0d // valorParcial
+			0d, // valorParcial
+			0d // valorComprovado
 		);
 		
 		System.out.println("Gerente_Id - " + usuario.getId());

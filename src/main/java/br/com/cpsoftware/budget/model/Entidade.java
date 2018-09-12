@@ -9,6 +9,7 @@ public class Entidade {
 	private Double valorEstimado;
 	private Double valorOrcado;
 	private Double valorRealizado;
+	private Double valorComprovado;
 
 	//Definição das keys do banco
 	public static final String ID = "id";
@@ -16,12 +17,14 @@ public class Entidade {
 	public static final String VALOR_ESTIMADO = "valor_estimado";
 	public static final String VALOR_ORCADO = "valor_orcado";
 	public static final String VALOR_REALIZADO = "valor_realizado";
+	public static final String VALOR_COMPROVADO = "valor_comprovado";
 	
-	public Entidade(String nome, Double valorEstimado, Double valorOrcado, Double valorParcial) {
+	public Entidade(String nome, Double valorEstimado, Double valorOrcado, Double valorRealizado, Double valorComprovado) {
 		this.nome = nome;
 		this.valorEstimado = valorEstimado;
 		this.valorOrcado = valorOrcado;
-		this.valorRealizado = valorParcial;
+		this.valorRealizado = valorRealizado;
+		this.valorComprovado = valorComprovado;
 	}
 	
 	public Entidade(String nome, Double valorEstimado) {
@@ -35,12 +38,13 @@ public class Entidade {
 		this.valorEstimado = valorEstimado;
 	}
 	
-	public Entidade(Long id, String nome, Double valorEstimado, Double valorOrcado, Double valorRealizado) {
+	public Entidade(Long id, String nome, Double valorEstimado, Double valorOrcado, Double valorRealizado, Double valorComprovado) {
 		this.id = id;
 		this.nome = nome;
 		this.valorEstimado = valorEstimado;
 		this.valorOrcado = valorOrcado;
 		this.valorRealizado = valorRealizado;
+		this.valorComprovado = valorComprovado;
 	}
 	/*public static class Builder {
 		private Long id;
@@ -124,5 +128,17 @@ public class Entidade {
 
 	public String getValorRealizadoFormatado() {
 		return Formatacao.formatarDinheiro(valorRealizado);
+	}
+
+	public Double getValorComprovado() {
+		return valorComprovado;
+	}
+
+	public void setValorComprovado(Double valorComprovado) {
+		this.valorComprovado = valorComprovado;
+	}
+	
+	public String getValorComprovadoFormatado() {
+		return Formatacao.formatarDinheiro(valorComprovado);
 	}
 }

@@ -49,7 +49,8 @@ public class CadastrarRubrica extends HttpServlet {
 			req.getParameter("nome"),
 			0d, //valorEstimado
 			0d, // valorOrcado
-			0d // valorParcial
+			0d, // valorParcial
+			0d // valorComprovado
 		);
 		
 		Long rubricaId = dao.create(rubrica);

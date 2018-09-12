@@ -13,8 +13,8 @@ public class Orcamento extends Entidade{
 	public static final int STATUS_CONTROLE = 1;
 	public static final int STATUS_FINALIZADO = 2;
 	
-	public Orcamento(Long projetoId, String nome, Double valorEstimado, Double valorOrcado, Double valorRealizado, int status) {
-		super(nome, valorEstimado, valorOrcado, valorRealizado);
+	public Orcamento(Long projetoId, String nome, Double valorEstimado, Double valorOrcado, Double valorRealizado, Double valorComprovado, int status) {
+		super(nome, valorEstimado, valorOrcado, valorRealizado, valorComprovado);
 		this.projetoId = projetoId;
 		this.status = status;
 	}
@@ -25,8 +25,8 @@ public class Orcamento extends Entidade{
 		this.status = status;
 	}*/
 	
-	public Orcamento(Long projetoId, Long id, String nome, Double valorEstimado, Double valorOrcado, Double valorRealizado, int status) {
-		super(id, nome, valorEstimado, valorOrcado, valorRealizado);
+	public Orcamento(Long projetoId, Long id, String nome, Double valorEstimado, Double valorOrcado, Double valorRealizado, Double valorComprovado, int status) {
+		super(id, nome, valorEstimado, valorOrcado, valorRealizado, valorComprovado);
 		this.projetoId = projetoId;
 		this.status = status;
 	}

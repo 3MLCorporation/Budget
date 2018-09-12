@@ -128,6 +128,8 @@ public class AtualizarItem extends HttpServlet {
 		
 		Item item = this.itemDao.read(itemId);
 		
+		//Exclui da rubrica anterior o valor do item, 
+		//antes que seja alterado logo abaixo
 		AtualizarValoresOrcados.atualizarPrecoRubrica(
 			AtualizarValoresOrcados.EXCLUIR,
 			itemId,

@@ -42,6 +42,7 @@ public class CategoriaDAO implements EntidadeDao{
 		categoriaEntity.setProperty(Categoria.VALOR_ESTIMADO, categoria.getValorEstimado());
 		categoriaEntity.setProperty(Categoria.VALOR_ORCADO, categoria.getValorOrcado());
 		categoriaEntity.setProperty(Categoria.VALOR_REALIZADO, categoria.getValorRealizado());
+		categoriaEntity.setProperty(Categoria.VALOR_COMPROVADO, categoria.getValorComprovado());
 		
 		Key categoriaKey = datastore.put(categoriaEntity);
 		
@@ -75,6 +76,7 @@ public class CategoriaDAO implements EntidadeDao{
 		categoriaEntity.setProperty(Categoria.VALOR_ESTIMADO, categoria.getValorEstimado());
 		categoriaEntity.setProperty(Categoria.VALOR_ORCADO, categoria.getValorOrcado());
 		categoriaEntity.setProperty(Categoria.VALOR_REALIZADO, categoria.getValorRealizado());
+		categoriaEntity.setProperty(Categoria.VALOR_COMPROVADO, categoria.getValorComprovado());
 
 		datastore.put(categoriaEntity);                   
 		
@@ -92,7 +94,8 @@ public class CategoriaDAO implements EntidadeDao{
 							 (String)categoriaEntity.getProperty(Categoria.NOME),
 							 (Double)categoriaEntity.getProperty(Categoria.VALOR_ESTIMADO),
 							 (Double)categoriaEntity.getProperty(Categoria.VALOR_ORCADO),
-							 (Double)categoriaEntity.getProperty(Categoria.VALOR_REALIZADO));
+							 (Double)categoriaEntity.getProperty(Categoria.VALOR_REALIZADO),
+							 (Double)categoriaEntity.getProperty(Categoria.VALOR_COMPROVADO));
 	}
 	
 	private List<Categoria> entitiesToCategoria(List<Entity> entities) {

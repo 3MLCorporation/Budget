@@ -42,6 +42,7 @@ public class OrcamentoDAO implements EntidadeDao{
 		orcamentoEntity.setProperty(Orcamento.VALOR_ESTIMADO, orcamento.getValorEstimado());
 		orcamentoEntity.setProperty(Orcamento.VALOR_ORCADO, orcamento.getValorOrcado());
 		orcamentoEntity.setProperty(Orcamento.VALOR_REALIZADO, orcamento.getValorRealizado());
+		orcamentoEntity.setProperty(Orcamento.VALOR_COMPROVADO, orcamento.getValorComprovado());
 		orcamentoEntity.setProperty(Orcamento.STATUS, ((Orcamento) orcamento).getStatus());
 		
 		Key orcamentoKey = datastore.put(orcamentoEntity);
@@ -77,6 +78,7 @@ public class OrcamentoDAO implements EntidadeDao{
 		orcamentoEntity.setProperty(Orcamento.VALOR_ESTIMADO, orcamento.getValorEstimado());
 		orcamentoEntity.setProperty(Orcamento.VALOR_ORCADO, orcamento.getValorOrcado());
 		orcamentoEntity.setProperty(Orcamento.VALOR_REALIZADO, orcamento.getValorRealizado());
+		orcamentoEntity.setProperty(Orcamento.VALOR_COMPROVADO, orcamento.getValorComprovado());
 		orcamentoEntity.setProperty(Orcamento.STATUS, ((Orcamento) orcamento).getStatus());
 
 		datastore.put(orcamentoEntity);
@@ -96,6 +98,7 @@ public class OrcamentoDAO implements EntidadeDao{
 							(Double)orcamentoEntity.getProperty(Orcamento.VALOR_ESTIMADO),
 							(Double)orcamentoEntity.getProperty(Orcamento.VALOR_ORCADO),
 							(Double)orcamentoEntity.getProperty(Orcamento.VALOR_REALIZADO),
+							(Double)orcamentoEntity.getProperty(Orcamento.VALOR_COMPROVADO),
 							((Long) orcamentoEntity.getProperty(Orcamento.STATUS)).intValue());
 	}
 	

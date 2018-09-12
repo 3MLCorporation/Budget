@@ -42,6 +42,7 @@ public class CadastrarOrcamento extends HttpServlet {
 			0d, //valorEstimado
 			0d, // valorOrcado
 			0d, // valorParcial
+			0d, // valorComprovado
 			Orcamento.STATUS_ELABORACAO
 		);
 		
