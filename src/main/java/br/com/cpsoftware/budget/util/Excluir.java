@@ -81,6 +81,12 @@ public class Excluir {
 			orcamento.getValorRealizado()
 		);
 		
+		AtualizarValoresComprovados.atualizarPrecoProjeto(
+			AtualizarValoresComprovados.EXCLUIR,
+			orcamentoId,
+			orcamento.getValorComprovado()
+		);
+		
 		orcamentoDAO.delete(orcamentoId);
 
 		AtualizarValoresEstimados.atualizarValorEstimadoProjeto(orcamento.getProjetoId());
@@ -123,6 +129,12 @@ public class Excluir {
 			categoria.getValorRealizado()
 		);
 		
+		AtualizarValoresComprovados.atualizarPrecoOrcamento(
+			AtualizarValoresComprovados.EXCLUIR,
+			categoriaId,
+			categoria.getValorComprovado()
+		);
+		
 		categoriaDAO.delete(categoriaId);
 		
 		AtualizarValoresEstimados.atualizarValorEstimadoOrcamento(categoria.getOrcamentoId());
@@ -158,6 +170,12 @@ public class Excluir {
 			rubrica.getValorRealizado()
 		);
 			
+		AtualizarValoresComprovados.atualizarPrecoCategoria(
+			AtualizarValoresComprovados.EXCLUIR,
+			rubricaId,
+			rubrica.getValorComprovado()
+		);
+		
 		rubricaDAO.delete(rubricaId);
 
 		AtualizarValoresEstimados.atualizarValorEstimadoCategoria(rubrica.getCategoriaId());
@@ -204,6 +222,12 @@ public class Excluir {
 			item.getValorRealizado()
 		);
 		
+		AtualizarValoresComprovados.atualizarPrecoRubrica(
+			AtualizarValoresComprovados.EXCLUIR,
+			itemId,
+			item.getValorComprovado()
+		);
+		
 		itemDAO.delete(itemId);
 		AtualizarValoresEstimados.atualizarValorEstimadoRubrica(item.getRubricaId());
 		excluirNotaFiscal(item.getId());
@@ -237,8 +261,14 @@ public class Excluir {
 			nota.getValor()
 		);*/
 			
-		AtualizarValoresRealizados.atualizarPrecoItem(
+		AtualizarValoresRealizados.atualizarPrecoNotaFiscal(
 			AtualizarValoresRealizados.EXCLUIR,
+			notaId,
+			nota.getValor()
+		);
+		
+		AtualizarValoresComprovados.atualizarPrecoNotaFiscal(
+			AtualizarValoresComprovados.EXCLUIR,
 			notaId,
 			nota.getValorComprovado()
 		);
@@ -266,8 +296,8 @@ public class Excluir {
 		Pagamento pagamento = pagamentoDAO.read(pagamentoId);
 
 		//TODO DISCUTIR: atualizarPrecoPagamento ou atualizarPrecoNotaFiscal??
-		AtualizarValoresRealizados.atualizarPrecoPagamento(
-			AtualizarValoresRealizados.EXCLUIR,
+		AtualizarValoresComprovados.atualizarPrecoPagamento(
+			AtualizarValoresComprovados.EXCLUIR,
 			pagamentoId,
 			pagamento.getValor()
 		);

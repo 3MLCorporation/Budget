@@ -116,7 +116,7 @@ public class NotaFiscal {
 		verificarStatus();
 	}
 	
-	public String getValorRealizadoFormatado() {
+	public String getValorComprovadoFormatado() {
 		return Formatacao.formatarDinheiro(valorComprovado);
 	}
 	

@@ -238,6 +238,10 @@ public class Item {
 	public void setValorComprovado(Double valorComprovado) {
 		this.valorComprovado = valorComprovado;
 	}
+	
+	public String getValorComprovadoFormatado() {
+		return Formatacao.formatarDinheiro(valorRealizado);
+	}
 
 	public int getUnidadeMedida() {
 		return unidadeMedida;
