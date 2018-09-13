@@ -77,7 +77,7 @@ public class AtualizarRubrica extends HttpServlet {
 				rubrica.getValorRealizado()
 			);
 			
-			AtualizarValoresComprovados.atualizarPrecoRubrica(
+			AtualizarValoresComprovados.atualizarPrecoCategoria(
         		AtualizarValoresComprovados.EXCLUIR,
         		rubricaId,
         		rubrica.getValorComprovado()
@@ -98,7 +98,7 @@ public class AtualizarRubrica extends HttpServlet {
 				rubrica.getValorRealizado()
 			);
 			
-			AtualizarValoresComprovados.atualizarPrecoRubrica(
+			AtualizarValoresComprovados.atualizarPrecoCategoria(
         		AtualizarValoresComprovados.EDITAR,
         		rubricaId,
 				rubrica.getValorRealizado()
