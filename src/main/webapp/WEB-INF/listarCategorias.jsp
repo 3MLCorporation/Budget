@@ -53,7 +53,7 @@
 								<td> ${categoria.getValorEstimadoFormatado()}</td>
 								<td> ${categoria.getValorOrcadoFormatado()}</td>
 								<td> ${categoria.getValorRealizadoFormatado()}</td>
-								<td></td>
+								<td> ${categoria.getValorComprovadoFormatado()}</td>
 								<td>
 									<div class="btn-group">
 										<form action="listarRubricas" method="GET">

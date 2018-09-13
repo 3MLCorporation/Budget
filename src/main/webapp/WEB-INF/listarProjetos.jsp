@@ -46,7 +46,7 @@
 								<td> ${projeto.getValorEstimadoFormatado()}</td>
 								<td> ${projeto.getValorOrcadoFormatado()}</td>
 								<td> ${projeto.getValorRealizadoFormatado()}</td>
-								<td></td>
+								<td> ${projeto.getValorComprovadoFormatado()}</td>
 								<td>
 									<div class="btn-group"> 
 										<form action="atualizarProjeto" method="GET">

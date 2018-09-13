@@ -52,7 +52,7 @@
 					Fornecedor: <strong>${fornecedor}</strong>&emsp;
 					Valor: <strong>${nota.getValorFormatado()}</strong>&emsp;
 					Data: <strong>${nota.getDataFormatada()}</strong>&emsp;
-					Valor realizado: <strong>${nota.getValorRealizadoFormatado()}</strong>&emsp;
+					Valor comprovado: <strong>${nota.getValorComprovadoFormatado()}</strong>&emsp;
 					Status: 
 					<strong>
 			            <c:choose>

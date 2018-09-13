@@ -51,7 +51,7 @@
 								<td> ${orcamento.getValorEstimadoFormatado()}</td>
 								<td> ${orcamento.getValorOrcadoFormatado()}</td>
 								<td> ${orcamento.getValorRealizadoFormatado()}</td>
-								<td></td>
+								<td> ${orcamento.getValorComprovadoFormatado()}</td>
 								<td>
 								<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
 									<select id="orcamentoSelect${id.count}">

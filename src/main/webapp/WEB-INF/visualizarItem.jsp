@@ -109,7 +109,7 @@
 								<td> ${fornecedores[count.index]}</td>
 								<td> ${nota.getValorFormatado()}</td>
 								<td> ${nota.getValorRealizadoFormatado()}</td>
-								<td></td>
+								<td> ${nota.getValorComprovadoFormatado()}</td>
 								<td> ${nota.getDataFormatada()}</td>
 								<td style="width: 14%;">
 									<div class="btn-group"> 

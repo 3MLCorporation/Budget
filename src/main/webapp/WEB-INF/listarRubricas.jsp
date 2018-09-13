@@ -58,7 +58,7 @@
 								<td> ${rubricaMap.rubrica.getValorEstimadoFormatado()}</td>
 								<td> ${rubricaMap.rubrica.getValorOrcadoFormatado()}</td>
 								<td> ${rubricaMap.rubrica.getValorRealizadoFormatado()}</td>
-								<td></td>
+								<td>${rubricaMap.rubrica.getValorComprovadoFormatado()}</td>
 								<td>
 									<div class="btn-group">
 										<form action="listarItens" method="GET">

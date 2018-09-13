@@ -65,7 +65,7 @@
 								<td> ${itemMap.item.getValorEstimadoFormatado()}</td>
 								<td> ${itemMap.item.getValorFormatado()}</td>
 								<td> ${itemMap.item.getValorRealizadoFormatado()}</td>
-								<td></td>
+								<td> ${itemMap.item.getValorComprovadoFormatado()}</td>
 								<td>
 									<div class="btn-group">
 										<form action="visualizarItem" method="GET">
