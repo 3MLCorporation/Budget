@@ -35,16 +35,16 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Gráficos">
             <a class="nav-link" href="/mostrarGraficos">
-              <i class="fa fa-fw fa-dashboard"></i>
+              <i class="fa fa-pie-chart"></i>
               <span class="nav-link-text">Gráficos</span>
             </a>
           </li>
         </c:if>
 
         <c:if test="${sessionScope.usuario.perfil == 0}">
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="usuarios">
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Usuários">
             <a class="nav-link" href="/principal">
               <i class="fa fa-fw fa-user"></i>
               <span class="nav-link-text">Usuários</span>
@@ -53,9 +53,9 @@
         </c:if>
 
         <c:if test="${sessionScope.usuario.perfil == 0}">
-          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Projetos">
+          <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Fornecedores">
             <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseFornecedor" data-parent="#exampleAccordion">
-              <i class="fa fa-fw fa-area-chart"></i>
+              <i class="fa fa-handshake-o"></i>
               <span class="nav-link-text">Fornecedores</span>
             </a>
             <ul class="sidenav-second-level collapse" id="collapseFornecedor">
@@ -94,7 +94,7 @@
               </c:if>
               
               <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }">
-                <i class="fa fa-fw fa-money-check-alt"></i>
+                <i class="fa fa-line-chart"></i>
               </c:if>
               <span class="nav-link-text">Orçamento</span>
             </a>
@@ -114,7 +114,7 @@
         <c:if test="${not empty sessionScope.orcamentoEditavel}">
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Categorias">
             <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseCategorias" data-parent="#exampleAccordion">
-              <i class="fa fa-fw fa-chart-line"></i>
+              <i class="fa fa-shopping-cart"></i>
               <span class="nav-link-text">Categoria</span>
             </a>
             <ul class="sidenav-second-level collapse" id="collapseCategorias">
@@ -131,7 +131,7 @@
 
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Rubricas">
             <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseRubricas" data-parent="#exampleAccordion">
-              <i class="fa fa-fw fa-project-diagram"></i>
+              <i class="fa fa-cubes"></i>
               <span class="nav-link-text">Rubrica</span>
             </a>
             <ul class="sidenav-second-level collapse" id="collapseRubricas">
@@ -148,7 +148,7 @@
 
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Itens">
             <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseItens" data-parent="#exampleAccordion">
-              <i class="fa fa-fw fa-dolly"></i>
+              <i class="fa fa-puzzle-piece"></i>
               <span class="nav-link-text">Item</span>
             </a>
             <ul class="sidenav-second-level collapse" id="collapseItens">
