@@ -103,7 +103,7 @@ public class CadastrarItem extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			Item item = new Item(rubricaId, nome, descricao, precoUnitario, quantidade, valorEstimado, 0d, 0d, 0d, unidadeMedida, arquivoDetalhes, arquivoAuxiliar);
+			Item item = new Item(rubricaId, nome, descricao, precoUnitario, quantidade, valorEstimado, 0d, 0d, unidadeMedida, arquivoDetalhes, arquivoAuxiliar);
 			Long itemId = this.dao.create(item);
 			
 			AtualizarValoresEstimados.atualizarValorEstimadoRubrica(rubricaId);

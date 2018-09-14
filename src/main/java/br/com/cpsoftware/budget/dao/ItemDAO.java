@@ -44,7 +44,6 @@ public class ItemDAO{
 		itemEntity.setProperty(Item.PRECO_UNITARIO, item.getPrecoUnitario());
 		itemEntity.setProperty(Item.QUANTIDADE, item.getQuantidade());
 		itemEntity.setProperty(Item.VALOR_ESTIMADO, item.getValorEstimado());
-		itemEntity.setProperty(Item.VALOR_ORCADO, item.getValorOrcado());
 		itemEntity.setProperty(Item.VALOR_REALIZADO, item.getValorRealizado());
 		itemEntity.setProperty(Item.VALOR_COMPROVADO, item.getValorComprovado());
 		itemEntity.setProperty(Item.UNIDADE_MEDIDA, item.getUnidadeMedida());
@@ -82,7 +81,6 @@ public class ItemDAO{
 		itemEntity.setProperty(Item.PRECO_UNITARIO, item.getPrecoUnitario());
 		itemEntity.setProperty(Item.QUANTIDADE, item.getQuantidade());
 		itemEntity.setProperty(Item.VALOR_ESTIMADO, item.getValorEstimado());
-		itemEntity.setProperty(Item.VALOR_ORCADO, item.getValorOrcado());
 		itemEntity.setProperty(Item.VALOR_REALIZADO, item.getValorRealizado());
 		itemEntity.setProperty(Item.VALOR_COMPROVADO, item.getValorComprovado());
 		itemEntity.setProperty(Item.UNIDADE_MEDIDA, item.getUnidadeMedida());
@@ -106,7 +104,6 @@ public class ItemDAO{
 			 (Double)itemEntity.getProperty(Item.PRECO_UNITARIO),
 			 ((Long)itemEntity.getProperty(Item.QUANTIDADE)).intValue(),
 			 (Double)itemEntity.getProperty(Item.VALOR_ESTIMADO),
-			 (Double)itemEntity.getProperty(Item.VALOR_ORCADO),
 			 (Double)itemEntity.getProperty(Item.VALOR_REALIZADO),
 			 (Double)itemEntity.getProperty(Item.VALOR_COMPROVADO),
 			 ((Long)itemEntity.getProperty(Item.UNIDADE_MEDIDA)).intValue(),

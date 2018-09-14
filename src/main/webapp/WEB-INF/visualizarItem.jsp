@@ -62,8 +62,8 @@
 				</c:choose>
 			</strong>
 			<br/>
-			Valor orçado: <strong>${item.getValorOrcadoFormatado()}</strong>&emsp;
 			Valor realizado: <strong>${item.getValorRealizadoFormatado()}</strong>&emsp;
+			Valor comprovado: <strong>${item.getValorComprovadoFormatado()}</strong>&emsp;
 			<br/>
 			<br/>
 
@@ -97,7 +97,6 @@
 			   			<tr>
 			   				<th>Fornecedor</th>
 							<th>Valor total</th>
-							<th>Valor realizado</th>
 							<th>Valor comprovado</th>
 							<th>Data</th>
 							<th style="width: 5%;">Editar nota fiscal</th>
@@ -108,7 +107,6 @@
 							<tr>
 								<td> ${fornecedores[count.index]}</td>
 								<td> ${nota.getValorFormatado()}</td>
-								<td> ${nota.getValorRealizadoFormatado()}</td>
 								<td> ${nota.getValorComprovadoFormatado()}</td>
 								<td> ${nota.getDataFormatada()}</td>
 								<td style="width: 14%;">

@@ -28,8 +28,8 @@ public class AtualizarValoresRealizados {
 	public static final int EDITAR = 2;
 	
 	
-	public static void atualizarPrecoProjeto(int tipoDeAtualizacao, Long orcamentoId, Double valor) {
-		Projeto projeto = (Projeto) projetoDAO.read(((Orcamento) orcamentoDAO.read(orcamentoId)).getProjetoId());
+	public static void atualizarPrecoProjeto(int tipoDeAtualizacao, Long projetoId, Double valor) {
+		Projeto projeto = (Projeto) projetoDAO.read(projetoId);
 		switch(tipoDeAtualizacao) {
 			case CADASTRAR:
 			case EDITAR:
@@ -42,84 +42,84 @@ public class AtualizarValoresRealizados {
 		projetoDAO.update(projeto);
 	}
 	
-	public static void atualizarPrecoOrcamento(int tipoDeAtualizacao, Long categoriaId, Double valor) {
-		Orcamento orcamento = (Orcamento) orcamentoDAO.read(((Categoria) categoriaDAO.read(categoriaId)).getOrcamentoId());
+	public static void atualizarPrecoOrcamento(int tipoDeAtualizacao, Long orcamentoId, Double valor) {
+		Orcamento orcamento = (Orcamento) orcamentoDAO.read(orcamentoId);
 		switch(tipoDeAtualizacao) {
 			case CADASTRAR:
 			case EDITAR:
 				orcamento.setValorRealizado(orcamento.getValorRealizado() + valor);
-				atualizarPrecoProjeto(CADASTRAR, orcamento.getId(), valor);
+				atualizarPrecoProjeto(CADASTRAR, orcamento.getProjetoId(), valor);
 				break;
 			case EXCLUIR:
 				orcamento.setValorRealizado(orcamento.getValorRealizado() - valor);
-				atualizarPrecoProjeto(EXCLUIR, orcamento.getId(), valor);
+				atualizarPrecoProjeto(EXCLUIR, orcamento.getProjetoId(), valor);
 				break;
 		}	
 		orcamentoDAO.update(orcamento);
 	}
 	
-	public static void atualizarPrecoCategoria(int tipoDeAtualizacao, Long rubricaId, Double valor) {
-		Categoria categoria = (Categoria) categoriaDAO.read(((Rubrica) rubricaDAO.read(rubricaId)).getCategoriaId());
+	public static void atualizarPrecoCategoria(int tipoDeAtualizacao, Long categoriaId, Double valor) {
+		Categoria categoria = (Categoria) categoriaDAO.read(categoriaId);
 		switch(tipoDeAtualizacao) {
 			case CADASTRAR:
 			case EDITAR:
 				categoria.setValorRealizado(categoria.getValorRealizado() + valor);
-				atualizarPrecoOrcamento(CADASTRAR, categoria.getId(), valor);
+				atualizarPrecoOrcamento(CADASTRAR, categoria.getOrcamentoId(), valor);
 				break;
 			case EXCLUIR:
 				categoria.setValorRealizado(categoria.getValorRealizado() - valor);
-				atualizarPrecoOrcamento(EXCLUIR, categoria.getId(), valor);
+				atualizarPrecoOrcamento(EXCLUIR, categoria.getOrcamentoId(), valor);
 				break;
 		}	
 		categoriaDAO.update(categoria);
 	}
 	
-	public static void atualizarPrecoRubrica(int tipoDeAtualizacao, Long itemId, Double valor) {
-		Rubrica rubrica = (Rubrica) rubricaDAO.read((itemDAO.read(itemId)).getRubricaId());
+	public static void atualizarPrecoRubrica(int tipoDeAtualizacao, Long rubricaId, Double valor) {
+		Rubrica rubrica = (Rubrica) rubricaDAO.read(rubricaId);
 		switch(tipoDeAtualizacao) {
 			case CADASTRAR:
 			case EDITAR:
 				rubrica.setValorRealizado(rubrica.getValorRealizado() + valor);
-				atualizarPrecoCategoria(CADASTRAR, rubrica.getId(), valor);
+				atualizarPrecoCategoria(CADASTRAR, rubrica.getCategoriaId(), valor);
 				break;
 			case EXCLUIR:
 				rubrica.setValorRealizado(rubrica.getValorRealizado() - valor);
-				atualizarPrecoCategoria(EXCLUIR, rubrica.getId(), valor);
+				atualizarPrecoCategoria(EXCLUIR, rubrica.getCategoriaId(), valor);
 				break;
 		}	
 		rubricaDAO.update(rubrica);
 	}
 	
 	//TODO DISCUTIR SOBRE VALOR PARCIAL NO ITEM
-	public static void atualizarPrecoItem(int tipoDeAtualizacao, Long notaId, Double valor) {
-		Item item = itemDAO.read((notaFiscalDAO.read(notaId)).getItemId());
+	public static void atualizarPrecoItem(int tipoDeAtualizacao, Long itemId, Double valor) {
+		Item item = itemDAO.read(itemId);
 		switch(tipoDeAtualizacao) {
 			case CADASTRAR:
 			case EDITAR:
 				item.setValorRealizado(item.getValorRealizado() + valor);
-				atualizarPrecoRubrica(CADASTRAR, item.getId(), valor);
+				atualizarPrecoRubrica(CADASTRAR, item.getRubricaId(), valor);
 				break;
 			case EXCLUIR:
 				item.setValorRealizado(item.getValorRealizado() - valor);
-				atualizarPrecoRubrica(EXCLUIR, item.getId(), valor);
+				atualizarPrecoRubrica(EXCLUIR, item.getRubricaId(), valor);
 				break;
 		}	
 		itemDAO.update(item);
 	}
 	
 	public static void atualizarPrecoNotaFiscal(int tipoDeAtualizacao, Long notaId, Double valor) {
+		NotaFiscal nota = notaFiscalDAO.read(notaId);
 		switch(tipoDeAtualizacao) {
 			case CADASTRAR:
-				atualizarPrecoItem(CADASTRAR, notaId, valor);
+				atualizarPrecoItem(CADASTRAR, nota.getItemId(), valor);
 				break;
 			case EDITAR:
-				NotaFiscal nota = notaFiscalDAO.read(notaId);
 				//O parametro valor aqui é o novo valor do pagamento.
 				//O terceiro argumento é a diferença entre o novo valor e o antigo valor;
-				atualizarPrecoItem(EDITAR, notaId, (valor - nota.getValor()));
+				atualizarPrecoItem(EDITAR, nota.getItemId(), (valor - nota.getValor()));
 				break;
 			case EXCLUIR:
-				atualizarPrecoItem(EXCLUIR, notaId, valor);
+				atualizarPrecoItem(EXCLUIR, nota.getItemId(), valor);
 				break;
 		}
 	}

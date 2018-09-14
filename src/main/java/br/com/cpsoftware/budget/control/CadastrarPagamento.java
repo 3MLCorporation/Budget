@@ -85,7 +85,7 @@ public class CadastrarPagamento extends HttpServlet {
 				
 				//TODO DISCUTIR: atualizarPrecoPagamento ou atualizarPrecoNotaFiscal??
 				AtualizarValoresComprovados.atualizarPrecoPagamento(
-					AtualizarValoresRealizados.CADASTRAR,
+					AtualizarValoresComprovados.CADASTRAR,
 					pagamentoId,
 					pagamento.getValor()
 				);
