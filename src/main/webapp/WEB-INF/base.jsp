@@ -148,7 +148,7 @@
 
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Itens">
             <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseItens" data-parent="#exampleAccordion">
-              <i class="fa fa-puzzle-piece"></i>
+              <i class="fa fa-cube"></i>
               <span class="nav-link-text">Item</span>
             </a>
             <ul class="sidenav-second-level collapse" id="collapseItens">
