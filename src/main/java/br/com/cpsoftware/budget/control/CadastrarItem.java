@@ -111,7 +111,7 @@ public class CadastrarItem extends HttpServlet {
 			if(itemId != null) {
 				AtualizarValoresOrcados.atualizarPrecoRubrica(
 	    			AtualizarValoresOrcados.CADASTRAR,
-	                itemId,
+	                rubricaId,
 	                item.getValor()
 	            );
 			}

@@ -91,7 +91,11 @@ public class CadastrarNotaFiscal extends HttpServlet {
 				
 				Long notaId = dao.create(notaFiscal);
 				
-				AtualizarValoresRealizados.atualizarPrecoNotaFiscal(AtualizarValoresRealizados.CADASTRAR, notaId, valor);
+				AtualizarValoresRealizados.atualizarPrecoNotaFiscal(
+					AtualizarValoresRealizados.CADASTRAR,
+					notaId,
+					valor
+				);
 				
 				/*if(notaId != null) {
 					AtualizarValoresOrcados.atualizarPrecoItem(

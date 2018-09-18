@@ -71,19 +71,19 @@ public class Excluir {
 		
 		AtualizarValoresOrcados.atualizarPrecoProjeto(
 			AtualizarValoresOrcados.EXCLUIR,
-			orcamentoId,
+			orcamento.getProjetoId(),
 			orcamento.getValorEstimado()
 		);
 		
 		AtualizarValoresRealizados.atualizarPrecoProjeto(
 			AtualizarValoresRealizados.EXCLUIR,
-			orcamentoId,
+			orcamento.getProjetoId(),
 			orcamento.getValorRealizado()
 		);
 		
 		AtualizarValoresComprovados.atualizarPrecoProjeto(
 			AtualizarValoresComprovados.EXCLUIR,
-			orcamentoId,
+			orcamento.getProjetoId(),
 			orcamento.getValorComprovado()
 		);
 		
@@ -119,19 +119,19 @@ public class Excluir {
 		
 		AtualizarValoresOrcados.atualizarPrecoOrcamento(
 			AtualizarValoresOrcados.EXCLUIR,
-			categoriaId,
+			categoria.getOrcamentoId(),
 			categoria.getValorEstimado()
 		);
 			
 		AtualizarValoresRealizados.atualizarPrecoOrcamento(
 			AtualizarValoresRealizados.EXCLUIR,
-			categoriaId,
+			categoria.getOrcamentoId(),
 			categoria.getValorRealizado()
 		);
 		
 		AtualizarValoresComprovados.atualizarPrecoOrcamento(
 			AtualizarValoresComprovados.EXCLUIR,
-			categoriaId,
+			categoria.getOrcamentoId(),
 			categoria.getValorComprovado()
 		);
 		
@@ -160,19 +160,19 @@ public class Excluir {
 		
 		AtualizarValoresOrcados.atualizarPrecoCategoria(
 			AtualizarValoresOrcados.EXCLUIR,
-			rubricaId,
+			rubrica.getCategoriaId(),
 			rubrica.getValorEstimado()
 		);
 			
 		AtualizarValoresRealizados.atualizarPrecoCategoria(
 			AtualizarValoresRealizados.EXCLUIR,
-			rubricaId,
+			rubrica.getCategoriaId(),
 			rubrica.getValorRealizado()
 		);
 			
 		AtualizarValoresComprovados.atualizarPrecoCategoria(
 			AtualizarValoresComprovados.EXCLUIR,
-			rubricaId,
+			rubrica.getCategoriaId(),
 			rubrica.getValorComprovado()
 		);
 		
@@ -212,19 +212,19 @@ public class Excluir {
 		
 		AtualizarValoresOrcados.atualizarPrecoRubrica(
 			AtualizarValoresOrcados.EXCLUIR,
-			itemId,
+			item.getRubricaId(),
 			item.getValor()
 		);
 			
 		AtualizarValoresRealizados.atualizarPrecoRubrica(
 			AtualizarValoresRealizados.EXCLUIR,
-			itemId,
+			item.getRubricaId(),
 			item.getValorRealizado()
 		);
 		
 		AtualizarValoresComprovados.atualizarPrecoRubrica(
 			AtualizarValoresComprovados.EXCLUIR,
-			itemId,
+			item.getRubricaId(),
 			item.getValorComprovado()
 		);
 		

@@ -129,11 +129,15 @@ public class AtualizarItem extends HttpServlet {
 		
 		Item item = this.itemDao.read(itemId);
 		
-		//Exclui da rubrica anterior o valor do item, 
-		//antes que seja alterado logo abaixo
+		/*
+		 * Exclui da rubrica anterior o valor do item, antes que seja alterado logo abaixo
+		 * Aqui é diferente dos valores realizados ou comprovado, 
+		 * pois há a possibilidade de mover um item para outra rubrica,
+		 *  coisa que não existe na NotaFiscal e Pagamento
+		 * */
 		AtualizarValoresOrcados.atualizarPrecoRubrica(
 			AtualizarValoresOrcados.EXCLUIR,
-			itemId,
+			item.getRubricaId(),
 			item.getValor()
 		);
 			
@@ -159,13 +163,13 @@ public class AtualizarItem extends HttpServlet {
             //Atualizo a rubrica anterior, excluindo o valor parcial do item
             AtualizarValoresRealizados.atualizarPrecoRubrica(
                 AtualizarValoresRealizados.EXCLUIR,
-                itemId,
+                rubricaAnterior,
                 item.getValorRealizado()
             );
             
             AtualizarValoresComprovados.atualizarPrecoRubrica(
         		AtualizarValoresComprovados.EXCLUIR,
-        		itemId,
+        		rubricaAnterior,
         		item.getValorComprovado()
     		);
         }
@@ -180,13 +184,13 @@ public class AtualizarItem extends HttpServlet {
 			//Atualizo a nova rubrica, adicionando o valor parcial do item
 			AtualizarValoresRealizados.atualizarPrecoRubrica(
 				AtualizarValoresRealizados.EDITAR,
-				itemId,
+				item.getRubricaId(),
 				item.getValorRealizado()
 			);
 			
 			AtualizarValoresComprovados.atualizarPrecoRubrica(
         		AtualizarValoresComprovados.EDITAR,
-        		itemId,
+        		item.getRubricaId(),
         		item.getValorComprovado()
     		);
 			
@@ -196,7 +200,7 @@ public class AtualizarItem extends HttpServlet {
 		
 		AtualizarValoresOrcados.atualizarPrecoRubrica(
 			AtualizarValoresOrcados.EDITAR,
-			itemId,
+			item.getRubricaId(),
 			item.getValor()
 		);
 		

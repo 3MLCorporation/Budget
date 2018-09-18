@@ -63,23 +63,24 @@ public class AtualizarRubrica extends HttpServlet {
 		
 		//TODO Fazer classe util.Mover ??
 		
-		AtualizarValoresOrcados.atualizarPrecoCategoria(
-			AtualizarValoresOrcados.EXCLUIR,
-			rubricaId,
-			rubrica.getValorOrcado()
-		);
-
 		if(!categoriaAnterior.equals(rubrica.getCategoriaId())) {
+			
+			AtualizarValoresOrcados.atualizarPrecoCategoria(
+				AtualizarValoresOrcados.EXCLUIR,
+				categoriaAnterior,
+				rubrica.getValorOrcado()
+			);
+			
 			//Atualizo a categoria anterior, excluindo o valor parcial da rubrica
 			AtualizarValoresRealizados.atualizarPrecoCategoria(
 				AtualizarValoresRealizados.EXCLUIR,
-				rubricaId,
+				categoriaAnterior,
 				rubrica.getValorRealizado()
 			);
 			
 			AtualizarValoresComprovados.atualizarPrecoCategoria(
         		AtualizarValoresComprovados.EXCLUIR,
-        		rubricaId,
+        		categoriaAnterior,
         		rubrica.getValorComprovado()
     		);
 		}
@@ -91,27 +92,30 @@ public class AtualizarRubrica extends HttpServlet {
 			AtualizarValoresEstimados.atualizarValorEstimadoCategoria(categoriaAnterior);
 			AtualizarValoresEstimados.atualizarValorEstimadoCategoria(rubrica.getCategoriaId());
 			
+			
+			AtualizarValoresOrcados.atualizarPrecoCategoria(
+				AtualizarValoresOrcados.EDITAR,
+				rubrica.getCategoriaId(),
+				rubrica.getValorOrcado()
+			);
+			
 			//Atualizo a nova categoria, adicionando o valor parcial da rubrica
 			AtualizarValoresRealizados.atualizarPrecoCategoria(
 				AtualizarValoresRealizados.EDITAR,
-				rubricaId,
+				rubrica.getCategoriaId(),
 				rubrica.getValorRealizado()
 			);
 			
 			AtualizarValoresComprovados.atualizarPrecoCategoria(
         		AtualizarValoresComprovados.EDITAR,
-        		rubricaId,
-				rubrica.getValorRealizado()
+        		rubrica.getCategoriaId(),
+				rubrica.getValorComprovado()
     		);
-		} else {
+		}/* else {
 			AtualizarValoresEstimados.atualizarValorEstimadoCategoria(rubrica.getCategoriaId());
-		}
+		}*/
 		
-		AtualizarValoresOrcados.atualizarPrecoCategoria(
-			AtualizarValoresOrcados.EDITAR,
-			rubricaId,
-			rubrica.getValorOrcado()
-		);
+		
 		
 		
 		resp.sendRedirect("/listarRubricas");

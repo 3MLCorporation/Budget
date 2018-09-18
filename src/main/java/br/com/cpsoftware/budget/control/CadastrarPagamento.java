@@ -23,7 +23,6 @@ import com.google.appengine.api.datastore.Blob;
 import br.com.cpsoftware.budget.dao.PagamentoDAO;
 import br.com.cpsoftware.budget.model.Pagamento;
 import br.com.cpsoftware.budget.util.AtualizarValoresComprovados;
-import br.com.cpsoftware.budget.util.AtualizarValoresRealizados;
 
 @SuppressWarnings("serial")
 public class CadastrarPagamento extends HttpServlet {
