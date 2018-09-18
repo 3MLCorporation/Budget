@@ -453,7 +453,16 @@
    <servlet-mapping>
          <servlet-name>gerarRelatorio</servlet-name>
          <url-pattern>/gerarRelatorio</url-pattern>
-   </servlet-mapping>   
+   </servlet-mapping>
+   
+   <servlet>
+         <servlet-name>gerarPlanilha</servlet-name>
+         <servlet-class>br.com.cpsoftware.budget.control.GerarPlanilha</servlet-class>
+   </servlet>
+   <servlet-mapping>
+         <servlet-name>gerarPlanilha</servlet-name>
+         <url-pattern>/gerarPlanilha</url-pattern>
+   </servlet-mapping>  
 
   <welcome-file-list>
     <welcome-file>login</welcome-file>
