@@ -16,18 +16,37 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import br.com.cpsoftware.budget.dao.CategoriaDAO;
+import br.com.cpsoftware.budget.dao.FornecedorDAO;
+import br.com.cpsoftware.budget.dao.ItemDAO;
+import br.com.cpsoftware.budget.dao.NotaFiscalDAO;
 import br.com.cpsoftware.budget.dao.OrcamentoDAO;
+import br.com.cpsoftware.budget.dao.PagamentoDAO;
 import br.com.cpsoftware.budget.dao.ProjetoDAO;
+import br.com.cpsoftware.budget.dao.RubricaDAO;
+import br.com.cpsoftware.budget.model.Categoria;
+import br.com.cpsoftware.budget.model.Item;
 import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.Projeto;
+import br.com.cpsoftware.budget.model.Rubrica;
 
 public class Planilha {
 
+	private static ProjetoDAO projetoDAO = new ProjetoDAO();
+	private static OrcamentoDAO orcamentoDAO = new OrcamentoDAO();
+	private static CategoriaDAO categoriaDAO = new CategoriaDAO();
+	private static RubricaDAO rubricaDAO = new RubricaDAO();
+	private static ItemDAO itemDAO = new ItemDAO();
+	private static FornecedorDAO fornecedorDAO = new FornecedorDAO();
+	private static NotaFiscalDAO notaFiscalDAO = new NotaFiscalDAO();
+	private static PagamentoDAO pagamentoDAO = new PagamentoDAO();
+	
 	public static void gerarPlanilha(Long projetoId, ServletOutputStream outputStream) throws IOException {
 		
 		Projeto projeto = (Projeto) new ProjetoDAO().read(projetoId);
 		
 		List<Orcamento> orcamentos = new OrcamentoDAO().getOrcamentos(projetoId);
+		
 		
 		// Create a Workbook
         Workbook workbook = new XSSFWorkbook();
@@ -53,13 +72,13 @@ public class Planilha {
         // Create a Row
         Row headerRow = sheet.createRow(0);
 
-        String[] columns = {"Orçamento", "Valor estimado", "Valor orçado", "Valor realizado"};
-        // Create cells
-        for(int i = 0; i < columns.length; i++) {
-            Cell cell = headerRow.createCell(i);
-            cell.setCellValue(columns[i]);
-            cell.setCellStyle(headerCellStyle);
-        }
+        Cell cell = headerRow.createCell(0);
+        cell.setCellValue(projeto.getNome());
+        cell.setCellStyle(headerCellStyle);
+        
+        for(Orcamento orcamento : orcamentos) {
+			addOrcamento(sheet, orcamento);
+		}
 
         /*// Create Cell Style for formatting Date
         CellStyle dateCellStyle = workbook.createCellStyle();
@@ -84,14 +103,34 @@ public class Planilha {
                     .setCellValue(employee.getSalary());
         }*/
 
-		// Resize all columns to fit the content size
+		/*// Resize all columns to fit the content size
         for(int i = 0; i < columns.length; i++) {
             sheet.autoSizeColumn(i);
-        }
+        }*/
 		
         workbook.write(outputStream); // Write workbook to response.
         workbook.close();
         outputStream.close();
+	}
+
+	private static void addOrcamento(Sheet sheet, Orcamento orcamento) {
+		
+		Row orcamentoRow = sheet.createRow(sheet.getLastRowNum() + 1);
+		orcamentoRow.createCell(0).setCellValue(orcamento.getNome());
+		sheet.autoSizeColumn(0);
+		for(Categoria categoria : categoriaDAO.getCategorias(orcamento.getId())) {
+			Row categoriaRow = sheet.createRow(sheet.getLastRowNum() + 1);
+			categoriaRow.createCell(0).setCellValue(categoria.getNome());
+			for(Rubrica rubrica : rubricaDAO.getRubricas(categoria.getId())) {
+				Row rubricaRow = sheet.createRow(sheet.getLastRowNum() + 1);
+				rubricaRow.createCell(0).setCellValue(rubrica.getNome());
+				for(Item item : itemDAO.getItens(rubrica.getId())) {
+					Row itemRow = sheet.createRow(sheet.getLastRowNum() + 1);
+					itemRow.createCell(0).setCellValue(item.getNome());
+				}
+			}
+		}
+		
 	}
 
 }
