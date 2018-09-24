@@ -14,10 +14,13 @@ import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
+import com.google.appengine.api.datastore.Query.CompositeFilterOperator;
 import com.google.appengine.api.datastore.Query.Filter;
 import com.google.appengine.api.datastore.Query.FilterOperator;
 import com.google.appengine.api.datastore.Query.FilterPredicate;
 import com.google.appengine.api.datastore.Query.SortDirection;
+import com.google.cloud.datastore.StructuredQuery.CompositeFilter;
+import com.google.cloud.datastore.StructuredQuery.PropertyFilter;
 
 import br.com.cpsoftware.budget.model.NotaFiscal;
 
@@ -112,4 +115,23 @@ public class NotaFiscalDAO {
 		
 		return entitiesToNotaFiscal(notaFiscalEntities);
 	}
+	/*
+	 * TODO Discutir se a consulta pela data é melhor do que chamar tudo e verificar o mês no servlet 
+	 * 
+	 * public List<NotaFiscal> getNotasFiscaisByDate(Long itemId, int i){
+		
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Query query = new Query(NOTA_FISCAL_KIND).addSort(NotaFiscal.DATA, SortDirection.ASCENDING);
+		
+		Filter itemFilter = new FilterPredicate(NotaFiscal.ITEM_ID, FilterOperator.EQUAL, itemId);
+		CompositeFilter filter = new CompositeFilter(CompositeFilterOperator.AND, 
+		        PropertyFilter.("created", startDate), PropertyFilter.gt("priority", 3) );
+		query.setFilter(itemFilter);
+		
+		PreparedQuery preparedQuery = datastore.prepare(query);
+		
+		List<Entity> notaFiscalEntities = preparedQuery.asList(FetchOptions.Builder.withDefaults());
+		
+		return entitiesToNotaFiscal(notaFiscalEntities);
+	}*/
 }

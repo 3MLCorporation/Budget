@@ -20,8 +20,9 @@ public class GerarPlanilha extends HttpServlet {
 		Long projetoId = Long.parseLong(req.getParameter("projetoId"));
 		Projeto projeto = (Projeto) new ProjetoDAO().read(projetoId);
 		
+		String nomeProjeto = projeto.getNome().trim().replace('ç', 'c');
 		resp.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-		resp.setHeader("Content-Disposition", "attachment; filename=" + projeto.getNome() + ".xlsx");
+		resp.setHeader("Content-Disposition", "attachment; filename=" + nomeProjeto + ".xlsx");
 	 
 		Planilha.gerarPlanilha(projetoId, resp.getOutputStream());
 	}

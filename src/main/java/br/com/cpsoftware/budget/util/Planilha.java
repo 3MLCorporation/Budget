@@ -1,6 +1,7 @@
 package br.com.cpsoftware.budget.util;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.ServletOutputStream;
@@ -14,6 +15,7 @@ import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import br.com.cpsoftware.budget.dao.CategoriaDAO;
@@ -26,6 +28,7 @@ import br.com.cpsoftware.budget.dao.ProjetoDAO;
 import br.com.cpsoftware.budget.dao.RubricaDAO;
 import br.com.cpsoftware.budget.model.Categoria;
 import br.com.cpsoftware.budget.model.Item;
+import br.com.cpsoftware.budget.model.NotaFiscal;
 import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.Projeto;
 import br.com.cpsoftware.budget.model.Rubrica;
@@ -40,6 +43,19 @@ public class Planilha {
 	private static FornecedorDAO fornecedorDAO = new FornecedorDAO();
 	private static NotaFiscalDAO notaFiscalDAO = new NotaFiscalDAO();
 	private static PagamentoDAO pagamentoDAO = new PagamentoDAO();
+
+	private static int JANEIRO_COLUNA = 1;
+	private static int FEVEREIRO_COLUNA = 2;
+	private static int MARÇO_COLUNA = 3;
+	private static int ABRIL_COLUNA = 4;
+	private static int MAIO_COLUNA = 5;
+	private static int JUNHO_COLUNA = 6;
+	private static int JULHO_COLUNA = 7;
+	private static int AGOSTO_COLUNA = 8;
+	private static int SETEMBRO_COLUNA = 9;
+	private static int OUTUBRO_COLUNA = 10;
+	private static int NOVEMBRO_COLUNA = 11;
+	private static int DEZEMBRO_COLUNA = 12;
 	
 	public static void gerarPlanilha(Long projetoId, ServletOutputStream outputStream) throws IOException {
 		
@@ -70,11 +86,21 @@ public class Planilha {
         headerCellStyle.setAlignment(HorizontalAlignment.CENTER);
 
         // Create a Row
-        Row headerRow = sheet.createRow(0);
+        Row titleRow = sheet.createRow(0);
 
-        Cell cell = headerRow.createCell(0);
+        Cell cell = titleRow.createCell(2);
         cell.setCellValue(projeto.getNome());
         cell.setCellStyle(headerCellStyle);
+        sheet.addMergedRegion(new CellRangeAddress(0, 0, 2, 4));
+        
+        String[] headers = {"JANEIRO", "FEVEREIRO", "MARÇO", "ABRIL", "MAIO", "JUNHO", "JULHO",
+        		"AGOSTO", "SETEMBRO", "OUTUBRO", "NOVEMBRO", "DEZEMBRO"
+        };
+        
+        Row headerRow = sheet.createRow(1);
+        for(int i = 0; i < headers.length; i++) {
+        	headerRow.createCell(i + 1).setCellValue(headers[i]);
+        }
         
         for(Orcamento orcamento : orcamentos) {
 			addOrcamento(sheet, orcamento);
@@ -117,7 +143,7 @@ public class Planilha {
 		
 		Row orcamentoRow = sheet.createRow(sheet.getLastRowNum() + 1);
 		orcamentoRow.createCell(0).setCellValue(orcamento.getNome());
-		sheet.autoSizeColumn(0);
+		//sheet.autoSizeColumn(0);
 		for(Categoria categoria : categoriaDAO.getCategorias(orcamento.getId())) {
 			Row categoriaRow = sheet.createRow(sheet.getLastRowNum() + 1);
 			categoriaRow.createCell(0).setCellValue(categoria.getNome());
@@ -127,10 +153,69 @@ public class Planilha {
 				for(Item item : itemDAO.getItens(rubrica.getId())) {
 					Row itemRow = sheet.createRow(sheet.getLastRowNum() + 1);
 					itemRow.createCell(0).setCellValue(item.getNome());
+
+					Calendar cal = Calendar.getInstance();
+					
+					for(NotaFiscal nota :notaFiscalDAO.getNotasFiscais(item.getId())) {
+						cal.setTime(nota.getData());
+						int mes = cal.get(Calendar.MONTH);
+						setMonthCellValue(itemRow, mes + 1, nota.getValor());
+						/*
+						 * Tanto código e tempo pra no final dar 10 linhas
+						 * 
+						 * switch(cal.get(Calendar.MONTH)) {
+						case Calendar.JANUARY:
+							setMonthCellValue(itemRow, JANEIRO_COLUNA, nota.getValor());
+							break;
+						case Calendar.FEBRUARY:
+							setMonthCellValue(itemRow, JANEIRO_COLUNA, nota.getValor());
+							break;
+						case Calendar.MARCH:
+							setMonthCellValue(itemRow, JANEIRO_COLUNA, nota.getValor());
+							break;
+						case Calendar.APRIL:
+							setMonthCellValue(itemRow, JANEIRO_COLUNA, nota.getValor());
+							break;
+						case Calendar.MAY:
+							setMonthCellValue(itemRow, JANEIRO_COLUNA, nota.getValor());
+							break;
+						case Calendar.JUNE:
+							setMonthCellValue(itemRow, JANEIRO_COLUNA, nota.getValor());
+							break;
+						case Calendar.JULY:
+							setMonthCellValue(itemRow, JANEIRO_COLUNA, nota.getValor());
+							break;
+						case Calendar.AUGUST:
+							setMonthCellValue(itemRow, JANEIRO_COLUNA, nota.getValor());
+							break;
+						case Calendar.SEPTEMBER:
+							setMonthCellValue(itemRow, JANEIRO_COLUNA, nota.getValor());
+							break;
+						case Calendar.OCTOBER:
+							setMonthCellValue(itemRow, JANEIRO_COLUNA, nota.getValor());
+							break;
+						case Calendar.NOVEMBER:
+							setMonthCellValue(itemRow, JANEIRO_COLUNA, nota.getValor());
+							break;
+						case Calendar.DECEMBER:
+							setMonthCellValue(itemRow, JANEIRO_COLUNA, nota.getValor());
+							break;
+						}*/
+					}
 				}
 			}
 		}
 		
+	}
+	
+
+	private static void setMonthCellValue(Row itemRow, int mes, Double valor){
+		if(itemRow.getCell(mes) == null) {
+			itemRow.createCell(mes).setCellValue(valor);
+		}else {
+			Double valorAnterior = itemRow.getCell(mes).getNumericCellValue();
+			itemRow.getCell(mes).setCellValue(valorAnterior + valor);
+		}
 	}
 
 }
