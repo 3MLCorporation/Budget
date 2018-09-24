@@ -77,30 +77,53 @@ public class Planilha {
         // Create a Font for styling header cells
         Font headerFont = workbook.createFont();
         headerFont.setBold(true);
-        headerFont.setFontHeightInPoints((short) 14);
+        headerFont.setFontHeightInPoints((short) 18);
         headerFont.setColor(IndexedColors.BLACK.getIndex());
+        
+        Font monthHeaderFont = workbook.createFont();
+        monthHeaderFont.setBold(true);
+        monthHeaderFont.setColor(IndexedColors.BLACK.getIndex());
 
         // Create a CellStyle with the font
         CellStyle headerCellStyle = workbook.createCellStyle();
         headerCellStyle.setFont(headerFont);
         headerCellStyle.setAlignment(HorizontalAlignment.CENTER);
+        
+        CellStyle monthHeaderCellStyle = workbook.createCellStyle();
+        monthHeaderCellStyle.setFont(monthHeaderFont);
+        monthHeaderCellStyle.setAlignment(HorizontalAlignment.CENTER);
 
         // Create a Row
         Row titleRow = sheet.createRow(0);
 
-        Cell cell = titleRow.createCell(2);
+        Cell cell = titleRow.createCell(0);
         cell.setCellValue(projeto.getNome());
         cell.setCellStyle(headerCellStyle);
-        sheet.addMergedRegion(new CellRangeAddress(0, 0, 2, 4));
+        sheet.addMergedRegion(new CellRangeAddress(0, 0, 0, 19));
         
-        String[] headers = {"JANEIRO", "FEVEREIRO", "MARÇO", "ABRIL", "MAIO", "JUNHO", "JULHO",
+        String[] headerColumn = {"CURSO/SETOR" , "CENTRO DE CUSTO", "RESPONSÁVEL PELO PREENCHIMENTO", "APROVADOR(A)"};
+        String[] monthHeadersColumns = {"JANEIRO", "FEVEREIRO", "MARÇO", "ABRIL", "MAIO", "JUNHO", "JULHO",
         		"AGOSTO", "SETEMBRO", "OUTUBRO", "NOVEMBRO", "DEZEMBRO"
         };
         
-        Row headerRow = sheet.createRow(1);
-        for(int i = 0; i < headers.length; i++) {
-        	headerRow.createCell(i + 1).setCellValue(headers[i]);
+        for(int i = 1; i < 5; i++) {
+        	sheet.createRow(i).createCell(4).setCellValue(headerColumn[i - 1]);
         }
+        
+        Row headerRow = sheet.createRow(5);
+        for(int i = 0; i < monthHeadersColumns.length; i++) {
+        	sheet.setColumnWidth(i + 4, 256*15);
+        	Cell monthHeaderCell = headerRow.createCell(i + 4);
+			monthHeaderCell.setCellValue(monthHeadersColumns[i]);
+			monthHeaderCell.setCellStyle(monthHeaderCellStyle);
+        }
+
+        headerRow.createCell(17).setCellValue("Total");
+        sheet.setColumnWidth(17, 256*15);
+        headerRow.createCell(18).setCellValue("%");
+        sheet.setColumnWidth(18 + 4, 256*15);
+        
+        sheet.createFreezePane(0, 6);
         
         for(Orcamento orcamento : orcamentos) {
 			addOrcamento(sheet, orcamento);
