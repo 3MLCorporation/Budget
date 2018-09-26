@@ -22,6 +22,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.openxmlformats.schemas.wordprocessingml.x2006.main.StylesDocument;
 
 import br.com.cpsoftware.budget.dao.CategoriaDAO;
 import br.com.cpsoftware.budget.dao.FornecedorDAO;
@@ -49,6 +50,9 @@ public class Planilha {
 	private static NotaFiscalDAO notaFiscalDAO = new NotaFiscalDAO();
 	private static PagamentoDAO pagamentoDAO = new PagamentoDAO();
 
+	private final static int TOTAL_COLUNA = 17;
+	private final static int PORCENTAGEM_COLUNA = 18;
+	
 	private final static int JANEIRO_COLUNA = 1;
 	private final static int FEVEREIRO_COLUNA = 2;
 	private final static int MARÇO_COLUNA = 3;
@@ -62,6 +66,9 @@ public class Planilha {
 	private final static int NOVEMBRO_COLUNA = 11;
 	private final static int DEZEMBRO_COLUNA = 12;
 
+	//TODO Melhorar esses nomes
+	private static final String HEADER_STYLE_TITLE = "titleHeader";
+	private static final String HEADER_STYLE_MES_VALOR = "mesEValorHeader";
 	private final static String HEADER_STYLE_CATEGORIA = "categoriaHeader";
 	private final static String HEADER_STYLE_CATEGORIA_NAT = "categoriaNaturezaHeader";
 	private final static String HEADER_STYLE_CATEGORIA_VALOR= "categoriaValorHeader";
@@ -87,32 +94,17 @@ public class Planilha {
 
         // Create a Sheet
         Sheet sheet = workbook.createSheet(orcamentos.get(0).getNome());
-        
-        // Create a Font for styling header cells
-        Font headerFont = workbook.createFont();
-        headerFont.setBold(true);
-        headerFont.setFontHeightInPoints((short) 18);
-        headerFont.setColor(IndexedColors.BLACK.getIndex());
-        
-        Font monthHeaderFont = workbook.createFont();
-        monthHeaderFont.setBold(true);
-        monthHeaderFont.setColor(IndexedColors.BLACK.getIndex());
 
-        // Create a CellStyle with the font
-        CellStyle headerCellStyle = workbook.createCellStyle();
-        headerCellStyle.setFont(headerFont);
-        headerCellStyle.setAlignment(HorizontalAlignment.CENTER);
+        Map<String, CellStyle> styles = createStyles(workbook);
         
-        CellStyle monthHeaderCellStyle = workbook.createCellStyle();
-        monthHeaderCellStyle.setFont(monthHeaderFont);
-        monthHeaderCellStyle.setAlignment(HorizontalAlignment.CENTER);
+        
 
         // Create a Row
         Row titleRow = sheet.createRow(0);
 
         Cell cell = titleRow.createCell(0);
         cell.setCellValue(projeto.getNome());
-        cell.setCellStyle(headerCellStyle);
+        cell.setCellStyle(styles.get(HEADER_STYLE_TITLE));
         sheet.addMergedRegion(new CellRangeAddress(0, 0, 0, 19));
         
         String[] headerColumn = {"CURSO/SETOR" , "CENTRO DE CUSTO", "RESPONSÁVEL PELO PREENCHIMENTO", "APROVADOR(A)"};
@@ -128,55 +120,31 @@ public class Planilha {
         sheet.setColumnWidth(1, 256*8);
         sheet.setColumnWidth(2, 256*2);
         sheet.setColumnWidth(3, 256*40);
+        sheet.setColumnWidth(17, 256*15);
         
         Row headerRow = sheet.createRow(5);
         for(int i = 0; i < monthHeadersColumns.length; i++) {
         	sheet.setColumnWidth(i + 4, 256*15);
         	Cell monthHeaderCell = headerRow.createCell(i + 4);
 			monthHeaderCell.setCellValue(monthHeadersColumns[i]);
-			monthHeaderCell.setCellStyle(monthHeaderCellStyle);
+			monthHeaderCell.setCellStyle(styles.get(HEADER_STYLE_MES_VALOR));
         }
 
-        headerRow.createCell(17).setCellValue("Total");
         sheet.setColumnWidth(17, 256*15);
-        headerRow.createCell(18).setCellValue("%");
+        Cell valorTotalHeaderCell = headerRow.createCell(17);
+        valorTotalHeaderCell.setCellValue("TOTAL");
+        valorTotalHeaderCell.setCellStyle(styles.get(HEADER_STYLE_MES_VALOR));
+
         sheet.setColumnWidth(18 + 4, 256*15);
+        Cell porcentagemHeaderCell = headerRow.createCell(18);
+        porcentagemHeaderCell.setCellValue("%");
+        porcentagemHeaderCell.setCellStyle(styles.get(HEADER_STYLE_MES_VALOR));
         
         sheet.createFreezePane(0, 6);
-        
-        Map<String, CellStyle> styles = createStyles(workbook);
         
         for(Orcamento orcamento : orcamentos) {
 			addOrcamento(sheet, styles, orcamento);
 		}
-
-        /*// Create Cell Style for formatting Date
-        CellStyle dateCellStyle = workbook.createCellStyle();
-        dateCellStyle.setDataFormat(createHelper.createDataFormat().getFormat("dd-MM-yyyy"));
-
-        // Create Other rows and cells with employees data
-        int rowNum = 1;
-        for(Employee employee: employees) {
-            Row row = sheet.createRow(rowNum++);
-
-            row.createCell(0)
-                    .setCellValue(employee.getName());
-
-            row.createCell(1)
-                    .setCellValue(employee.getEmail());
-
-            Cell dateOfBirthCell = row.createCell(2);
-            dateOfBirthCell.setCellValue(employee.getDateOfBirth());
-            dateOfBirthCell.setCellStyle(dateCellStyle);
-
-            row.createCell(3)
-                    .setCellValue(employee.getSalary());
-        }*/
-
-		/*// Resize all columns to fit the content size
-        for(int i = 0; i < columns.length; i++) {
-            sheet.autoSizeColumn(i);
-        }*/
 		
         workbook.write(outputStream); // Write workbook to response.
         workbook.close();
@@ -219,23 +187,25 @@ public class Planilha {
 		}
 		
 		Cell categoriaValorCell;
-		for(int i = 4; i < 16; i++) {
-			categoriaValorCell = categoriaRow.createCell(i);
-			categoriaValorCell.setCellStyle(styles.get(HEADER_STYLE_CATEGORIA_VALOR));
-			categoriaValorCell.setCellType(CellType.FORMULA);
-			
-			Map<Integer, Character> columnsStringsByNumbers = getColumnsStringsByNumbers();
-			String formula = "";
-			for(int rubricaRowNumber : rubricasRowNumbers) {
-				formula += columnsStringsByNumbers.get(i).toString() + rubricaRowNumber + "+";// ex.: E10+E27+E31
+		for(int i = 4; i < 18; i++) {
+			if(i != 16) {//Pula a coluna 16
+				categoriaValorCell = categoriaRow.createCell(i);
+				categoriaValorCell.setCellStyle(styles.get(HEADER_STYLE_CATEGORIA_VALOR));
+				categoriaValorCell.setCellType(CellType.FORMULA);
+				
+				Map<Integer, Character> columnsStringsByNumbers = getColumnsStringsByNumbers();
+				String formula = "";
+				for(int rubricaRowNumber : rubricasRowNumbers) {
+					formula += columnsStringsByNumbers.get(i).toString() + rubricaRowNumber + "+";// ex.: E10+E27+E31
+				}
+				
+				//Remove o último "+"
+				if (formula != null && formula.length() > 0 && formula.charAt(formula.length() - 1) == '+') {
+			        formula = formula.substring(0, formula.length() - 1);
+			    }
+				
+				categoriaValorCell.setCellFormula(formula);
 			}
-			
-			//Remove o último "+"
-			if (formula != null && formula.length() > 0 && formula.charAt(formula.length() - 1) == '+') {
-		        formula = formula.substring(0, formula.length() - 1);
-		    }
-			
-			categoriaValorCell.setCellFormula(formula);
 		}
 		
 		Cell categoriaTotal = categoriaRow.createCell(18);
@@ -278,20 +248,33 @@ public class Planilha {
 		}
 		
 		Cell rubricaCellValor;
-		for(int i = 4; i < 16; i++) {
-			rubricaCellValor = rubricaRow.createCell(i);
-			rubricaCellValor.setCellStyle(styles.get(HEADER_STYLE_RUBRICA_VALOR));
-			if(itens.size() > 0) {
-				rubricaCellValor.setCellType(CellType.FORMULA);
-				String rubricaColumn = rubricaCellValor.getAddress().formatAsString().substring(0, 1);
-				//rubricaRow.getRowNum() != rubricaCellValor.getAddress().getRow()
-				//a diferença é pq a primeira linha do primeiro método é 0
-				int rubricaRowNum = rubricaRow.getRowNum() + 1;
-				String firstCell = rubricaColumn + (rubricaRowNum + 1);
-				String lastCell =  rubricaColumn + (rubricaRowNum + itens.size());
-				rubricaCellValor.setCellFormula("SUM(" +  firstCell + ":" + lastCell + ")");// ex.: SUM(E10:E27)
+		for(int i = 4; i < 18; i++) {
+			if(i != 16) {//Pula a coluna 16
+				rubricaCellValor = rubricaRow.createCell(i);
+				rubricaCellValor.setCellStyle(styles.get(HEADER_STYLE_RUBRICA_VALOR));
+				if(itens.size() > 0) {
+					rubricaCellValor.setCellType(CellType.FORMULA);
+					String rubricaColumn = rubricaCellValor.getAddress().formatAsString().substring(0, 1);
+					//rubricaRow.getRowNum() != rubricaCellValor.getAddress().getRow()
+					//a diferença é pq a primeira linha do primeiro método é 0
+					int rubricaRowNum = rubricaRow.getRowNum() + 1;
+					String firstCell = rubricaColumn + (rubricaRowNum + 1);
+					String lastCell =  rubricaColumn + (rubricaRowNum + itens.size());
+					rubricaCellValor.setCellFormula("SUM(" +  firstCell + ":" + lastCell + ")");// ex.: SUM(E10:E27)
+				}
 			}
 		}
+		
+		/*Cell rubricaTotalCell = rubricaRow.createCell(TOTAL_COLUNA);
+		rubricaTotalCell.setCellStyle(styles.get(HEADER_STYLE_RUBRICA_VALOR));
+		rubricaTotalCell.setCellType(CellType.FORMULA);
+		String rubricaColumn = rubricaTotalCell.getAddress().formatAsString().substring(0, 1);
+		int rubricaRowNum = rubricaRow.getRowNum() + 1;
+		String firstCell = rubricaColumn + (rubricaRowNum + 1);
+		String lastCell =  rubricaColumn + (rubricaRowNum + itens.size());
+		rubricaTotalCell.setCellFormula("SUM(" +  firstCell + ":" + lastCell + ")");// ex.: SUM(E10:E27)*/
+		
+		//Vai no formato certo pra fórmula
 		return rubricaRow.getRowNum() + 1;
 	}
 
@@ -310,48 +293,17 @@ public class Planilha {
 			cal.setTime(nota.getData());
 			int mes = cal.get(Calendar.MONTH);
 			setMonthCellValue(itemRow, styles, mes + 4, nota.getValor());
-			/*
-			 * Tanto código e tempo pra no final dar 10 linhas
-			 * 
-			 * switch(cal.get(Calendar.MONTH)) {
-			case Calendar.JANUARY:
-				setMonthCellValue(itemRow, JANEIRO_COLUNA, nota.getValor());
-				break;
-			case Calendar.FEBRUARY:
-				setMonthCellValue(itemRow, JANEIRO_COLUNA, nota.getValor());
-				break;
-			case Calendar.MARCH:
-				setMonthCellValue(itemRow, JANEIRO_COLUNA, nota.getValor());
-				break;
-			case Calendar.APRIL:
-				setMonthCellValue(itemRow, JANEIRO_COLUNA, nota.getValor());
-				break;
-			case Calendar.MAY:
-				setMonthCellValue(itemRow, JANEIRO_COLUNA, nota.getValor());
-				break;
-			case Calendar.JUNE:
-				setMonthCellValue(itemRow, JANEIRO_COLUNA, nota.getValor());
-				break;
-			case Calendar.JULY:
-				setMonthCellValue(itemRow, JANEIRO_COLUNA, nota.getValor());
-				break;
-			case Calendar.AUGUST:
-				setMonthCellValue(itemRow, JANEIRO_COLUNA, nota.getValor());
-				break;
-			case Calendar.SEPTEMBER:
-				setMonthCellValue(itemRow, JANEIRO_COLUNA, nota.getValor());
-				break;
-			case Calendar.OCTOBER:
-				setMonthCellValue(itemRow, JANEIRO_COLUNA, nota.getValor());
-				break;
-			case Calendar.NOVEMBER:
-				setMonthCellValue(itemRow, JANEIRO_COLUNA, nota.getValor());
-				break;
-			case Calendar.DECEMBER:
-				setMonthCellValue(itemRow, JANEIRO_COLUNA, nota.getValor());
-				break;
-			}*/
+			
 		}
+		
+		Cell valorTotalCell = itemRow.createCell(17);
+		valorTotalCell.setCellType(CellType.FORMULA);
+		valorTotalCell.setCellStyle(styles.get(HEADER_STYLE_ITEM_VALOR));
+		Map<Integer, Character> columnsStringsByNumbers = getColumnsStringsByNumbers();
+		int itemRowNum = itemRow.getRowNum() + 1;
+		String firstCell = columnsStringsByNumbers.get(4).toString() + itemRowNum;
+		String lastCell =  columnsStringsByNumbers.get(15).toString() + itemRowNum;
+		valorTotalCell.setCellFormula("SUM(" +  firstCell + ":" + lastCell + ")");
 	}
 
 	private static void setMonthCellValue(Row itemRow, Map<String, CellStyle> styles,int mes, Double valor){
@@ -375,14 +327,34 @@ public class Planilha {
 		}
 		return columnsStringsByNumbers;
 	}
+	
 	private static Map<String, CellStyle> createStyles(Workbook wb){
 		Map<String, CellStyle> styles = new HashMap<>();
 		DataFormat df = wb.createDataFormat();
 		
 		CellStyle style = wb.createCellStyle();
-		Font headerFont = wb.createFont();
+		
+        Font headerFont = wb.createFont();
         headerFont.setBold(true);
-		style.setFont(headerFont);
+        headerFont.setFontHeightInPoints((short) 18);
+        headerFont.setColor(IndexedColors.BLACK.getIndex());
+        style.setFont(headerFont);
+        style.setAlignment(HorizontalAlignment.CENTER);
+        styles.put(HEADER_STYLE_TITLE, style);
+        
+        
+        Font monthHeaderFont = wb.createFont();
+        monthHeaderFont.setBold(true);
+        monthHeaderFont.setColor(IndexedColors.BLACK.getIndex());
+        style = wb.createCellStyle();
+        style.setFont(monthHeaderFont);
+        style.setAlignment(HorizontalAlignment.CENTER);
+        styles.put(HEADER_STYLE_MES_VALOR, style);
+        
+		Font headerCategoriaFont = wb.createFont();
+        headerCategoriaFont.setBold(true);
+        style = wb.createCellStyle();
+		style.setFont(headerCategoriaFont);
         style.setAlignment(HorizontalAlignment.LEFT);
         styles.put(HEADER_STYLE_CATEGORIA_NAT, style);
         styles.put(HEADER_STYLE_CATEGORIA, style);
