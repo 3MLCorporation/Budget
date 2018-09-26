@@ -48,7 +48,7 @@
 			   </div>
 			   <div class="form-group">
 			     <label for="text">Unidade de medida:</label>
-			     <select class="form-control" name="unidade_medida">
+			     <select class="form-control" name="unidade_medida" required="required">
 			      <option value="0">Verba</option>
 			      <option value="1">Unidade</option>
 			      <option value="2">Mês</option>
@@ -104,7 +104,7 @@
 			<div class="row">
 			     <div class="form-group col-lg-6">
 			       <label>Categoria:</label>
-			       <select id="categoria-select" class="form-control" name="categoria">
+			       <select id="categoria-select" class="form-control" name="categoria" required="required">
 		         		<option value="">Selecione</option>
 		         		<c:forEach items="${categorias}" var="categoria">
 			        		 <option value="${categoria.id }">${categoria.nome}</option>
@@ -114,7 +114,7 @@
 			
 			     <div class="form-group col-lg-6">
 				     <label>Rubrica:</label>
-				     <select id="rubrica-select" class="form-control" name="rubrica_id">
+				     <select id="rubrica-select" class="form-control" name="rubrica_id" required="required">
 				     	<option value="">Selecione uma categoria acima</option>
 		       			<%-- <c:forEach items="${rubricas}" var="rubrica">
 				      	 	<option value="${rubrica.id }">${rubrica.nome}</option>

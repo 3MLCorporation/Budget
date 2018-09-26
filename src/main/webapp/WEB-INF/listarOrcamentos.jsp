@@ -7,13 +7,6 @@
     <div class="container-fluid">
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <c:if test="${not empty orcamentoSelecionado}">
-	          <a href="">
-				${orcamentoSelecionado}
-	          </a>
-          </c:if>
-        </li>
         <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
 	        <li class="breadcrumb-item active" title="Listar projetos">
 	        	<a href="/listarProjetos">Projetos</a>
@@ -136,6 +129,11 @@
 			  	</table>
 		  	</div>
 
+		  	<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
+			  	<form action="cadastrarOrcamento" method="GET">
+					&emsp;<button type="submit" class="btn btn-dark">Cadastrar orçamento</button>
+				</form>
+			</c:if>
 
 			<!--Caixa de dialogo do botão delete-->
 		    <div class="modal fade" id="deletarEntidade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

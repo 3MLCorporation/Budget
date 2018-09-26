@@ -52,7 +52,7 @@
 		  		</div> --%>
 		     <div class="form-group">
 		       <label for="text">Categoria:</label>
-		       <select class="form-control" name="categoriaId">
+		       <select class="form-control" name="categoriaId" required="required">
 		         <c:forEach items="${categorias}" var="categoria">
 		            <option value="${categoria.id }">${categoria.nome}</option>
 		          </c:forEach>

@@ -7,13 +7,6 @@
     <div class="container-fluid">
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <c:if test="${not empty orcamentoSelecionado}">
-	          <a href="">
-	       		${orcamentoSelecionado}
-	          </a>
-          </c:if>
-        </li>
         <li class="breadcrumb-item active" title="Listar projetos">
         	<a href="/listarProjetos">Projetos</a>
         </li>
@@ -76,6 +69,12 @@
 			   	 	</tbody>
 			  	</table>
 		  	</div>
+
+		  	<c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
+			  	<form action="cadastrarProjeto" method="GET">
+					&emsp;<button type="submit" class="btn btn-dark">Cadastrar projeto</button>
+				</form>
+			</c:if>
 
 			<!--Caixa de dialogo do botão delete-->
 		    <div class="modal fade" id="deletarEntidade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -114,7 +114,7 @@
         <c:if test="${not empty sessionScope.orcamentoEditavel}">
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Categorias">
             <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseCategorias" data-parent="#exampleAccordion">
-              <i class="fa fa-shopping-cart"></i>
+              <i class="fa fa-cubes"></i>
               <span class="nav-link-text">Categoria</span>
             </a>
             <ul class="sidenav-second-level collapse" id="collapseCategorias">
@@ -131,7 +131,7 @@
 
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Rubricas">
             <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseRubricas" data-parent="#exampleAccordion">
-              <i class="fa fa-cubes"></i>
+              <i class="fa fa-cube"></i>
               <span class="nav-link-text">Rubrica</span>
             </a>
             <ul class="sidenav-second-level collapse" id="collapseRubricas">
@@ -148,7 +148,7 @@
 
           <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Itens">
             <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseItens" data-parent="#exampleAccordion">
-              <i class="fa fa-cube"></i>
+              <i class="fa fa-puzzle-piece"></i>
               <span class="nav-link-text">Item</span>
             </a>
             <ul class="sidenav-second-level collapse" id="collapseItens">

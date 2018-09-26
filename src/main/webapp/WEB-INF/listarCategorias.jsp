@@ -7,13 +7,6 @@
     <div class="container-fluid">
       <!-- Breadcrumbs-->
       <ol class="breadcrumb">
-        <li class="breadcrumb-item">
-          <c:if test="${not empty orcamentoSelecionado}">
-	          <a href="">
-				${orcamentoSelecionado}
-	          </a>
-          </c:if>
-        </li>
         <c:if test="${sessionScope.usuario.perfil == 0 || sessionScope.usuario.perfil == 1 }"><!--PERFIL_ADMIN || PERFIL_GERENTE-->
 	        <li class="breadcrumb-item active" title="Listar projetos">
 	        	<a href="/listarProjetos">Projetos</a>
@@ -30,7 +23,7 @@
       
    	<div class="card mb-3">
    	    <div class="card-header">
-        	<i class="fa fa-area-chart"></i> Categorias cadastradas
+        	<i class="fa fa-area-chart"></i> Categorias cadastradas <!--(${orcamentoSelecionado})-->
         </div>
 	   	<div class="card-body">
 		   	<div class="table-responsive">
