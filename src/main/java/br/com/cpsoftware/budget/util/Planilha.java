@@ -1,6 +1,7 @@
 package br.com.cpsoftware.budget.util;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
@@ -8,9 +9,9 @@ import java.util.Map;
 
 import javax.servlet.ServletOutputStream;
 
-import org.apache.poi.ss.usermodel.BuiltinFormats;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.CreationHelper;
 import org.apache.poi.ss.usermodel.DataFormat;
 import org.apache.poi.ss.usermodel.Font;
@@ -62,11 +63,13 @@ public class Planilha {
 	private final static int DEZEMBRO_COLUNA = 12;
 
 	private final static String HEADER_STYLE_CATEGORIA = "categoriaHeader";
-	private final static String HEADER_STYLE_CATEGORIA_NUMERO = "categoriaNumeroHeader";
+	private final static String HEADER_STYLE_CATEGORIA_NAT = "categoriaNaturezaHeader";
 	private final static String HEADER_STYLE_CATEGORIA_VALOR= "categoriaValorHeader";
 	private final static String HEADER_STYLE_RUBRICA = "rubricaHeader";
 	private final static String HEADER_STYLE_RUBRICA_VALOR = "rubricaValorHeader";
 	private final static String HEADER_STYLE_ITEM = "itemHeader";
+	private final static String HEADER_STYLE_ITEM_NAT = "itemNaturezaHeader";
+	private static final String HEADER_STYLE_ITEM_VALOR = "itemValorHeader";
 	
 	public static void gerarPlanilha(Long projetoId, ServletOutputStream outputStream) throws IOException {
 		
@@ -182,24 +185,62 @@ public class Planilha {
 
 	private static void addOrcamento(Sheet sheet, Map<String, CellStyle> styles, Orcamento orcamento) {
 		//sheet.autoSizeColumn(0);
+		int natOrc = 1;
 		for(Categoria categoria : categoriaDAO.getCategorias(orcamento.getId())) {
-			addCategoria(sheet, styles, categoria);
+			addCategoria(sheet, styles, categoria, natOrc);
+			natOrc++;
 		}
 	}
 	
 
-	private static void addCategoria(Sheet sheet, Map<String, CellStyle> styles, Categoria categoria) {
-		Row categoriaRow = sheet.createRow(sheet.getLastRowNum() + 1);
+	private static void addCategoria(Sheet sheet, Map<String, CellStyle> styles, Categoria categoria, int naturezaOrcamentaria) {
+		Row categoriaRow = sheet.createRow(sheet.getLastRowNum() + 2);
+		
+		Cell naturezaOrcamentariaCell = categoriaRow.createCell(1);
+		naturezaOrcamentariaCell.setCellValue(naturezaOrcamentaria);
+		naturezaOrcamentariaCell.setCellStyle(styles.get(HEADER_STYLE_CATEGORIA_NAT));
+		
 		Cell categoriaCell = categoriaRow.createCell(2);
 		categoriaCell.setCellValue(categoria.getNome().toUpperCase());
 		categoriaCell.setCellStyle(styles.get(HEADER_STYLE_CATEGORIA));
-		String formula = "";
+		
+		List<Integer> rubricasRowNumbers = new ArrayList<>();
+		
+		int qtd = 0;
+		String rubricaNatOrc;
 		for(Rubrica rubrica : rubricaDAO.getRubricas(categoria.getId())) {
-			formula = addRubrica(sheet, styles, rubrica);
+			qtd++;
+			if(qtd > 9) {
+				rubricaNatOrc = naturezaOrcamentaria + "." + qtd;
+			}else {
+				rubricaNatOrc = naturezaOrcamentaria + ".0" + qtd;
+			}
+			rubricasRowNumbers.add(addRubrica(sheet, styles, rubrica, rubricaNatOrc));
 		}
-		for(int i = 4; i < 20; i++) {
-			categoriaRow.createCell(i).setCellStyle(styles.get(HEADER_STYLE_CATEGORIA_VALOR));
+		
+		Cell categoriaValorCell;
+		for(int i = 4; i < 16; i++) {
+			categoriaValorCell = categoriaRow.createCell(i);
+			categoriaValorCell.setCellStyle(styles.get(HEADER_STYLE_CATEGORIA_VALOR));
+			categoriaValorCell.setCellType(CellType.FORMULA);
+			
+			Map<Integer, Character> columnsStringsByNumbers = getColumnsStringsByNumbers();
+			String formula = "";
+			for(int rubricaRowNumber : rubricasRowNumbers) {
+				formula += columnsStringsByNumbers.get(i).toString() + rubricaRowNumber + "+";// ex.: E10+E27+E31
+			}
+			
+			//Remove o último "+"
+			if (formula != null && formula.length() > 0 && formula.charAt(formula.length() - 1) == '+') {
+		        formula = formula.substring(0, formula.length() - 1);
+		    }
+			
+			categoriaValorCell.setCellFormula(formula);
 		}
+		
+		Cell categoriaTotal = categoriaRow.createCell(18);
+		//TODO CONTINUAR, MSM LOGICA DOS OUTROS VALORES, COMEÇANDO DE BAIXO
+		//TODO MUDAR O TAMANHO DAS COLUNAS E BOTAR BORDA BRANCA TBM
 	}
 	
 	/*private static CellStyle getStyle(Workbook workbook, int styleType) {
@@ -212,22 +253,55 @@ public class Planilha {
 		}
 	}*/
 
-	private static String addRubrica(Sheet sheet, Map<String, CellStyle> styles, Rubrica rubrica) {
+	private static int addRubrica(Sheet sheet, Map<String, CellStyle> styles, Rubrica rubrica, String rubricaNatOrc) {
 		Row rubricaRow = sheet.createRow(sheet.getLastRowNum() + 1);
+		
+		Cell naturezaOrcamentariaCell = rubricaRow.createCell(1);
+		naturezaOrcamentariaCell.setCellValue(rubricaNatOrc);
+		naturezaOrcamentariaCell.setCellStyle(styles.get(HEADER_STYLE_CATEGORIA_NAT));
+		
 		Cell rubricaCell = rubricaRow.createCell(2);
 		rubricaCell.setCellValue(rubrica.getNome());
 		rubricaCell.setCellStyle(styles.get(HEADER_STYLE_CATEGORIA));
-		for(Item item : itemDAO.getItens(rubrica.getId())) {
-			addItem(sheet, styles, item);
+		
+		List<Item> itens = itemDAO.getItens(rubrica.getId());
+		int qtd = 0;
+		String itemNatOrc;
+		for(Item item : itens) {
+			qtd++;
+			if(qtd > 9) {
+				itemNatOrc = rubricaNatOrc + ".0" + qtd;
+			}else {
+				itemNatOrc = rubricaNatOrc + ".00" + qtd;
+			}
+			addItem(sheet, styles, item, itemNatOrc);
 		}
-		for(int i = 4; i < 20; i++) {
-			rubricaRow.createCell(i).setCellStyle(styles.get(HEADER_STYLE_RUBRICA_VALOR));
+		
+		Cell rubricaCellValor;
+		for(int i = 4; i < 16; i++) {
+			rubricaCellValor = rubricaRow.createCell(i);
+			rubricaCellValor.setCellStyle(styles.get(HEADER_STYLE_RUBRICA_VALOR));
+			if(itens.size() > 0) {
+				rubricaCellValor.setCellType(CellType.FORMULA);
+				String rubricaColumn = rubricaCellValor.getAddress().formatAsString().substring(0, 1);
+				//rubricaRow.getRowNum() != rubricaCellValor.getAddress().getRow()
+				//a diferença é pq a primeira linha do primeiro método é 0
+				int rubricaRowNum = rubricaRow.getRowNum() + 1;
+				String firstCell = rubricaColumn + (rubricaRowNum + 1);
+				String lastCell =  rubricaColumn + (rubricaRowNum + itens.size());
+				rubricaCellValor.setCellFormula("SUM(" +  firstCell + ":" + lastCell + ")");// ex.: SUM(E10:E27)
+			}
 		}
-		return "dummy_data";
+		return rubricaRow.getRowNum() + 1;
 	}
 
-	private static void addItem(Sheet sheet, Map<String, CellStyle> styles, Item item) {
+	private static void addItem(Sheet sheet, Map<String, CellStyle> styles, Item item, String itemNatOrc) {
 		Row itemRow = sheet.createRow(sheet.getLastRowNum() + 1);
+		
+		Cell naturezaOrcamentariaCell = itemRow.createCell(1);
+		naturezaOrcamentariaCell.setCellValue(itemNatOrc);
+		naturezaOrcamentariaCell.setCellStyle(styles.get(HEADER_STYLE_ITEM_NAT));
+		
 		itemRow.createCell(3).setCellValue(item.getNome());
 
 		Calendar cal = Calendar.getInstance();
@@ -235,7 +309,7 @@ public class Planilha {
 		for(NotaFiscal nota :notaFiscalDAO.getNotasFiscais(item.getId())) {
 			cal.setTime(nota.getData());
 			int mes = cal.get(Calendar.MONTH);
-			setMonthCellValue(itemRow, mes + 4, nota.getValor());
+			setMonthCellValue(itemRow, styles, mes + 4, nota.getValor());
 			/*
 			 * Tanto código e tempo pra no final dar 10 linhas
 			 * 
@@ -280,15 +354,27 @@ public class Planilha {
 		}
 	}
 
-	private static void setMonthCellValue(Row itemRow, int mes, Double valor){
+	private static void setMonthCellValue(Row itemRow, Map<String, CellStyle> styles,int mes, Double valor){
 		if(itemRow.getCell(mes) == null) {
-			itemRow.createCell(mes).setCellValue(valor);
+			Cell itemValorCell = itemRow.createCell(mes);
+			itemValorCell.setCellValue(valor);
+			itemValorCell.setCellStyle(styles.get(HEADER_STYLE_ITEM_VALOR));
 		}else {
 			Double valorAnterior = itemRow.getCell(mes).getNumericCellValue();
 			itemRow.getCell(mes).setCellValue(valorAnterior + valor);
 		}
 	}
 	
+	private static Map<Integer, Character> getColumnsStringsByNumbers(){
+		Map<Integer, Character> columnsStringsByNumbers = new HashMap<>();
+		char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toUpperCase().toCharArray();
+		//columnsStringsByNumbers.put(0, "A");
+		
+		for(int i = 0; i < alphabet.length; i++) {
+			columnsStringsByNumbers.put(i, alphabet[i]);
+		}
+		return columnsStringsByNumbers;
+	}
 	private static Map<String, CellStyle> createStyles(Workbook wb){
 		Map<String, CellStyle> styles = new HashMap<>();
 		DataFormat df = wb.createDataFormat();
@@ -298,7 +384,7 @@ public class Planilha {
         headerFont.setBold(true);
 		style.setFont(headerFont);
         style.setAlignment(HorizontalAlignment.LEFT);
-        styles.put(HEADER_STYLE_CATEGORIA_NUMERO, style);
+        styles.put(HEADER_STYLE_CATEGORIA_NAT, style);
         styles.put(HEADER_STYLE_CATEGORIA, style);
         
         style = wb.createCellStyle();
@@ -315,9 +401,18 @@ public class Planilha {
         Font fontRubricaValor = wb.createFont();
         fontRubricaValor.setColor(IndexedColors.BLACK.getIndex());
         fontRubricaValor.setBold(true);
-        style.setFont(fontValor);
+        style.setFont(fontRubricaValor);
         style.setDataFormat(df.getFormat("R$ #,#0.00"));
         styles.put(HEADER_STYLE_RUBRICA_VALOR, style);
+        
+        style = wb.createCellStyle();
+        style.setAlignment(HorizontalAlignment.LEFT);
+        styles.put(HEADER_STYLE_ITEM_NAT, style);
+        
+        style = wb.createCellStyle();
+        style.setAlignment(HorizontalAlignment.CENTER);
+        style.setDataFormat(df.getFormat("R$ #,#0.00"));
+        styles.put(HEADER_STYLE_ITEM_VALOR, style);
         
         return styles;
 	}
