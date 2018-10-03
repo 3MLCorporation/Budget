@@ -46,8 +46,8 @@
 			   		<tbody id="myTable">
 						<c:forEach items="${rubricasMaps}" var="rubricaMap">
 							<tr>
-								<td> ${rubricaMap.nomeCategoria}</td>
-								<td> ${rubricaMap.rubrica.nome}</td>
+								<td> ${rubricaMap.categoria.codigo} - ${rubricaMap.categoria.nome}</td>
+								<td> ${rubricaMap.rubrica.codigo} - ${rubricaMap.rubrica.nome}</td>
 								<td> ${rubricaMap.rubrica.getValorEstimadoFormatado()}</td>
 								<td> ${rubricaMap.rubrica.getValorOrcadoFormatado()}</td>
 								<td> ${rubricaMap.rubrica.getValorRealizadoFormatado()}</td>

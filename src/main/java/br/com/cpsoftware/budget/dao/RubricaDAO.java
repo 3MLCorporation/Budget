@@ -39,6 +39,7 @@ public class RubricaDAO implements EntidadeDao{
 	public Long create(Entidade rubrica) {
 		Entity rubricaEntity = new Entity(RUBRICA_KIND);
 		rubricaEntity.setProperty(Rubrica.CATEGORIA_ID, ((Rubrica) rubrica).getCategoriaId());
+		rubricaEntity.setProperty(Rubrica.CODIGO, ((Rubrica) rubrica).getCodigo());
 		rubricaEntity.setProperty(Rubrica.NOME, rubrica.getNome());
 		rubricaEntity.setProperty(Rubrica.VALOR_ESTIMADO, rubrica.getValorEstimado());
 		rubricaEntity.setProperty(Rubrica.VALOR_ORCADO, rubrica.getValorOrcado());
@@ -73,6 +74,7 @@ public class RubricaDAO implements EntidadeDao{
 		Key key = KeyFactory.createKey(RUBRICA_KIND, rubrica.getId()); 
 		Entity rubricaEntity = new Entity(key);
 		rubricaEntity.setProperty(Rubrica.CATEGORIA_ID, ((Rubrica) rubrica).getCategoriaId());
+		rubricaEntity.setProperty(Rubrica.CODIGO, ((Rubrica) rubrica).getCodigo());
 		rubricaEntity.setProperty(Rubrica.NOME, rubrica.getNome());
 		rubricaEntity.setProperty(Rubrica.VALOR_ESTIMADO, rubrica.getValorEstimado());
 		rubricaEntity.setProperty(Rubrica.VALOR_ORCADO, rubrica.getValorOrcado());
@@ -93,6 +95,7 @@ public class RubricaDAO implements EntidadeDao{
 	private Rubrica entityToRubrica(Entity rubricaEntity) {
 		return new Rubrica((Long) rubricaEntity.getProperty(Rubrica.CATEGORIA_ID) ,
 						 rubricaEntity.getKey().getId(),
+						 ((Long) rubricaEntity.getProperty(Rubrica.CODIGO)).intValue(),
 						 (String)rubricaEntity.getProperty(Rubrica.NOME),
 						 (Double)rubricaEntity.getProperty(Rubrica.VALOR_ESTIMADO),
 						 (Double)rubricaEntity.getProperty(Rubrica.VALOR_ORCADO),
@@ -157,7 +160,7 @@ public class RubricaDAO implements EntidadeDao{
 		
 		for(Rubrica rubrica : entitiesToRubrica) {
 			Map<Object, Object> rubricaMap = new HashMap<>();
-			rubricaMap.put("nomeCategoria", new CategoriaDAO().read(categoriaId).getNome());
+			rubricaMap.put("categoria", new CategoriaDAO().read(categoriaId));
 			rubricaMap.put("rubrica", rubrica);
 			rubricasMapsList.add(rubricaMap);
 		}

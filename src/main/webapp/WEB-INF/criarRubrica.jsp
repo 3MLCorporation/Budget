@@ -37,6 +37,19 @@
         </div>
 	   	<div class="card-body">
 		  <form action="cadastrarRubrica" method="POST">
+		  	<div class="form-group">
+		       <label for="text">Categoria:</label>
+		       <select class="form-control" name="categoriaId" required="required">
+		         <c:forEach items="${categorias}" var="categoria">
+		            <option value="${categoria.id }">${categoria.codigo} - ${categoria.nome}</option>
+		          </c:forEach>
+		       </select>
+	      	</div>
+	      	<div class="form-group">
+	       	   <label for="text">Código:</label> <input type="number" pattern="[0-9.]"
+	        	class="form-control" placeholder="Fornecer o código da nova rubrica	"
+	       	   name="codigo" required="required">
+	      	</div>
 		    <div class="form-group">
 		      <label for="text">Rubrica:</label> <input type="text"
 		      class="form-control" placeholder="Fornecer o nome da nova rubrica"
@@ -50,14 +63,6 @@
 		  					</c:forEach>
 		  			</select>
 		  		</div> --%>
-		     <div class="form-group">
-		       <label for="text">Categoria:</label>
-		       <select class="form-control" name="categoriaId" required="required">
-		         <c:forEach items="${categorias}" var="categoria">
-		            <option value="${categoria.id }">${categoria.nome}</option>
-		          </c:forEach>
-		       </select>
-		      </div>
 		      <button type="submit" class="btn btn-dark botaoCadastro" title="Cadastrar rubrica">Cadastrar</button>
 		    </form>
 	  	</div>

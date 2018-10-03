@@ -39,6 +39,7 @@ public class ItemDAO{
 	public Long create(Item item) {
 		Entity itemEntity = new Entity(ITEM_KIND);
 		itemEntity.setProperty(Item.RUBRICA_ID, item.getRubricaId());
+		itemEntity.setProperty(Item.CODIGO, item.getCodigo());
 		itemEntity.setProperty(Item.NOME, item.getNome());
 		itemEntity.setProperty(Item.DESCRICAO, item.getDescricao());
 		itemEntity.setProperty(Item.PRECO_UNITARIO, item.getPrecoUnitario());
@@ -76,6 +77,7 @@ public class ItemDAO{
 		Key key = KeyFactory.createKey(ITEM_KIND, item.getId());
 		Entity itemEntity = new Entity(key);
 		itemEntity.setProperty(Item.RUBRICA_ID, item.getRubricaId());
+		itemEntity.setProperty(Item.CODIGO, item.getCodigo());
 		itemEntity.setProperty(Item.NOME, item.getNome());
 		itemEntity.setProperty(Item.DESCRICAO, item.getDescricao());
 		itemEntity.setProperty(Item.PRECO_UNITARIO, item.getPrecoUnitario());
@@ -99,6 +101,7 @@ public class ItemDAO{
 		return new Item(
 			 (Long)itemEntity.getProperty(Item.RUBRICA_ID),
 			 itemEntity.getKey().getId(),
+			 ((Long) itemEntity.getProperty(Item.CODIGO)).intValue(),
 			 (String)itemEntity.getProperty(Item.NOME),
 			 (String)itemEntity.getProperty(Item.DESCRICAO),
 			 (Double)itemEntity.getProperty(Item.PRECO_UNITARIO),
@@ -169,8 +172,8 @@ public class ItemDAO{
 		for (Item item : entitiesToItem) {
 			Map<Object, Object> itemMap = new HashMap<>();
 			Rubrica rubrica = (Rubrica) new RubricaDAO().read(rubricaId);
-			itemMap.put("nomeRubrica", rubrica.getNome());
-			itemMap.put("nomeCategoria", new CategoriaDAO().read(rubrica.getCategoriaId()).getNome());
+			itemMap.put("rubrica", rubrica);
+			itemMap.put("categoria", new CategoriaDAO().read(rubrica.getCategoriaId()));
 			itemMap.put("item", item);
 			itensMapsList.add(itemMap);
 		}

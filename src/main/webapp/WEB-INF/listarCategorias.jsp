@@ -42,7 +42,7 @@
 			   		<tbody id="myTable">
 		        		<c:forEach items="${categorias}" var="categoria">
 							<tr>
-								<td> ${categoria.nome}</td>
+								<td> ${categoria.codigo} - ${categoria.nome}</td>
 								<td> ${categoria.getValorEstimadoFormatado()}</td>
 								<td> ${categoria.getValorOrcadoFormatado()}</td>
 								<td> ${categoria.getValorRealizadoFormatado()}</td>

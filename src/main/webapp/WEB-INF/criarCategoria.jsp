@@ -34,11 +34,16 @@
         </div>
 	   	<div class="card-body">
 		   	<form action="cadastrarCategoria" method="POST">
+	  			<div class="form-group">
+		       	   <label for="text">Código:</label> <input type="number" pattern="[0-9.]"
+		        	class="form-control" placeholder="Fornecer o código da nova categoria"
+		       	   name="codigo" required="required">
+		      	</div>
 		  		<div class="form-group">
 		       	   <label for="text">Categoria:</label> <input type="text"
 		        	class="form-control" placeholder="Fornecer o nome da nova categoria"
 		       	   name="nome" required="required">
-		      </div>
+		      	</div>
 	    	<%-- <div class="form-group">
 		     	 <label>Orçamento:</label>
 		     	 	<select class="form-control" name="orcamentoId">

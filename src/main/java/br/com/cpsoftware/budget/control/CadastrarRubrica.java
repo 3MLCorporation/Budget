@@ -46,6 +46,7 @@ public class CadastrarRubrica extends HttpServlet {
 		
 		Rubrica rubrica = new Rubrica(
 			categoriaId,
+			Integer.parseInt(req.getParameter("codigo")),
 			req.getParameter("nome"),
 			0d, //valorEstimado
 			0d, // valorOrcado

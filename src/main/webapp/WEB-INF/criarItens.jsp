@@ -41,6 +41,32 @@
         </div>
 	   	<div class="card-body">
 			<form action="cadastrarItem" method="POST" enctype="multipart/form-data" >
+				<div class="row">
+			     	<div class="form-group col-lg-6">
+				       <label>Categoria:</label>
+				       <select id="categoria-select" class="form-control" name="categoria" required="required">
+			         		<option value="">Selecione</option>
+			         		<c:forEach items="${categorias}" var="categoria">
+				        		 <option value="${categoria.id }">${categoria.codigo} - ${categoria.nome}</option>
+			       			</c:forEach>
+				     	</select>
+		   		 	</div>
+			
+			     	<div class="form-group col-lg-6">
+					     <label>Rubrica:</label>
+					     <select id="rubrica-select" class="form-control" name="rubrica_id" required="required">
+					     	<option value="">Selecione uma categoria acima</option>
+			       			<%-- <c:forEach items="${rubricas}" var="rubrica">
+					      	 	<option value="${rubrica.id }">${rubrica.nome}</option>
+				    		 </c:forEach> --%>
+					   	</select>
+				 	</div>
+				</div> 
+				<div class="form-group">
+		       	   <label for="text">Código:</label> <input type="number" pattern="[0-9.]"
+		        	class="form-control" placeholder="Fornecer o código do novo item"
+		       	   name="codigo" required="required">
+	      		</div>
 			   <div class="form-group">
 			     <label for="text">Item:</label> <input type="text"
 			     class="form-control" placeholder="Fornecer o nome do novo item"
@@ -101,27 +127,6 @@
 								</c:forEach>
 						</select>
 					</div> --%>
-			<div class="row">
-			     <div class="form-group col-lg-6">
-			       <label>Categoria:</label>
-			       <select id="categoria-select" class="form-control" name="categoria" required="required">
-		         		<option value="">Selecione</option>
-		         		<c:forEach items="${categorias}" var="categoria">
-			        		 <option value="${categoria.id }">${categoria.nome}</option>
-		       			</c:forEach>
-			     	</select>
-		   		 </div>
-			
-			     <div class="form-group col-lg-6">
-				     <label>Rubrica:</label>
-				     <select id="rubrica-select" class="form-control" name="rubrica_id" required="required">
-				     	<option value="">Selecione uma categoria acima</option>
-		       			<%-- <c:forEach items="${rubricas}" var="rubrica">
-				      	 	<option value="${rubrica.id }">${rubrica.nome}</option>
-			    		 </c:forEach> --%>
-				   	</select>
-				 </div>
-			</div>  
 			<button type="submit" class="btn btn-dark botaoCadastro" title="Cadastrar item">Cadastrar</button>
 			</form>
 	  	</div>
@@ -138,7 +143,7 @@
   	              var $rubricaSelect = $("#rubrica-select");
   	              $rubricaSelect.empty(); 
   	              $.each(responseJson, function(index, rubrica) {
-  	                  $("<option>").val(rubrica.id).text(rubrica.nome).appendTo($rubricaSelect);
+  	                  $("<option>").val(rubrica.id).text(rubrica.codigo + " - " + rubrica.nome).appendTo($rubricaSelect);
   	             	});                   
          		});
           }

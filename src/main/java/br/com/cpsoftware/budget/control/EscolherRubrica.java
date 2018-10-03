@@ -29,6 +29,7 @@ public class EscolherRubrica extends HttpServlet {
 		for(Rubrica rubrica : new RubricaDAO().getRubricas(categoriaId)) {
 			Map<Object, Object> rubricaMap = new HashMap<>();
 			rubricaMap.put("id", rubrica.getId());
+			rubricaMap.put("codigo", rubrica.getCodigo());
 			rubricaMap.put("nome", rubrica.getNome());
 			rubricasMaps.add(rubricaMap);
 		}

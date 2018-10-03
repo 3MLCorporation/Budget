@@ -12,7 +12,7 @@ import br.com.cpsoftware.budget.model.Projeto;
 import br.com.cpsoftware.budget.util.Planilha;
 
 @SuppressWarnings("serial")
-public class GerarPlanilha extends HttpServlet {
+public class GerarPlanilhaProjeto extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -24,7 +24,7 @@ public class GerarPlanilha extends HttpServlet {
 		resp.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
 		resp.setHeader("Content-Disposition", "attachment; filename=" + nomeProjeto + ".xlsx");
 	 
-		Planilha.gerarPlanilha(projetoId, resp.getOutputStream());
+		Planilha.gerarPlanilhaProjeto(projetoId, resp.getOutputStream());
 	}
 	
 }

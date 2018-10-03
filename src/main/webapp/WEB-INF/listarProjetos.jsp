@@ -58,7 +58,7 @@
 											<input type="hidden" class="form-control" value="${projeto.id}" name="projetoId">
 											<button type="submit" class="btn btn-link" title="Gerar relatório"><!--<img src="../img/relatorio.png" alt="Logo">--><i class="material-icons" style="color:black">insert_drive_file</i></button> <!--PDF-->
 							           	</form>
-							           	<form action="gerarPlanilha" target="_blank" method="GET">
+							           	<form action="gerarPlanilhaProjeto" target="_blank" method="GET">
 											<input type="hidden" class="form-control" value="${projeto.id}" name="projetoId">
 											<button type="submit" class="btn btn-link" title="Gerar planilha"><!--<img src="../img/relatorio.png" alt="Logo">--><i class="material-icons" style="color:black">view_comfy</i></button> <!--PDF-->
 							           	</form>

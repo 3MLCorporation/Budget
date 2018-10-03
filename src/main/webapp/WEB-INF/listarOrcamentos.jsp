@@ -121,6 +121,10 @@
 												<button class="btn btn-link" title="Adicionar um usuário"> <!--<img src="../img/adicionarUsuario.png" alt="Logo">--> <i class="material-icons" style="color:black" >person_add</i></button> <!--ADICIONAR USUÁRIO-->
 								           	</form>
 				   						</c:if>
+				   						<form action="gerarPlanilhaOrcamento" target="_blank" method="GET">
+											<input type="hidden" class="form-control" value="${orcamento.id}" name="orcamentoId">
+											<button type="submit" class="btn btn-link" title="Gerar planilha"><!--<img src="../img/relatorio.png" alt="Logo">--><i class="material-icons" style="color:black">view_comfy</i></button> <!--PDF-->
+							           	</form>
 			   						</div>
 		   						</td>
 							</tr>

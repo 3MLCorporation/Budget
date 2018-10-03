@@ -55,6 +55,7 @@ public class CadastrarItem extends HttpServlet {
 		
 		boolean isMultipart = ServletFileUpload.isMultipartContent(req);
 		Long rubricaId = null;
+		int codigo = 0;
 		String nome = null;
 		String descricao = null;
 		Double precoUnitario = null;
@@ -78,6 +79,8 @@ public class CadastrarItem extends HttpServlet {
 					if (item.isFormField()) {
 						if (item.getFieldName().equals(Item.RUBRICA_ID))
 							rubricaId = new Long(Streams.asString(stream));
+						if (item.getFieldName().equals(Item.CODIGO))
+							codigo = new Integer(Streams.asString(stream));
 						if (item.getFieldName().equals(Item.NOME))
 							nome = new String(Streams.asString(stream));
 						if (item.getFieldName().equals(Item.DESCRICAO))
@@ -103,7 +106,7 @@ public class CadastrarItem extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			Item item = new Item(rubricaId, nome, descricao, precoUnitario, quantidade, valorEstimado, 0d, 0d, unidadeMedida, arquivoDetalhes, arquivoAuxiliar);
+			Item item = new Item(rubricaId, codigo, nome, descricao, precoUnitario, quantidade, valorEstimado, 0d, 0d, unidadeMedida, arquivoDetalhes, arquivoAuxiliar);
 			Long itemId = this.dao.create(item);
 			
 			AtualizarValoresEstimados.atualizarValorEstimadoRubrica(rubricaId);

@@ -30,6 +30,7 @@ public class CadastrarCategoria extends HttpServlet {
 		
 		Categoria categoria = new Categoria(
 			orcamentoId,
+			Integer.parseInt(req.getParameter("codigo")),
 			req.getParameter("nome"),
 			0d, //valorEstimado
 			0d, // valorOrcado

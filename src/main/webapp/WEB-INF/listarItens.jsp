@@ -52,9 +52,9 @@
 			   		<tbody id="myTable">
 		        		<c:forEach items="${itensMaps}" var="itemMap">
 							<tr>
-								<td> ${itemMap.nomeCategoria}</td>
-								<td> ${itemMap.nomeRubrica}</td>
-								<td> ${itemMap.item.nome}</td>
+								<td> ${itemMap.categoria.codigo} - ${itemMap.categoria.nome}</td>
+								<td> ${itemMap.rubrica.codigo} - ${itemMap.rubrica.nome}</td>
+								<td> ${itemMap.item.codigo} - ${itemMap.item.nome}</td>
 								<td> ${itemMap.item.getValorEstimadoFormatado()}</td>
 								<td> ${itemMap.item.getValorFormatado()}</td>
 								<td> ${itemMap.item.getValorRealizadoFormatado()}</td>

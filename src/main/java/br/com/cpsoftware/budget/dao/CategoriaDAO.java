@@ -38,6 +38,7 @@ public class CategoriaDAO implements EntidadeDao{
 	public Long create(Entidade categoria) {
 		Entity categoriaEntity = new Entity(CATEGORIA_KIND);
 		categoriaEntity.setProperty(Categoria.ORCAMENTO_ID, ((Categoria) categoria).getOrcamentoId());
+		categoriaEntity.setProperty(Categoria.CODIGO, ((Categoria) categoria).getCodigo());
 		categoriaEntity.setProperty(Categoria.NOME, categoria.getNome());
 		categoriaEntity.setProperty(Categoria.VALOR_ESTIMADO, categoria.getValorEstimado());
 		categoriaEntity.setProperty(Categoria.VALOR_ORCADO, categoria.getValorOrcado());
@@ -72,6 +73,7 @@ public class CategoriaDAO implements EntidadeDao{
 		Entity categoriaEntity = new Entity(key);     
 		
 		categoriaEntity.setProperty(Categoria.ORCAMENTO_ID, ((Categoria) categoria).getOrcamentoId());
+		categoriaEntity.setProperty(Categoria.CODIGO, ((Categoria) categoria).getCodigo());
 		categoriaEntity.setProperty(Categoria.NOME, categoria.getNome());
 		categoriaEntity.setProperty(Categoria.VALOR_ESTIMADO, categoria.getValorEstimado());
 		categoriaEntity.setProperty(Categoria.VALOR_ORCADO, categoria.getValorOrcado());
@@ -91,6 +93,7 @@ public class CategoriaDAO implements EntidadeDao{
 	private Categoria entityToCategoria(Entity categoriaEntity) {
 		return new Categoria((Long) categoriaEntity.getProperty(Categoria.ORCAMENTO_ID),
 							categoriaEntity.getKey().getId(),
+							((Long) categoriaEntity.getProperty(Categoria.CODIGO)).intValue(),
 							 (String)categoriaEntity.getProperty(Categoria.NOME),
 							 (Double)categoriaEntity.getProperty(Categoria.VALOR_ESTIMADO),
 							 (Double)categoriaEntity.getProperty(Categoria.VALOR_ORCADO),

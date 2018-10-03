@@ -11,6 +11,7 @@ public class Item {
 	
 	private Long rubricaId;
 	private Long id;
+	private int codigo;
 	private String nome;
 	private String descricao;
 	private Double precoUnitario;
@@ -25,6 +26,7 @@ public class Item {
 	//Definição das keys do banco
 	public static final String RUBRICA_ID = "rubrica_id";
 	public static final String ID = "id";
+	public static final String CODIGO = "codigo";
 	public static final String NOME = "nome";
 	public static final String DESCRICAO = "descricao";
 	public static final String PRECO_UNITARIO = "preco_unitario";
@@ -45,10 +47,11 @@ public class Item {
 	public static final int UNIDADE_MEDIDA_METRO = 4;
 	public static final int UNIDADE_MEDIDA_LITRO = 5;
 	
-	public Item(Long rubricaId, String nome, String descricao, Double precoUnitario, int quantidade,
+	public Item(Long rubricaId, int codigo, String nome, String descricao, Double precoUnitario, int quantidade,
 			Double valorEstimado, Double valorRealizado, Double valorComprovado, int unidadeMedida) {
 		
 		this.rubricaId = rubricaId;
+		this.codigo = codigo;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.precoUnitario = precoUnitario;
@@ -59,11 +62,12 @@ public class Item {
 		this.unidadeMedida = unidadeMedida;
 	}
 	
-	public Item(Long rubricaId, Long id,String nome, String descricao, Double precoUnitario, int quantidade,
+	public Item(Long rubricaId, Long id, int codigo, String nome, String descricao, Double precoUnitario, int quantidade,
 			Double valorEstimado, Double valorRealizado, Double valorComprovado, int unidadeMedida) {
 		
 		this.rubricaId = rubricaId;
 		this.id = id;
+		this.codigo = codigo;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.precoUnitario = precoUnitario;
@@ -74,10 +78,11 @@ public class Item {
 		this.unidadeMedida = unidadeMedida;
 	}
 	
-	public Item(Long rubricaId, String nome, String descricao, Double precoUnitario, int quantidade,
+	public Item(Long rubricaId, int codigo, String nome, String descricao, Double precoUnitario, int quantidade,
 			Double valorEstimado, Double valorRealizado, Double valorComprovado, int unidadeMedida, Blob arquivoDetalhes) {
 		
 		this.rubricaId = rubricaId;
+		this.codigo = codigo;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.precoUnitario = precoUnitario;
@@ -88,11 +93,12 @@ public class Item {
 		this.unidadeMedida = unidadeMedida;
 		this.arquivoDetalhes = arquivoDetalhes;
 	}
-	public Item(Long rubricaId, Long id, String nome, String descricao, Double precoUnitario, int quantidade,
+	public Item(Long rubricaId, Long id, int codigo, String nome, String descricao, Double precoUnitario, int quantidade,
 			Double valorEstimado, Double valorRealizado, Double valorComprovado, int unidadeMedida, Blob arquivoDetalhes) {
 		
 		this.rubricaId = rubricaId;
 		this.id = id;
+		this.codigo = codigo;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.precoUnitario = precoUnitario;
@@ -104,10 +110,11 @@ public class Item {
 		this.arquivoDetalhes = arquivoDetalhes;
 	}
 
-	public Item(Long rubricaId, String nome, String descricao, Double precoUnitario, int quantidade,
+	public Item(Long rubricaId, int codigo, String nome, String descricao, Double precoUnitario, int quantidade,
 			Double valorEstimado, Double valorRealizado, Double valorComprovado, int unidadeMedida, Blob arquivoDetalhes, Blob arquivoAuxiliar) {
 		
 		this.rubricaId = rubricaId;
+		this.codigo = codigo;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.quantidade = quantidade;
@@ -120,11 +127,12 @@ public class Item {
 		this.arquivoAuxiliar = arquivoAuxiliar;
 	}
 	
-	public Item(Long rubricaId, Long id, String nome, String descricao, Double precoUnitario, int quantidade,
+	public Item(Long rubricaId, Long id, int codigo, String nome, String descricao, Double precoUnitario, int quantidade,
 			Double valorEstimado, Double valorRealizado, Double valorComprovado, int unidadeMedida, Blob arquivoDetalhes, Blob arquivoAuxiliar) {
 		
 		this.rubricaId = rubricaId;
 		this.id = id;
+		this.codigo = codigo;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.quantidade = quantidade;
@@ -151,6 +159,15 @@ public class Item {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
+	}
+	
 	public String getNome() {
 		return nome;
 	}
