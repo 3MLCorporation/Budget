@@ -11,6 +11,7 @@ import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.dao.ProjetoDAO;
 import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.Usuario;
+import br.com.cpsoftware.budget.util.GerarEstrutura;
 
 @SuppressWarnings("serial")
 public class CadastrarOrcamento extends HttpServlet {
@@ -56,6 +57,12 @@ public class CadastrarOrcamento extends HttpServlet {
 		Orcamento aux = (Orcamento) this.dao.read(orcamentoId);
 		System.err.println("Nome do orcamento no banco - " + aux.getNome());
 		System.err.println("Valor do orcamento no banco - " + aux.getValorEstimado());
+		
+		
+		int modelo = Integer.parseInt(req.getParameter("modelo"));
+		if(modelo == 2) {
+			GerarEstrutura.gerarCategorias(orcamentoId);
+		}
 		
 		
 		resp.sendRedirect("/listarOrcamentos");

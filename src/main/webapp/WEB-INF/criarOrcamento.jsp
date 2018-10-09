@@ -36,6 +36,10 @@
 			        class="form-control" placeholder="Fornecer o nome do novo orçamento"
 			        name="nome" required="required">
 			   </div>
+			   <div class="form-group">
+				   	<input type="radio" value="1" checked name="modelo">Criar do zero
+	     			<input type="radio" value="2" name="modelo">Modelo acadêmico
+   			 	</div>
 			    <button type="submit" class="btn btn-dark botaoCadastro" title="Cadastrar orçamento">Cadastrar</button>
 			</form>
 	  	</div>
