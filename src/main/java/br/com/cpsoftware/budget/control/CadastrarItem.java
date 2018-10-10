@@ -105,7 +105,6 @@ public class CadastrarItem extends HttpServlet {
 			}catch (FileUploadException e) {
 				e.printStackTrace();
 			}
-			
 			Item item = new Item(rubricaId, codigo, nome, descricao, precoUnitario, quantidade, valorEstimado, 0d, 0d, unidadeMedida, arquivoDetalhes, arquivoAuxiliar);
 			Long itemId = this.dao.create(item);
 			

@@ -11,7 +11,8 @@ import br.com.cpsoftware.budget.dao.OrcamentoDAO;
 import br.com.cpsoftware.budget.dao.ProjetoDAO;
 import br.com.cpsoftware.budget.model.Orcamento;
 import br.com.cpsoftware.budget.model.Usuario;
-import br.com.cpsoftware.budget.util.GerarEstrutura;
+import br.com.cpsoftware.budget.util.GerarEstruturaAdmin;
+import br.com.cpsoftware.budget.util.GerarEstruturaAcademica;
 
 @SuppressWarnings("serial")
 public class CadastrarOrcamento extends HttpServlet {
@@ -61,9 +62,10 @@ public class CadastrarOrcamento extends HttpServlet {
 		
 		int modelo = Integer.parseInt(req.getParameter("modelo"));
 		if(modelo == 2) {
-			GerarEstrutura.gerarCategorias(orcamentoId);
+			GerarEstruturaAdmin.gerarCategorias(orcamentoId);
+		} else if(modelo == 3) {
+			GerarEstruturaAcademica.gerarCategorias(orcamentoId);
 		}
-		
 		
 		resp.sendRedirect("/listarOrcamentos");
 		

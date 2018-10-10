@@ -130,7 +130,7 @@ public class ItemDAO{
 	public List<Item> getItens(){
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Query query = new Query(ITEM_KIND).addSort(Item.NOME, SortDirection.ASCENDING);
+		Query query = new Query(ITEM_KIND).addSort(Item.CODIGO, SortDirection.ASCENDING);
 		
 		PreparedQuery preparedQuery = datastore.prepare(query);
 		
@@ -142,7 +142,7 @@ public class ItemDAO{
 	public List<Item> getItens(Long rubricaId){
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Query query = new Query(ITEM_KIND).addSort(Item.NOME, SortDirection.ASCENDING);
+		Query query = new Query(ITEM_KIND).addSort(Item.CODIGO, SortDirection.ASCENDING);
 		
 		Filter rubricaFilter = new FilterPredicate(Item.RUBRICA_ID, FilterOperator.EQUAL, rubricaId);
 		query.setFilter(rubricaFilter);
@@ -157,7 +157,7 @@ public class ItemDAO{
 	public List<Map<Object, Object>> getItensMaps(Long rubricaId){
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Query query = new Query(ITEM_KIND).addSort(Item.NOME, SortDirection.ASCENDING);
+		Query query = new Query(ITEM_KIND).addSort(Item.CODIGO, SortDirection.ASCENDING);
 		
 		Filter rubricaFilter = new FilterPredicate(Item.RUBRICA_ID, FilterOperator.EQUAL, rubricaId);
 		query.setFilter(rubricaFilter);

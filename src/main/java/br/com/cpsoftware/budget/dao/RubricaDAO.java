@@ -119,7 +119,7 @@ public class RubricaDAO implements EntidadeDao{
 	public List<Rubrica> getRubricas(){
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Query query = new Query(RUBRICA_KIND).addSort(Rubrica.NOME, SortDirection.ASCENDING);
+		Query query = new Query(RUBRICA_KIND).addSort(Rubrica.CODIGO, SortDirection.ASCENDING);
 		
 		PreparedQuery preparedQuery = datastore.prepare(query);
 		
@@ -131,7 +131,7 @@ public class RubricaDAO implements EntidadeDao{
 	public List<Rubrica> getRubricas(Long categoriaId){
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Query query = new Query(RUBRICA_KIND).addSort(Rubrica.NOME, SortDirection.ASCENDING);
+		Query query = new Query(RUBRICA_KIND).addSort(Rubrica.CODIGO, SortDirection.ASCENDING);
 		
 		Filter categoriaFilter = new FilterPredicate(Rubrica.CATEGORIA_ID, FilterOperator.EQUAL, categoriaId);
 		query.setFilter(categoriaFilter);
@@ -146,7 +146,7 @@ public class RubricaDAO implements EntidadeDao{
 	public List<Map<Object, Object>> getRubricasMaps(Long categoriaId){
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Query query = new Query(RUBRICA_KIND).addSort(Rubrica.NOME, SortDirection.ASCENDING);
+		Query query = new Query(RUBRICA_KIND).addSort(Rubrica.CODIGO, SortDirection.ASCENDING);
 		
 		Filter categoriaFilter = new FilterPredicate(Rubrica.CATEGORIA_ID, FilterOperator.EQUAL, categoriaId);
 		query.setFilter(categoriaFilter);

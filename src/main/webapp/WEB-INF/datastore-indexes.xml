@@ -24,17 +24,17 @@
 	
 	<datastore-index kind="Categoria" ancestor="false" source="manual">
         <property name="orcamento_id" direction="asc"/>
-        <property name="nome" direction="asc"/>
+        <property name="codigo" direction="asc"/>
     </datastore-index>
 	
 	<datastore-index kind="Rubrica" ancestor="false" source="manual">
         <property name="categoria_id" direction="asc"/>
-        <property name="nome" direction="asc"/>
+        <property name="codigo" direction="asc"/>
     </datastore-index>
 	
 	<datastore-index kind="Item" ancestor="false" source="manual">
         <property name="rubrica_id" direction="asc"/>
-        <property name="nome" direction="asc"/>
+        <property name="codigo" direction="asc"/>
     </datastore-index>
     
     <datastore-index kind="NotaFiscal" ancestor="false" source="manual">

@@ -116,7 +116,7 @@ public class CategoriaDAO implements EntidadeDao{
 	public List<Categoria> getCategorias(){
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Query query = new Query(CATEGORIA_KIND).addSort(Categoria.NOME, SortDirection.ASCENDING);
+		Query query = new Query(CATEGORIA_KIND).addSort(Categoria.CODIGO, SortDirection.ASCENDING);
 		
 		PreparedQuery preparedQuery = datastore.prepare(query);
 		
@@ -127,7 +127,7 @@ public class CategoriaDAO implements EntidadeDao{
 	public List<Categoria> getCategorias(Long orcamentoId){
 		
 		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Query query = new Query(CATEGORIA_KIND).addSort(Categoria.NOME, SortDirection.ASCENDING);
+		Query query = new Query(CATEGORIA_KIND).addSort(Categoria.CODIGO, SortDirection.ASCENDING);
 		
 		Filter orcamentoFilter = new FilterPredicate(Categoria.ORCAMENTO_ID, FilterOperator.EQUAL, orcamentoId);
 		query.setFilter(orcamentoFilter);
