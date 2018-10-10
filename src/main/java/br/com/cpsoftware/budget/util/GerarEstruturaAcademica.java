@@ -3,6 +3,7 @@ package br.com.cpsoftware.budget.util;
 import java.util.Arrays;
 import java.util.List;
 
+import com.google.appengine.api.datastore.Blob;
 import com.google.gson.Gson;
 
 import br.com.cpsoftware.budget.dao.CategoriaDAO;
@@ -41,24 +42,24 @@ public class GerarEstruturaAcademica {
 	);
 
 	/*private static final List<List<String>> itensDespesasComPessoal = Arrays.asList(
-		Arrays.asList("{ \"nome\":\"Salários e Ordenados\", \"codigo\":\"1\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\"}",
-					"{ \"nome\":\"Gratificações extra salariais\", \"codigo\":\"2\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"\bytes\":[]}, \"arquivoAuxiliar\":{\"bytes\":[]} }",
-					"{ \"nome\":\"Diárias em Viagens\", \"codigo\":\"3\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"\bytes\":[]}, \"arquivoAuxiliar\":{\"\bytes\":[]} }",
-					"{ \"nome\":\"Hora Extra\", \"codigo\":\"4\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"\bytes\":[]}, \"arquivoAuxiliar\":{\"\bytes\":[]} }",
-					"{ \"nome\":\"Vale de Transporte\", \"codigo\":\"5\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"\bytes\":[]}, \"arquivoAuxiliar\":{\"\bytes\":[]} }",
-					"{ \"nome\":\"Plano de Saúde\", \"codigo\":\"6\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"\bytes\":[]}, \"arquivoAuxiliar\":{\"\bytes\":[]} }",
-					"{ \"nome\":\"Bolsas e Estágio\", \"codigo\":\"7\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"\bytes\":[]}, \"arquivoAuxiliar\":{\"\bytes\":[]} }",
-					"{ \"nome\":\"Monitoria\", \"codigo\":\"8\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"\bytes\":[]}, \"arquivoAuxiliar\":{\"\bytes\":[]} }",
-					"{ \"nome\":\"INSS s/ Folha\", \"codigo\":\"9\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"\bytes\":[]}, \"arquivoAuxiliar\":{\"\bytes\":[]} }",
-					"{ \"nome\":\"FGTS\", \"codigo\":\"10\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"bytes\":[]}, \"arquivoAuxiliar\":{\"\bytes\":[]} }",
-					"{ \"nome\":\"Outros Encargos s/ Folha\", \"codigo\":\"11\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"\bytes\":[]}, \"arquivoAuxiliar\":{\"\bytes\":[]} }",
-					"{ \"nome\":\"EPI/EPC, Uniformes e Fardamentos\", \"codigo\":\"12\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"bytes\":[]}, \"arquivoAuxiliar\":{\"\bytes\":[]} }",
-					"{ \"nome\":\"Auxilio Transporte e Alimentação\", \"codigo\":\"13\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"bytes\":[]}, \"arquivoAuxiliar\":{\"bytes\":[]} }",
-					"{ \"nome\":\"Rescisão Trabalhista e Aviso Prévio\", \"codigo\":\"14\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"bytes\":[]}, \"arquivoAuxiliar\":{\"bytes\":[]} }",
-					"{ \"nome\":\"Acordos Trabalhistas\", \"codigo\":\"15\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"bytes\":[]}, \"arquivoAuxiliar\":{\"bytes\":[]} }",
-					"{ \"nome\":\"Vale Alimentação\", \"codigo\":\"16\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"bytes\":[]}, \"arquivoAuxiliar\":{\"bytes\":[]} }",
-					"{ \"nome\":\"Contribuição Sindical\", \"codigo\":\"17\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"bytes\":[]}, \"arquivoAuxiliar\":{\"bytes\":[]} }",
-					"{ \"nome\":\"Consignado e Descontos em Folha\", \"codigo\":\"18\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"bytes\":[]}, \"arquivoAuxiliar\":{\"bytes\":[]} }")
+		Arrays.asList("{ \"nome\":\"Salários e Ordenados\", \"codigo\":\"1\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"\bytes\":[0]}, \"arquivoAuxiliar\":{\"bytes\":[0]} }",
+					"{ \"nome\":\"Gratificações extra salariais\", \"codigo\":\"2\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"\bytes\":[0]}, \"arquivoAuxiliar\":{\"bytes\":[0]} }",
+					"{ \"nome\":\"Diárias em Viagens\", \"codigo\":\"3\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"\bytes\":[0]}, \"arquivoAuxiliar\":{\"\bytes\":[0]} }",
+					"{ \"nome\":\"Hora Extra\", \"codigo\":\"4\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"\bytes\":[0]}, \"arquivoAuxiliar\":{\"\bytes\":[0]} }",
+					"{ \"nome\":\"Vale de Transporte\", \"codigo\":\"5\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"\bytes\":[0]}, \"arquivoAuxiliar\":{\"\bytes\":[0]} }",
+					"{ \"nome\":\"Plano de Saúde\", \"codigo\":\"6\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"\bytes\":[0]}, \"arquivoAuxiliar\":{\"\bytes\":[0]} }",
+					"{ \"nome\":\"Bolsas e Estágio\", \"codigo\":\"7\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"\bytes\":[0]}, \"arquivoAuxiliar\":{\"\bytes\":[0]} }",
+					"{ \"nome\":\"Monitoria\", \"codigo\":\"8\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"\bytes\":[0]}, \"arquivoAuxiliar\":{\"\bytes\":[0]} }",
+					"{ \"nome\":\"INSS s/ Folha\", \"codigo\":\"9\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"\bytes\":[0]}, \"arquivoAuxiliar\":{\"\bytes\":[0]} }",
+					"{ \"nome\":\"FGTS\", \"codigo\":\"10\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"bytes\":[0]}, \"arquivoAuxiliar\":{\"\bytes\":[0]} }",
+					"{ \"nome\":\"Outros Encargos s/ Folha\", \"codigo\":\"11\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"\bytes\":[0]}, \"arquivoAuxiliar\":{\"\bytes\":[0]} }",
+					"{ \"nome\":\"EPI/EPC, Uniformes e Fardamentos\", \"codigo\":\"12\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"bytes\":[0]}, \"arquivoAuxiliar\":{\"\bytes\":[0]} }",
+					"{ \"nome\":\"Auxilio Transporte e Alimentação\", \"codigo\":\"13\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"bytes\":[0]}, \"arquivoAuxiliar\":{\"bytes\":[0]} }",
+					"{ \"nome\":\"Rescisão Trabalhista e Aviso Prévio\", \"codigo\":\"14\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"bytes\":[0]}, \"arquivoAuxiliar\":{\"bytes\":[0]} }",
+					"{ \"nome\":\"Acordos Trabalhistas\", \"codigo\":\"15\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"bytes\":[0]}, \"arquivoAuxiliar\":{\"bytes\":[0]} }",
+					"{ \"nome\":\"Vale Alimentação\", \"codigo\":\"16\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"bytes\":[0]}, \"arquivoAuxiliar\":{\"bytes\":[0]} }",
+					"{ \"nome\":\"Contribuição Sindical\", \"codigo\":\"17\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"bytes\":[0]}, \"arquivoAuxiliar\":{\"bytes\":[0]} }",
+					"{ \"nome\":\"Consignado e Descontos em Folha\", \"codigo\":\"18\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\", \"arquivoDetalhes\":{\"bytes\":[0]}, \"arquivoAuxiliar\":{\"bytes\":[0]} }")
 	);*/
 	private static final List<List<String>> itensDespesasComPessoal = Arrays.asList(
 		Arrays.asList("{ \"nome\":\"Salários e Ordenados\", \"codigo\":\"1\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\"}",
@@ -81,7 +82,7 @@ public class GerarEstruturaAcademica {
 					"{ \"nome\":\"Consignado e Descontos em Folha\", \"codigo\":\"18\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\"}")
 	);
 	private static final List<List<String>> itensSaidasOperacionais = Arrays.asList(
-		Arrays.asList("{ \"nome\":\"Professores PJ\", \"codigo\":\"1\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }", //TODO Continuar a colar: , \"arquivoDetalhes\":{}, \"arquivoAuxiliar\":{}
+		Arrays.asList("{ \"nome\":\"Professores PJ\", \"codigo\":\"1\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }", //TODO Apagar propriedades repetidas e desnecessarias 
 					"{ \"nome\":\"Professores PF\", \"codigo\":\"2\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
 					"{ \"nome\":\"Transporte e Hospedagens - Professores\", \"codigo\":\"3\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }"),
 		Arrays.asList("{ \"nome\":\"Energia\", \"codigo\":\"1\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
@@ -184,8 +185,10 @@ public class GerarEstruturaAcademica {
 		 for(String categoriaJson : categoriasJson) {
 			 Categoria categoria = new Gson().fromJson(categoriaJson, Categoria.class);
 			 categoria.setOrcamentoId(orcamentoId);
+			 
 			 Long categoriaId = categoriaDao.create(categoria);
 			 gerarRubricas(categoriaId, rubricasJson.get(i), itensJson.get(i));
+			 
 			 i++;
 		 }
 	}
@@ -195,8 +198,10 @@ public class GerarEstruturaAcademica {
 		for(String json : rubricaJson) {
 			Rubrica rubrica = new Gson().fromJson(json, Rubrica.class); 
 			rubrica.setCategoriaId(categoriaId);
+			
 			Long rubricaId = rubricaDao.create(rubrica);
 			gerarItens(rubricaId, itemJson.get(i));
+			
 			i++;
 		}
 	}
@@ -205,6 +210,11 @@ public class GerarEstruturaAcademica {
 		for(String json : itemJson) {
 			Item item = new Gson().fromJson(json, Item.class);
 			item.setRubricaId(rubricaId);
+			
+			Blob emptyBlob = new Blob(new byte[0]);
+			item.setArquivoDetalhes(emptyBlob);
+			item.setArquivoAuxiliar(emptyBlob);
+			
 			itemDao.create(item);
 		}
 		
