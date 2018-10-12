@@ -41,6 +41,31 @@
         </div>
 	   	<div class="card-body">
 			<form action="atualizarItem" method="POST" enctype="multipart/form-data" id="formAtualizarItem">
+			   <div class="row">
+			     <div class="form-group col-lg-6">
+			       <label>Categoria:</label>
+			       <select id="categoria-select" class="form-control" name="categoria">
+		         		<option value="">Selecione</option>
+		         		<c:forEach items="${categorias}" var="categoria">
+			        		 <option value="${categoria.id }" ${categoriaAtualId == categoria.id ? 'selected' : ''}>${categoria.nome}</option>
+		       			</c:forEach>
+			     	</select>
+		   		 </div>
+			
+			     <div class="form-group col-lg-6">
+				     <label>Rubrica:</label>
+				     <select id="rubrica-select" class="form-control" name="rubrica_id">
+		       			<c:forEach items="${rubricas}" var="rubrica">
+				      	 	<option value="${rubrica.id }" ${rubricaAtualId == rubrica.id ? 'selected' : ''}>${rubrica.nome}</option>
+			    		 </c:forEach>
+				   	</select>
+				 </div>
+				</div>
+			   <div class="form-group">
+		       	   <label for="text">Código:</label> <input type="number" pattern="[0-9.]"
+		        	class="form-control" placeholder="Fornecer o código do novo item"
+		       	   name="codigo" required="required" value="${item.codigo}">
+		      	</div>
 			   <div class="form-group">
 			     <label for="text">Item:</label> <input type="text"
 			     class="form-control" placeholder="Fornecer o novo nome do novo item"
@@ -115,26 +140,6 @@
 					<input type="file" class="form-control" placeholder="Fornecer o novo arquivo auxiliar" name="arquivo_auxiliar" accept=".pdf">
 				</div>
 			</div>
-			<div class="row">
-			     <div class="form-group col-lg-6">
-			       <label>Categoria:</label>
-			       <select id="categoria-select" class="form-control" name="categoria">
-		         		<option value="">Selecione</option>
-		         		<c:forEach items="${categorias}" var="categoria">
-			        		 <option value="${categoria.id }" ${categoriaAtualId == categoria.id ? 'selected' : ''}>${categoria.nome}</option>
-		       			</c:forEach>
-			     	</select>
-		   		 </div>
-			
-			     <div class="form-group col-lg-6">
-				     <label>Rubrica:</label>
-				     <select id="rubrica-select" class="form-control" name="rubrica_id">
-		       			<c:forEach items="${rubricas}" var="rubrica">
-				      	 	<option value="${rubrica.id }" ${rubricaAtualId == rubrica.id ? 'selected' : ''}>${rubrica.nome}</option>
-			    		 </c:forEach>
-				   	</select>
-				 </div>
-			</div>  
 			<input type="hidden" class="form-control" value="${item.id}" name="id">
 			<button type="submit" class="btn btn-dark botaoCadastro" title="Atualizar item">Atualizar</button>
 			</form>

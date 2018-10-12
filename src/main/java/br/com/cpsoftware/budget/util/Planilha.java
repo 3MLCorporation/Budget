@@ -269,19 +269,22 @@ public class Planilha {
 				categoriaValorMesCell = categoriaRow.createCell(i);
 				categoriaValorMesCell.setCellStyle(styles.get(HEADER_STYLE_CATEGORIA_VALOR));
 				categoriaValorMesCell.setCellType(CellType.FORMULA);
-				
-				Map<Integer, Character> columnsStringsByNumbers = getColumnsStringsByNumbers();
-				String formula = "";
-				for(int rubricaRowNumber : rubricasRowNumbers) {
-					formula += columnsStringsByNumbers.get(i).toString() + rubricaRowNumber + "+";// ex.: E10+E27+E31
+
+				if(!rubricasRowNumbers.isEmpty()) {
+
+					Map<Integer, Character> columnsStringsByNumbers = getColumnsStringsByNumbers();
+					String formula = "";
+					for(int rubricaRowNumber : rubricasRowNumbers) {
+						formula += columnsStringsByNumbers.get(i).toString() + rubricaRowNumber + "+";// ex.: E10+E27+E31
+					}
+					
+					//Remove o último "+"
+					if (formula != null && formula.length() > 0 && formula.charAt(formula.length() - 1) == '+') {
+				        formula = formula.substring(0, formula.length() - 1);
+				    }
+					
+					categoriaValorMesCell.setCellFormula(formula);
 				}
-				
-				//Remove o último "+"
-				if (formula != null && formula.length() > 0 && formula.charAt(formula.length() - 1) == '+') {
-			        formula = formula.substring(0, formula.length() - 1);
-			    }
-				
-				categoriaValorMesCell.setCellFormula(formula);
 			}
 		}
 		

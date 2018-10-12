@@ -34,7 +34,8 @@
 			  			<input type="email" class="form-control" placeholder="Fornecer o email do usuário a ser adicionado" name="email" required="required">
 			  		</div>
 			  		<div class="botaoPosicao">
-						<button type="submit" class="btn btn-dark botao" title="Adicionar editor" data-toggle="modal" data-target="#usuarioModal">Adicionar</button>
+<!-- 					<button type="submit" class="btn btn-dark botao" title="Adicionar editor" data-toggle="modal" data-target="#usuarioModal">Adicionar</button> -->
+						<button type="submit" class="btn btn-dark botao" title="Adicionar editor">Adicionar</button>
 					</div>
 				</form>
 			</div>
@@ -54,7 +55,7 @@
 									<td>${editor.nome}</td>
 									<td>${editor.email}</td>
 									<td>
-										<button type="submit" class="btn btn-link open-delete-modal" title="Remover usuário" data-toggle="modal" data-target="#deletarEntidade" data-id="${}">
+										<button type="submit" class="btn btn-link open-delete-modal" title="Remover usuário" data-toggle="modal" data-target="#deletarEntidade" data-id="${editor.id}">
 											<!--<img src="../img/excluir.png" alt="Logo">--> <i class="material-icons" style="color:black" >delete_forever</i></button>	<!--REMOVER EDITOR-->			
 									</td>
 								</tr>
@@ -69,20 +70,25 @@
 
 
 
-	<!--<c:if test="${empty editoresCadastrados}">
+	<c:if test="${empty editoresCadastrados}">
 	   	<div class="card mb-3">
 			<div class="card-header">
 	       		Este orçamento não possui editores, adicione-os!
 	    	</div>
 	    </div>
-	</c:if>-->
+	</c:if>
 	 	
 	
-		
-	<c:if test="${not empty confirmacao }">
+	 <c:if test="${not empty confirmacao }">
 		<c:if test="${not empty usuarioAdicionado}">
-		    <!-- Usuario encontrado | Modal-->
-		    <div class="modal fade" id="usuarioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="card mb-3">
+                <div class="card-header">
+                       Usuário ${usuarioAdicionado.nome} adicionado com sucesso!
+                </div>
+            </div>
+		
+		     <!-- Usuario encontrado | Modal-->
+		    <!-- <div class="modal fade" id="usuarioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		      <div class="modal-dialog" role="document">
 		        <div class="modal-content">
 		          <div class="modal-header">
@@ -97,11 +103,17 @@
 		          </div>
 		        </div>
 		      </div>
-		    </div>
+		    </div> -->
 		</c:if>
 		<c:if test="${empty usuarioAdicionado}">
+            <div class="card mb-3">
+                <div class="card-header">
+                       Email do usuário não encontrado, experimente tentar outro!
+                </div>
+            </div>        
+		
 		    <!-- Usuario não encontrado | Modal-->
-		    <div class="modal fade" id="usuarioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		    <!-- <div class="modal fade" id="usuarioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		      <div class="modal-dialog" role="document">
 		        <div class="modal-content">
 		          <div class="modal-header">
@@ -116,11 +128,11 @@
 		          </div>
 		        </div>
 		      </div>
-		    </div>
+		    </div> -->
 
 		</c:if>
 	</c:if>
-
+ 
 
 	<!--Caixa de dialogo do botão delete-->
     <div class="modal fade" id="deletarEntidade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -135,8 +147,8 @@
           <div class="modal-body">Pressione o botão "Remover"</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-				<form action="excluirOrcamento" method="POST">
-					<input type="hidden" class="form-control" id="entityId" value="" name="orcamento_id">
+				<form action="removerEditor" method="POST">
+					<input type="hidden" class="form-control" id="entityId" value="" name="editorId">
 					<button type="submit" class="btn btn-primary" title="Remover usuário">Remover</button> <!--Remover-->
 		        </form>
           </div>

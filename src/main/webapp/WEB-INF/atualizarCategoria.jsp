@@ -35,10 +35,15 @@
 	   	<div class="card-body">
 		   	<form action="atualizarCategoria" method="POST">
 		  		<div class="form-group">
-		       	   <label for="text">Categoria:</label> <input type="text"
-		        	class="form-control" placeholder="Fornecer o novo nome da nova categoria"
-		       	   name="nome" value="${categoria.nome}">
-		      </div>
+		       	   <label for="text">Código:</label> <input type="number" pattern="[0-9.]"
+		        	class="form-control" placeholder="Fornecer o código da nova categoria"
+		       	   name="codigo" required="required" value="${categoria.codigo}">
+		      	</div>
+				<div class="form-group">
+			 	   <label for="text">Categoria:</label> <input type="text"
+			  		class="form-control" placeholder="Fornecer o novo nome da nova categoria"
+			 	   name="nome" required="required" value="${categoria.nome}">
+				</div>
 	    	<%-- <div class="form-group">
 		     	 <label>Orçamento:</label>
 		     	 	<select class="form-control" name="orcamentoId">

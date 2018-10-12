@@ -35,9 +35,11 @@ public class AtualizarCategoria extends HttpServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Long categoriaId = Long.parseLong(req.getParameter("categoriaId"));
 		String nome = req.getParameter("nome");
+		int codigo = Integer.parseInt(req.getParameter("codigo"));
 		
 		Categoria categoria = (Categoria) this.categoriaDao.read(categoriaId);
 		categoria.setNome(nome);
+		categoria.setCodigo(codigo);
 		
 		this.categoriaDao.update(categoria);
 		

@@ -121,6 +121,15 @@
    		<servlet-name>adicionarEditor</servlet-name>
    		<url-pattern>/adicionarEditor</url-pattern>	
 	</servlet-mapping>
+	
+	<servlet>
+   		<servlet-name>removerEditor</servlet-name>
+   		<servlet-class>br.com.cpsoftware.budget.control.RemoverEditor</servlet-class>
+   </servlet>
+   <servlet-mapping>
+   		<servlet-name>removerEditor</servlet-name>
+   		<url-pattern>/removerEditor</url-pattern>	
+	</servlet-mapping>
    
    <servlet>
    		<servlet-name>selecionarOrcamento</servlet-name>

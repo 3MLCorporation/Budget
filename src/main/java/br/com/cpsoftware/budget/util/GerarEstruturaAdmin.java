@@ -3,6 +3,7 @@ package br.com.cpsoftware.budget.util;
 import java.util.Arrays;
 import java.util.List;
 
+import com.google.appengine.api.datastore.Blob;
 import com.google.gson.Gson;
 
 import br.com.cpsoftware.budget.dao.CategoriaDAO;
@@ -30,7 +31,7 @@ public class GerarEstruturaAdmin {
 	
 	private static final List<List<String>> rubricasJson = Arrays.asList(
 			Arrays.asList("{ \"nome\":\"Folha de Pagamento\", \"codigo\":\"1\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }"),
-			Arrays.asList("{ \"nome\":\"Serviços Operacionais\", \"codigo\":\"1\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
+			Arrays.asList(//"{ \"nome\":\"Serviços Operacionais\", \"codigo\":\"1\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
 						"{ \"nome\":\"Despesas Operacionais\", \"codigo\":\"2\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
 						"{ \"nome\":\"Vestibular\", \"codigo\":\"3\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
 						"{ \"nome\":\"ENADE\", \"codigo\":\"4\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }"),
@@ -83,20 +84,20 @@ public class GerarEstruturaAdmin {
 	);
 	
 	private static final List<List<String>> itensSaidasOperacionais = Arrays.asList(
-		Arrays.asList("{ \"nome\":\"Professores PJ\", \"codigo\":\"1\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }", //TODO Continuar a colar: , \"arquivoDetalhes\":{}, \"arquivoAuxiliar\":{}
-					"{ \"nome\":\"Professores PF\", \"codigo\":\"2\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
-					"{ \"nome\":\"Transporte e Hospedagens - Professores\", \"codigo\":\"3\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }"),
+		//Arrays.asList("{ \"nome\":\"Professores PJ\", \"codigo\":\"1\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }", //TODO Continuar a colar: , \"arquivoDetalhes\":{}, \"arquivoAuxiliar\":{}
+			//		"{ \"nome\":\"Professores PF\", \"codigo\":\"2\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
+				//	"{ \"nome\":\"Transporte e Hospedagens - Professores\", \"codigo\":\"3\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }"),
 		Arrays.asList("{ \"nome\":\"Energia\", \"codigo\":\"1\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
 					"{ \"nome\":\"Água e Esgoto\", \"codigo\":\"2\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
-					"{ \"nome\":\"Material de Apoio Aulas - Insumos\", \"codigo\":\"3\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
-					"{ \"nome\":\"Livros, Material Didático e Periódicos\", \"codigo\":\"4\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
-					"{ \"nome\":\"Alimentação - Corpo Acadêmico\", \"codigo\":\"5\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
+					//"{ \"nome\":\"Material de Apoio Aulas - Insumos\", \"codigo\":\"3\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
+					"{ \"nome\":\"Livros, Material Didático e Periódicos\", \"codigo\":\"4\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }"),
+					/*"{ \"nome\":\"Alimentação - Corpo Acadêmico\", \"codigo\":\"5\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
 					"{ \"nome\":\"Alugueis de imóveis Acadêmicos\", \"codigo\":\"6\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
 					"{ \"nome\":\"Feiras, Seminários,  Eventos e Congressos\", \"codigo\":\"7\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
 					"{ \"nome\":\"Cursos e Treinamentos - Corpo Acadêmico\", \"codigo\":\"8\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
 					"{ \"nome\":\"Mat. Consumo de Laboratórios e Clínicas\", \"codigo\":\"9\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
 					"{ \"nome\":\"Estagios/Convenios/Amb/Hosp/Laboratórios\", \"codigo\":\"10\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
-					"{ \"nome\":\"Serviços Prestados Laboratório\", \"codigo\":\"11\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }"),
+					"{ \"nome\":\"Serviços Prestados Laboratório\", \"codigo\":\"11\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }" ),*/
 		Arrays.asList("{ \"nome\":\"Vestib.Marketing e Propaganda\", \"codigo\":\"1\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
 					"{ \"nome\":\"Vestib.Pessoal, Alimentação e Transporte\", \"codigo\":\"2\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
 					"{ \"nome\":\"Vestib.Prova,Segurança e Outros Materiais\", \"codigo\":\"3\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }"),
@@ -137,11 +138,11 @@ public class GerarEstruturaAdmin {
 				"{ \"nome\":\"Propaganda e Publicidade de Televisão\", \"codigo\":\"27\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
 				"{ \"nome\":\"Propaganda e Publicidade de Jornais\", \"codigo\":\"28\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
 				"{ \"nome\":\"Propaganda e Publicidade Rádios\", \"codigo\":\"29\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
-				"{ \"nome\":\"Impostos - I.R.\", \"codigo\":\"30\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
+				/*"{ \"nome\":\"Impostos - I.R.\", \"codigo\":\"30\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
 				"{ \"nome\":\"Impostos - INSS\", \"codigo\":\"31\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
 				"{ \"nome\":\"Impostos - PIS/COFINS/CSLL\", \"codigo\":\"32\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
 				"{ \"nome\":\"Impostos - I.S.S.\", \"codigo\":\"33\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
-				"{ \"nome\":\"Associações e Entidades\", \"codigo\":\"34\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
+				*/"{ \"nome\":\"Associações e Entidades\", \"codigo\":\"34\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
 				"{ \"nome\":\"Manutenção de Equipamentos\", \"codigo\":\"35\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
 				"{ \"nome\":\"Custas Processuais e de Cobrança\", \"codigo\":\"36\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
 				"{ \"nome\":\"Eventos Institucionais\", \"codigo\":\"37\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }")
@@ -155,7 +156,7 @@ public class GerarEstruturaAdmin {
 				"{ \"nome\":\"Aquisição de Móveis e Utensílios\", \"codigo\":\"4\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
 				"{ \"nome\":\"Equipamentos de Laboratório e Clínicas\", \"codigo\":\"5\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
 				"{ \"nome\":\"Investimentos em Imóveis e Terrenos\", \"codigo\":\"6\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
-				"{ \"nome\":\"Adiantamento a Fornecedores\", \"codigo\":\"7\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
+				//"{ \"nome\":\"Adiantamento a Fornecedores\", \"codigo\":\"7\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }",
 				"{ \"nome\":\"Aquisição de Maquinas e Equipamentos\", \"codigo\":\"9\", \"descricao\":\"\", \"precoUnitario\":\"0\", \"quantidade\":\"0\", \"unidadeMedida\":\"0\", \"valorEstimado\":\"0\", \"valorOrcado\":\"0\", \"valorRealizado\":\"0\", \"valorComprovado\":\"0\" }")
 		
 	);
@@ -207,6 +208,11 @@ public class GerarEstruturaAdmin {
 		for(String json : itemJson) {
 			Item item = new Gson().fromJson(json, Item.class);
 			item.setRubricaId(rubricaId);
+			
+			Blob emptyBlob = new Blob(new byte[0]);
+			item.setArquivoDetalhes(emptyBlob);
+			item.setArquivoAuxiliar(emptyBlob);
+			
 			itemDao.create(item);
 		}
 		

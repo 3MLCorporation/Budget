@@ -28,44 +28,48 @@ public class MostrarResumo extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
-		
-		if(usuario == null) {
-			System.out.println("usuario logado null");
+		if(req.getSession().getAttribute("usuario") == null) {
+			resp.sendRedirect("/login");
 		}else {
-			System.out.println(usuario.getPerfil());
-			System.out.println(usuario.getId());
-			System.out.println(usuario.getLogin());
-			System.out.println(usuario.getSenha());
-		}
-		
-		switch(usuario.getPerfil()){
+			Usuario usuario = (Usuario) req.getSession().getAttribute("usuario");
 			
-			case Usuario.PERFIL_ADMIN:
-				req.setAttribute("usuarios", new UsuarioDAO().getUsuarios());
-				req.setAttribute("page", "listarUsuario");
-				req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
-				break;
-			case Usuario.PERFIL_GERENTE:
-				ProjetoDAO projetoDao = new  ProjetoDAO();
-				req.setAttribute("projetos", projetoDao.getProjetos(usuario.getId()));
-				req.setAttribute("page", "listarProjetos");           
-				req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
-				break;
-			case Usuario.PERFIL_PADRAO:
-				List<OrcamentoUsuario> orcamentoUsuarioLista = new OrcamentoUsuarioDAO().getOrcamentoUsuarioByUsuarioId(usuario.getId());
-				List<Orcamento> orcamentos = new ArrayList<Orcamento>();
-				for(OrcamentoUsuario relacao: orcamentoUsuarioLista){
-					orcamentos.add((Orcamento) new OrcamentoDAO().read(relacao.getOrcamentoId()));
-				}
+			if(usuario == null) {
+				System.out.println("usuario logado null");
+			}else {
+				System.out.println(usuario.getPerfil());
+				System.out.println(usuario.getId());
+				System.out.println(usuario.getLogin());
+				System.out.println(usuario.getSenha());
+			}
+			
+			switch(usuario.getPerfil()){
 				
-				req.getSession().setAttribute("orcamentoEditavel", null);
-				req.setAttribute("orcamentos", orcamentos);
-				
-				req.setAttribute("page", "listarOrcamentos");           
-				req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
-				
-				break;
+				case Usuario.PERFIL_ADMIN:
+					req.setAttribute("usuarios", new UsuarioDAO().getUsuarios());
+					req.setAttribute("page", "listarUsuario");
+					req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
+					break;
+				case Usuario.PERFIL_GERENTE:
+					ProjetoDAO projetoDao = new  ProjetoDAO();
+					req.setAttribute("projetos", projetoDao.getProjetos(usuario.getId()));
+					req.setAttribute("page", "listarProjetos");           
+					req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
+					break;
+				case Usuario.PERFIL_PADRAO:
+					List<OrcamentoUsuario> orcamentoUsuarioLista = new OrcamentoUsuarioDAO().getOrcamentoUsuarioByUsuarioId(usuario.getId());
+					List<Orcamento> orcamentos = new ArrayList<Orcamento>();
+					for(OrcamentoUsuario relacao: orcamentoUsuarioLista){
+						orcamentos.add((Orcamento) new OrcamentoDAO().read(relacao.getOrcamentoId()));
+					}
+					
+					req.getSession().setAttribute("orcamentoEditavel", null);
+					req.setAttribute("orcamentos", orcamentos);
+					
+					req.setAttribute("page", "listarOrcamentos");           
+					req.getRequestDispatcher("/WEB-INF/base.jsp").forward(req, resp);
+					
+					break;
+			}
 		}
 	}
 }

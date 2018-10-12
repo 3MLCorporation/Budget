@@ -74,6 +74,7 @@ public class AtualizarItem extends HttpServlet {
 		boolean isMultipart = ServletFileUpload.isMultipartContent(req);
 		Long itemId = null;
 		Long rubricaId = null;
+		int codigo = 0;
 		String nome = null;
 		String descricao = null;
 		Double precoUnitario = null;
@@ -96,6 +97,8 @@ public class AtualizarItem extends HttpServlet {
 					if (item.isFormField()) {
 						if (item.getFieldName().equals(Item.RUBRICA_ID))
 							rubricaId = new Long(Streams.asString(stream));
+						if (item.getFieldName().equals(Item.CODIGO))
+							codigo = new Integer(Streams.asString(stream));
 						if (item.getFieldName().equals(Item.ID))
 							itemId = new Long(Streams.asString(stream));
 						if (item.getFieldName().equals(Item.NOME))
@@ -144,6 +147,7 @@ public class AtualizarItem extends HttpServlet {
 		Long rubricaAnterior = item.getRubricaId();
 		
 		item.setRubricaId(rubricaId);
+		item.setCodigo(codigo);
 		item.setNome(nome);
 		item.setDescricao(descricao);
 		item.setValorEstimado(valorEstimado);

@@ -53,6 +53,7 @@ public class AtualizarRubrica extends HttpServlet {
 		Long categoriaId = Long.parseLong(req.getParameter("categoriaId"));
 		Long rubricaId = Long.parseLong(req.getParameter("rubricaId"));
 		String nome = req.getParameter("nome");
+		int codigo = Integer.parseInt(req.getParameter("codigo"));
 		
 		Rubrica rubrica = (Rubrica) this.rubricaDao.read(rubricaId);
 		
@@ -60,6 +61,7 @@ public class AtualizarRubrica extends HttpServlet {
 		
 		rubrica.setCategoriaId(categoriaId);
 		rubrica.setNome(nome);
+		rubrica.setCodigo(codigo);
 		
 		//TODO Fazer classe util.Mover ??
 		

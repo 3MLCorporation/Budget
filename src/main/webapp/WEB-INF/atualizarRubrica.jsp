@@ -37,6 +37,11 @@
         </div>
 	   	<div class="card-body">
 		  <form action="atualizarRubrica" method="POST">
+		  		<div class="form-group">
+		       	   <label for="text">Código:</label> <input type="number" pattern="[0-9.]"
+		        	class="form-control" placeholder="Fornecer o código da nova rubrica"
+		       	   name="codigo" required="required" value="${rubrica.codigo}">
+		      	</div>
 		    <div class="form-group">
 		      <label for="text">Rubrica:</label> <input type="text"
 		      class="form-control" placeholder="Fornecer o novo nome da nova rubrica"
