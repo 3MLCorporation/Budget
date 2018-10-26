@@ -95,12 +95,12 @@
 			 <div class="form-group">
 			   <label for="text">Quantidade:</label> <input type="number" pattern="[0-9.]"
 			   class="form-control" placeholder="Fornecer a nova quantidade de itens"
-			   name="quantidade" id="quantidadeItem" value="${item.quantidade}" onblur="calcularValorTotalItem()">
+			   name="quantidade" required="required" id="quantidadeItem" value="${item.quantidade}" onblur="calcularValorTotalItem()">
 			 </div>
 			 <div class="form-group">
 			   <label for="text">Valor:</label> <input type="number"
-			   id="valor" class="form-control" placeholder="Fornecer o novo valor uniforme do item em reais"
-			   name="preco_unitario" id="valorUniformeItem" value="${item.precoUnitario}" onblur="calcularValorTotalItem()">
+			   class="form-control" placeholder="Fornecer o novo valor uniforme do item em reais"
+			   name="preco_unitario" required="required" id="valorUniformeItem" value="${item.precoUnitario}" onblur="calcularValorTotalItem()">
 			 </div>
 			 <div class="form-group">
 			   <label for="text">Valor total:</label> <input type="text" readonly="readonly" placeholder="Valor total da soma dos itens" class="form-control" id="resultado">
@@ -153,14 +153,22 @@
 		/*function submitAtualizarItem(form){
 			document.getElementById(form).submit();
 		}*/
-
+		
 		$(document).ready(function(){
-		    $("form").delegate('#valor', 'focusout', function(){
+		    $("form").delegate('#quantidadeItem', 'focusout', function(){
 		        if($(this).val() < 0){
 		            $(this).val('0');
 		        }
 		    });
 		});
+
+		$(document).ready(function(){
+		    $("form").delegate('#valorUniformeItem', 'focusout', function(){
+		        if($(this).val() < 0){
+		            $(this).val('0');
+		        }
+		    });
+		});	
 		
 		$("#categoria-select").change(function() {
 		    var id = $(this).val();

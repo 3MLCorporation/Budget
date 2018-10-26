@@ -55,6 +55,7 @@
 				</c:choose>
 			</strong>
 			<br/>
+			Valor estimado: <strong>${item.getValorEstimado()}</strong>&emsp;
 			Valor realizado: <strong>${item.getValorRealizadoFormatado()}</strong>&emsp;
 			Valor comprovado: <strong>${item.getValorComprovadoFormatado()}</strong>&emsp;
 			<br/>

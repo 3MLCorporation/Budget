@@ -84,6 +84,7 @@ public class AtualizarItem extends HttpServlet {
 		Blob arquivoDetalhes = null;
 		Blob arquivoAuxiliar = null;
 		
+		
 		if(isMultipart) {
 			
 			ServletFileUpload upload = new ServletFileUpload();
@@ -91,35 +92,41 @@ public class AtualizarItem extends HttpServlet {
 			try {
 				FileItemIterator iterator = upload.getItemIterator(req);
 				while (iterator.hasNext()) {
-					FileItemStream item = iterator.next();
-					InputStream stream = item.openStream();
+					FileItemStream itemFile = iterator.next();
+					InputStream stream = itemFile.openStream();
 
-					if (item.isFormField()) {
-						if (item.getFieldName().equals(Item.RUBRICA_ID))
+					if (itemFile.isFormField()) {
+						if (itemFile.getFieldName().equals(Item.RUBRICA_ID))
 							rubricaId = new Long(Streams.asString(stream));
-						if (item.getFieldName().equals(Item.CODIGO))
-							codigo = new Integer(Streams.asString(stream));
-						if (item.getFieldName().equals(Item.ID))
+						if (itemFile.getFieldName().equals(Item.CODIGO)) {
+							String codigoStr = Streams.asString(stream);
+							codigo = codigoStr.isEmpty() ?  0 : new Integer(codigoStr);
+						}
+						if (itemFile.getFieldName().equals(Item.ID))
 							itemId = new Long(Streams.asString(stream));
-						if (item.getFieldName().equals(Item.NOME))
+						if (itemFile.getFieldName().equals(Item.NOME))
 							nome = new String(Streams.asString(stream));
-						if (item.getFieldName().equals(Item.DESCRICAO))
+						if (itemFile.getFieldName().equals(Item.DESCRICAO))
 							descricao = new String(Streams.asString(stream));
-						if (item.getFieldName().equals(Item.VALOR_ESTIMADO))
-							valorEstimado = new Double(Streams.asString(stream));
-						if (item.getFieldName().equals(Item.PRECO_UNITARIO))
-							precoUnitario = new Double(Streams.asString(stream));
-						if (item.getFieldName().equals(Item.QUANTIDADE))
-							quantidade = new Integer(Streams.asString(stream));
-						if (item.getFieldName().equals(Item.UNIDADE_MEDIDA))
+						if (itemFile.getFieldName().equals(Item.VALOR_ESTIMADO)) {
+							String valorEstimadoStr = Streams.asString(stream);
+							valorEstimado = valorEstimadoStr.isEmpty() ? 0d : new Double(valorEstimadoStr);
+						}
+						if (itemFile.getFieldName().equals(Item.PRECO_UNITARIO)) {
+							String precoUnitarioStr = Streams.asString(stream);
+							precoUnitario = precoUnitarioStr.isEmpty() ? 0d : new Double(precoUnitarioStr);
+						}
+						if (itemFile.getFieldName().equals(Item.QUANTIDADE)) {
+							String quantidadeStr = Streams.asString(stream);
+							quantidade = quantidadeStr.isEmpty() ? 0 : new Integer(quantidadeStr);
+						}
+						if (itemFile.getFieldName().equals(Item.UNIDADE_MEDIDA))
 							unidadeMedida = new Integer(Streams.asString(stream));
-					} 
-					
-					else {
-						if (item.getFieldName().startsWith(Item.ARQUIVO_DETALHES)){
+					} else {
+						if (itemFile.getFieldName().startsWith(Item.ARQUIVO_DETALHES)){
 							arquivoDetalhes = new Blob(IOUtils.toByteArray(stream));
 						}
-						if (item.getFieldName().startsWith(Item.ARQUIVO_AUXILIAR)){
+						if (itemFile.getFieldName().startsWith(Item.ARQUIVO_AUXILIAR)){
 							arquivoAuxiliar = new Blob(IOUtils.toByteArray(stream));
 						}
 					}
@@ -128,7 +135,6 @@ public class AtualizarItem extends HttpServlet {
 				e.printStackTrace();
 			}
 		}
-		
 		
 		Item item = this.itemDao.read(itemId);
 		
