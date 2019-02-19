@@ -1,0 +1,3 @@
+Obs: Esse repositório foi transferido do bitbucket para o github, durante o processo, grande parte dos commits de alguns membros da 3ML
+estavam sem o endereço de email, por conta disso, esses commits sem endereço de email não foram inseridos nos gráficos de contribuidores,
+resultando em um número reduzindo de commits nos gráficos individuais de alguns membros da 3ML.
