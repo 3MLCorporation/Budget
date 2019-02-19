@@ -12,3 +12,9 @@ pipelines:
           - maven
         script: # Modify the commands below to build your repository.
           - mvn -B verify # -B batch mode makes Maven less verbose
+    - step:
+        name: Manual step
+        trigger: manual
+        script:
+          - echo "This step runs once you click the 'Run' button"
+
